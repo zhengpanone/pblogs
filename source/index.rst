@@ -10,6 +10,7 @@ Welcome to ZHENGPANONE'S BLOG's documentation!
    :caption: Contents:
    
    learning_python.rst
+   learning_linux.rst
 
 
 
