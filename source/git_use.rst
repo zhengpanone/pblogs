@@ -10,4 +10,5 @@
     :height: 100px
     :width: 100px
     :align: center
+    :alt: git strucer
 
