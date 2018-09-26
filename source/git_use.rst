@@ -6,5 +6,5 @@
 1 工作区  文件夹所在的文件夹
 2 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上
 
-..git工作区版本区|image::https://github.com/zhengpanone/mkdocs/blob/master/source/image/git_image/Image.png
+ ..git工作区版本区|image::https://github.com/zhengpanone/mkdocs/blob/master/source/image/git_image/Image.png
 
