@@ -7,4 +7,7 @@
 2 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上
 
  .. image::image/git_image/Image.png
+    :height:100px
+    :width:100px
+    :align:center
 
