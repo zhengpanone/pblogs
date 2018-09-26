@@ -1,0 +1,312 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_CN">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>auto report module（arm）使用手册 &#8212; ZHENGPANONE&#39;S BLOG 1.0 文档</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">ZHENGPANONE&#39;S BLOG 1.0 文档</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="auto-report-module-arm">
+<h1>auto report module（arm）使用手册<a class="headerlink" href="#auto-report-module-arm" title="永久链接至标题">¶</a></h1>
+<p>[TOC]</p>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h2>声明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p><strong>arm</strong>
+是用来生成HTML结题报告的一个模块，模块重新设计模板，自定义了一些模块化的函数，方便快速的生成结题报告。</p>
+<p>反馈邮箱：<a class="reference external" href="mailto:sunyong&#37;&#52;&#48;microanaly&#46;com">sunyong<span>&#64;</span>microanaly<span>&#46;</span>com</a> 后期维护人：<a class="reference external" href="mailto:zhengpan&#37;&#52;&#48;microanaly&#46;com">zhengpan<span>&#64;</span>microanaly<span>&#46;</span>com</a></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>版本<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>目前版本为
+<code class="docutils literal notranslate"><span class="pre">arm</span> <span class="pre">V1.2</span></code>，所在路径：<code class="docutils literal notranslate"><span class="pre">/home/suny/test/learnpy/autoreportmodule/</span></code>。</p>
+<div class="section" id="v1-2">
+<h3>V1.2<a class="headerlink" href="#v1-2" title="永久链接至标题">¶</a></h3>
+<p>2018.09.05 新增double_image方法，按列表同时显示两个图片 2018.09.04
+修复部分表格标题显示缺失问题，新增table方法sortable参数，默认为True（排序），False为不排序
+2018.09.03 添加单组图片展示方法bimage ；调整table方法，可展示表格标题</p>
+<p>2018.08.14 撰写V1版本</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>使用说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>安装python3.6以上版本，并安装pandas模块（运行报错，请注意可能含有未安装的模块）</li>
+<li>将模块目录放在一个固定且安全的目录下</li>
+<li>写结题报告的程序引入模块时添加模块目录，详见使用示例</li>
+</ol>
+<div class="section" id="id4">
+<h3>使用示例<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 导入模块及环境</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># linux</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">apppend</span><span class="p">(</span><span class="s1">&#39;/home/suny/test/learnpy/autoreportmodule/&#39;</span><span class="p">)</span>
+<span class="c1"># windows</span>
+<span class="c1"># sys.path.append(r&#39;C:\myprogram\learnpy\autoreportmodule&#39;)</span>
+<span class="kn">from</span> <span class="nn">arm</span> <span class="k">import</span> <span class="n">arm</span>
+
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 初始化模块</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">arm</span><span class="p">(</span><span class="s1">&#39;文库质检报告&#39;</span><span class="p">,</span> <span class="n">workdir</span><span class="p">)</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">starthtml</span><span class="p">()</span>
+
+<span class="c1"># 一级目录</span>
+<span class="n">report</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s1">&#39;项目概述&#39;</span><span class="p">)</span>
+<span class="c1"># 二级目录（可不设置）</span>
+<span class="n">report</span><span class="o">.</span><span class="n">submenu</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;微生物多样性分析基于第二代高通量测序技术对16S rRNA/18S rRNA/ITS等基因序列进行测序.&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;qcstat/20180801.xlsx&#39;</span><span class="p">,</span> <span class="n">ttype</span><span class="o">=</span><span class="s1">&#39;excel&#39;</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sortable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="s1">&#39;qcstat&#39;</span><span class="p">,</span> <span class="n">special</span><span class="o">=</span><span class="s1">&#39;ladder&#39;</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">menu</span><span class="p">(</span><span class="s1">&#39;分析概述&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">image</span><span class="p">(</span><span class="s1">&#39;sv&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;cytoscape&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;图片标题&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;1. micro&#39;</span><span class="p">,</span> <span class="s1">&#39;2. RNA&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;sv/sv.txt&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;De novo测序也叫基因组从头测序，在不依赖参考基因组的情况下，对某个物种的全基因组序列进行测序.&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">bimage</span><span class="p">(</span><span class="s1">&#39;sv/sv.png&#39;</span><span class="p">,</span> <span class="n">tilte</span><span class="o">=</span><span class="s1">&#39;sv&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">bimage</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;fastq/r1.png&#39;</span><span class="p">,</span> <span class="n">src2</span><span class="o">=</span><span class="s1">&#39;fastq/r2.png&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;r1&#39;</span><span class="p">,</span> <span class="n">tilte2</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">double_image</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;fastq&#39;</span><span class="p">,</span> <span class="n">key1</span><span class="o">=</span><span class="s1">&#39;clean_R&#39;</span><span class="p">,</span> <span class="n">key2</span><span class="o">=</span><span class="s1">&#39;raw_R&#39;</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">single_image</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="s1">&#39;fastq&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;clean_R&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="o">...</span>
+
+<span class="n">report</span><span class="o">.</span><span class="n">endhtml</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>示例程序<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>简单示例程序路径：<code class="docutils literal notranslate"><span class="pre">/home/suny/test/html.css.js/htmlv2/tests.py</span></code>
+复杂示例程序路径：<code class="docutils literal notranslate"><span class="pre">/home/suny/test/html.css.js/htmlv2/test.py</span></code></p>
+</div>
+<div class="section" id="id6">
+<h3>示例结果<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>简单示例结果路径：<code class="docutils literal notranslate"><span class="pre">/home/suny/test/html.css.js/htmlv2/v2.rar</span></code></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="arm">
+<h2>arm()<a class="headerlink" href="#arm" title="永久链接至标题">¶</a></h2>
+<div class="section" id="starthtml">
+<h3>starthtml()<a class="headerlink" href="#starthtml" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.starthtml()</span></code></p>
+<p><strong>功能</strong> 复制文件及创建主体内容</p>
+<p><strong>返回值</strong> #### endhtml() <strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.endhtml()</span></code></p>
+<p><strong>功能</strong> 结束主体内容及写入文件</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> 无</p>
+</div></blockquote>
+</div>
+<div class="section" id="menu">
+<h3>menu()<a class="headerlink" href="#menu" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.menu('text')</span></code></p>
+<p><strong>功能</strong> 在结题报告中创建侧边栏一级主题及主体一级主题</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> 无</p>
+</div></blockquote>
+</div>
+<div class="section" id="submenu">
+<h3>submenu()<a class="headerlink" href="#submenu" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.submenu('text')</span></code></p>
+<p><strong>功能</strong> 在结题报告中创建侧边栏二级主题及主体二级主题</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> 无</p>
+</div></blockquote>
+</div>
+<div class="section" id="text">
+<h3>text()<a class="headerlink" href="#text" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.text('text',</span> <span class="pre">['text'...])</span></code></p>
+<p><strong>功能</strong> 在结题报告中插入一段或几段文字描述。</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> 无</p>
+</div></blockquote>
+</div>
+<div class="section" id="table">
+<h3>table()<a class="headerlink" href="#table" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong>
+<code class="docutils literal notranslate"><span class="pre">report.table(src,</span> <span class="pre">ttype='txt',</span> <span class="pre">head=1,</span> <span class="pre">tsep='\t',</span> <span class="pre">top=100,</span> <span class="pre">sheet=1,title='',sortable=True)</span></code></p>
+<p><strong>功能</strong> 将excel或文本文件转成结题报告中的表格</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> + <strong>src：</strong> 输入文件路径，<strong>不可缺省</strong>。 + <strong>ttype：</strong>
+表格类型，支持excel文件和文本文件，参数为 <strong>txt（默认参数）</strong> 和
+<strong>excel</strong>。 + <strong>head：</strong> 有无行头，参数为 <strong>1（默认参数）</strong> 和
+<strong>0</strong>。 + <strong>tsep：</strong> 文本文件分隔符，默认为 <em>:raw-latex:`t</em>。`
++*<strong>top：</strong><em>在html中只显示文件的前</em><strong>top</strong>* 行，默认为
+<strong>100</strong>。 + <strong>sheet：</strong> 处理excel文件第几张表，默认为第 <strong>1</strong>
+张表。 + <strong>title：</strong> 显示表格标题，默认为空值。 + <strong>sortable：</strong>
+设置表格是否排序，默认为排序，参数为 <strong>True（默认参数）</strong> 和
+<strong>Flase</strong>。</p>
+</div></blockquote>
+</div>
+<div class="section" id="image">
+<h3>image()<a class="headerlink" href="#image" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong>
+<code class="docutils literal notranslate"><span class="pre">report.image(src,</span> <span class="pre">special=None,</span> <span class="pre">key=&quot;.&quot;,title='',bi=False)</span></code></p>
+<p><strong>功能</strong> 将目录中的图像转成结题报告中的图像列表</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> + <strong>src：</strong> 输入目录路径，<strong>不可缺省</strong>。 + <strong>special：</strong>
+将包含特殊字符串的图像放到图像列表内第一个展示，默认为
+<strong>None（没有特殊图片）</strong>。 + <strong>key：</strong>
+将目录下包含某种字符串的图像放到图像列表内展示，默认为
+<strong>.（全部）</strong>。 + <strong>title：</strong> 对image设置一个统一的标题，默认为
+<strong>空</strong>，。 + <strong>bi：</strong>
+针对生物信息样本名称处理（命名规则：name.xxoo.png），默认为
+<strong>False</strong>，。</p>
+</div></blockquote>
+</div>
+<div class="section" id="bimage">
+<h3>bimage()<a class="headerlink" href="#bimage" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.bimage(src,</span> <span class="pre">src2=None,</span> <span class="pre">title='',</span> <span class="pre">title2=None)</span></code></p>
+<p><strong>功能</strong> 将目录中的图像转成结题报告中的一组图像</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> + <strong>src：</strong>
+输入路径下的第一个图片路径，<strong>不可缺省</strong>，当为单张图片时居中显示。
++ <strong>src2：</strong>
+输入路径下的第二个图片路径，默认为空，当不为空时两图片并排居中显示。
++ <strong>title：</strong> 显示图片1标题，默认为空值。 + <strong>title2：</strong>
+显示图片2标题，默认为空值。</p>
+</div></blockquote>
+</div>
+<div class="section" id="double-image">
+<h3>double_image()<a class="headerlink" href="#double-image" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.double_image(src,</span> <span class="pre">key1,</span> <span class="pre">key2)</span></code></p>
+<p><strong>功能</strong>
+将目录中的图像按<strong>两个图像为一组</strong>，转成结题报告中的图像列表</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> + <strong>src：</strong> 输入图片所在的文件夹，<strong>不可缺省</strong>。 +
+<strong>key1：</strong>
+输入路径下的第一个图片名具有的共有的关键字，<strong>不可缺省</strong>。 +
+<strong>key2：</strong>
+输入路径下的第二个图片名具有的共有的关键字，<strong>不可缺省</strong>。</p>
+</div></blockquote>
+</div>
+<div class="section" id="single-image">
+<h3>single_image()<a class="headerlink" href="#single-image" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><p><strong>使用方法</strong> <code class="docutils literal notranslate"><span class="pre">report.single_image(src,</span> <span class="pre">key,</span> <span class="pre">title)</span></code></p>
+<p><strong>功能</strong>
+将目录中的图像按<strong>具有共同的关键字为一组</strong>，转成结题报告中的图像列表</p>
+<p><strong>返回值</strong> 无</p>
+<p><strong>参数</strong> + <strong>src：</strong> 输入图片所在的文件夹，<strong>不可缺省</strong>。 +
+<strong>key：</strong>
+输入路径下的所有图片名具有的共有的关键字，<strong>不可缺省</strong>。 +
+<strong>title：</strong> 图片的标题。</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">內容目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">auto report module（arm）使用手册</a><ul>
+<li><a class="reference internal" href="#id1">声明</a></li>
+<li><a class="reference internal" href="#id2">版本</a><ul>
+<li><a class="reference internal" href="#v1-2">V1.2</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">使用说明</a><ul>
+<li><a class="reference internal" href="#id4">使用示例</a></li>
+<li><a class="reference internal" href="#id5">示例程序</a></li>
+<li><a class="reference internal" href="#id6">示例结果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#arm">arm()</a><ul>
+<li><a class="reference internal" href="#starthtml">starthtml()</a></li>
+<li><a class="reference internal" href="#menu">menu()</a></li>
+<li><a class="reference internal" href="#submenu">submenu()</a></li>
+<li><a class="reference internal" href="#text">text()</a></li>
+<li><a class="reference internal" href="#table">table()</a></li>
+<li><a class="reference internal" href="#image">image()</a></li>
+<li><a class="reference internal" href="#bimage">bimage()</a></li>
+<li><a class="reference internal" href="#double-image">double_image()</a></li>
+<li><a class="reference internal" href="#single-image">single_image()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/test.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="转向" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">ZHENGPANONE&#39;S BLOG 1.0 文档</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2018, zhengpanone.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1 创建。
+    </div>
+  </body>
+</html>
