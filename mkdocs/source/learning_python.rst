@@ -341,6 +341,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 5. 使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
 
 ::
+
  test.py
  import sys,os
  # 当前目录没hi模块,报错找不到模块
@@ -358,6 +359,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 6. 另外一种加载模块的方法: 如果模块不在sys.path下面,可以使用imp 模块中的imp.load_source
 
 ::
+
  import imp
  imp.load_source('hi', 'C://data/hi.py')
  import hi
@@ -383,6 +385,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
    实现缓存装饰器
 
 ::
+
  def cache(func):
     data = {}
     def wrapper(*args, **kwargs):
@@ -400,6 +403,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 查看缓存效果
 
 ::
+
  @cache
  def rectangle_area(length, width):
     return length*width
@@ -417,6 +421,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 把cache函数改写为Cache类:
 
 ::
+
  class Cache:
     def __init__(self, func):
         self.func = func
