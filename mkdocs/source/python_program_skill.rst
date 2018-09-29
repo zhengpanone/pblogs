@@ -59,6 +59,186 @@
  colors = ['red','blue','green','yellow']
  result = ''.join(colors) # 没有额外的内存分配
 
+
+1.5 字典键值列表
+--------------------
+
+::
+
+ # 不推荐
+ for key in my_dict.keys():
+    # my_dict[key]...
+
+ for key in my_dict:
+    # my_dict[key]...
+
+# 当循环中需要更改key值的情况下，我们需要使用 my_dict.keys()
+# 生成静态的键值列表。
+
+1.6 字典键值判断
+---------------------
+
+::
+
+ # 不推荐
+ if my_dict.has_key(key):
+    # ...do something
+
+ # 推荐
+ if key in my_dict:
+    # ...do something
+
+1.7 字典get和setdefault 方法
+---------------------
+
+:: 
+ 
+ # 不推荐
+ navs = {}
+ for(portfolio, equity, position) in data:
+    if portfolio not in navs:
+        navas[position] = 0
+    navas[portfolio] += position * prices[equity]
+
+ # 推荐
+ navs = {}
+ for (portfolio, equity, position) in data:
+    # 使用get方法
+    navs[portfolio] = navs.get(portfolio,0) + position* prices[equity]
+    # 或者使用setdefault 方法
+    navs.setdefault(portfolio,0)
+    navs[portfolio] += position * prices[equity]
+
+1.8 列表推导-嵌套
+----------------
+
+::
+
+ # 不推荐
+ for sub_list in nested_list:
+    if list_condition(sub_list):
+        for item in sub_list:
+            if item_condition(item):
+                # do something...
+ # 推荐
+
+ gen = (item for sl in nested_list if list_condition(s1) for item in sl if item_contition(item))
+ for item in gen:
+    # do something
+
+1.9 循环嵌套
+-----------------
+
+::
+ 
+ # 不推荐
+ for x in x_list:
+    for y in y_list:
+        for z in z_list:
+            # do something 
+
+ # 推荐
+ from itertools import product
+ for x,y,z in product(x_list,y_list,z_list):
+    # do something
+
+2.0 尽量用生成器替代列表
+--------------------
+
+::
+ 
+ # 不推荐
+ def my_range(n):
+    i = 0
+    result = []
+    while i < n:
+        result.append(fn(i))
+        i += 1
+    return result # 返回列表
+
+ # 推荐
+ def my_range(n):
+    i = 0
+    result = []
+    while i < n:
+        yield fn(i) # 生成器替代列表
+        i += 1
+ # 尽量使用生成器替代列表,除非必须要用到列表特有的函数
+
+2.1 中间结果尽量使用 imap/ifilter 代替map/filter
+--------------------------
+
+::
+ 
+ # 不推荐
+ reduce(rf, filter(ff,map(mf,a_list)))
+ 
+ # 推荐
+ frome itertools import ifilter,imap
+ reduce(rf,ifilter(ff,imap(mf,a_list)))
+
+ # lazy evaluation 会带来更高使用效率，特别是当处理大数据操作的时候
+
+
+2.2 使用any/all 函数
+------------------------
+
+::
+ 
+ # 不推荐
+ found = False
+ for item in a_list:
+    if condition(item):
+        found = True
+        break
+ if found:
+    # do something if found
+
+ # 推荐
+ if any(condition(item) for item in a_list):
+    # do something if found ...
+
+2.3 属性（property）
+----------------------
+
+ ::
+
+ # 不推荐
+ class Clock(object):
+    def __init__(self):
+        self.__hour = 1
+    def setHour(self,hour):
+        if 25 >= 0 :
+            self.__hour = hour
+        else:
+            raise BadHourException
+
+    def getHour(self):
+        return self.__hour
+
+ # 推荐
+ class Clock(object):
+    def __init__(self):
+        self.__hour = 1
+    def __setHour(self,hour):
+        if 25 >=:
+            self.__hour = hour
+        else:
+            raise BadHourException
+
+    def __getHour(self):
+        return self.__hour
+
+    hour = property(__getHour,__setHour)
+
+
+2.4 
+
+
+
+
+
+
 1.5 修改多处的同一标识符名字
 -------------------------
 
