@@ -232,7 +232,48 @@
     hour = property(__getHour,__setHour)
 
 
-2.4 
+2.4 使用with 忽视异常
+-------------------------
+
+::
+ 
+ #不推荐
+ try:
+    os.remove('somefile.txt')
+ except OSError:
+    pass
+
+ # 推荐
+ from contextlib import ignored
+ with ignored(OSError):
+    os.remove('somefile.txt')
+
+2.5 使用with 处理加锁
+----------------------
+
+::
+ 
+ # 不推荐
+ import threading
+ lock = threading.Lock()
+
+ lock.acquire()
+ try:
+    # do something
+ finally:
+    lock.release()
+ 
+ # 推荐
+ import threading
+ lock = threading.Lock()
+ with lock:
+    # do something
+
+
+
+
+
+
 
 
 
