@@ -169,7 +169,7 @@ Bool
 
 原理: sum 函数是python3内置函数,该函数使用迭代器协议访问对象,而生成器实现了迭代器协议,所以可以直接计算一系列值的和,不用先构造一个列表
 
-1.5 yield使用
+1.6 yield使用
 -------------
 
 带有yield的函数在python中称之为generator(生成器)
@@ -310,8 +310,8 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 
 
     
-1.6 包和模块
-=============================
+1.7 包和模块
+-------------------------
 
 1. 一个模块(module)就是一个py文件,模块名字就是该文件名字
 
@@ -438,6 +438,7 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 查看缓存效果
 
 ::
+
  @Cache
  def rectangle_area(length, width):
     return length * width
@@ -455,8 +456,10 @@ yield 的作用是把函数变成一个generator,带有yield的函数不再是�
 函数写的装饰器如何装饰类的方法
 
 ::
+
  class Rectangle:
     def __init__(self, length, width):
         self.length = length
         self.width = width
+
 
