@@ -66,9 +66,10 @@
 
 
 1.7 多变量赋值
------------------
+---------------------
 
 ::
+
  a, b, c, d = 0, 1, 2, 3, 4
 
 
@@ -76,13 +77,15 @@
 -------------------
 
 ::
+
  s = "Python $$ is simple, $$readable **and powerful!**"
  s = s.replace('$','').replace('*','')
 
 1.9 三元运算符
-------------------
+----------------------
 
 ::
+
  x = -5
  y = x if x >=1 else -x
 
@@ -90,6 +93,7 @@
 ----------------------
 
 ::
+
  l, d, s = [1,2,3], {}, ''
  if l:
     print('l is empty!')
@@ -104,6 +108,7 @@
 使用any函数
 
 ::
+
  math, physics,computer = 70,40,80
  
  if any([math<60,physics<60,computer<60]):
@@ -121,11 +126,13 @@
     print('pass!')
 
 2.3 推导式
+----------------------
 
-[... for ... in ... if ...]
+ [... for ... in ... if ...]
 
 ::
- 过滤l中的全部数值并求和
+
+ #过滤l中的全部数值并求和
  l = [1,2,3,4,'abc',5,6.0]
  sum(i for i in l if type(i) in [int,float])
 
@@ -135,6 +142,7 @@
 使用enumerate函数生成对应下标和元素对
 
 ::
+
  seasons = ['spring','summer','autumn','winter']
  for i,s in enumerate(seasons):
     print(i,':',s)
@@ -145,6 +153,7 @@
 print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 
 ::
+
  import time
  i,n = 0,100
  for i in range(n):
@@ -155,6 +164,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 定义progress_bar函数
 
 ::
+
  import sys,time
 
  def progress_bar(num, total):
@@ -173,6 +183,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 ------------------------
 
 ::
+
  # 一般方法
  l = [1,2,3,'abc',4,5.0]
 
@@ -189,6 +200,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 ----------------------
 
 ::
+
  # 一般方法
  # 生成斐波那契数列前10项
 
@@ -215,6 +227,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 ---------------------------
 
 ::
+
  import time
  def my_sum(*args):
     tic = time.time()
@@ -245,3 +258,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
     return(s)
  # @runtime 是语法糖，相当于my_sum = runtime(my_sum)
  my_sum(*range(10000))
+
+
+
+
