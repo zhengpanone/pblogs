@@ -730,11 +730,5 @@ Contextor 实现了__enter__和__exit__这两个上下文管理器协议，当Co
 
 .. __: https://github.com/zhengpanone/blogs/blob/master/mkdocs/source/Tornado_Source.rst
 
-
 中介绍
-
-
-这篇文章参考的是：`Quick reStructuredText`__。
-
-.. __: https://github.com/zhengpanone/blogs/blob/master/mkdocs/source/Tornado_Source.rst
 
