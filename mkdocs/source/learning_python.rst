@@ -726,7 +726,7 @@ Contextor 实现了__enter__和__exit__这两个上下文管理器协议，当Co
         async_task()
 
 
-效果类似。当然，也许有人会对StackContext这个tornado的模块感到迷惑。其实他恰恰应用上下文管理器的魔法的典范。查看StackContext的源码，实现非常精秒，非常佩服tornado作者的编码设计能力。至于StackContext究竟如何神秘，已经超出了本篇的范围，将会在介绍`tonrado异步上下文管理器`__
+效果类似。当然，也许有人会对StackContext这个tornado的模块感到迷惑。其实他恰恰应用上下文管理器的魔法的典范。查看StackContext的源码，实现非常精秒，非常佩服tornado作者的编码设计能力。至于StackContext究竟如何神秘，已经超出了本篇的范围，将会在介绍 `tonrado异步上下文管理器`__
 
 .. __: https://github.com/zhengpanone/blogs/blob/master/mkdocs/source/Tornado_Source.rst
 
