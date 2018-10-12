@@ -120,6 +120,16 @@ Bool
     if f:
         f.close()
 
+
+使用with 读写文件
+
+ ::
+    
+    with open('path/file','r') as f, open('path/file2','w') ad f2:
+        for l in a:
+            f2.write(l.readline())
+
+
 1.4 推导式
 ----------------
 
