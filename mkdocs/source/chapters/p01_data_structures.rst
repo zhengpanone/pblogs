@@ -2,11 +2,11 @@
 第一章：语法基础
 ===========================
 
-Python 提供了大量的
+Python 编码设置
 
 .. toctree::
-    :maxdepth: 1
-    :glob:..
+    :maxdepth: 2
+    :glob: ..
 
       ../contents/c01/*
 
