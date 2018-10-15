@@ -6,7 +6,7 @@ Python 编码设置
 
 .. toctree::
     :maxdepth: 1
-    :glob:..
+    :glob:
 
       ../contents/c01/*
 
