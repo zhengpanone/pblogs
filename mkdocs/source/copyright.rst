@@ -2,8 +2,8 @@
 Copyright
 =============================
 
- |书名：《Learn Python》1rd Edition
- |作者：郑攀
- |编写日期：2018年10月15日
+| 书名：《Learn Python》1rd Edition
+| 作者：郑攀
+| 编写日期：2018年10月15日
 
 
