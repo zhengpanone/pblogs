@@ -34,3 +34,9 @@ Bool
  b = '1'
  bool(a == b)  #判断表达式真假
  >>> False
+
+标准数据类型
+
+    Number、String、List、Tuple、Set、Dict
+    不可变数据类型(3个)：Number、String、Tuple
+
