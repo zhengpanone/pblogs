@@ -5,8 +5,8 @@
 Python 编码设置
 
 .. toctree::
-    :maxdepth: 2
-    :glob: ..
+    :maxdepth: 1
+    :glob:..
 
       ../contents/c01/*
 
