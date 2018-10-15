@@ -1,2 +1,4 @@
 mkdocs/build/
+__pycache_/
 venv
+*.gitignore
