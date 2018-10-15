@@ -39,4 +39,19 @@ Bool
 
     Number、String、List、Tuple、Set、Dict
     不可变数据类型(3个)：Number、String、Tuple
+    可变数据类型(3个):List、Dict、Set
+	type()和isinstance()来查询变量所指的对象类型
+	isinstance（）和type()的区别：
+	
+::
+	
+ class A:
+    pass
+ class B:
+	pass
+
+ isinstance(A(),A)
+ type(A()) == A
+ isinstance(B(),A)
+ type(B())== A
 
