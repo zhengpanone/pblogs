@@ -32,6 +32,7 @@
     每次commit 作为一次快照
 
 ::
+
  git log // 查看历史纪录
  git log --pretty = oneline // 版本ID一行显示
  git reset --hard HEAD^ // 回退到上一版本
