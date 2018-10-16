@@ -3,9 +3,8 @@
 ========================
 
 1.1 名词解释
-
-1 工作区  文件夹所在的文件夹
-2 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上
+    1 工作区  文件夹所在的文件夹
+    2 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上
 
 ..  image:: ../../image/git_image/Image.png
     :align: center
@@ -13,9 +12,9 @@
 
 1.2 用户配置
 
-    ::
-     git config --global user.name 'zhengpanone'
-     git config --global user.email "zhengpanone@hotmail.com"
+::
+ git config --global user.name 'zhengpanone'
+ git config --global user.email "zhengpanone@hotmail.com"
 
 配置级别
 
@@ -24,7 +23,6 @@
 --system 低优先级，影响全系统的git 仓库 /etc/gitconfig
 
 1.3 初始化仓库
-
     第一步 使用git add <file> 或者 git add --all
     第二步 使用命令 git commit -m 'git something'  ，完成
 
