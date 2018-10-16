@@ -2,7 +2,7 @@
 20.1 `基本使用`__
 ========================
 
-.. __ : http://python.jobbole.com/87317/
+.. __ : https://www.cnblogs.com/huchong/p/8227606.html#_lab2_1_0
 
 1. 实例化Flask对象时，可选参数
     ::
