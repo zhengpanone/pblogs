@@ -186,10 +186,9 @@
 2.3 属性（property）
 ----------------------
 
- ::
+::
 
  # 不推荐
-
  class Clock(object):
     def __init__(self):
         self.__hour = 1
@@ -203,7 +202,6 @@
         return self.__hour
 
  # 推荐
-
  class Clock(object):
     def __init__(self):
         self.__hour = 1
