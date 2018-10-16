@@ -5,7 +5,6 @@
 
 ZHENGPANONE'S BLOG's documentation!
 ==============================================
-Contents:
 
 .. toctree::
    :maxdepth: 2
