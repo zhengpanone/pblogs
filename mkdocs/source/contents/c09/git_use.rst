@@ -13,9 +13,9 @@
 
 1.2 用户配置
 
-::
- git config --global user.name 'zhengpanone'
- git config --global user.email "zhengpanone@hotmail.com"
+    ::
+     git config --global user.name 'zhengpanone'
+     git config --global user.email "zhengpanone@hotmail.com"
 
 配置级别
 
@@ -25,8 +25,8 @@
 
 1.3 初始化仓库
 
-第一步 使用git add <file> 或者 git add --all
-第二步 使用命令 git commit -m 'git something'  ，完成
+    第一步 使用git add <file> 或者 git add --all
+    第二步 使用命令 git commit -m 'git something'  ，完成
 
 1.4 版本回退
     每次commit 作为一次快照
