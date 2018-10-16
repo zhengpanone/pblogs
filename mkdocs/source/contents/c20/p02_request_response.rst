@@ -19,9 +19,10 @@
             - 依赖于：secret_key
 
 -----------------------------------
-2 flask 中获取URL后面的参数（from urllib.parse import urlencode,quote,unquote）
+2 flask 中获取URL后面的参数
 -----------------------------------
-    
+
+from urllib.parse import urlencode,quote,unquote
 GET 请求：
 URL为：http://127.0.0.1:5000/login?name=%27%E8%83%A1%E5%86%B2%27&nid=2
 
