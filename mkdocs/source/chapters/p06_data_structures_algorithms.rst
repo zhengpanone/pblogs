@@ -7,8 +7,10 @@ Python 提供了大量的内置数据结构，包括列表，集合以及字典�
 因此，这一章的目的就是讨论这些比较常见的问题和算法。
 另外，我们也会给出在集合模块 ``collections`` 当中操作这些数据结构的方法。
 
+Contents:
 .. toctree::
     :maxdepth:1
     :glob:
 
     ../contents/c06/*
+
