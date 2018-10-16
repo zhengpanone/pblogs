@@ -5,13 +5,13 @@
 .. __ : http://python.jobbole.com/87317/
 
 1. 实例化Flask对象时，可选参数
-::
- app = Flask(__name__)  # 这是实例化一个Flask对象，最基本的写法
- # 但是Flask中还有其他参数，以下是可填的参数，及其默认值
+    ::
+    app = Flask(__name__)  # 这是实例化一个Flask对象，最基本的写法
+    # 但是Flask中还有其他参数，以下是可填的参数，及其默认值
  
- def __init__(self,import_name,static_path=None,static_url_path=None,
- static_folder='static',template_folder='templates',instance_path=None,instance_relative_config=False,
- root_path=None)
+    def __init__(self,import_name,static_path=None,static_url_path=None,
+    static_folder='static',template_folder='templates',instance_path=None,instance_relative_config=False,
+    root_path=None)
 
 
 template_folder: 模板所在文件夹的名字
@@ -25,69 +25,68 @@ static_url_path：静态文件的地址前缀，写成什么，访问静态文�
 
 如：在根目录下创建目录，templates和static，则return render_template时，可以找到里面的模板页面；如在static文件夹里存放11.png，在引用该图片时，静态文件地址为：/xxxxxx/11.png
 
- instance_path和instance_relative_config是配合来用的、
+instance_path和instance_relative_config是配合来用的、
 这两个参数是用来找配置文件的，当用app.config.from_pyfile('settings.py')这种方式导入配置文件的时候会用到
 instance_relative_config：默认为False，当设置为True时，from_pyfile会从instance_path指定的地址下查找文件。
 instsnce_path：指定from_pyfile查询文件的路径，不设置时，默认寻找和app.run()的执行文件同级目录下的instance文件夹；如果配置了instance_path（注意需要是绝对路径），就会从指定的地址下里面的文件
 
 2. 绑定路由关系的两种方式
-::
- #方式一
-    @app.route('/index.html',methods=['GET','POST'],endpoint='index')
-    def index():
-        return 'Index'
+    ::
+    #方式一
+        @app.route('/index.html',methods=['GET','POST'],endpoint='index')
+        def index():
+            return 'Index'
         
- #方式二
+    #方式二
 
- def index():
-    return "Index"
+    def index():
+        return "Index"
 
- self.add_url_rule(rule='/index.html', endpoint="index", view_func=index, methods=["GET","POST"])    #endpoint是别名
- or
- app.add_url_rule(rule='/index.html', endpoint="index", view_func=index, methods=["GET","POST"])
- app.view_functions['index'] = index
+    self.add_url_rule(rule='/index.html', endpoint="index", view_func=index, methods=["GET","POST"])    #endpoint是别名
+    or
+    app.add_url_rule(rule='/index.html', endpoint="index", view_func=index, methods=["GET","POST"])
+    app.view_functions['index'] = index
 
 添加路由关系的本质：将url和视图函数封装成一个Rule对象，添加到Flask的url_map字段中
 
 3. Flask 中装饰器应用
+    ::
+    from flask import Flask,render_template,request,redirect,session
+    app = Flask(__name__)
+    app.secret_key = "sdsfdsgdfgdfgfh"   # 设置session时，必须要加盐，否则报错
 
-::
- from flask import Flask,render_template,request,redirect,session
- app = Flask(__name__)
- app.secret_key = "sdsfdsgdfgdfgfh"   # 设置session时，必须要加盐，否则报错
+    def wrapper(func):
+        def inner(*args,**kwargs):
+            if not session.get("user_info"):
+                return redirect("/login")
+            ret = func(*args,**kwargs)
+            return ret
+        return inner
 
- def wrapper(func):
-    def inner(*args,**kwargs):
-        if not session.get("user_info"):
-            return redirect("/login")
-        ret = func(*args,**kwargs)
-        return ret
-    return inner
-
- @app.route("/login",methods=["GET","POST"])  # 指定该路由可接收的请求方式，默认为GET
- def login():
-    if request.method=="GET":
-        return render_template("login.html")
-    else:
-        # print(request.values)   #这个里面什么都有，相当于body
-        username = request.form.get("username")
-        password = request.form.get("password")
-        if username=="haiyan" and password=="123":
-            session["user_info"] = username
-            # session.pop("user_info")  #删除session
-            return redirect("/index")
+    @app.route("/login",methods=["GET","POST"])  # 指定该路由可接收的请求方式，默认为GET
+    def login():
+        if request.method=="GET":
+            return render_template("login.html")
         else:
-            # return render_template("login.html",**{"msg":"用户名或密码错误"})
-            return render_template("login.html",msg="用户名或者密码错误")
+            # print(request.values)   #这个里面什么都有，相当于body
+            username = request.form.get("username")
+            password = request.form.get("password")
+            if username=="haiyan" and password=="123":
+                session["user_info"] = username
+                # session.pop("user_info")  #删除session
+                return redirect("/index")
+            else:
+                # return render_template("login.html",**{"msg":"用户名或密码错误"})
+                return render_template("login.html",msg="用户名或者密码错误")
 
- @app.route("/index",methods=["GET","POST"])
- @wrapper    #自己定义装饰器时，必须放在路由的装饰器下面
- def index():
-    # if not session.get("user_info"):
-    #     return redirect("/login")
-    return render_template("index.html")
+    @app.route("/index",methods=["GET","POST"])
+    @wrapper    #自己定义装饰器时，必须放在路由的装饰器下面
+    def index():
+        # if not session.get("user_info"):
+        #     return redirect("/login")
+        return render_template("index.html")
 
 
- if __name__ == '__main__':
-    app.run(debug=True)
+    if __name__ == '__main__':
+        app.run(debug=True)
 
