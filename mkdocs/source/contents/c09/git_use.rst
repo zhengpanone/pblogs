@@ -11,10 +11,10 @@
     :alt: git strucer
 
 1.2 用户配置
-
-::
- git config --global user.name 'zhengpanone'
- git config --global user.email "zhengpanone@hotmail.com"
+    ::
+ 
+     git config --global user.name 'zhengpanone'
+     git config --global user.email "zhengpanone@hotmail.com"
 
 配置级别
 
