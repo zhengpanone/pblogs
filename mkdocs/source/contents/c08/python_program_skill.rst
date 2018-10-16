@@ -15,22 +15,6 @@
  #推荐
  a, b = b, a  # 先生成一个元组对象(tuple),然后unpack
 
-1.2 Unpacking
------------------
-
-::
-
- #不推荐
- a = ['David,'Pythonista', '+1-514-55-1234'']
- first_name = a[0]
- last_name = a[1]
- phone_number = a[2]
-
- #推荐
- a = ['David,'Pythonista', '+1-514-55-1234'']
- first_name,last_name,phone_number = a
- # Python3 Only
- first, *middle,last = another_last
 
 1.3 使用操作符in
 -----------------
