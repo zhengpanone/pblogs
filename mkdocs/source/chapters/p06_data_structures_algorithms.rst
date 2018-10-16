@@ -9,8 +9,7 @@ Python 提供了大量的内置数据结构，包括列表，集合以及字典�
 
 Contents:
 .. toctree::
-    :maxdepth:1
+    :maxdepth: 1
     :glob:
 
     ../contents/c06/*
-
