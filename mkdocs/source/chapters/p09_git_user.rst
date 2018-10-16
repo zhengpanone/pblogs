@@ -6,7 +6,7 @@ git Bash 基本使用，和常用命令
 
 
 
-Contents:
+
 
 .. toctree::
    :maxdepth: 1
