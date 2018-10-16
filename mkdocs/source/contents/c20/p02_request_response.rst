@@ -5,8 +5,7 @@
 ------------------------------
 1 获取请求数据，及响应
 ------------------------------
-    ::
-     -Request
+    -Request
             -request.form   # POST请求数据
             -request.args   # GET 请求数据，不是完全意义上的dict ，通过 .to_dict 可以转换成字典
             -request.querystring    # GET 请求，bytes 形式的
@@ -29,4 +28,4 @@
  from urllib.parse import urlencode,quote,unquote
 
  def login():
- 
+
