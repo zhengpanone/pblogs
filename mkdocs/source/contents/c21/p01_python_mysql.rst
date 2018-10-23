@@ -29,7 +29,19 @@ SHOW DATABASES;
 
 INSERT INTO `tablename` VALUE()
 
+1.6 修改数据
 
+UPATAE `tablename` SET col_name='XXX' WHERE col_id = 'XX'
+
+1.7 删除数据
+
+DELETE FROM `tablename` WHERE col_name = 'XXX'
+
+1.8 其他
+
+新建索引（CREAT INDEX）
+修改表（ALTER TABLE）
+删除数据库、表、索引、视图（DROP）
 
 
 
