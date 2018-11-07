@@ -30,69 +30,70 @@
     #__mod__求余运算
     #__pow__称方
 
-        def __init__(self, name):
-            #声明类中的属性，并初始化，在初始化的时候同时
-            #就是定义了变量类型
-            self.name = name
-            self.age = 0
+    def __init__(self, name):
+        #声明类中的属性，并初始化，在初始化的时候同时
+        #就是定义了变量类型
+        self.name = name
+        self.age = 0
 
-        # 在类中所有函数都必须把self作为第一个参数
-        #（下面定义的类方法和静态方法除外）
-        def say(self, msg):
-            return "{0}: {1}".format(self.name, msg)
+    # 在类中所有函数都必须把self作为第一个参数
+    #（下面定义的类方法和静态方法除外）
+    def say(self, msg):
+        return "{0}: {1}".format(self.name, msg)
 
-        # 类方法
-        @classmethod
-        def get_species(cls):
-            return cls.species
+    # 类方法
+    @classmethod
+    def get_species(cls):
+        return cls.species
 
-        # 静态方法，
-        @staticmethod
-        def grunt():
-            return "*grunt*"
+    # 静态方法，
+    @staticmethod
+    def grunt():
+        return "*grunt*"
 
-        # A property is just like a getter.
-        # It turns the method age() into an read-only attribute
-        # of the same name.
-        #property属性，相当于getter
-        @property
-        def age(self):
-            return self._age
+    # A property is just like a getter.
+    # It turns the method age() into an read-only attribute
+    # of the same name.
+    #property属性，相当于getter
+    @property
+    def age(self):
+        return self._age
 
-        # This allows the property to be set
-        @age.setter
-        def age(self, age):
-            self._age = age
+    # This allows the property to be set
+    @age.setter
+    def age(self, age):
+        self._age = age
 
-        # This allows the property to be deleted
-        @age.deleter
-        def age(self):
-            del self._age
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
 
 
-    #类实例化
-    i = Human(name="Ian")
-    print i.say("hi")    # prints out "Ian: hi"
 
-    j = Human("Joel")
-    print j.say("hello")  # prints out "Joel: hello"
+ #类实例化
+ i = Human(name="Ian")
+ print i.say("hi")    # prints out "Ian: hi"
 
-    #调用实例方法用"."
-    i.get_species()   # => "H. sapiens"
+ j = Human("Joel")
+ print j.say("hello")  # prints out "Joel: hello"
 
-    # 改变类变量
-    Human.species = "H. neanderthalensis"
-    i.get_species()   # => "H. neanderthalensis"
-    j.get_species()   # => "H. neanderthalensis"
+ #调用实例方法用"."
+ i.get_species()   # => "H. sapiens"
 
-    # 调用静态方法
-    Human.grunt()   # => "*grunt*"
+ # 改变类变量
+ Human.species = "H. neanderthalensis"
+ i.get_species()   # => "H. neanderthalensis"
+ j.get_species()   # => "H. neanderthalensis"
 
-    # 给age赋值
-    i.age = 42
+ # 调用静态方法
+ Human.grunt()   # => "*grunt*"
 
-    # 获取age值
-    i.age # => 42
+ # 给age赋值
+ i.age = 42
 
-    # 删除age
-    del i.age
+ # 获取age值
+ i.age # => 42
+
+ # 删除age
+ del i.age
