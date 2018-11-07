@@ -25,6 +25,7 @@ os.popen(cmd)
 不仅执行命令而且返回执行后的信息对象(常用于需要获取执行命令后的返回信息)，是通过一个管道文件将结果返回
 
 ::
+
  >>> import os
  >>> nowtime = os.popen('date')
  >>> print(nowtime.read())
@@ -39,6 +40,7 @@ getstatus                    获取执行命令的状态值(执行命令成功�
 getstatusoutput         获取执行命令的状态值以及返回信息
 
 ::
+
  >>> import commands
  >>> status,output = commands.getstatusoutput('date')
  >>> print(status)  #0
