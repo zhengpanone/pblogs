@@ -17,7 +17,11 @@
 示例：
 
 ::
+
  import re
  result = re.match('itcast','itcast.com')
  result.group()
  >>> itcast
+
+
+ 
