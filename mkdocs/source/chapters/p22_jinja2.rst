@@ -3,3 +3,9 @@
 ==========================
 
 Jinja使用语法
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   ../contents/c22/*

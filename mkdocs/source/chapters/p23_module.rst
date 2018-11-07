@@ -3,3 +3,9 @@
 ==========================
 
 Python常用模块使用语法
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   ../contents/c23/*
