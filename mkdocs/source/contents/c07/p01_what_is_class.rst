@@ -104,6 +104,8 @@
 类寻找属性或方法的流程：
 实例.__dict__  > 类.__dict__ > 类.__getattr__ > 类.__getattribute__
 
+1.2类的练习
+----------------------------------
 
 ::
 
@@ -124,3 +126,5 @@
 
     def say_hello(self):
         pass
+
+ print(Foo().think.different.itcast)
