@@ -9,12 +9,15 @@
 ::
 
  class Human(object,orangOutang):
-    # 类变量
-    species = "H. sapiens"类接口
+    
+    species = "H. sapiens"  # 类属性
+
     __species = "Other.sapiens" #内部结构，无法被外部直接访问
 
     # __init__(),初始化函数，python中在对类进行处理时，会先处理以下函数，
-    #其实就是系统默认定义了接口，而这个接口是开放给用户去实现的，具体如下：   
+
+    #其实就是系统默认定义了接口，而这个接口是开放给用户去实现的，具体如下：    
+
     #__init__  构造函数，在生成对象时调用
     # __del__   析构函数，释放对象时使用
     #__repr__ 打印，转换
@@ -33,7 +36,7 @@
     def __init__(self, name):
         #声明类中的属性，并初始化，在初始化的时候同时
         #就是定义了变量类型
-        self.name = name
+        self.name = name        # 对象属性  实例属性
         self.age = 0
 
     # 在类中所有函数都必须把self作为第一个参数
@@ -71,8 +74,9 @@
 
 
 
- #类实例化
- i = Human(name="Ian")
+ 
+ i = Human(name="Ian")          #类实例化
+ 
  print i.say("hi")    # prints out "Ian: hi"
 
  j = Human("Joel")
