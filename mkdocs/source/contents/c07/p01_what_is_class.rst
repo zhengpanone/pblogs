@@ -72,14 +72,14 @@
     def age(self):
         del self._age
 
-
-
- 
  i = Human(name="Ian")          #类实例化
+
+ dir(i)          # 查看对象 i中的所有属性
  
  print i.say("hi")    # prints out "Ian: hi"
 
  j = Human("Joel")
+ 
  print j.say("hello")  # prints out "Joel: hello"
 
  #调用实例方法用"."
@@ -96,8 +96,31 @@
  # 给age赋值
  i.age = 42
 
- # 获取age值
- i.age # => 42
+ i.age # => 42   # 获取age值
 
- # 删除age
- del i.age
+ del i.age  # 删除age
+
+
+类寻找属性或方法的流程：
+实例.__dict__  > 类.__dict__ > 类.__getattr__ > 类.__getattribute__
+
+
+::
+
+ class Foo(object):
+
+    def __init__(self):
+        pass
+
+    def __getattr__(self,item):
+        print(item)
+        return self
+
+    def __getattribute__(self,item):
+        pass
+
+    def __str__(self):
+        return ""
+
+    def say_hello(self):
+        pass
