@@ -42,7 +42,8 @@ logpath=D:\mongodb\data\log\mongodb.log
 3. 测试
 -----------------------
 
-我们在运行cmd.exe进入dos命令界面,然后进入cd E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\bin目录下，运行mongo命令，测试一下连接，如图所示：
+我们在运行cmd.exe进入dos命令界面,然后进入cd E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\bin目录下，运行mongo命令，
+测试一下连接，如图所示：
 
 ..  image:: ./image/5.png
     :align: center
@@ -51,12 +52,16 @@ logpath=D:\mongodb\data\log\mongodb.log
 4. 添加mongoDb到Window Service
 -------------------------------------
 
-我们当我们把运行MongoDB服务器的dos命令界面关掉，这样我们就不能链接MongoDB，然后像mysql一样添加到Windows Service，然后在命令行上启动服务和关闭服务，这样方便我们操作和管理服务。
+我们当我们把运行MongoDB服务器的dos命令界面关掉，这样我们就不能链接MongoDB，然后像mysql一样添加到Windows Service，然后在命令行上启动服务和关闭服务，
+这样方便我们操作和管理服务。
 
 我们接下来需要把MongoDB到Windows Service，用到的命令是--install设定安装MongoDB为服务器到Windows Service
 
-第一步：执行—install,以管理员身份启动cmd, 进入dos命令界面，先进入到cd E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\bin目录下，执行命令：
-mongod.exe  --config  "E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\mongodb.cfg" --install --serviceName "MongoDB"  如图所示：
+第一步：执行—install,
+
+以管理员身份启动cmd, 进入dos命令界面，先进入到cd E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\bin目录下，执行命令：
+mongod.exe  --config  "E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\mongodb.cfg" --install --serviceName "MongoDB"  
+如图所示：
 
 ..  image:: ./image/6.png
     :align: center
