@@ -5,7 +5,7 @@
 1. node.js下载
 -----------------------------------------
 
-..  image:: ./image/i.png
+..  image:: ./image/1.png
     :align: center
     :alt: git strucer
 
