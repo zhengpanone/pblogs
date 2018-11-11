@@ -13,6 +13,7 @@
 -------------------
 
 下载完成后，双击“node-v6.9.2-x64.msi”，开始安装Node.js
+
 ..  image:: ./image/2.png
     :align: center
     :alt: install node.js
