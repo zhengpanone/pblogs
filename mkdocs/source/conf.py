@@ -77,7 +77,7 @@ htmlhelp_basename = 'Python-Time BLOG'
 
 latex_elements={# The paper size ('letterpaper' or 'a4paper').
 'papersize':'a4paper',# The font size ('10pt', '11pt' or '12pt').
-'pointsize':'12pt','classoptions':',oneside','babel':'',#必须
+'pointsize':'14pt','classoptions':',oneside','babel':'',#必须
 'inputenc':'',#必须
 'utf8extra':'',#必须
 # Additional stuff for the LaTeX preamble.
