@@ -27,3 +27,27 @@ WSGI接口中有一个非常明确的标准，每个Python Web应用必须是可
     # 返回必须是iterable
     return [response_body]
 
+
+ class AppClass:
+    '''这里的可调用对象就是 AppClass 的实例，使用方法类似于： 
+        app = AppClass()
+        for result in app(environ, start_response):
+            do_somthing(result)
+    '''
+    def __init__(self):
+        pass
+
+    def __call__(self,environ,start_response):
+        status = '200 OK'
+        response_headers = [('Content-type','test/plain')]
+        self.start(status,response_headers)
+        yield "Hello world!\n"
+
+
+|image0|
+
+如上图所示，Flask框架包含了与WSGI Server通信部分和Application本身。Flask Server本身也包含了一个简单的WSGI Server（这也是为什么运行flask_source.py可以在浏览器访问的原因）用以开发测试使用。在实际的生产部署中，我们将使用apache、nginx+Gunicorn等方式进行部署，以适应性能要求。
+
+
+
+.. |image0| image:: ./image/181104.webp
