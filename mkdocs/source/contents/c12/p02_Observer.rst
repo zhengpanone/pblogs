@@ -129,7 +129,12 @@ Subject 接口及实现类：
  >>> observer2 has received
 
 
+Python 实现代码：
+--------------------
 
+::
+
+ 
 
 
 
