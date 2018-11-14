@@ -1,8 +1,8 @@
 ==========================
-第二十四章 ：mongodb
+第二十四章 ：数据库使用
 ==========================
 
-mongobd使用
+mysql、redis、mongodb安装和基础使用
 
 .. toctree::
    :maxdepth: 1
