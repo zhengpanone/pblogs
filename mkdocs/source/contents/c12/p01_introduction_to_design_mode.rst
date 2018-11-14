@@ -17,7 +17,7 @@ https://www.cnblogs.com/ayan/archive/2012/04/22/2464526.html
 - 行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介模式、解释器模式。
 - 还有两类：并发型模式和线程池模式。用下图描述：
 
-..  image:: ./img/1.png
+..  image:: ./img/1.jpg
     :align: center
     :alt: Concurrency and thread pools
 
