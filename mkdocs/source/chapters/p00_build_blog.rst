@@ -3,7 +3,7 @@
 ======================
 
 采用Markdown+Pandoc+Sphinx+GitHub+ReadtheDocs
-来管理我的文章。
+
 
 -  Markdown：书写文档
 -  Pandoc：格式转化
