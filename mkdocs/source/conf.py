@@ -94,7 +94,7 @@ latex_elements={# The paper size ('letterpaper' or 'a4paper').
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'python3-cookbook.tex', u'《Python编程时光》',
+  ('index',  u'《Python编程时光》',
    u'郑攀', 'howto'),
 ]
 
