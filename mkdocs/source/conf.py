@@ -3,7 +3,7 @@
 
 import sys
 import os
-from pallets_sphinx_themes import ProjectLink, get_version
+#from pallets_sphinx_themes import ProjectLink, get_version
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -18,7 +18,8 @@ from pallets_sphinx_themes import ProjectLink, get_version
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['chinese_search','pallets_sphinx_themes',]
+#extensions = ['chinese_search','pallets_sphinx_themes',]
+extensions = ['chinese_search',]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
