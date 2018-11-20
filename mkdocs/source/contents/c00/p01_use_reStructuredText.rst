@@ -35,7 +35,7 @@ reStructured使用
     '''''''''
     六级标题
     """"""""
- |image2|
+|image2|
 
 =========
 一级标题
@@ -86,7 +86,7 @@ reStructured使用
 
     + 符号列表4
 
- |image3|
+|image3|
 
 - 符号列表1
 - 符号列表2
