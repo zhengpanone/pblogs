@@ -51,6 +51,7 @@ getstatusoutput         获取执行命令的状态值以及返回信息
 
 
 4. subprocess模块
+------------------------------
 
 运用对线程的控制和监控，将返回的结果赋于一变量，便于程序的处理。有丰富的参数可以进行配置，可供我们自定义的选项多，灵活性高。之前我使用os.system的时候遇到文件描述符被子进程继承的问题，后来通过close_fds = False 这个参数来解决的。官方文档：http://python.usyiyi.cn/python_278/library/subprocess.html
 
@@ -60,3 +61,10 @@ getstatusoutput         获取执行命令的状态值以及返回信息
  >>> top = subprocess.Popen('date',shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
  >>> print(nowtime.stdout.read())
  2018年 4月 8日 星期日 19时32分41秒 CST
+
+
+
+参考文档
+----------
+
+- python执行系统命令四种方法比较：https://www.pythontab.com/html/2018/pythonjichu_0408/1273.html
