@@ -123,5 +123,5 @@ reStructured使用
 
 - reStructuredText(rst)快速入门语法说明：https://www.jianshu.com/p/1885d5570b37
 
-.. |image2| image:: ../contents/c00/img/2.png
-.. |image3| image:: ../contents/c00/img/3.png
+.. |image2| image:: ./img/2.png
+.. |image3| image:: ./img/3.png
