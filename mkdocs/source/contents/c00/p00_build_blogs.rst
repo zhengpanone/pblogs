@@ -253,7 +253,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 --------------
 
-.. |image0| image:: ../contents/c00/img/1.png
+.. |image0| image:: ./img/1.png
 .. |image1| image:: http://ovzwokrcz.bkt.clouddn.com/FqsPadimKGTPMfh1T8CvJcbQJ1Ij
 .. |image2| image:: http://ovzwokrcz.bkt.clouddn.com/FiE6eIHnar1702oVUxF9632vh8y-
 .. |image3| image:: http://ovzwokrcz.bkt.clouddn.com/FnjBzmeFZqRN1mhZg4qxRv-9RsvI
