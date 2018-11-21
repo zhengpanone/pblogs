@@ -166,10 +166,10 @@ HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连
 公众号：Java技术栈 https://mp.weixin.qq.com/s/m651DV5W71rK7bIAqZchBQ
 
 
-.. |image1| image:: ./image/18112131.web
-.. |image2| image:: ./image/18112132.web
-.. |image3| image:: ./image/18112133.web
-.. |image4| image:: ./image/18112134.web
-.. |image5| image:: ./image/18112135.web
-.. |image6| image:: ./image/18112136.web
-.. |image7| image:: ./image/18112137.web
+.. |image1| image:: ./image/18112131.webp
+.. |image2| image:: ./image/18112132.webp
+.. |image3| image:: ./image/18112133.webp
+.. |image4| image:: ./image/18112134.webp
+.. |image5| image:: ./image/18112135.webp
+.. |image6| image:: ./image/18112136.webp
+.. |image7| image:: ./image/18112137.webp
