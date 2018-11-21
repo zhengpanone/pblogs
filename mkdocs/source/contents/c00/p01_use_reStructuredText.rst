@@ -36,24 +36,7 @@ reStructured使用
     六级标题
     """"""""
 
-=========
-一级标题
-=========
-二级标题
-=========
-
-一级标题
-^^^^^^^^
-二级标题
----------
-三级标题
->>>>>>>>>
-四级标题
-:::::::::
-五级标题
-'''''''''
-六级标题
-""""""""
+|image2|
 
 
 
@@ -174,6 +157,5 @@ A) 枚举列表1
 
 - reStructuredText(rst)快速入门语法说明：https://www.jianshu.com/p/1885d5570b37
 
-.. |image2| image:: ./img/2.png
-.. |image3| image:: ./img/3.png
-.. |image4| image:: ./img/18112102.png
+
+.. |image2| image:: ./img/18112101.png
