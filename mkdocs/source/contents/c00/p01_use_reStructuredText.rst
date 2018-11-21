@@ -134,4 +134,4 @@ reStructured使用
 
 .. |image2| image:: ./img/2.png
 .. |image3| image:: ./img/3.png
-.. |image3| image:: ./img/18112102.png
+.. |image4| image:: ./img/18112102.png
