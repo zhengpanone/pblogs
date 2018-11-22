@@ -25,6 +25,7 @@ Java实现代码：
 .. code-block:: java
 
  public interface Observer{
+
     public void update();
  }
 
@@ -36,6 +37,7 @@ Java实现代码：
     
     @Override
     public void update(){
+
         System.out.println("observer1 has received!");
     }
 
@@ -47,6 +49,7 @@ Java实现代码：
  
     @Override
     public void update(){
+
         System.out.println('observer2 has received!')
     }
  
@@ -75,20 +78,26 @@ Subject 接口及实现类：
  public abstract class AbstractSubject implements Subject{
  
     private Vector<Observer> vector = new Vector<Observer>();
+
     @Override
     public void add(Observer observer){
+
         vector.add(observer)
     }
 
     @Override
     public void del(Observer observer){
+
         vector.remove(observer)
     }
 
     @Override
     public void notifyObservers(){
+
         Enumeration<Observer> enumo = vector.elements();
+
         while(enumo.hasMoreElements()){
+
             enumo.nextElement().update();
         }
     }
@@ -101,7 +110,9 @@ Subject 接口及实现类：
     
     @Override
     public void operation(){
+
         System.out.println("update self!")
+
         notifyObservers();
     }
  }
@@ -113,7 +124,9 @@ Subject 接口及实现类：
  public class ObserverTest{
     
     public static void main(String[] args){
+
         Subject sub = new MySubject();
+        
         sub.add(new Observer1);
         sub.add(new Observer2);
         sub.operation();
