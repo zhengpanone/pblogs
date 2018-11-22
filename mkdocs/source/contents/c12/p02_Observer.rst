@@ -108,7 +108,7 @@ Subject 接口及实现类：
 
 测试类
 
-::
+.. code-block:: java
 
  public class ObserverTest{
     
