@@ -6,8 +6,13 @@
 项目主页
 ----------------------------------
 
-
 https://github.com/zhengpanone/blogs
+
+----------------
+生物信息基础知识
+----------------
+
+https://bblogs.readthedocs.io/zh/latest/index.html
 
 
 
