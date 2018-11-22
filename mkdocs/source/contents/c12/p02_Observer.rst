@@ -22,7 +22,7 @@ Java实现代码：
 
 一个Observer接口：
 
-::
+.. code-block:: java
 
  public interface Observer{
     public void update();
@@ -54,7 +54,7 @@ Java实现代码：
 
 Subject 接口及实现类：
 
-::
+.. code-blocl:: java
 
  public interface Subject{
     
