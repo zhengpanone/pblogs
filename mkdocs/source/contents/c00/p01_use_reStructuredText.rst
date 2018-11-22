@@ -137,7 +137,23 @@ A) 枚举列表1
 
 
 
+Simple table:
 
+=====  =====  ======
+   Inputs     Output
+------------  ------
+  A      B    A or B
+=====  =====  ======
+False  False  False
+True   False  True
+False  True   True
+True   True   True
+=====  =====  ======
+
+作者：seay
+链接：https://www.jianshu.com/p/1885d5570b37
+來源：简书
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
 
 
 
