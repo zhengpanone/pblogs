@@ -85,7 +85,7 @@ Http报文包括请求报文和响应报文两大部分，其中请求报文由�
     - DELETE：请求服务器删除指定的页面。
 
 四、GET与POST区别
->>>>>>>>>>>>>>
+------------------------
 
     - GET在浏览器回退时是无害的，而POST会再次提交请求。
 
@@ -135,6 +135,8 @@ HTTP协议的初始版本中，每进行一次HTTP通信就要断开一次TCP连
 >>>>>>>>>>>>
 
 为解决上述 TCP 连接的问题， HTTP/1.1 和一部分的 HTTP/1.0 想出了持久连接（HTTP Persistent Connections，也称为 HTTP keep-alive 或 HTTP connection reuse）的方法。持久连接的特点是，只要任意一端没有明确提出断开连接，则保持TCP连接状态。
+
+|image6|
 
 
 
