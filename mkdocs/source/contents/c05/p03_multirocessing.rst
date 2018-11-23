@@ -37,6 +37,9 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     print("p.name:",p.name)
     print("p.is_alive:",p.is_alive)
 
+
+
+
 >>>p.pid 29297
         p.name Process-1
         p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
