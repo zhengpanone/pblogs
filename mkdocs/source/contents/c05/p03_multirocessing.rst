@@ -14,4 +14,34 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
 **方法**：is_alive()、join([timeout])、run()、start()、terminate()。其中Process以start()启动某个进程。
 
-**属性**：authkey、daemon（要通过start()设置、exitcode(进程在运行是为None、如果为-N，表示被信号N结束)、name、pid。其中daemon是父进程终止后自动终止，且自己不能）
+**属性**：authkey、daemon（要通过start()设置、exitcode(进程在运行是为None、如果为-N，表示被信号N结束)、name、pid。其中daemon是父进程终止后自动终止，且自己不能产生新进程，必须在start()之前设置）
+
+创建函数并将其作为单个进程：
+
+::
+
+ import multiprocessing
+ import time
+
+ def worker(interval):
+    n = 5
+    while n > 0:
+        print("The time is {0}".format(time.ctime()))
+        time.sleep(interval)
+        n -= 1
+
+ if __name__ == "__main__":
+    p = multiprocessing.Process(target=worker，args = (3,))
+    p.start()
+    print("p.pid:",p.pid)
+    print("p.name:",p.name)
+    print("p.is_alive:",p.is_alive)
+
+>>> p.pid 29297
+        p.name Process-1
+        p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
+        The time is Fri Nov 23 18:42:57 2018
+        The time is Fri Nov 23 18:43:00 2018
+        The time is Fri Nov 23 18:43:03 2018
+        The time is Fri Nov 23 18:43:06 2018
+        The time is Fri Nov 23 18:43:09 2018
