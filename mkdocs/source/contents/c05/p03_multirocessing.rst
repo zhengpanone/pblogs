@@ -17,6 +17,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 **属性**：authkey、daemon（要通过start()设置、exitcode(进程在运行是为None、如果为-N，表示被信号N结束)、name、pid。其中daemon是父进程终止后自动终止，且自己不能产生新进程，必须在start()之前设置）
 
 1.1 创建函数并将其作为单个进程：
+>>>>>>>>>>>>>>>>>>>>>>
 
 ::
 
@@ -50,6 +51,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
         The time is Fri Nov 23 18:43:09 2018
 
 1.2 创建函数并将其作为多个进程
+>>>>>>>>>>>>>>>>>>>>>>>
 
 ::
 
@@ -98,7 +100,31 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
         end worker_2
         end worker_3
 
+1.3 将进程定义为类
+>>>>>>>>>>>>>>>
 
+::
+
+ import multiprocessing
+ import time
+
+ class ClockProcess(multiprocessing.process):
+    def __int__(self,interval):
+        multiprocessing.Process.__int__(self)
+        self.interval = interval
+
+    def run(self):
+        n = 5
+        while n > 0:
+            print("the time is {0}".formate(time.ctime()))
+            time.sleep(self.interval)
+            n -= 1
+
+ if __name__ == "__main__":
+    p = ClockProcess(3)
+    p.start()
+
+>>>
 
 
 
