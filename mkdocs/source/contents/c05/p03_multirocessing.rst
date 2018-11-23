@@ -41,7 +41,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
 
 
->>>p.pid 29297
+>>> p.pid 29297
         p.name Process-1
         p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
         The time is Fri Nov 23 18:42:57 2018
@@ -88,7 +88,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     print("END！！！！！")
 
 
->>>The number of CPU is:16
+>>> The number of CPU is:16
         child p.name:Process-1	 p.id9792
         child p.name:Process-3	 p.id9794
         worker_1
