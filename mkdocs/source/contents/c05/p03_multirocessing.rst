@@ -37,11 +37,11 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     print("p.name:",p.name)
     print("p.is_alive:",p.is_alive)
 
->>> p.pid 29297
-        p.name Process-1
-        p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
-        The time is Fri Nov 23 18:42:57 2018
-        The time is Fri Nov 23 18:43:00 2018
-        The time is Fri Nov 23 18:43:03 2018
-        The time is Fri Nov 23 18:43:06 2018
-        The time is Fri Nov 23 18:43:09 2018
+>>>p.pid 29297
+p.name Process-1
+p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
+The time is Fri Nov 23 18:42:57 2018
+The time is Fri Nov 23 18:43:00 2018
+The time is Fri Nov 23 18:43:03 2018
+The time is Fri Nov 23 18:43:06 2018
+The time is Fri Nov 23 18:43:09 2018
