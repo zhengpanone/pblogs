@@ -38,13 +38,13 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     print("p.is_alive:",p.is_alive)
 
 >>>p.pid 29297
-    p.name Process-1
-    p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
-    The time is Fri Nov 23 18:42:57 2018
-    The time is Fri Nov 23 18:43:00 2018
-    The time is Fri Nov 23 18:43:03 2018
-    The time is Fri Nov 23 18:43:06 2018
-    The time is Fri Nov 23 18:43:09 2018
+        p.name Process-1
+        p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
+        The time is Fri Nov 23 18:42:57 2018
+        The time is Fri Nov 23 18:43:00 2018
+        The time is Fri Nov 23 18:43:03 2018
+        The time is Fri Nov 23 18:43:06 2018
+        The time is Fri Nov 23 18:43:09 2018
 
 1.2 创建函数并将其作为多个进程
 
@@ -84,16 +84,16 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
 
 >>>The number of CPU is:16
-    child p.name:Process-1	 p.id9792
-    child p.name:Process-3	 p.id9794
-    worker_1
-    child p.name:Process-2	 p.id9793
-    END!!!!
-    worker_2
-    worker_3
-    end worker_1
-    end worker_2
-    end worker_3
+        child p.name:Process-1	 p.id9792
+        child p.name:Process-3	 p.id9794
+        worker_1
+        child p.name:Process-2	 p.id9793
+        END!!!!
+        worker_2
+        worker_3
+        end worker_1
+        end worker_2
+        end worker_3
 
 
 
