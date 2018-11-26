@@ -124,7 +124,12 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     p = ClockProcess(3)
     p.start()
 
->>>
+>>> the time is Mon Nov 26 09:54:19 2018
+         the time is Mon Nov 26 09:54:22 2018
+         the time is Mon Nov 26 09:54:25 2018
+         the time is Mon Nov 26 09:54:28 2018
+         the time is Mon Nov 26 09:54:31 2018
+
 
 
 
