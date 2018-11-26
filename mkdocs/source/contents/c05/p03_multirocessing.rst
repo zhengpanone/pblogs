@@ -132,5 +132,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 ==========
 
 博客园：https://www.cnblogs.com/kaituorensheng/p/4445418.html
+https://blog.csdn.net/topleeyap/article/details/78981848
+https://blog.csdn.net/u014556057/article/details/61616902
 
 
