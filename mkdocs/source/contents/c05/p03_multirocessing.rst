@@ -116,7 +116,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     def run(self):
         n = 5
         while n > 0:
-            print("the time is {0}".formate(time.ctime()))
+            print("the time is {0}".format(time.ctime()))
             time.sleep(self.interval)
             n -= 1
 
@@ -124,7 +124,20 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
     p = ClockProcess(3)
     p.start()
 
->>>
+>>> the time is Mon Nov 26 09:54:19 2018
+         the time is Mon Nov 26 09:54:22 2018
+         the time is Mon Nov 26 09:54:25 2018
+         the time is Mon Nov 26 09:54:28 2018
+         the time is Mon Nov 26 09:54:31 2018
 
+
+
+
+参考文档
+==========
+
+博客园：https://www.cnblogs.com/kaituorensheng/p/4445418.html
+https://blog.csdn.net/topleeyap/article/details/78981848
+https://blog.csdn.net/u014556057/article/details/61616902
 
 
