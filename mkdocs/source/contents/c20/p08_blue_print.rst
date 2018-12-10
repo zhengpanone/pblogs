@@ -2,6 +2,46 @@
 20.8 蓝图
 ================================
 
+定义蓝图
+=========
+
+::
+
+ from flask import Blueprint
+ admin = Blueprint("admin",__name__)
+ import views
+
+
+注册蓝图
+============
+
+::
+
+ from admin import admin as admin_buleprint
+ app.register_blueprint(admin_buleprint,url_prefix="admin")
+
+
+调用蓝图
+===========
+
+::
+
+ from . import admin
+ @admin.route("/")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 如果代码非常多，要进行归类。不同的功能放在不同的文件，吧相关的视图函数也放进去。蓝图也就是对flask的目录结构进行分配（应用于小，中型的程序）
 
 蓝图用于为应用提供目录划分：
