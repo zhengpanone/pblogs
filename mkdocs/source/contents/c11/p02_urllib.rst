@@ -10,7 +10,7 @@ Python 内置的HTTP请求库
 - urllib.robotparser robots.txt 解析模块
 
 
-请求
+urlopen 请求
 =====
 
 GET请求
@@ -58,7 +58,7 @@ POST请求
         print('TIME OUT')
 
 
-响应
+urlopen 响应
 ============
 
 响应类型
@@ -81,3 +81,29 @@ POST请求
  print('响应头',response.getheaders())
  print('Server',response.getheader('Server'))
  print('响应体',response.read().decode('utf-8')) # 字节流byte类型，通过decode转码
+
+Request
+===========
+
+::
+
+ import urllib.request
+ request = urllib.request.Request('https://python.org') # 定义Request对象
+ response = urllib.request.urlopen(request)
+ print(request.read().decode('utf-8'))
+
+::
+
+ from urllib import request，parse
+ url = "http://httpbin.org/post"    # 构造post请求
+ headers = {        # 添加headers 信息
+     'User-Agent':'Mozilla/4.0 (compatible;MSIE 5.5;Windows NT)',
+     'Host':'httpbin.org'
+ }
+ dict = {
+     'name':'Gemey'
+ }
+ data = bytes(parse.urlencode(dict),encoding='utf-8') # 添加formdata
+ req = request.Request(url=url,data=data,headers=headers,method='POST')
+ response = request.urlopen(req)
+ print(response.read().decode('utf-8'))
