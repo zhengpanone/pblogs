@@ -144,6 +144,9 @@ Cookie
 
 用来维持登陆状态
 
+查看cookie内容
+:::::::::::::::::::
+
 ::
 
  import http.cookie,urllib.request
@@ -155,6 +158,7 @@ Cookie
     print(item.name+"="+item.value)
 
 存Cookie
+::::::::::::::
 
 ::
 
@@ -177,6 +181,7 @@ Cookie
  cookie.save(ignore_discard=True,ignore_expires=True)
 
 读Cookie
+::::::::::::::::
 
 ::
 
