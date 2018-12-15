@@ -277,8 +277,30 @@ urlparse
  
 |image5|
 
+urlunparse
+>>>>>>>>>>>>>>>>
+
+::
+
+ from urllib.parse import urlunparse
+ data = ['http','www.baidu.com','index.html','user','a=6','comment']
+ print(urlunparse(data))
+
+|image6|
+
+urljoin
+>>>>>>>>
+
+::
+
+ from urllib.parse import urljoin
+ print(urljoin('http://www.baidu.com','FAQ.html'))
+ 
+
+
 .. |image1| image:: ./image/20181215195732.png
 .. |image2| image:: ./image/20181215200151.png
 .. |image3| image:: ./image/20181215200311.png
 .. |image4| image:: ./image/20181215200619.png
 .. |image5| image:: ./image/20181215200813.png
+.. |image6| image:: ./image/20181215201233.png
