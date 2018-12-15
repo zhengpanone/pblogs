@@ -250,11 +250,16 @@ urlparse
  result = urlparse('www.baidu.com/index;user?id=5#comment',scheme='https')
  print(result)
 
+|image2|
+
 ::
 
  from urllib.parse improt urlparse
  result = urlparse('http://www.baidu.com/index.html;user?id=5#comment',scheme='https')
  print(result)
+
+
+|image3|
 
 ::
 
@@ -262,10 +267,18 @@ urlparse
  result = urlparse('http://www.baidu.com/index.html;user?id=5#comment',allow_fragments=False)
  print(result)
 
+|image4|
+
 ::
 
  from urllib.parse improt urlparse
  result = urlparse('http://www.baidu.com/index.html#comment',allow_fragments=False)
  print(result)
  
+|image5|
+
 .. |image1| image:: ./image/20181215195732.png
+.. |image2| image:: ./image/20181215200151.png
+.. |image3| image:: ./image/20181215200311.png
+.. |image4| image:: ./image/20181215200619.png
+.. |image5| image:: ./image/20181215200813.png
