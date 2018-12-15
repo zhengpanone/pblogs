@@ -104,6 +104,6 @@ Request
      'name':'Gemey'
  }
  data = bytes(parse.urlencode(dict),encoding='utf-8') # 添加formdata
- req = request.Request(url=url,data=data,headers=headers,method='POST')
+ req = request.Request(url=url,data=data,headers=headers,method='POST') # 构造Request
  response = request.urlopen(req)
  print(response.read().decode('utf-8'))
