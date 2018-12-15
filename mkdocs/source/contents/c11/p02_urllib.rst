@@ -298,6 +298,22 @@ urljoin
 
 |image7|
 
+urlencode
+>>>>>>>>>>>>>
+
+将字典对象转换为GET请求
+
+::
+
+ from urllib.parse import urlencode
+ params ={
+     'name':'germey',
+     'age':'22'
+ }
+ base_url = 'http://www.baidu.com?'
+ url = base_url+urlencode(params)
+ print(url)
+
 
 .. |image1| image:: ./image/20181215195732.png
 .. |image2| image:: ./image/20181215200151.png
