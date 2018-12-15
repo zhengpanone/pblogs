@@ -1,5 +1,5 @@
 =============
-11.2 Requests库
+11.3 Requests库
 =============
 
 Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开源协议的HTTP库
@@ -40,7 +40,21 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 
 ::
 
- 
+ import requests
+
+ response = requests.get('http://httplib.org/get')
+ print(response.text)
+
+带参数GET请求
+::::::::::::::
+
+::
+
+ import requests
+
+ response = requests.get('http://httplib.org/get?name=germey&age=22')
+ print(response.text)
+
 
 
 |image1|
