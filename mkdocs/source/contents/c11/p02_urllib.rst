@@ -295,7 +295,8 @@ urljoin
 
  from urllib.parse import urljoin
  print(urljoin('http://www.baidu.com','FAQ.html'))
- 
+
+|image7|
 
 
 .. |image1| image:: ./image/20181215195732.png
@@ -304,3 +305,4 @@ urljoin
 .. |image4| image:: ./image/20181215200619.png
 .. |image5| image:: ./image/20181215200813.png
 .. |image6| image:: ./image/20181215201233.png
+.. |image7| image:: ./image/20181215201853.png
