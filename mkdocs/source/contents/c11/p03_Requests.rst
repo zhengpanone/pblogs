@@ -29,6 +29,13 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
  requests.head('http://httpbin.org/get')
  requests.options('http://httpbin.org/get')
 
+请求
+=======
+
+基本GET请求
+>>>>>>>>>>>>>>>>
+
+
 
 |image1|
 
