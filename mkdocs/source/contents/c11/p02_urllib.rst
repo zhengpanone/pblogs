@@ -94,7 +94,7 @@ Request
 
 ::
 
- from urllib import request，parse
+ from urllib import request,parse
  url = "http://httpbin.org/post"    # 构造post请求
  headers = {        # 添加headers 信息
      'User-Agent':'Mozilla/4.0 (compatible;MSIE 5.5;Windows NT)',
@@ -123,3 +123,149 @@ Request
 
 Handler
 ========
+
+代理
+>>>>>>
+
+::
+
+ import urllib.request
+ proxy_hander=urllib.request.Proxy_Handler({ 
+     'http':'http://127.0.0.1:9743',
+     'https':'https://127.0.0.1:9743'
+ })
+ opener = urllib.request.build_opener(proxy_hander)
+ response = opener.open('http://www.baidu.com')
+ print(response.read())
+
+
+Cookie
+>>>>>>>>
+
+用来维持登陆状态
+
+::
+
+ import http.cookie,urllib.request
+ cookie = http.cookiejar.CookieJar()
+ handler = urllib.request.HTTPCookieProcesson(cookie)
+ opener = urllib.request.build_opener(handler)
+ response = opener.open('http://www.baidu.com')
+ for item im cookie:
+    print(item.name+"="+item.value)
+
+存Cookie
+
+::
+
+ import http.cookiejar,urllib.request
+ filename = 'cookie.txt'
+ cookie = http.cookiejar.MozillaCookieJar(filename)
+ handler = urllib.request.HTTPCookieProcesson(cookie)
+ opener = urllib.request.build_opener(handler)
+ response = opener.open('http://www.baidu.com')
+ cookie.save(ignore_discard=True,ignore_expires=True)
+
+::
+
+ import http.cookiejar,urllib.request
+ filename = 'cookie.txt'
+ cookie = http.cookiejar.LWPCookieJar(filename)
+ handler = urllib.request.HTTPCookieProcesson(cookie)
+ opener = urllib.request.build_opener(handler)
+ response = opener.open("http://www.baidu.com")
+ cookie.save(ignore_discard=True,ignore_expires=True)
+
+读Cookie
+
+::
+
+ improt http.cookiejar,urllib.request
+ cookie = http.cookiejar.LWPCookieJar()
+ cookie.load('cookie.txt',ignore_discard=True,ignore_expires=True)
+ handler = urllib.request.HTTPCookieProcesson(cookie)
+ opener = urllib.request.build_opener(handler)
+ response = opener.open('http://www.baidu.com')
+ print(response.read().decode('utf-8'))
+
+异常处理
+========
+
+::
+
+ from urllib import request,error
+ try:
+    response = request.urlopen("http://cuiqingcai.com/index.html")
+ except error.URLError as e:
+    print(e.reason)
+
+::
+
+ from urllib improt request,error
+ 
+ try:
+    response = request.urlopen("http://cuiqingcai.com/index.html")
+ except error.HTTPError as e:
+    print(e.reason,e.code,e.headers,sep='\n')
+ except error.URLError as e:
+    print(e.reason)
+ else:
+    print('Request Successfully')
+ 
+::
+
+ import socket
+ import urllib.request
+ import urllib.error
+
+ try:
+    response = urllib.request.urlopen('https://www.baidu.com')
+ except urllib.error.URLError as e:
+    print(type(e.reason))
+    if isinstance(e.reason,socket.timeout):
+        print('TIME OUT')
+
+URL解析
+=========
+
+urlparse
+>>>>>>>>>
+
+::
+
+ urllib.parse.urlparse(urlstring,scheme='',allow_fragments=True)
+
+::
+
+ from urllib.parse import urlparse
+
+ result = urlparse("http://www.baidu.com/index.html;user?id=5#comment")
+ print(type(result),result)
+
+|image1|
+
+::
+
+ from urllib.parse import urlparse
+ result = urlparse('www.baidu.com/index;user?id=5#comment',scheme='https')
+ print(result)
+
+::
+
+ from urllib.parse improt urlparse
+ result = urlparse('http://www.baidu.com/index.html;user?id=5#comment',scheme='https')
+ print(result)
+
+::
+
+ from urllib.parse improt urlparse
+ result = urlparse('http://www.baidu.com/index.html;user?id=5#comment',allow_fragments=False)
+ print(result)
+
+::
+
+ from urllib.parse improt urlparse
+ result = urlparse('http://www.baidu.com/index.html#comment',allow_fragments=False)
+ print(result)
+ 
+.. |image1| image:: ./image/20181215195732.png
