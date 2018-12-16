@@ -135,7 +135,30 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
  response = requests.post('https://httpbin.org/post',data =data,headers=headers)
  print(response.json())
 
+响应
+=====
 
+response属性
+>>>>>>>>>>>>>>
+
+::
+
+ import requests
+ response = requests.get('http://www.jianshu.com')
+ print(type(response.status_code),response.status_code)
+ print(type(response,headers),response.headers)
+ print(type(response.cookies),response.cookies)
+ print(type(response.url),response.url)
+ print(type(response.history),response.history)
+
+状态码判断
+>>>>>>>>>>>
+
+::
+
+ import requests
+ response = requests.get('http://wwww.jianshu.com')
+ exit() if not response.status_code == requests.codes.ok else print('Requests Successfully')
 
 |image1|
 
