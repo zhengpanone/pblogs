@@ -55,6 +55,48 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
  response = requests.get('http://httplib.org/get?name=germey&age=22')
  print(response.text)
 
+::
+
+ import requests
+ data = {
+    'name':'germey',
+    'age':22
+ }
+ response = requests.get('http://httpbin.org/get',params=data)
+ print(response.text)
+
+解析json
+:::::::::::::::::::::::
+
+::
+
+ import requests
+ response = requests.get('http://httpbin.org/get')
+ print(type(response,text))
+ print(response.json())
+ print(type(response.json()))
+
+获取二进制数据
+::::::::::::::::::::::::::::::::::
+
+::
+
+ import requests
+ response = requests.get('https:github.com/favicon.ico')
+ print(type(response),type(response.content))
+ print(response.text)
+ print(response.content)
+
+
+::
+
+ import requests
+
+ response = requests.get('http://github.com/favicon.ico')
+ with open('favicon.ico',wb) as f:
+    f.write(response.content)
+    f.close()
+
 
 
 |image1|
