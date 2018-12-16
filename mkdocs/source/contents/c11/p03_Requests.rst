@@ -97,6 +97,44 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
     f.write(response.content)
     f.close()
 
+添加headers
+:::::::::::::::::::::::::::
+
+::
+
+ import requests
+ response = requests.get('https://www.zhihu.com/explore')
+ print(response.text)
+
+::
+
+ import requests
+ headers = {
+    'User-Agent':'Mozilla/5.0(Macintosh;Inter Mac OS X 10_11_4) AppleWebkit/537.36(HHTML,like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+ }
+ response = requests.get('https://www.zhihu.com/explore',headers = headers)
+ print(response.text)
+
+基本POST请求
+==============
+
+::
+
+ import requests
+ data = {'name':'germey','age':'22'}
+ response = requests.post('http:httpbin.org/post',data =data)
+ print(response.text)
+
+::
+
+ import requests
+ datat = {'name':'germey','age':'22'}
+ headers =  {
+    'User-Agent':'Mozilla/5.0(Macintosh;Inter Mac OS X 10_11_4) AppleWebkit/537.36(HHTML,like Gecko) Chrome/52.0.2743.116 Safari/537.36'
+ }
+ response = requests.post('https://httpbin.org/post',data =data,headers=headers)
+ print(response.json())
+
 
 
 |image1|
