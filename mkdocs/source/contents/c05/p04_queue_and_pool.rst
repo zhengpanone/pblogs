@@ -70,7 +70,39 @@ Queue消息队列
    p1.multiprocessing.Process(target=read_queue ,args=(queue,))
    p1.start()
 
+Pool进程池
+===========
 
+   初始化Pool时，可以指定一个最大进程数，当有新请求提交到Pool中时，如果池没有满，就会创建一个新的进程执行该请求；如果池中的进程数已经达到指定的最大值，那个该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务
+
+1 创建
+>>>>>>>>>
+
+::
+
+ import multiprocessing
+ pool = multiprocessing(最大进程数)
+
+2 方法
+>>>>>
+
+3 进程池内通信
+>>>>>>>>>>>>>>>
+
+::
+
+ import multiprocessing
+ Queue:queue = multiprocessing.Manager().Queue()
+
+ # 写入数据的方法
+ def write_data(queue):
+   # for循环向消息队列中写入值
+   for i in range(5):
+      # 添加消息
+      queue.put(i)
+      print(i)
+      time.sleep(0.2)
+      print("队列已满")
 
 
 参考文档
