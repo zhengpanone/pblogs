@@ -17,7 +17,6 @@
 
  ::
   
-
  # coding=utf-8
  from flask import Flask
  app = Flask(__name__)
@@ -67,3 +66,15 @@
 
 socket端口为配置文件中的端口:5000.在浏览器内访问: http://127.0.0.1:5000 会输出hello world。
 
+
+关闭uwsgi
+
+::
+
+ pkill -f uwsgi -9
+
+查看uwsgi
+
+::
+
+ ps aux |grep uwsgi
