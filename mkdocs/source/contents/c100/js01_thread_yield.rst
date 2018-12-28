@@ -51,6 +51,11 @@ str 是基本类型，strObj是对象类型，是sting类型对应的包装类
 
 obj instanceof Object
 
+|image4|
+|image5|
+
+
+
 
 
 
@@ -58,7 +63,8 @@ obj instanceof Object
 .. |image1| image:: ./img/20181228151757.png
 .. |image2| image:: ./img/20181228152702.png
 .. |image3| image:: ./img/20181228153311.png
-
+.. |image4| image:: ./img/20181228170519.png
+.. |image5| image:: ./img/20181228170653.png
 
 
 
