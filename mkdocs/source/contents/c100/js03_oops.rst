@@ -52,7 +52,16 @@ Object.creat
 |image14|
 
 
- 
+ get/set 方法
+ >>>>>>>>>
+
+|image15| |image16| |image17| |image18|
+
+属性标签
+-----------
+
+
+
 
 
 
@@ -71,6 +80,9 @@ Object.creat
 .. |image10| image:: ./img/20181229123228.png
 .. |image11| image:: ./img/20181229123511.png
 .. |image12| image:: ./img/20181229123816.png
-
 .. |image13| image:: ./img/20181229124122.png
 .. |image14| image:: ./img/20181229124318.png
+.. |image15| image:: ./img/20181229145914.png
+.. |image16| image:: ./img/20181229150134.png
+.. |image17| image:: ./img/20181229150417.png
+.. |image18| image:: ./img/20181229150607.png
