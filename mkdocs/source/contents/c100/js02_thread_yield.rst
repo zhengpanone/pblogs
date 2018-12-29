@@ -8,10 +8,12 @@
 |image1|
 
 block
+>>>>>
 
 |image2| |image3| |image4|
 
 var 
+>>>>
 
 ::
 
@@ -27,6 +29,7 @@ var
 
 
 try catch
+>>>>>>>
 
 ::
 
@@ -40,10 +43,32 @@ try catch
 
 |image5| |image6| |image7| 
 
+function
+>>>>>>
 
+函数申明 预先处理，函数表达式
 
+|image8|  
 
+for in
+:::::::::::::::::::
 
+|image9|
+
+switch
+:::::::::::::::::::::
+
+|image10|
+
+循环
+:::::::::::::::::
+
+|image11|
+
+with
+:::::::::::::::::
+
+|image12|
 
 
 
@@ -56,8 +81,8 @@ try catch
 .. |image5| image:: ./img/20181229104146.png
 .. |image6| image:: ./img/20181229104422.png
 .. |image7| image:: ./img/20181229104514.png
-.. |image8| image:: ./img/
-.. |image9| image:: ./img/
-.. |image10| image:: ./img/
-.. |image11| image:: ./img/
-.. |image12| image:: ./img/
+.. |image8| image:: ./img/20181229105045.png
+.. |image9| image:: ./img/20181229105218.png
+.. |image10| image:: ./img/20181229105544.png
+.. |image11| image:: ./img/20181229105649.png
+.. |image12| image:: ./img/20181229105834.png
