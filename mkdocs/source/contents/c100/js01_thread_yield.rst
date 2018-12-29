@@ -136,7 +136,22 @@ obj instanceof Object
 ----------
 
 |image11|
+|image12|
+|image13|
 
+::
+
+ window.x = 1
+ 'x' in window;//treu
+
+ {} instanceof Object;//true
+ typeof 100 === 'number';//true
+
+|image14|
+
+this运算符
+
+|image15|
 
 
 
@@ -164,4 +179,7 @@ obj instanceof Object
 .. |image9| image:: ./img/20181229083818.png
 .. |image10| image:: ./img/20181229090635.png
 .. |image11| image:: ./img/20181229091012.png
-
+.. |image12| image:: ./img/20181229091848.png
+.. |image13| image:: ./img/20181229100108.png
+.. |image14| image:: ./img/20181229100433.png
+.. |image15| image:: ./img/20181229100546.png
