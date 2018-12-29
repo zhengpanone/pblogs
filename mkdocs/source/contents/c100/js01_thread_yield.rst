@@ -130,6 +130,26 @@ obj instanceof Object
 调用表达式 func();
 对象创建表达式 new Func(1,2); new Object;
 
+|image10|
+
+运算符
+----------
+
+|image11|
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,6 +162,6 @@ obj instanceof Object
 .. |image7| image:: ./img/20181229083516.png
 .. |image8| image:: ./img/20181229083720.png
 .. |image9| image:: ./img/20181229083818.png
-
-
+.. |image10| image:: ./img/20181229090635.png
+.. |image11| image:: ./img/20181229091012.png
 
