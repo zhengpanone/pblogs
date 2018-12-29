@@ -60,6 +60,7 @@ Object.creat
 属性标签
 -----------
 
+|image19| |image20| |image21| |image22|
 
 
 
@@ -86,3 +87,7 @@ Object.creat
 .. |image16| image:: ./img/20181229150134.png
 .. |image17| image:: ./img/20181229150417.png
 .. |image18| image:: ./img/20181229150607.png
+.. |image19| image:: ./img/20181229161335.png
+.. |image20| image:: ./img/20181229161457.png
+.. |image21| image:: ./img/20181229161758.png
+.. |image22| image:: ./img/20181229161841.png
