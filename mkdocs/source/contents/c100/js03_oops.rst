@@ -63,6 +63,36 @@ Object.creat
 |image19| |image20| |image21| |image22|
 
 
+对象标签、对象序列化
+------------------------
+
+原型标签__proto__
+>>>>>>>>>>>>>>
+
+|image23|
+
+class标签
+>>>>>>>>>>>
+
+|image24|
+
+extensible标签
+------------------
+
+|image25|
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,3 +121,6 @@ Object.creat
 .. |image20| image:: ./img/20181229161457.png
 .. |image21| image:: ./img/20181229161758.png
 .. |image22| image:: ./img/20181229161841.png
+.. |image23| image:: ./img/20181229162202.png
+.. |image24| image:: ./img/20181229162331.png
+.. |image25| image:: ./img/20181229162620.png
