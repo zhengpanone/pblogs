@@ -71,6 +71,10 @@ with
 |image12|
 
 
+2.严格模式
+-------------
+
+|image13| |image14| |image15| |image16|
 
 
 
@@ -86,3 +90,11 @@ with
 .. |image10| image:: ./img/20181229105544.png
 .. |image11| image:: ./img/20181229105649.png
 .. |image12| image:: ./img/20181229105834.png
+.. |image13| image:: ./img/20181229110051.png
+.. |image14| image:: ./img/20181229113023.png
+.. |image15| image:: ./img/20181229113124.png
+.. |image16| image:: ./img/20181229113527.png
+.. |image17| image:: ./img/
+.. |image18| image:: ./img/
+.. |image19| image:: ./img/
+.. |image20| image:: ./img/
