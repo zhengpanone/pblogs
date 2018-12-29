@@ -43,9 +43,16 @@ Object.creat
 属性检测
 >>>>>>>>
 
+|image12| |image13| 
 
 
+属性枚举
+>>>>>>>>
 
+|image14|
+
+
+ 
 
 
 
@@ -63,3 +70,7 @@ Object.creat
 .. |image9| image:: ./img/20181229122955.png
 .. |image10| image:: ./img/20181229123228.png
 .. |image11| image:: ./img/20181229123511.png
+.. |image12| image:: ./img/20181229123816.png
+
+.. |image13| image:: ./img/20181229124122.png
+.. |image14| image:: ./img/20181229124318.png
