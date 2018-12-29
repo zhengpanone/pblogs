@@ -1,5 +1,5 @@
 ========================
-100.1 JavaScript 语句
+100.2 JavaScript 语句
 ========================
 
 1. 语句
@@ -38,7 +38,7 @@ try catch
     console.log('finally');
  }
 
-|image5|
+|image5| |image6| |image7| 
 
 
 
@@ -54,8 +54,8 @@ try catch
 .. |image3| image:: ./img/20181229103244.png
 .. |image4| image:: ./img/20181229103345.png
 .. |image5| image:: ./img/20181229104146.png
-.. |image6| image:: ./img/
-.. |image7| image:: ./img/
+.. |image6| image:: ./img/20181229104422.png
+.. |image7| image:: ./img/20181229104514.png
 .. |image8| image:: ./img/
 .. |image9| image:: ./img/
 .. |image10| image:: ./img/
