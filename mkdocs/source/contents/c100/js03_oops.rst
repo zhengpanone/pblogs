@@ -81,19 +81,10 @@ extensible标签
 
 |image25|
 
+序列化
+---------------
 
-
-
-
-
-
-
-
-
-
-
-
-
+|image26| |image27| |image28| |image29|
 
 
 
@@ -124,3 +115,7 @@ extensible标签
 .. |image23| image:: ./img/20181229162202.png
 .. |image24| image:: ./img/20181229162331.png
 .. |image25| image:: ./img/20181229162620.png
+.. |image26| image:: ./img/20181229163132.png
+.. |image27| image:: ./img/20181229163301.png
+.. |image28| image:: ./img/20181229163516.png
+.. |image29| image:: ./img/20181229163618.png
