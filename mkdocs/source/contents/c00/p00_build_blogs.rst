@@ -91,7 +91,7 @@
 -  make.bat：WIN脚本。你也不用管。
 
 配置及扩展
-----------
+---------------------
 
 Sphinx 的配置文件是 ``source\conifg.py``
 
@@ -113,7 +113,7 @@ Sphinx 的配置文件是 ``source\conifg.py``
     pip install -r requirements.txt -i https://pypi.douban.com/simple/
 
 撰写文章
---------
+---------------------
 
 万事俱备，接下来要写文档了。
 
