@@ -13,8 +13,6 @@ ZHENGPANONE'S BLOG's documentation!
    copyright
    preface
    chapters/*
-   aboutme
-   roadmap
 
 
 

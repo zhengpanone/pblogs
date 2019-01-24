@@ -32,18 +32,5 @@ new Array
  var arrLikeLiteral = new Array(true,false,null,1,2,"hi");  
  //等价于 [true,false,null,1,2,"hi"];
 
-|image1|
 
 
-
-.. |image1| image:: 20181229170526.png
-.. |image2| image:: 
-.. |image3| image:: 
-.. |image4| image:: 
-.. |image5| image:: ./img/
-.. |image6| image:: ./img/
-.. |image7| image:: ./img/
-.. |image8| image:: ./img/
-.. |image9| image:: ./img/
-.. |image10| image:: ./img/
-.. |image11| image:: ./img/
