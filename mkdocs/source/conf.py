@@ -73,7 +73,9 @@ latex_elements={# The paper size ('letterpaper' or 'a4paper').
 'inputenc':'',#必须
 'utf8extra':'',#必须
 # Additional stuff for the LaTeX preamble.
- 'preamble': r'\usepackage{werkzeugstyle}',
+ 'preamble': r'''
+ \usepackage{xeCJK}
+ ''',
 }
 
 '''
@@ -94,7 +96,7 @@ latex_elements={# The paper size ('letterpaper' or 'a4paper').
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index',  u'《Python编程时光》',
+  ('index', 'mkdocs.tex', u'《Python编程时光》',
    u'郑攀', 'howto'),
 ]
 
@@ -103,7 +105,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'python3-cookbook', u'《Python编程时光》',
+    ('index', 'python3-blog', u'《Python编程时光》',
      [u'郑攀'], 1)
 ]
 
