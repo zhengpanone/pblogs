@@ -5,6 +5,7 @@
 
 `项目主页`__
 ==============================
+
 .. _project: https://github.com/zhengpanone/blogs
 
 __ project_
@@ -23,4 +24,9 @@ __ bioinfo_
 __ Java_
 
 
+SeayXu_ 是 `我的 GitHub 用户名`__。
+======================================
 
+.. _SeayXu: https://github.com/SeayXu/
+
+__ SeayXu_
