@@ -7,20 +7,20 @@
 ==============================
 .. _project: https://github.com/zhengpanone/blogs
 
-__project_
+__ project_
 
 
 `生物信息基础知识`__
 =================================
 
 .. _bioinfo: https://bblogs.readthedocs.io/zh/latest/index.html
-__bioinfo_
+__ bioinfo_
 
 
 `Java基础知识`__
 =================================
 .. _Java: https://jblogs.readthedocs.io/zh/latest/index.html
-__Java_
+__ Java_
 
 
 
