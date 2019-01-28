@@ -5,26 +5,22 @@
 
 `项目主页`__
 ==============================
-
 .. _project: https://github.com/zhengpanone/blogs
 
-__project
+__project_
 
 
 `生物信息基础知识`__
 =================================
 
 .. _bioinfo: https://bblogs.readthedocs.io/zh/latest/index.html
-
-__bioinfo
+__bioinfo_
 
 
 `Java基础知识`__
 =================================
-
 .. _Java: https://jblogs.readthedocs.io/zh/latest/index.html
-
-__Java
+__Java_
 
 
 
