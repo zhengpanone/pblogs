@@ -2,11 +2,11 @@
 1.3 包和模块
 =========================
 
-1. 一个模块(module)就是一个py文件,模块名字就是该文件名字
+1.  一个模块(module)就是一个py文件,模块名字就是该文件名字
 
-2. 一个包(package)就是一个文件夹,(python2规定文件夹中必须包含一个__init__.py,python3没有要求),包名就是文件夹名
+#.  一个包(package)就是一个文件夹,(python2规定文件夹中必须包含一个__init__.py,python3没有要求),包名就是文件夹名
 
-3. 按import进来的对象不同分为4种场景：
+#.  按import进来的对象不同分为4种场景：
 
 ::
  
@@ -15,7 +15,7 @@
  from <package> import <module or subpackage or object> # 从一个包中导入模块/子包/对象
  from <module> import <object> # 从模块中导入对象
 
-4. 解释器会按照sys.path 列表的顺序来查找被引入的包或模块名字
+#. 解释器会按照sys.path 列表的顺序来查找被引入的包或模块名字
 
  >>> import sys
  >>> import pprint
@@ -27,7 +27,7 @@
  
 优先加载当前目录下的模块,如果项目中使用了与内建模块中同名的包或者模块名,就会遇到没有XX属性之类的报错提示
 
-5. 使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
+#. 使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
 
 ::
 
@@ -45,7 +45,7 @@
  # 可以正常工作
  import hi
 
-6. 另外一种加载模块的方法: 如果模块不在sys.path下面,可以使用imp 模块中的imp.load_source
+#. 另外一种加载模块的方法: 如果模块不在sys.path下面,可以使用imp 模块中的imp.load_source
 
 ::
 
