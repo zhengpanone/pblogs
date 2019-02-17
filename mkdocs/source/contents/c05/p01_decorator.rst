@@ -25,9 +25,9 @@
     print("==========3=========")
     return "hello world"
 
->>> print "==========1=========
+>>> ==========1=========
  ==========2=========
- ==========3========="
+ ==========3=========
  
 上面函数的调用运行流程：先装饰@makeItalic,在装饰@makeBold,运行时：先运行makeBold装饰器，makeBold中的fn指向的是，makeItalic装饰器，makeItalic中的fn指向的是test函数
  
