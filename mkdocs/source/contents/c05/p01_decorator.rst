@@ -2,6 +2,36 @@
 5.1 装饰器
 ========================
 
+1.装饰器执行顺序
+=========================
+
+::
+
+ def makeBold(fn):
+    def wrapped():
+        print("==========1=========")
+        return "<b>"+fn()+"</b>"
+    return wrapped
+
+ def makeItalic(fn):
+    def wrapped():
+        print("==========2=========")
+        return "<i>"+fn()+"</i>"
+    return wrapped
+
+ @makeBold
+ @makeItalic
+ def test():
+    print("==========3=========")
+    return "hello world"
+
+>>> print"==========1=========
+ ==========2=========
+ ==========3========="
+
+ 
+
+
 1. 用类写装饰器
    实现缓存装饰器
 
