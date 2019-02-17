@@ -32,7 +32,7 @@
  
 上面函数的调用运行流程：先装饰@makeItalic,在装饰@makeBold,运行时：先运行makeBold装饰器，makeBold中的fn指向的是，makeItalic装饰器，makeItalic中的fn指向的是test函数
  
-2.装饰器运行时间
+2.装饰器进行装饰的时间
 ================================
 
 ::
