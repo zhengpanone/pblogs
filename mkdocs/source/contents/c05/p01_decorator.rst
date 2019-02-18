@@ -121,6 +121,34 @@
 
 |image4|
 
+7.带有参数的装饰器
+===========================================================
+
+::
+
+ from time import ctime,sleep
+
+ def timefunc_arg(pre="hello",*args,**kwargs):
+    def timefunc(func):
+        def wrappedfunc()：
+            print("%s called at %s %s"%(func.__name__,ctime(),pre))
+            return func()
+        return wrappedfunc
+    return timefunc
+
+ @timefunc_arg("Itcast")    
+ def foo():
+    print("I am foo")
+
+ @timefunc_arg("python")
+ def too():
+    print("I am too")
+
+ foo()
+ sleep(2)
+ too()
+
+
 
 
 装饰器的应用
