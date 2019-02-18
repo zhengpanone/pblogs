@@ -55,11 +55,36 @@
  def addclazzMethod(cls):
   print("动态添加类方法")
 
- Persion.addstaticMethod = addstaticMethod
- Persion.addstaticMethod()
+ Person.addstaticMethod = addstaticMethod
+ Person.addstaticMethod()
 
- Persion.addclazzMethod = addclazzMethod
- Persion.addclazzMethod()
+ Person.addclazzMethod = addclazzMethod
+ Person.addclazzMethod()
+
+4.禁止添加额外属性
+===============================
+
+定义一个特殊的__slots__变量，来限制该class实例能添加的属性
+
+::
+
+ class Person:
+
+  __slots__ = ("name","age")
+
+ p = Person()
+ p.name = "张三"
+ p.age = 20
+ p.score = 100
+
+>>> AttributeError                            Traceback (most recent call last)
+>>> <ipython-input-23-91c47bf50c73> in <module>
+>>> ----> 1 p.score = 100
+>>> AttributeError: 'Person' object has no attribute 'score'
+
+**使用__slots__定义的属性仅对当前类的实例起作用，对继承的子类是不起作用的**
+
+
 
 
 
