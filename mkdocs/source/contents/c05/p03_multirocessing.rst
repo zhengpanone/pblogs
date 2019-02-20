@@ -16,6 +16,9 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
 **属性**：authkey、daemon（要通过start()设置、exitcode(进程在运行是为None、如果为-N，表示被信号N结束)、name、pid。其中daemon是父进程终止后自动终止，且自己不能产生新进程，必须在start()之前设置）
 
+1.1 创建函数并将其作为单个进程：
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 ::
 
  from multiprocessing import Process
@@ -32,40 +35,6 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
  while True:
    print("--------main----------")
    time.sleep(1)
-
-1.1 创建函数并将其作为单个进程：
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-::
-
- import multiprocessing
- import time
-
- def worker(interval):
-   n = 5
-   while n > 0:
-      print("The time is {0}".format(time.ctime()))
-      time.sleep(interval)
-      n -= 1
-
- if __name__ == "__main__":
-   p = multiprocessing.Process(target=worker，args = (3,)) # 创建进程类
-   p.start() 
-   print("p.pid:",p.pid)
-   print("p.name:",p.name)
-   print("p.is_alive:",p.is_alive)
-
-
-
-
->>> p.pid 29297
-    p.name Process-1
-    p.is_alive <bound method BaseProcess.is_alive of <Process(Process-1, started)>>
-    The time is Fri Nov 23 18:42:57 2018
-    The time is Fri Nov 23 18:43:00 2018
-    The time is Fri Nov 23 18:43:03 2018
-    The time is Fri Nov 23 18:43:06 2018
-    The time is Fri Nov 23 18:43:09 2018
 
 1.2 创建函数并将其作为多个进程
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -106,46 +75,47 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
 
 >>> The number of CPU is:16
-        child p.name:Process-1	 p.id9792
-        child p.name:Process-3	 p.id9794
-        worker_1
-        child p.name:Process-2	 p.id9793
-        END!!!!
-        worker_2
-        worker_3
-        end worker_1
-        end worker_2
-        end worker_3
+    child p.name:Process-1	 p.id9792
+    child p.name:Process-3	 p.id9794
+    worker_1
+    child p.name:Process-2	 p.id9793
+    END!!!!
+    worker_2
+    worker_3
+    end worker_1
+    end worker_2
+    end worker_3
 
 1.3 将进程定义为类
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+继承Process类，重写__init__方法，并且完全初始化一个Process类即：将继承类本身传递为Process.__int__方法，完成初始化，重写Processe类的run()方法
+
 ::
 
- import multiprocessing
+ from multiprocessing import Process
  import time
 
- class ClockProcess(multiprocessing.Process):
+ class ClockProcess(Process):
     def __int__(self,interval):
-        multiprocessing.Process.__int__(self)
+        Process.__int__(self) 
         self.interval = interval
 
     def run(self):
-        n = 5
-        while n > 0:
-            print("the time is {0}".format(time.ctime()))
-            time.sleep(self.interval)
-            n -= 1
+         print("子进程(%s)开始执行，父进程为(%s)"%(os.getpid(),os.getppid()))
+         t_start = time.time()
+         time.sleep(self.interval)
+         t_stop = time.time()
+         print("(%s)执行结束，耗时%0.2f秒"%(os.getpid(),t_stop-t_start))
+      
 
  if __name__ == "__main__":
-    p = ClockProcess(3)
-    p.start()
+   t_start = time.time()
+   print("当前程序进程(%s)"%os.getpid())
+   p1 = ClockProcess(2)
+   # 对一个不包含target属性的Process类执行start()方法，就会运行这个类中的run()方法
+   p.start()
 
->>> the time is Mon Nov 26 09:54:19 2018
-         the time is Mon Nov 26 09:54:22 2018
-         the time is Mon Nov 26 09:54:25 2018
-         the time is Mon Nov 26 09:54:28 2018
-         the time is Mon Nov 26 09:54:31 2018
 
 
 
