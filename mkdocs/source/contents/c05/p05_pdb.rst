@@ -17,8 +17,11 @@ pdb 是基于命令行的调试工具，类似于gnu的gdb(调试C/C++)
 - **n** next 向下执行一行代码
 - **c** continue 继续执行代码
 - **b** break 添加断点 b+行数,查看断点
-- ***clear* clear1 删除断点
+- ***clear** clear1 删除断点
 - **s** step 进入到一个函数
 - **p** print 打印一个变量的值
 - **a** arg 打印所有参数
+- **r** return 快速执行到函数最后一行
 - **q** quit 退出调试
+
+
