@@ -50,7 +50,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 
  if __name__ == "__main__":
    p = multiprocessing.Process(target=worker，args = (3,)) # 创建进程类
-   p.start()
+   p.start() 
    print("p.pid:",p.pid)
    print("p.name:",p.name)
    print("p.is_alive:",p.is_alive)
@@ -125,7 +125,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
  import multiprocessing
  import time
 
- class ClockProcess(multiprocessing.process):
+ class ClockProcess(multiprocessing.Process):
     def __int__(self,interval):
         multiprocessing.Process.__int__(self)
         self.interval = interval
