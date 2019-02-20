@@ -2,86 +2,40 @@
 5.4 消息队列(Queue)与进程池(Pool)
 =============================================
 
-Queue消息队列
-====================
-
-1.创建
->>>>>>>>>>>
-
-::
-
- import multiprocessing
- queue = multiprocessing.Queue(队列长度)
-
-2.方法
->>>>>>>>>>>>
-
-+------------------------+------------------------------------+
-| 方法                              | 描述                                              |
-+========================+===========+
-| body row 1 column 2   | column                                        |
-+------------------------ +-----------------------------------+
-| body row 2                  | Cells may span column               |
-+------------------------+------------------------------------+
-
-
-3.进程通信
->>>>>>>>>>>>>>>>>>>>>
-
-   因为进程间不共享全局变量，所以使用Queue进行数据通信，可以在父进程中创建2个子进程，一个往Queue中写数据，一个从Queue中取数据
-
-::
-
- import multiprocessing
- import time
-
- def write_queue(queue):
-   # 循环写入数据
-   for i in range(10):
-      if queue.full():
-         print('队列已满！')
-         break
-      # 向队列中放入消息
-      queue.put(i)
-      print(i)
-      time.sleep(0.5)
-
- def read_queue(queue):
-   # 循环读取队列消息
-   while True:
-      # 队列为空，停止读取
-      if queue.empty():
-         print('---队列已空---')
-         break
-      # 读取消息并输出
-      result = queue.get()
-      print(reslut)
-
- if __name__ == '__main__':
-   # 创建消息队列
-   queue = multiprocessing.Queue(3)
-
-   # 创建子进程
-   p1 = multiprocessing.Process(target=write_queue, args=(queue,))
-   p1.start()
-
-   # 等待p1写入数据进程执行结束后，再往下执行
-   p1.join()
-   p1.multiprocessing.Process(target=read_queue ,args=(queue,))
-   p1.start()
-
 Pool进程池
 ====================
 
-   初始化Pool时，可以指定一个最大进程数，当有新请求提交到Pool中时，如果池没有满，就会创建一个新的进程执行该请求；如果池中的进程数已经达到指定的最大值，那个该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务
+初始化Pool时，可以指定一个最大进程数，当有新请求提交到Pool中时，如果池没有满，就会创建一个新的进程执行该请求；如果池中的进程数已经达到指定的最大值，那个该请求就会等待，直到池中有进程结束，才会用之前的进程来执行新的任务
 
 1 创建
 >>>>>>>>>>>>>>>>>>
 
 ::
 
- import multiprocessing
- pool = multiprocessing(最大进程数)
+ from multiprocessing import Pool
+ import time
+ 
+
+ def worker(msg):
+   t_start = time.time()
+   print("%s开始执行，进程号为%d"%(msg,os.getpid()))
+   time.sleep(random.random()*2)
+   t_stop = time.time()
+   print(msg,"执行完毕，耗时%0.2f"%(t_stop-t_start))
+
+ pool = Pool(3) # 定义一个进程池，最大进程数3
+
+ for i in range(0,10):
+   # pool.apply_async(要调用的目标,(传递给目标的参数元组))
+   # 每次循环将会用空闲的子进程去调用目标
+   # pool.apply(worker,(i,)) 阻塞方式
+   pool.apply_async(worker,(i,))
+
+ print("-------------------start--------------")
+ pool.close()  # 关闭进程池，关闭后pool不再接收新的请求
+ pool.join()   # 等待pool中所有子进程执行完成，必须放在close语句之后
+ print("--------------------end-------------")
+   
 
 2 方法
 >>>>>>>>>>>>>>>
@@ -131,7 +85,7 @@ Pool进程池
    result = pool.apply_async(write_data, (queue))
    # ApplyResult对象wait() 方法，表示后续进程必须等待当前进程执行完再继续
    result.wait()
-   pool。apply_async(read_data, (queue))
+   pool.apply_async(read_data, (queue))
    pool.close()
    # 异步后，主线程不再等待子进程执行结束，再结束
    # join() 后，表示主进程会等候子进程执行结束后，再结束
@@ -197,7 +151,73 @@ Pool进程池
    # 让主进程阻塞，等待子进程结束
    pool.join()
    
+Queue消息队列
+====================
 
+1.创建
+>>>>>>>>>>>
+
+::
+
+ from multiprocessing import Queue
+ queue = Queue(3) # 初始化Queue对象
+
+2.方法
+>>>>>>>>>>>>
+
+- put() 向队列中添加一条消息
+- get() 获取队列中的一条消息，然后从队列中移除
+- full() 如果队列为满，返回True,反之False
+- empty() 如果队列为空，返回True,反之False
+- qsize() 返回当前队列包含的消息数量
+- get_nowait()
+- put_nowait() 如果block 值为False，消息队列如果没有空间可以写入，则立刻抛出Queue.Full异常
+
+
+3.进程通信
+>>>>>>>>>>>>>>>>>>>>>
+
+   因为进程间不共享全局变量，所以使用Queue进行数据通信，可以在父进程中创建2个子进程，一个往Queue中写数据，一个从Queue中取数据
+
+::
+
+ import multiprocessing
+ import time
+
+ def write_queue(queue):
+   # 循环写入数据
+   for i in range(10):
+      if queue.full():
+         print('队列已满！')
+         break
+      # 向队列中放入消息
+      queue.put(i)
+      print(i)
+      time.sleep(0.5)
+
+ def read_queue(queue):
+   # 循环读取队列消息
+   while True:
+      # 队列为空，停止读取
+      if queue.empty():
+         print('---队列已空---')
+         break
+      # 读取消息并输出
+      result = queue.get()
+      print(reslut)
+
+ if __name__ == '__main__':
+   # 创建消息队列
+   queue = multiprocessing.Queue(3)
+
+   # 创建子进程
+   p1 = multiprocessing.Process(target=write_queue, args=(queue,))
+   p1.start()
+
+   # 等待p1写入数据进程执行结束后，再往下执行
+   p1.join()
+   p1.multiprocessing.Process(target=read_queue ,args=(queue,))
+   p1.start()
 
 参考文档
 ====================
