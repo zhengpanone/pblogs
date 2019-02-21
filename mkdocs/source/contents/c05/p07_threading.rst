@@ -145,21 +145,23 @@ Thread子类完成创建多线程
 
  def work1():
   global g_num
-  mutex.acquire()
+  
   for i in range(1000000):
+    mutex.acquire()
     g_num += 1
+    mutex.release()
   
   print("--------in work1,g_num %d----------------"%g_num)
-  mutex.release()
-
-
+  
  def work2():
   global g_num
-  mutex.acquire()
+  
   for i in range(1000000):
+    mutex.acquire()
     g_num += 1
+    mutex.release()
   print("--------in work2,g_num %d----------------"%g_num)
-  mutex.release()
+  
 
  mutex = Lock() # 创建互斥锁，默认是没有上锁的
 
