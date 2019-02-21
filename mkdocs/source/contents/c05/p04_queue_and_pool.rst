@@ -219,6 +219,35 @@ Queue消息队列
    p1.multiprocessing.Process(target=read_queue ,args=(queue,))
    p1.start()
 
+4.进程池间的通信
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+::
+
+ from multiprocessing import Manager,Pool
+ import os,time,random
+
+ def reader(q):
+   print("reader 启动(%s),父进程为(%s)"%(os.getpid(),os.getppid()))
+   for i in range(q.qsize()):
+      print("reader从Queue获取到消息：%s"%q.get(True))
+
+ def writer(q):
+   print("writer启动(%s),父进程为(%s)"%(os.getpid(),os.getppid()))
+   for i in "DoGet":
+      q.put(i)
+
+ if __name__ == "__main__":
+   print("(%s) start"%os.getpid())
+   q = Manager().Queue()
+   po = Pool()
+   # 使用阻塞模式创建进程，这样就不需要在reader中使用死循环，可以让writer完全执行完成后，再用reader
+   po.apply(writer,(q,))
+   po.apply(reader,(q,))
+   po.close()
+   po.join()
+   print("%s End"%os.getpid())
+
 参考文档
 ====================
 
