@@ -94,4 +94,80 @@ Thread子类完成创建多线程
  t2 = Thread(target=work2)
  t2.start()
 
+共享全局变量遇到的问题
+
+::
+
+ from threading import Thread
+ import time
+
+ g_num = 0
+
+ def work1():
+  global g_num
+  for i in range(1000000):
+    g_num += 1
+  print("--------in work1,g_num %d----------------"%g_num)
+
+ def work2():
+  global g_num
+  for i in range(1000000):
+    g_num += 1
+  print("--------in work2,g_num %d----------------"%g_num)
+
+ t1 = Thread(target=work1)
+ t1.start()
+
+ #time.sleep(3)
+
+ t2 = Thread(target=work2)
+ t2.start()
+ print("------g_num=%d---------"%g_num)
+
+避免全局变量修改bug
+==================================
+
+互斥锁
+
+::
+
+ mutex = threading.Lock() # 创建锁
+ mutex.acquire([blocking])  # 锁定
+ mutex.release()  # 释放
+
+::
+
  
+ from threading import Thread
+ import time
+
+ g_num = 0
+
+ def work1():
+  global g_num
+  mutex.acquire()
+  for i in range(1000000):
+    g_num += 1
+  
+  print("--------in work1,g_num %d----------------"%g_num)
+  mutex.release()
+
+
+ def work2():
+  global g_num
+  mutex.acquire()
+  for i in range(1000000):
+    g_num += 1
+  print("--------in work2,g_num %d----------------"%g_num)
+  mutex.release()
+
+ mutex = Lock() # 创建互斥锁，默认是没有上锁的
+
+ t1 = Thread(target=work1)
+ t1.start()
+
+ #time.sleep(3)
+
+ t2 = Thread(target=work2)
+ t2.start()
+ print("------g_num=%d---------"%g_num)
