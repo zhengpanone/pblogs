@@ -6,3 +6,5 @@
 
 .. important:: - 80端口分配给HTTP服务
                - 21端口分配给FTP服务
+
+.. note:: **netstat -an** 查看端口状态
