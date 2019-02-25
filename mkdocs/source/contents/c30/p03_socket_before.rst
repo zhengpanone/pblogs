@@ -244,7 +244,7 @@ TCP（Transmission Control Protocol）
 
 .. |image1| image:: ./image/19022501.webp
 .. |image2| image:: ./image/19022502.webp
-.. |image3| image:: ./image/i9022503.webp
+.. |image3| image:: ./image/19022503.webp
 .. |image4| image:: ./image/19022504.webp
 .. |image5| image:: ./image/19022505.webp
 .. |image6| image:: ./image/19022506.webp
