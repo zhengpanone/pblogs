@@ -109,32 +109,182 @@ IP，端口，远程服务器
 
 |image3|
 
-socket 是进程间通信的一种方式，
+- 计算机之间依照互联网传输层TCP/IP协议的协议通信，不同的协议都对应不同的端口
+- 49152到65535号端口属于“动态端口”范围，没有端口可以被正式地注册占用
 
-创建一个tcp socket(tcp套接字)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+|image4| |image5|
 
-::
+- UDP
 
- import socket
- s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
- 
-创建一个udp socket(udp套接字)
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ + 它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份
+ - UDP在IP数据报的头部仅仅加入了复用和数据校验（字段）
+ * 发送端生产数据，接收端从网络中抓取数据
+ -结构简单、无校验、速度快、容易丢包、可广播
+ - DNS、TFTP、SNMP
+ - 视频、音频、普通数据（无关紧要数据）
+ |image6|
+ - 英语：User Datagram Protocol，缩写为UDP
+ - 一种用户数据报协议，又称用户数据报文协议
+ - 是一个简单的面向数据报的传输层协议，正式规范为RFC 768
+ - 用户数据协议、非连接协议
+ - 不可靠
 
-::
+- UDP包最大长度
 
- import socket
- s = socket.socket(socket.AF_INET,socket.SOck_DGRAM)
+ + 16位->2字节存储长度信息
+ - 2^16-1=64K-1=65536-1=65535
+ * 自身协议占用：32+32位=64位=8字节
+ - 65535-8=65507 byte
 
-::
+UDP Api
+DatagramSocket
 
- from socket import *
- udpSocket = socket(AF_INET,SOck_DGRAM)
- udpSocket.sendto(b"haha","192.168.119.115",8080)
+前面3个参数指定buf的使用区间
 
+后面2个参数指定目标机器地址与端口（仅仅在发送时有效）
 
+用于接收与发送UDP的类
+
+负责发送某一个UDP包，或者接收UDP包
+
+不同于TCP，UDP并没有合并到Socket APl中
+
+没有服务器端和客户端
+
+DatagramSocket)创建简单实例，不指定端口与IP
+
+DatagramSocket(int port)创建监听固定端口的实例（接收数据的端口）
+
+DatagramSocket(int port,InetAddress localAddr)创建固定端口指定lP的实例（当计算机有多个IP地址存在时）
+
+receive(DatagramPacket d):接收
+
+send(DatagramPacket d):发送
+
+setSoTimeout(int timeout):设置超时，毫秒
+
+close() 关闭，释放资源
+
+DatagramPacket(bytel] bufint offset,int length,InetAddress address,int port)
+
+SocketAddress相当于InetAddress+Port
+
+setData(bytel[] bufint ofset,int length)
+
+setData(bytel[l buf)
+
+setLength(int length)
+
+getData()、getOffset()、getLength()
+
+setAddress(InetAddress iaddr)、setPort(int iport) 发送时有效，接收时set操作是由系统完成的
+
+getAddress()、getPort()
+
+setSocketAddress(SocketAddress address)
+
+getSocketAddress()
+
+UDP单播、广播、多播
+高频次广播有可能导致局域网或者某段网络的信息带宽被占满
+|image7|
+IP地址类别
+|image8|
+广播地址
+
+255.255.255.255为受限广播地址
+
+C网广播地址一般为：XXX.XXX.XXX.255（192.168.1.255）
+
+D类IP地址为多播预留
+|image9|
+ipv4的地址本来就是用32位来表示的,分成4个8位来书写, 所以ipv4和地址是可以和32位unsigned int
+
+广播地址运算
+
+IP：192.168.124.7
+
+子网掩码：255.255.255.0
+
+网络地址：192.168.124.0
+
+广播地址：192.168.124.255
+
+例子二
+
+IP：192.168.124.7
+
+子网掩码：255.255.255.192
+
+网络地址：192.168.124.0
+
+广播地址：192.168.124.63
+
+255.255.255.192->11111111.11111111.11111111.11000000
+
+可划分网段：2/2=4个
+
+0~63、64~127、128~191、192~255
+
+192.168.124.63
+
+广播通信问题
+主机一：192.168.124.7，子网掩码：255.255.255.192
+
+主机二：192.168.124.100，子网掩码：255.255.255.192
+
+主机一广播地址：192.168.124.63
+
+主机二广播地址：192.168.124.127
+
+因为两个主机的广播地址不同，所以互相收不到对方的消息
+
+局域网搜索Demo（略）
+UDP接收消息并回送功能实现
+
+UDP局域网广播发送实现
+
+UDP局域网回送消息实现
+
+TCP（Transmission Control Protocol）
+TCP是传输控制协议；是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC793定义
+
+与UDP一样完成第四层传输层所指定的功能与职责
+
+三次握手、四次挥手
+
+具有校验机制、可靠、数据传输稳定
+|image10|
+作用
+
+聊天消息传输、推送
+
+单人语音、视频聊天等
+
+几乎UDP能做的都能做，但需要考虑复杂性、性能问题
+
+限制：无法进行广播，多播等操作
+
+- TDP Api
+ - socket（):创建一个Socket
+ + bind)：绑定一个Socket到一个本地地址和端口上
+ * connect（)：发起连接,连接到远程套接字
+ - accept():接受一个新的连接，阻塞等待
+ - write（)：把数据写入到Socket输出流
+ - read（)：从Socket输入流读取数据
+|image11|
+|image12|
 
 .. |image1| image:: ./image/19022501.webp
 .. |image2| image:: ./image/19022502.webp
 .. |image3| image:: ./image/i9022503.webp
+.. |image4| image:: ./image/19022504.webp
+.. |image5| image:: ./image/19022505.webp
+.. |image6| image:: ./image/19022506.webp
+.. |image7| image:: ./image/19022507.webp
+.. |image8| image:: ./image/19022508.webp
+.. |image9| image:: ./image/19022509.webp
+.. |image10| image:: ./image/19022510.webp
+.. |image11| image:: ./image/19022511.webp
+.. |image12| image:: ./image/19022512.webp
+
