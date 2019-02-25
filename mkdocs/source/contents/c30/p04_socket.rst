@@ -97,3 +97,56 @@ sendall函数
 -功能：内部调用了send函数，完整发送TCP数据。将string中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。
 -参数：同send函数
 -返回值 : 成功返回None，失败则抛出异常。
+
+close函数
+::::::::::::::::::::::
+
+- 格式：s.close()
+- 功能：关闭套接字
+
+recvfrom函数
+::::::::::::::::::::::::::::
+
+- 格式：s.recvfrom(bufsize[.flag])
+- 功能：与recv()类似，区别是返回值不同
+- 返回值：返回一个数组（data,address），其中data是包含接收数据的字符串，address是发送数据的套接字地址。
+
+sendto函数
+:::::::::::::::::::::::::::
+
+- 格式：s.sendto(string[,flag],address)
+- 功能：将数据发送到套接字
+- 参数：
+ -string : 要发送的字符串数据
+ - flag : 提供有关消息的其他信息，通常可以忽略
+ - address是形式为（ipaddr，port）的元组，指定远程地址
+- 返回值：返回值是要发送的字节数量
+- 备注：该函数主要用于UDP协议。
+
+settimeout函数
+:::::::::::::::::::::::::::
+
+- 格式：s.settimeout(timeout)
+
+- 功能：设置套接字操作的超时期
+
+- 参数：timeout是一个浮点数，单位是秒。值为None表示没有超时期。一般，超时期应该在刚创建套接字时设置，因为它们可能用于连接的操作（如 client 连接最多等待5s ）
+
+getpeername函数
+:::::::::::::::::::::::::::
+
+- 格式：s.getpeername()
+- 功能：获取连接套接字的远程地址
+- 返回值：返回值通常是元组（ipaddr,port）。
+
+getsockname函数
+::::::::::::::::::::::::::::::::
+
+- 格式：s.getsockname()
+- 功能：获取套接字自己的地址
+- 返回值：通常是一个元组(ipaddr,port)
+
+参考文档
+=====================
+
+Linux公社： https://mp.weixin.qq.com/s/QVEynxlMnQUTfF7XYdLXlQ
