@@ -15,7 +15,7 @@
  from <package> import <module or subpackage or object> # 从一个包中导入模块/子包/对象
  from <module> import <object> # 从模块中导入对象
 
-#. 解释器会按照sys.path 列表的顺序来查找被引入的包或模块名字
+#.  解释器会按照sys.path 列表的顺序来查找被引入的包或模块名字
 
  >>> import sys
  >>> import pprint
@@ -27,7 +27,7 @@
  
 优先加载当前目录下的模块,如果项目中使用了与内建模块中同名的包或者模块名,就会遇到没有XX属性之类的报错提示
 
-#. 使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
+#.  使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
 
 ::
 
