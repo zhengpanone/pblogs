@@ -1,5 +1,5 @@
 ================
-1.4  常用技巧
+1.4  Python编程技巧
 ================
 
 Map
@@ -166,8 +166,112 @@ Partial application(闭包)
 列表推导仅适用于列表。map,filter适合任何可迭代的对象
 
 
+三元表达式
+---------------------
+
+::
+
+ print("Hello" if True else "World")
+
+打印JSON
+----------------
+
+::
+
+ import json
+ print(json.dumps(data,indent=2))
+
+同时迭代两个列表
+------------------------
+
+::
+
+ nfc = ["Packers", "49ers"]
+ afc = ["Ravens", "Patriots"]
+ for teama, teamb in zip(nfc, afc):
+   print teama + " vs. " + teamb
+
+带索引的列表迭代
+-----------------------
+
+::
+
+ teams = ["Packers", "49ers", "Ravens", "Patriots"]
+ for index,team in enumerate(teams):
+   print(index,team)
 
 
+初始化列表的值
+------------------------
+
+::
+ 
+ items = [0]*3
+ print(items)
+
+>>> [0,0,0]
 
 
+列表转字符串
+-------------------------
 
+::
+
+ teams = ["Packers", "49ers", "Ravens", "Patriots"]
+ print (", ".join(teams))
+
+字典中获取元素
+--------------------
+
+::
+
+ data = { user : 1,  name :  Max ,  three : 4}
+ try:
+   is_admin = data[ admin ]
+ except KeyError:
+   is_admin = False
+
+替换为
+
+::
+
+ is_admin = data.get(admin,False)
+
+
+获取列表的子集
+----------------------
+
+::
+
+ x = [1,2,3,4,5,6]
+ #前3个
+ print x[:3]
+ >>> [1,2,3]
+ #中间4个
+ print x[1:5]
+ >>> [2,3,4,5]
+ #最后3个
+ print x[3:]
+ >>> [4,5,6]
+ #奇数项
+ print x[::2]
+ >>> [1,3,5]
+ #偶数项
+ print x[1::2]
+ >>> [2,4,6]
+ 
+迭代工具
+------------------------
+
+::
+
+ from itertools import combinations
+ teams = ["Packers", "49ers", "Ravens", "Patriots"]
+ for game in combinations(teams, 2):
+    print game
+ >>> ( Packers ,  49ers )
+ >>> ( Packers ,  Ravens )
+ >>> ( Packers ,  Patriots )
+ >>> ( 49ers ,  Ravens )
+ >>> ( 49ers ,  Patriots )
+ >>> ( Ravens ,  Patriots )
