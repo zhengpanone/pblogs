@@ -155,14 +155,13 @@ A) 枚举列表1
 参考文档
 ------------
 
-reStructuredText(rst)快速入门语法说明_
+`reStructuredText(rst)快速入门语法说明`_
 
-.. _reStructuredText(rst)快速入门语法说明: https://www.jianshu.com/p/1885d5570b37
+.. _`reStructuredText(rst)快速入门语法说明`: https://www.jianshu.com/p/1885d5570b37
 
 External hyperlinks, like Python_.
 
-External hyperlinksExternal hyperlinksExternal hyperlinks
-External hyperlinks
+
 
 .. _Python: http://www.python.org/
 
