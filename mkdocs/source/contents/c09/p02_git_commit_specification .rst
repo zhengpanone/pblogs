@@ -5,14 +5,14 @@
 规则
 ===============
 
-::
+.. note::
 
  <type>(scope):<subject>
 
 - **type**
 用于说明commit的类别，只允许使用下面的7个标识：
 
-::
+.. note::
 
  feat: 新功能（feature）
  fix: 修补bug
@@ -30,7 +30,7 @@
 
 是commit目的的简短描述，不超过50个字符
 
-::
+.. note::
 
  以动词开头，使用第一人称现在时，比如change，而不是changed或changes
  第一个字母小写
