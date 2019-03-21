@@ -159,5 +159,12 @@ reStructuredText(rst)快速入门语法说明_
 
 .. _reStructuredText(rst)快速入门语法说明: https://www.jianshu.com/p/1885d5570b37
 
+External hyperlinks, like Python_.
+
+External hyperlinksExternal hyperlinksExternal hyperlinks
+External hyperlinks
+
+.. _Python: http://www.python.org/
+
 
 .. |image2| image:: ./img/18112101.png
