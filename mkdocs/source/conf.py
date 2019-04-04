@@ -58,7 +58,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Python-Time BLOG'
+htmlhelp_basename = 'Python\'S BLOG'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -105,7 +105,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'python3-blog', u'《Python编程时光》',
+    ('index', 'python3-blog', u'《Python博客》',
      [u'郑攀'], 1)
 ]
 
@@ -119,8 +119,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Python-Time', u'《Python编程时光》',
-   u'郑攀', 'Python-Time', '《Python编程时光》',
+  ('index', 'Python-blog', u'《Python博客》',
+   u'郑攀', 'Python-blog', '《Python博客》',
    'Miscellaneous'),
 ]
 
