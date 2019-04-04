@@ -186,4 +186,4 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 `良许Linux`_
 
-.. _`良许Linux`: https://mp.weixin.qq.com/s/PYl8cI7tV83Pqjw35JsWRg
+.. _`良许Linux`: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485198&amp;idx=1&amp;sn=0792d4da7ca2346ec3282c73bb608198&source=41#wechat_redirect
