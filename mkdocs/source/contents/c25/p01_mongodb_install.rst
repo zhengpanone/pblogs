@@ -1,5 +1,5 @@
 ========================
-24.1 mongodb安装
+mongodb安装
 ========================
 
 1. mongodb下载
@@ -24,11 +24,11 @@
 
 我们在E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18 目录下，创建一个mongodb.cfg 配置文件，有两个属性logpath和dbpath，分别设定值，并且在d盘创建对应配置路径的文件夹，如图所示：
 
-dbpath=D:\mongodb\data\db
-logpath=D:\mongodb\data\log\mongodb.log
+dbpath=D:/\mongodb/\data/\db
+logpath=D:/\mongodb/\data/\log/\mongodb.log
 
-打开控制台cmd，进入mongodb安装目录/bin文件下运行命令：mongod.exe  --config  "E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\mongodb.cfg"，来启动MongoDB服务器，
---config 选项表示启动时通过E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\mongodb.cfg，注意这里路径一定要用“”括起来，配置文件的信息配置服务器。如图所示：
+打开控制台cmd，进入mongodb安装目录/bin文件下运行命令：mongod.exe  --config  "E:\Program Files (x86)/\SD/\MongoDB/\mongodb-win32-x86_64-2008plus-ssl-3.2.18/\mongodb.cfg"，来启动MongoDB服务器，
+--config 选项表示启动时通过E:\Program Files (x86)/\SD/\MongoDB/\mongodb-win32-x86_64-2008plus-ssl-3.2.18/\mongodb.cfg，注意这里路径一定要用“”括起来，配置文件的信息配置服务器。如图所示：
 
 ..  image:: ./image/3.png
     :align: center
@@ -42,7 +42,7 @@ logpath=D:\mongodb\data\log\mongodb.log
 3. 测试
 -----------------------
 
-我们在运行cmd.exe进入dos命令界面,然后进入cd E:\Program Files (x86)\SD\MongoDB\mongodb-win32-x86_64-2008plus-ssl-3.2.18\bin目录下，运行mongo命令，
+我们在运行cmd.exe进入dos命令界面,然后进入cd E:\Program Files (x86)/\SD/\MongoDB/\mongodb-win32-x86_64-2008plus-ssl-3.2.18/\bin目录下，运行mongo命令，
 测试一下连接，如图所示：
 
 ..  image:: ./image/5.png
