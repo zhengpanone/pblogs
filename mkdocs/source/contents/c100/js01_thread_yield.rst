@@ -2,12 +2,24 @@
 100.1 JavaScript 数据类型
 ========================
 
+JS 由三部分组成：
+
+- ECMAScript：基础语法（数据类型、运算符、函数。。。。）
+- BOM（浏览器对象模型）：window、location、history、navigator。。。
+- DOM（文档对象模型）：div、p、span。。。
+
+
+
 1. 数据类型
 --------------
 
-- 原始类型：number、string、boolean、null、nudefined
-- object ： Function、Array、Date ...
+- 原始类型：number、string、boolean、null、undefined
+- object ： Function、Array、Date、Regx ...
 
+.. note::
+
+ 如果变量未声明，获取该变量的值，是会产生**语法错误**，而不是undefined
+ 一个变量声明，但未赋值，值默认为undefined
 
 2.隐式转换
 --------------
