@@ -59,7 +59,7 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 对象是键值对的集合：对象是由属性和方法构成；ps：对象皆属性，方法也是属性
 
 对象属性操作
-获取属性：
+1. 获取属性：
 
 .. note::
 
@@ -82,6 +82,10 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 - 甚至可以这样使用["[object Array]"]    //jquery中有这样的实现
 - 也可以这样用["{abc}"]   
 
+2.设置属性
+
+student["gender"] = "男" 等价于 student.gender="男"
+含义：如果student对象中没有gender属性，就添加一个gender属性，如果student对象中有gender属性，就修改gender属性的值
 
 |image1|
 
