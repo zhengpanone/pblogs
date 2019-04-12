@@ -85,11 +85,24 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 2.设置属性
 
 student["gender"] = "男" 等价于 student.gender="男"
-含义：如果student对象中没有gender属性，就添加一个gender属性，如果student对象中有gender属性，就修改gender属性的值
+
+含义：
+    如果student对象中没有gender属性，就添加一个gender属性，
+    如果student对象中有gender属性，就修改gender属性的值
+
+3.删除属性
+
+delete student["gender"]
+
+delete student.gender  
+     
+可以删除对象中属性，不能删除变量  var a = 100; delete a; 是错误的
+
 
 |image1|
 
 str 是基本类型，strObj是对象类型，是sting类型对应的包装类
+
 
 |image2|
 
