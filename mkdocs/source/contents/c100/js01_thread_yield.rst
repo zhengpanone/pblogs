@@ -95,8 +95,37 @@ student["gender"] = "男" 等价于 student.gender="男"
 delete student["gender"]
 
 delete student.gender  
-     
+
 可以删除对象中属性，不能删除变量  var a = 100; delete a; 是错误的
+
+清空对象
+person = {};     // person对象不在具有任何属性
+person = null;  //表示将person 变量的值赋值为null,从此person不在是一个对象
+
+通过构造函数创建对象
+
+::
+ 
+ function Person(name,age){
+     this.name = name
+     this.age = age
+ }
+
+ p1 = new Person("张三",18)
+
+ var xiaoming = new Object() ==> var xiaoming = {}
+ var now = new Date()
+ var rooms = new Array(1,2,3) ==> var rooms = [1,2,3]
+ var isMale = /123/; ==> var isMale = new RegExp("123");
+
+Object、Date、Array 都是内置构造函数
+
+构造函数的概念
+任何函数都可以当作构造函数
+只要把一个函数通过new 的方式来调用，就把这次函数的调用方式称为构造函数的调用
+
+构造函数的执行过程
+
 
 
 |image1|
