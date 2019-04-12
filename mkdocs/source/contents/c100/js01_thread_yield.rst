@@ -23,7 +23,7 @@ JS 由三部分组成：
  一个变量声明，但未赋值，值默认为undefined,
 
  一个变量声明，并且赋值了一个undefined的值
- 
+
  一个**对象**中，不存在的属性的值也是undefined
 
 2.隐式转换
@@ -63,11 +63,24 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 
 .. note::
 
- student.name   # 获取到属性的值
- student.say    # 获取一个函数
+ student.name           # 获取到属性的值
+ student.say            # 获取一个函数
 
- student["name"]    # 等价于students.name
- student["say"]     # 等价于student.say
+ student["name"]        # 等价于students.name
+ student["say"]         # 等价于student.say
+
+**.** 语法更方便，但是有局限性
+
+- **.** 后面不能使用js中的关键字、保留字（class、this、function...）
+- **.** 后面不能使用数字
+
+**[]** 使用更广泛
+
+- student[变量名]
+- ["class"]、["this"] 都可以随意使用  
+- [0]、[2] 也可以使用       // obj[3]=obj["3"]
+- 甚至可以这样使用["[object Array]"]    //jquery中有这样的实现
+- 也可以这样用["{abc}"]   
 
 
 |image1|
