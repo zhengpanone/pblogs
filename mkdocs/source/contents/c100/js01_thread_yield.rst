@@ -19,7 +19,9 @@ JS 由三部分组成：
 .. note::
 
  如果变量未声明，获取该变量的值，是会产生**语法错误**，而不是undefined
- 一个变量声明，但未赋值，值默认为undefined
+ 一个变量声明，但未赋值，值默认为undefined,
+ 一个变量声明，并且赋值了一个undefined的值
+ 一个**对象**中，不存在的属性的值也是undefined
 
 2.隐式转换
 --------------
@@ -35,6 +37,21 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 
 3.包对象
 -----------
+
+创建对象
+
+::
+
+ var student = {
+     name:"test",
+     grade:"5",
+     say:function(){
+         console.log("Hello World")
+     },
+     run:function(speed){
+         console.log("正在以"+speed+"米/秒的速度奔跑！")
+     }
+ }
 
 |image1|
 
