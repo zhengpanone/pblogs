@@ -53,6 +53,19 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
      }
  }
 
+对象是键值对的集合：对象是由属性和方法构成；ps：对象皆属性，方法也是属性
+
+对象属性操作
+获取属性：
+
+.. note::
+ student.name   # 获取到属性的值
+ student.say    # 获取一个函数
+
+ student["name"]    # 等价于students.name
+ student["say"]     # 等价于student.say
+
+ 
 |image1|
 
 str 是基本类型，strObj是对象类型，是sting类型对应的包装类
