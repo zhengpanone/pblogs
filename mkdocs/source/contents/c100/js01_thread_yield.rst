@@ -19,8 +19,11 @@ JS 由三部分组成：
 .. note::
 
  如果变量未声明，获取该变量的值，是会产生**语法错误**，而不是undefined
+
  一个变量声明，但未赋值，值默认为undefined,
+
  一个变量声明，并且赋值了一个undefined的值
+ 
  一个**对象**中，不存在的属性的值也是undefined
 
 2.隐式转换
@@ -59,13 +62,14 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 获取属性：
 
 .. note::
+
  student.name   # 获取到属性的值
  student.say    # 获取一个函数
 
  student["name"]    # 等价于students.name
  student["say"]     # 等价于student.say
 
- 
+
 |image1|
 
 str 是基本类型，strObj是对象类型，是sting类型对应的包装类
