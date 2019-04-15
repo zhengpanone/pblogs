@@ -44,7 +44,9 @@
 .. note::
 
  Person的原型对象是谁？
- Person的构造函数是: --> Function 
+
+ Person的构造函数是: --> Function
+  
  Person的原型对象是: --> Function.prototype
 
 
