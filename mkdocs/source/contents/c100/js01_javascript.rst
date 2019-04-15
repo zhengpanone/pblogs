@@ -166,9 +166,13 @@ Object、Date、Array 都是内置构造函数
 .. note::
 
  typeof 运算符,只能判断:数字、字符串、布尔值、undefined、函数 ;typeof 不能判断对象的构造函数
+
  typeof null === "object"
+
  typeof {} === "object"
+
  typeof [] === "object"
+ 
  typeof function(){} === "function"
 
 
