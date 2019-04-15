@@ -154,6 +154,23 @@ Object、Date、Array 都是内置构造函数
 
     什么数据是复杂数据类型：除了5个基本数据类型外的都为复杂数据类型
 
+如何判断一个对象是否是某个构造函数的实例？
+
+::
+
+ console.log(p1 instanceof Person) // true,就是Person的实例
+
+ xx.__proto__属性,也是对象,该对象中一般都会有一个constructor属性,如果指向ppp函数,那么就可以认为:xxx是ppp构造函数的实例;
+
+
+.. note::
+
+ typeof 运算符,只能判断:数字、字符串、布尔值、undefined、函数 ;typeof 不能判断对象的构造函数
+ typeof null === "object"
+ typeof {} === "object"
+ typeof [] === "object"
+ typeof function(){} === "function"
+
 
 
 
