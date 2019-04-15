@@ -46,8 +46,41 @@
  Person的原型对象是谁？
 
  Person的构造函数是: --> Function
-  
+
  Person的原型对象是: --> Function.prototype
 
+继承实现方式
+====================
 
+原型链继承
+>>>>>>>>>>>>>>>>>>>>>
 
+::
+
+ function Person(){
+
+ }
+ Person.prototype.s1 = function(){}
+ tom = new Person();
+
+ Person.prototype = {
+     constructor:Person,
+     a1:function(){
+         console.log("Hello")
+     },
+     a2:function(){},
+     a3:function(){},
+ }
+ console.log(tom.s1()); //可以访问
+ console.log(tom.a1()); // undefined
+ tom对象在创建的时候已经有一个确定的原型对象,就旧的Person.prototype ,由于Person.prototype后面被重新赋值,但是tom对象的原型对象却没有改变,所以tom对象不能访问到对象中的a1-a5方法
+
+如何解决,先改变原型,重新添加新实例 ,创建实例即确定了原型
+
+.. note::
+
+ 一般情况,先改变原型对象,再创建对象
+ 对于新原型,会添加一个constructor属性,从而不破坏原有的原型对象的结构
+
+拷贝继承(混入继承)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
