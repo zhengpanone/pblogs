@@ -33,8 +33,19 @@
  p2.run();
  // 验证p1.run 和p2.run 是否同一个方法
  console.log(p1.run == p2.run()); //true
+ console.log(p1.run == Person.prototype.run) //true
  //指向同一个方法,这种方法避免了内存浪费
 
+.. note::
+
+ 只有往某个构造函数的prototype对象中添加某个属性、方法那么这样的属性、方法都可以被所有的构造函数的实例共享
+ prototype对象称之为原型对象(构造函数的实例的原型对象)
+
+.. note::
+
+ Person的原型对象是谁？
+ Person的构造函数是: --> Function 
+ Person的原型对象是: --> Function.prototype
 
 
 
