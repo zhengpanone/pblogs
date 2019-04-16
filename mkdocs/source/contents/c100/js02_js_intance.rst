@@ -87,7 +87,7 @@
 
 ::
 
-    .. note:: js
+    .. code:: js
     var o1 = {age:2};
 
     var o2 = o1;
@@ -98,9 +98,9 @@
   
 ::
 
- .. note:: js
+    .. code:: js
 
- var source={name:"张三",age:15};
+    var source={name:"张三",age:15};
 
  一般情况,先改变原型对象,再创建对象
  对于新原型,会添加一个constructor属性,从而不破坏原有的原型对象的结构
