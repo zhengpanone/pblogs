@@ -105,9 +105,34 @@
  var o4={gender:"男",grade:"初三",group:"第四组",name"李四"};
  // 这样的情况可以使用拷贝继承
 
+ //实现拷贝继承:
+ // 1. 已经拥有o3对象
+ // 2. 创建o3对象的拷贝(克隆) for (var key in o3){ o3[key]}
+ // 3. 修改克隆对象,对克隆对象修改name属性
 
+封装拷贝继承函数
 
+::
 
+ function extend(source,target){
+     for (var key in source){
+         target[key] = source[key];
+     }
+ }
+
+ var o4 = {};
+ extend(o3,04);
+ console.log(o4.name)
+
+ES6中有了《对象扩展运算符》专门为拷贝继承而生:优化浅拷贝
+
+:: 
+
+ var source = {name:"张三",age:15};
+ var target = {...source};
+ var target = {...source,age:18}; //简化浅拷贝
+
+# TODO 下一种继承方式
 
 es6内容
 ===================
