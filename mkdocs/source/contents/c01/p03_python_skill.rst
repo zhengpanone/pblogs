@@ -383,11 +383,6 @@ print("b的值为"+str(b))    >>>   1
  >>> False == False and False == True
 
 
-
-
-
-
-
 1.4 字符串操作
 ----------------
 
