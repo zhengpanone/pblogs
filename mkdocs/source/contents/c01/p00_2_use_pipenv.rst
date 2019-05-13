@@ -1,6 +1,67 @@
 ========================================
-1.6 pipenv 安装和使用
+Python虚拟环境
 ========================================
+
+Virtualenv、Virtualenvwrapper、Pyenv、
+
+Virtualenv 
+============================
+
+::
+
+ virtualenv -p /usr/bin/python3/bin/python3 venv 
+ source /venv/bin/active
+ deactivate
+ 
+Virtualenvwrapper 
+=============================
+
+::
+
+ pip install virtualenvrapper 
+ # 配置.barshrc 
+ export WORKON_HOME=$HOME/.virtualenvs  # 指定目录
+ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages' # 隔离系统site-packages 
+ export PIP_VIRTUALENV_BASE=$WORKON_HOME
+ export PIP_RESPECT_VIRTUALENV=true
+ if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+ else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+ fi 
+
+ # 创建使用虚拟环境
+ mkvirtualenv your_project #创建
+ rmvitualenv your_project #删除
+ workon  # 列出项目
+ workon your_project # 进去某个项目
+
+Pyenv 
+==============================
+
+ ::
+
+ pip install pyenv 
+ pip install pyenv-virtualenv 
+ pip install pyenv-virtualenvwrapper 
+
+ # 配置.barshrc 
+ # ---pyenv---
+ export PATH="$HOME/.pyenv/bin:$PATH"
+ eval "$(pyenv init -)"
+ eval "$(pyenv virtualenv-init -)"
+
+ # pyenv 使用方式
+ pyenv install -l # 获取安装列表
+ pyenv install 3.7.1 # 安装python3.7
+ pyenv global 3.7.1 # 设置全局python
+ pyenv virtualenv test-pyenv-venv # 创建虚拟包
+ pyenv activate test-pyenv-venv # 进入虚拟环境
+ pyenv deactivate  # 退出
+
+pipenv 
+===============================
 
 安装pipenv
 -------------------
