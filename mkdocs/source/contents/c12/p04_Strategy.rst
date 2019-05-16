@@ -81,9 +81,48 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
     def discount(self,order):
         return order.total()*0.05 if order.customer.fidelity >= 1000 else 0
 
- class BulkItemPromo(Promotion):
+ class BulkItemPromo(Promotion): # 第二个具体策略
+    """单个商品为20个或以上时提供10%折扣"""
+    def discount(self, order):
+        discount = 0
+        for item in oredr.cart:
+            if item.quantity >= 20:
+                discount += item.total()*01
+        return discount
+
+ class LargeOrderPromo(Promotion): # 第三个具体策略
+    """订单中不同商品达到10个或以上时提供7%"""
+    def discount(self, order):
+        distinct_items = {item.product for item in order.cart}
+        if len(distinct_items) >= 10:
+            return order.total()*0.07
+        return 0
+
+ joe = Customer('John Doe', 0)
+ ann = Customer('Ann Smith', 1100)
+
+ cart = [LineItem('banan', 4, 0.5),
+         LineItem('apple', 10, 1.5),
+         LineItem('watermellon', 5, 5.0)]
+ print('策略一：为积分为1000或以上的顾客提供5%折扣')
+ print(Order(joe, cart, FidelityPromo()))
+ print(Order(ann, cart, FidelityPromo()))
+
+ banana_cart = [LineItem('banana', 30, 0.5),
+               LineItem('apple', 10, 1.5)]
+
+ print('策略二：单个商品为20个或以上时提供10%折扣')
+ print(Order(joe, banana_cart, BulkItemPromo()))
+
+ long_order = [LineItem(str(item_code), 1, 1.0) for item_code in range(10)]
+
+ print('策略三：订单中的不同商品达到10个或以上时提供7%折扣')
+ print(Order(joe, long_order, LargeOrderPromo()))
+ print(Order(joe, cart, LargeOrderPromo()))
     
-    
+ 
+使用函数实现策略模式
+--------------------------------
 
 
 
@@ -92,6 +131,10 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
 
 
 
+
+
+
+https://mp.weixin.qq.com/s/uafM8rzU2rP8LJ5KEqiadQ
 
 
 
