@@ -4,4 +4,5 @@ mkdocs/exts/__pycache__/
 venv
 *.gitignore
 .vscode/sftp.json
+settings.json
 
