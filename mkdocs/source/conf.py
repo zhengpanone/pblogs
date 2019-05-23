@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-
 import sys
 import os
-#from pallets_sphinx_themes import ProjectLink, get_version
+# from pallets_sphinx_themes import ProjectLink, get_version
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -96,7 +95,7 @@ latex_elements={# The paper size ('letterpaper' or 'a4paper').
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'mkdocs.tex', u'《Python编程时光》',
+  ('index', 'mkdocs.tex', u'《Python博客》',
    u'郑攀', 'howto'),
 ]
 

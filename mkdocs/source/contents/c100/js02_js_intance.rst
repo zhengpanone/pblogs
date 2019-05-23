@@ -27,7 +27,7 @@
  // 解决方案:把say 方法写在它们共同的父对象中
  // 共同的父对象可以通过Person.prototype来获取
  Person.prototype.run=function(){
-     console,log("you can run")
+     console.log("you can run")
  }
  p1.run();
  p2.run();
@@ -55,27 +55,29 @@
 原型链继承
 >>>>>>>>>>>>>>>>>>>>>
 
-.. code:: js
+::
 
- function Person(){
+ .. code:: js
 
- }
- Person.prototype.s1 = function(){}
- tom = new Person();
+    function Person(){
 
- Person.prototype = {
-     // 必须要,constructor 属性指向当前对象本身
-     constructor:Person,
-     a1:function(){
-         console.log("Hello")
-     },
-     a2:function(){},
-     a3:function(){},
- }
- console.log(tom.s1()); //可以访问
- console.log(tom.a1()); // undefined
+    }
+    Person.prototype.s1 = function(){}
+    tom = new Person();
 
- tom对象在创建的时候已经有一个确定的原型对象,就旧的Person.prototype ,由于Person.prototype后面被重新赋值,但是tom对象的原型对象却没有改变,所以tom对象不能访问到对象中的a1-a5方法
+    Person.prototype = {
+        // 必须要,constructor 属性指向当前对象本身
+        constructor:Person,
+        a1:function(){
+            console.log("Hello")
+        },
+        a2:function(){},
+        a3:function(){},
+    }
+    console.log(tom.s1()); //可以访问
+    console.log(tom.a1()); // undefined
+
+tom对象在创建的时候已经有一个确定的原型对象,就旧的Person.prototype ,由于Person.prototype后面被重新赋值,但是tom对象的原型对象却没有改变,所以tom对象不能访问到对象中的a1-a5方法
 
 如何解决,先改变原型,重新添加新实例 ,创建实例即确定了原型
 一般情况,先改变原型对象,再创建对象
@@ -87,8 +89,9 @@
 
 场景: 有时候想使用某个对象中的属性,但是又不能直接修改它,于是就可以创建一个该对象的拷贝
 实际运用:
- jquery: $.extend: 编写jquery插件的必经之路
-    基于jquery封装插件
+
+jquery: $.extend: 编写jquery插件的必经之路
+基于jquery封装插件
 
 ::
 

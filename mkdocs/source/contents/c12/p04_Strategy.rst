@@ -32,6 +32,7 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
 --------------------------------
 
 ::
+
  from abc import ABC,abstractmethod
  from collections import namedtuple
 
@@ -57,7 +58,9 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
     
     def total(self):
         if not hasattr(self, '__total'):
+
             self.total = sum(item.total() for item in self.cart)
+
         return self.__total
 
     def due(self):
@@ -65,6 +68,7 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
             discount = 0
         else:
             discount = self.promotion.discount(self)
+
         return self.total() -discount
 
     def __repr__(self):
@@ -74,18 +78,24 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
  class Promotion(ABC): # 策略:抽象基类
     @abstractmethod
     def discount(self,order):
+
         """返回折扣金额(正值)"""
+
+        return 
 
  class FidelityPromo(Promotion): # 第一个具体策略
     """为积分1000或以上顾客提供5%折扣"""
     def discount(self,order):
+
         return order.total()*0.05 if order.customer.fidelity >= 1000 else 0
 
  class BulkItemPromo(Promotion): # 第二个具体策略
     """单个商品为20个或以上时提供10%折扣"""
     def discount(self, order):
+
         discount = 0
         for item in oredr.cart:
+
             if item.quantity >= 20:
                 discount += item.total()*01
         return discount
@@ -93,9 +103,12 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
  class LargeOrderPromo(Promotion): # 第三个具体策略
     """订单中不同商品达到10个或以上时提供7%"""
     def discount(self, order):
+
         distinct_items = {item.product for item in order.cart}
         if len(distinct_items) >= 10:
+
             return order.total()*0.07
+
         return 0
 
  joe = Customer('John Doe', 0)
@@ -104,6 +117,7 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
  cart = [LineItem('banan', 4, 0.5),
          LineItem('apple', 10, 1.5),
          LineItem('watermellon', 5, 5.0)]
+
  print('策略一：为积分为1000或以上的顾客提供5%折扣')
  print(Order(joe, cart, FidelityPromo()))
  print(Order(ann, cart, FidelityPromo()))
@@ -138,4 +152,4 @@ https://mp.weixin.qq.com/s/uafM8rzU2rP8LJ5KEqiadQ
 
 
 
-.. |image1| image:: ./imag/2019051301.webp
+.. |image1| image:: ./img/2019051301.webp
