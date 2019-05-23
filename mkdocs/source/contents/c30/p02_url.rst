@@ -518,7 +518,9 @@ HTML解析，构建DOM
 Bytes → characters → tokens → nodes → DOM
 假设有下面这样一个代码
 
-<html>  
+.. code:: html
+
+ <html>  
     <head>    
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href="style.css" rel="stylesheet">
@@ -528,7 +530,7 @@ Bytes → characters → tokens → nodes → DOM
         <p>Hello<span>web performance</span> students!</p>
         <div><img src="awesome-photo.jpg"></div>  
     </body>
-</html>
+ </html>
 
 
 浏览器的处理如下：

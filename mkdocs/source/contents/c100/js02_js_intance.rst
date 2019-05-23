@@ -10,7 +10,7 @@
 为什么要使用继承
 ===========================
 
-::
+.. code:: js
 
  function Person(name.age){
      this.name=name;
@@ -55,17 +55,16 @@
 原型链继承
 >>>>>>>>>>>>>>>>>>>>>
 
-::
 
- .. code:: js
 
-    function Person(){
+.. code:: js
 
-    }
-    Person.prototype.s1 = function(){}
-    tom = new Person();
+ function Person(){
+ }
+ Person.prototype.s1 = function(){}
+ tom = new Person();
 
-    Person.prototype = {
+ Person.prototype = {
         // 必须要,constructor 属性指向当前对象本身
         constructor:Person,
         a1:function(){
@@ -73,9 +72,9 @@
         },
         a2:function(){},
         a3:function(){},
-    }
-    console.log(tom.s1()); //可以访问
-    console.log(tom.a1()); // undefined
+ }
+ console.log(tom.s1()); //可以访问
+ console.log(tom.a1()); // undefined
 
 tom对象在创建的时候已经有一个确定的原型对象,就旧的Person.prototype ,由于Person.prototype后面被重新赋值,但是tom对象的原型对象却没有改变,所以tom对象不能访问到对象中的a1-a5方法
 
@@ -93,7 +92,7 @@ tom对象在创建的时候已经有一个确定的原型对象,就旧的Person.
 jquery: $.extend: 编写jquery插件的必经之路
 基于jquery封装插件
 
-::
+.. code:: js
 
  var o1 = {age:2};
 
@@ -103,7 +102,7 @@ jquery: $.extend: 编写jquery插件的必经之路
  // 2. 由于o2对象跟o1对象是同一个对象
  // 3. 所以此时o1对象的age属性也被修改了
   
-::
+.. code:: js
 
  var o3={gender:"男",grade:"初三",group:"第四组",name"张三"};
  var o4={gender:"男",grade:"初三",group:"第四组",name"李四"};
@@ -117,7 +116,7 @@ jquery: $.extend: 编写jquery插件的必经之路
 封装拷贝继承函数
 ============================
 
-::
+.. code:: js
 
  function extend(source,target){
      for (var key in source){
@@ -131,7 +130,7 @@ jquery: $.extend: 编写jquery插件的必经之路
 
 ES6中有了《对象扩展运算符》专门为拷贝继承而生:优化浅拷贝
 
-:: 
+.. code:: js 
 
  var source = {name:"张三",age:15};
  var target = {...source};
@@ -145,7 +144,9 @@ es6内容
 + 1、解构赋值   
 + 2、函数rest参数  
 + 3、箭头函数  
-    - 箭头函数和普通函数有哪些不同？(4点)
+
+ - 箭头函数和普通函数有哪些不同？(4点)
+ 
 + 4、对象的Object.assign  
 + 5、promise 
 + 6、generator 
