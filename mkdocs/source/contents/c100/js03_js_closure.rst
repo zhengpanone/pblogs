@@ -17,3 +17,48 @@
 - 作用域相对变量，如果存在多级作用域1，这个变量又来自哪里？我们把这个变量查找的过程称之为变量的作用域链
 - 意义： 查找变量，确定变量来自于哪里，变量是否可以访问
 
+
+.. code:: js
+
+ function fn(callback){
+     var age = 18;
+     callback()
+ }
+
+ fn(function(){
+     console.log(age);
+     //var age = 15;
+     // 看上一级作用域，不是看函数在哪里调用，而是看函数在哪里编写，
+     //因为这种特别，通常会把作用域说成是：此法作用域
+
+ })
+
+.. code:: js
+
+ <body>
+    <div>1</div>
+    <div>22</div>
+    <div>333</div>
+    <div>4444</div>
+    <div>55555</div>
+ </body>
+ <script>
+    var divs = document.getElementByTagName("div")
+    for(var i=0; i<divs.length;i++){
+        const element = divs[i];
+        element.onclick=function(){
+            alert(i)
+            // 弹出的是5
+            // i 是来自全局作用域，执行完for循环后，i的值已经变成了5
+        }
+    }
+    // 如何打印对应的i，闭包的解决方案
+    for(var i=0;i<divs.length;i++){
+        const element = divs[i];
+        element.onclick=(function(j){
+            return function(){
+                alert(j)
+            }
+        })(i);
+    }
+ </script>
