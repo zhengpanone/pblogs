@@ -10,8 +10,9 @@
 .. note::
 
  docker run -i-t IMAGE /bin/bash
- -i --interactive=true|fasle 默认是false
- -t --tty=true| false 默认是false
+
+  -i --interactive=true|fasle 默认是false
+  -t --tty=true| false 默认是false
  
 
 
