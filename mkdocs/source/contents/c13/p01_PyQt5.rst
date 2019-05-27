@@ -1,8 +1,8 @@
 ==================
-1 PyQt5使用
+1. PyQt5使用
 ==================
 
-.. code::python
+.. code:: python
 
  # 导入模块
  import sys
