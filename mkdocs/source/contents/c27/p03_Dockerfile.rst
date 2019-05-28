@@ -27,19 +27,22 @@
  ENTERYPOINT  ["executable","param1","param2"] (exec模式)
  ENTERYPOINT command param1 param2 (shell模式)
 
- ADD
+ ADD <src>..<dest> ADD包含类似tar的解压功能,如果单纯复制文件,Docker推荐使用COPY
+ ADD ["<src>"..."<dest>"] 适用于文件路径中有空格的情况
 
- COPY
+ COPY <src>..<dest>
+ COPY ["<src>"..."<dest>"] 适用于文件路径中有空格的情况
 
- VOLUME
+ VOLUME ["/data"]
 
- WORKDIR
+ WORKDIR /path/to/workdir 
 
- ENV
+ ENV <key><value>
+ ENV <key>=<value>
 
- USER
+ USER user:group
 
- ONBUILD
+ ONBUILD [INSTRUCTION] 镜像触发器,当一个镜像被其他镜像作为基础镜像时执行会在构建过程中插入指令
 
 
 
