@@ -22,6 +22,7 @@
  }
 
 运行上面的脚本,通过jobs -l查看运行的脚本
+
 .. note::
 
  jobs -l 
@@ -91,6 +92,6 @@
 
 公众号：`良许Linux`__
 
-.. 良许Linux: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485143&amp;idx=1&amp;sn=2726e5d4de6abc6e09a2408739cd1593&source=41#wechat_redirect
-__ 良许Linux
+.. _Linux: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485143&amp;idx=1&amp;sn=2726e5d4de6abc6e09a2408739cd1593&source=41#wechat_redirect
+__ Linux
 
