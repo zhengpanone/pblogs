@@ -45,4 +45,9 @@
  ONBUILD [INSTRUCTION] 镜像触发器,当一个镜像被其他镜像作为基础镜像时执行会在构建过程中插入指令
 
 
+.. note::
+
+ docker build -
+
+
 
