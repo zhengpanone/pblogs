@@ -23,6 +23,8 @@ gzip
 tar 
 -----------------
 
+对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压
+
 - 命令选项
 
 ::
@@ -30,15 +32,17 @@ tar
  -z(gzip)      用gzip来压缩/解压缩文件
  -j(bzip2)     用bzip2来压缩/解压缩文件
  -v(verbose)   详细报告tar处理的文件信息
- -c(create)    创建新的档案文件
- -x(extract)   解压缩文件或目录
+ -c(create)    新建打包文件
+ -C dir        指定压缩/解压缩的目录dir
+ -t            查看打包文件的内容含有哪些文件名
+ -x(extract)   解压缩文件或目录,可以搭配-C（大写）指定解压的目录,注意-c,-t,-x不能同时出现在同一条命令中
  -f(file)      使用档案文件或设备，这个选项通常是必选的。
 
 ::
 
  # 压缩
- tar -zvcf buodo.tar.gz buodo
- tar -jvcf buodo.tar.bz2 buodo 
+ tar -zcf buodo.tar.gz buodo
+ tar -jcf buodo.tar.bz2 buodo 
 
  # 解压
  tar -zvxf buodo.tar.gz
