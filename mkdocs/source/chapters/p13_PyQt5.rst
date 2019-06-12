@@ -12,4 +12,4 @@ PyQt5使用
    :maxdepth: 1
    :glob:
 
-   ../contents/c13/*
+   ../contents/c13_PyQt5/*
