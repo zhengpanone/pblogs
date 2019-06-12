@@ -8,4 +8,4 @@ Docker
    :maxdepth: 1
    :glob:
 
-   ../contents/c27/*
+   ../contents/c27_docker/*

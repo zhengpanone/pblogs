@@ -10,4 +10,4 @@ python 操作数据库 https://github.com/zhengpanone/py_db.git
    :maxdepth: 1
    :glob:
 
-   ../contents/c25/*
+   ../contents/c25_database/*
