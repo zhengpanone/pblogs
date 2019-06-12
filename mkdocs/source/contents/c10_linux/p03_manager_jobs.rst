@@ -88,6 +88,19 @@
  [2]-  1801 Terminated              ./hello2 > test2.txt
  [3]+  1844 Running                 ./hello3 > test3.txt &
 
+ps命令
+==================
+
+-A ：所有的进程均显示出来
+-a ：不与terminal有关的所有进程
+-u ：有效用户的相关进程
+-x ：一般与a参数一起使用，可列出较完整的信息
+-l ：较长，较详细地将PID的信息列出
+
+ps aux # 查看系统所有的进程数据
+ps ax # 查看不与terminal有关的所有进程
+ps -lA # 查看系统所有的进程数据
+ps axjf # 查看连同一部分进程树状态
 
 
 公众号：`良许Linux`__

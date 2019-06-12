@@ -2,18 +2,18 @@
 4. Linux批量处理任务
 ====================================
 
-.. note:: shell
+.. code:: shell
 
  for tar in *.tar.gz; do tar xvf $tar; done
  for sh in *.sh; do sh $sh; done
 
 用tar命令批量解压某个文件夹下所有的tar.gz文件
-.. note:: shell
+.. code:: shell
 
  ls *.tar.gz | xargs -n1 tar xzvf
 
 解压当前目录下的所有bz2文件，maxdepth表示搜索深度，1代表只搜索当前目录
-.. note:: shell
+.. code:: shell
 
  find -maxdepth 1 -name “*.bz2″|xargs -i tar xvjf {}
  
