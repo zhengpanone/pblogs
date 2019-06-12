@@ -11,6 +11,6 @@ Python 编码设置
    :maxdepth: 1
    :glob:
 
-   ../contents/c01/*
+   ../contents/c01_syntactic_basis/*
 
 

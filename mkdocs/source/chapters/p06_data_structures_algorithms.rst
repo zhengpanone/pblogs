@@ -13,4 +13,4 @@ Python 提供了大量的内置数据结构，包括列表，集合以及字典�
     :maxdepth: 1
     :glob:
 
-    ../contents/c06/*
+    ../contents/c06_data_structures_algorithms/*

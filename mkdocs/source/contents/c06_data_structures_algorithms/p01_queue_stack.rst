@@ -27,23 +27,29 @@
 
  class Queue(object):
     def __init__(self):
-        self.queue=[]
-
+        self.queue = []
+        
     def isEmpty(self):
         return self.queue == []
-
-    def enqueue(self,x):
-        self.queue.append(x)
-
-    def dequeue(self):
-        if self.queue:
-            a = self.queue[0]
-            self.queue.remove(a)
-            return a
-        else:
-            raise IndexError,'queue is empty'
-
+    
+    def insert(self, data):
+        self.queue.append(data)
+    
+    def pop(self):
+        if len(self.queue) == 0:
+            return None
+        data = self.queue[0]
+        del self.queue[0]
+        return data
+            
     def size(self):
-        reutrn len(self.queue)
+        return len(self.queue)
+    
+ queue = Queue()
+ print(queue.size())
+ queue.insert(1)
+ queue.insert(2)
+ a = queue.pop()
+ print(a)
 
     
