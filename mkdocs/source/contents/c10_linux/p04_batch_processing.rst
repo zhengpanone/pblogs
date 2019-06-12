@@ -2,7 +2,7 @@
 4. Linux批量处理任务
 ====================================
 
-.. code:: shell
+:: 
 
  for tar in *.tar.gz; do tar xvf $tar; done
  for sh in *.sh; do sh $sh; done
