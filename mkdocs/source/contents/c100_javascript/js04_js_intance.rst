@@ -213,18 +213,5 @@ ES6中有了《对象扩展运算符》专门为拷贝继承而生:优化浅拷�
  + arr.__proto__:Array.prototype
  + arr.__proto__.__proto__ 找到根对象
 
-es6内容
-========================
 
-+ 1、解构赋值   
-+ 2、函数rest参数  
-+ 3、箭头函数  
 
- - 箭头函数和普通函数有哪些不同？(4点)
- 
-+ 4、对象的Object.assign  
-+ 5、promise 
-+ 6、generator 
-+ 7、async 
-+ 8、class 
-+ 9、module
