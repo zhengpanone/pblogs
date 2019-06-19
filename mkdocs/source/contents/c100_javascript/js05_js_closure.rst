@@ -112,4 +112,144 @@
 
  </script>
 
+闭包的应用
+>>>>>>>>>>>>>>>>>>>>
+
+.. code:: js 
+
+ <script>
+
+ // 模块化开发
+    var ktv=(function KTV(){
+        // 保护leastPrice变量，将他放在函数内部
+        var leastPrice=1000;
+
+        var total=0;
+        return{
+            //购物
+            buy:function(price){
+                total+=price;
+            },
+            pay:function(){
+                if(total<leastPrice){
+                    console.log("请继续购物")
+                }else{
+                    console.log("欢迎下次光临")
+                }
+            },
+            editLeast:function(id,price){
+                if(id===888){
+                    leastPrice=price;
+                    console.log("现在最低消费"+price);
+                }else{
+                    console.log("权限不足");
+                }
+            }
+        }
+    })();
+ 
+    
+ </script>
+
+
+闭包的问题
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+函数执行完毕后,作用域中保留了最新的变量值
+
+闭包应用场景
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+- 模块化
+- 防止变量被破坏
+
+函数的4种调用方式
+
+1 函数调用
+# 方法调用
+# new调用(构造函数)
+# 上下文方式(call、apply、bind)
+
+**在ES6的箭头函数之前的时代,想要判断一个函数内部的this指向谁,就是根据上面的四种方式来决定的**
+
+.. code:: js 
+
+ var age=18;
+ var p={
+     age:15
+     say:function(){
+         console.log(this.age);
+     }
+ }
+ var s1=p.say()
+ s1();      //函数调用
+
+
+.. code:: js 
+
+ var age=18;
+ var p={
+     age:15
+     say:function(){
+         console.log(this.age);
+     }
+ }
+ p.say()    //方法调用
+
+.. code:: js 
+
+ var age=18;
+ var p={
+     age:15
+     say:function(){
+         console.log(this.age);
+     }
+ }
+ new p.say()    //构造函数调用
+
+.. code:: js 
+
+ var length=21;
+ function f1(){
+     console.log(this.length);
+
+ }
+
+ f1.call([1,3,5])
+ f1.apply(this)
+ f1.call(5)     //上下文方式
+
+闭包内存释放问题
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. code:: js 
+
+ function f1(){
+     var a=5;
+     return function(){
+         a++;
+         console.log(a);
+     }
+ }
+
+ var q1=f1();
+ // 要想释放q1里面保存的a,只能通过释放q1
+ q1=null;   //q1=undefined
+
+
+es6内容
+========================
+
++ 1、解构赋值   
++ 2、函数rest参数  
++ 3、箭头函数  
+
+ - 箭头函数和普通函数有哪些不同？(4点)
+ 
++ 4、对象的Object.assign  
++ 5、promise 
++ 6、generator 
++ 7、async 
++ 8、class 
++ 9、module
  
