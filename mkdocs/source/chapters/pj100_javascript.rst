@@ -8,4 +8,4 @@ JavaScript 基础知识
    :maxdepth: 1
    :glob:
 
-   ../contents/c100/*
+   ../contents/c100_javascript/*

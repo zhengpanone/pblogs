@@ -66,10 +66,12 @@ docker pull 镜像名：TAG
  # 监听端口、监听地址前的 # 号去除
 
  Port 22
+ 
  #AddressFamily any
- ListenAddress 0.0.0.0
- ListenAddress ::
 
+ ListenAddress 0.0.0.0
+
+ ListenAddress ::
  # 开启允许远程登录
 
  PermitRootLogin yes
@@ -78,12 +80,17 @@ docker pull 镜像名：TAG
 
  PubkeyAuthentication yes
 
-
-
-
  启动openssh
 
- systemctl start sshd
+ systemctl start sshd.server
+
+ 重启 sshd服务命令 
+
+ systemctl restart sshd.service
+
+设置服务开启自启命令 
+
+systemctl enable sshd.service
 
  **centos解决bash: service: command not found**
 
@@ -110,4 +117,17 @@ ssh登录
  宿主机root用户仍然可以直接通过下面命令登录
 
  docker exec -it centos7 /bin/bash
+
+将docker容器提交为镜像
+==========================================
+
+.. note::
+ docker commit 481b2aad8d5f centos_ssh 
+
+ 481b2aad8d5f 为容器id、centos_ssh为镜像名称
+
+ 将新的镜像启动，并将docker服务器的50001端口映射到容器的22端口上,给容器命名 
+ docker run --privileged -d -p 50001:22 --name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
+
+ 
 
