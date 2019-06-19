@@ -28,6 +28,7 @@
  ENTERYPOINT command param1 param2 (shell模式)
 
  ADD <src>..<dest> ADD包含类似tar的解压功能,如果单纯复制文件,Docker推荐使用COPY
+ 
  ADD ["<src>"..."<dest>"] 适用于文件路径中有空格的情况
 
  COPY <src>..<dest>
@@ -35,7 +36,9 @@
 
  VOLUME ["/data"]
 
- WORKDIR /path/to/workdir 
+ WORKDIR /path/to/workdir #相当于linux的cd命令，改变目录，尽量使用绝对路径！！！不要用RUN cd
+
+ WORKDIR /test # 如果没有就自动创建
 
  ENV <key><value>
  ENV <key>=<value>
@@ -47,7 +50,7 @@
 
 .. note::
 
- docker build -
+
 
 
 
