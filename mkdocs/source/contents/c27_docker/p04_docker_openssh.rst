@@ -17,6 +17,7 @@ docker pull 镜像名：TAG
 .. note::
 
  docker pull centos:latest 
+ 
  docker pull centos:6.7
 
 查看镜像
@@ -54,10 +55,13 @@ docker pull 镜像名：TAG
 .. note::
 
  进入容器
+
  docker exec -it centos7_ssh /bin/bash
 
  ----------------------以下都是在容器内部操作--------------------------
+
  安装openssh
+
  yum install -y openssh-server openssh-clients
 
  **修改sshd_config配置**
@@ -127,6 +131,7 @@ ssh登录
  481b2aad8d5f 为容器id、centos_ssh为镜像名称
 
  将新的镜像启动，并将docker服务器的50001端口映射到容器的22端口上,给容器命名 
+
  docker run --privileged -d -p 50001:22 --name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
 
  

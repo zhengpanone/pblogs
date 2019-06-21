@@ -5,10 +5,10 @@
 grep
 =========================
 
-grep Aug /var/log/messages  在文件 '/var/log/messages'中查找关键词"Aug" 
-grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
-grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
-grep Aug -R /var/log/* 在目录‘/var/log’及随后的目录中搜索字符串Aug
+- grep Aug /var/log/messages  在文件 '/var/log/messages'中查找关键词"Aug" 
+- grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
+- grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
+- grep Aug -R /var/log/* 在目录‘/var/log’及随后的目录中搜索字符串Aug
 
 sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2" 
 sed '/^$/d' example.txt 从example.txt文件中删除所有空白行
