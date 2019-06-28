@@ -12,3 +12,10 @@ linux 安装docker
  systemctl start/status docker 
 
  docker version
+
+
+
+
+
+Windows 安装Docker
+=============================

@@ -40,6 +40,12 @@ Docker容器和虚拟机的区别
 
 |image1|
 
+Docker内部组件
+==========================================
+
+1. Namespaces 命名空间，Linux内核提供的一种对进程**资源隔离**的机制，例如进程，网络，挂载点等资源。
+2. CGroups 控制组，Linux内核提供的一种**限制进程资源**的机制；例如cpu,内存等资源。 ls -l /sys/fs/cgroups   主要防止某一个容器资源过多导致宿主机资源紧张
+3. UnionFS 联合文件系统，支持将不同位置的目录挂载到同一虚拟文件系统，形成一种分层的模型。 ls 
 
 容器创建(docker create)
 =================================
@@ -48,6 +54,7 @@ Docker容器和虚拟机的区别
 docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
 常用参数：
+
 # -t 分配一个虚拟终端
 
 # -i 保持输入打开
@@ -55,7 +62,6 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 # -d 容器后台运行，并打印容器id
 
 # -rm 容器结束后自动删除容器
-
 
 推荐使用 docker run -dti 来启动所需容器。
 
@@ -70,6 +76,7 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 #. App Isolation(应用隔离)
 #. Debugging Capabilities(开发调试)
 #. Repid Deployment(交付方式改变)
+#. 持续集成：CI(持续集成)、CD(持续部署) ;自动化项目测试流程:构建、部署、部署、测试、发布
 
 
 docker 基本使用
@@ -169,7 +176,7 @@ Docker 基础命令
     import    Import the contents from a tarball to create a filesystem image  #从tar包中的内容创建一个新的文件系统映像(对应export)
     info    Display system-wide information  #显示系统相关信息
     inspect    Return low-level information on a container or image  #查看容器详细信息
-    kill    Kill a running container  #kill指定docker容器
+    kill    Kill a running container  #kill指定docker容器 
     load    Load an image from a tar archive or STDIN  #从一个tar包中加载一个镜像(对应save)
     login    Register or log in to a Docker registry#注册或者登陆一个docker源服务器
     logout    Log out from a Docker registry  #从当前Docker registry退出
@@ -213,3 +220,6 @@ Docker 基础命令
  docker rmi  `docker images -aq`   # 一次性删除所有本地的镜像记录
 
 .. |image1| image:: ./image/640.webp
+
+
+https://www.cnblogs.com/521football/p/10483980.html

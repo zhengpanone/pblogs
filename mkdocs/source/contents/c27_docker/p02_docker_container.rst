@@ -60,6 +60,8 @@
  docker run -d -P training/webapp python app.py
  # -P 参数会随机映射端口到容器开放的网络端口
 
+ docker container cp anaconda-ks.cfg container_name:/root
+
 
 
 删除容器

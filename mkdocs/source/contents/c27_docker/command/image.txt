@@ -1,0 +1,21 @@
+Flag shorthand -h has been deprecated, please use --help
+
+Usage:	docker image COMMAND
+
+Manage images
+
+Commands:
+  build       Build an image from a Dockerfile # 构建镜像来自Dockerfile
+  history     Show the history of an image	# 查看镜像历史
+  import      Import the contents from a tarball to create a filesystem image	# 导入容器文件系统tar归档文件创建镜像
+  inspect     Display detailed information on one or more images	# 显示一个或多个镜像详细信息
+  load        Load an image from a tar archive or STDIN	# 加载镜像来自tar归档或标准输入
+  ls          List images	# 列出镜像
+  prune       Remove unused images	# 移除未使用的镜像。没有被标记或被任何容器引用
+  pull        Pull an image or a repository from a registry	# 从镜像仓库拉取镜像
+  push        Push an image or a repository to a registry	# 推送一个镜像到镜像仓库
+  rm          Remove one or more images	# 移除一个或多个镜像
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)	# 保存一个或多个镜像到一个tar归档文件
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE	# 创建一个引用源镜像标记目标镜像
+
+Run 'docker image COMMAND --help' for more information on a command.
