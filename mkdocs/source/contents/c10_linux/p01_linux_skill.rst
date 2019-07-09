@@ -35,10 +35,10 @@ cat 查看文件
 find 查找文件
 ===============================
 
-find / -name filename 从/ 开始进入根文件系统搜索文件和目录 # #找到安装的目录 find / -name ipython 
-
 .. note::
- 
+
+ find / -name filename 从/ 开始进入根文件系统搜索文件和目录 # #找到安装的目录 find / -name ipython 
+
  #增加快速快捷 vim ~/.bashrc
 
  alias ipython3='python3 /usr/local/python37/bin/ipython'
@@ -72,6 +72,7 @@ chmod命令
 >>>>>>>>>>>>>>>>>>>>
 
 ls -lh 显示权限  
+
 .. note::
 
  chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r，4 ）、写(w，2)和执行(x，1)的权限 
@@ -83,7 +84,7 @@ chown命令
 
 改变文件的所有者
 
-..note::
+.. note::
 
  chown user1 file1 改变一个文件的所有人属性 
 
