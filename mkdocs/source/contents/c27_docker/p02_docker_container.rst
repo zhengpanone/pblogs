@@ -15,9 +15,9 @@
 
  docker run -i-t IMAGE /bin/bash  -c "while true;do echo 正在运行; sleep 1;done"
 
- # -i --interactive=true|fasle 默认是false 让容器的标准输入保持打开
+ # -i \-\-interactive=true|fasle 默认是false 让容器的标准输入保持打开
 
- # -t --tty=true| false 默认是false 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上
+ # -t \-\-tty=true| false 默认是false 选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上
 
  # /bin/sh  指定使用centos的bash解释器
 
@@ -32,7 +32,7 @@
 
  docker run --name mydocker -it centos /bin/bash  
 
-    # --name  给容器定义一个名称
+    # \-\-name  给容器定义一个名称
     # -i  让容器的标准输入保持打开
     # -t 让Docker分配一个伪终端,并绑定到容器的标准输入上
     # /bin/bash 指定docker容器，用shell解释器交互

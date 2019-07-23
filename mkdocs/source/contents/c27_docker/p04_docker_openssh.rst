@@ -32,7 +32,7 @@ docker pull 镜像名：TAG
 
 .. note::
 
- docker run --privileged -itd -p 8888:22 --name centos7_ssh 9f38484d220f /usr/sbin/init
+ docker run \-\-privileged -itd -p 8888:22 \-\-name centos7_ssh 9f38484d220f /usr/sbin/init
 
  --privileged 启动后让容器具备超级特权
 
@@ -42,11 +42,11 @@ docker pull 镜像名：TAG
 
  **宿主机就是运行docker的机器，这样访问宿主机IP:8888端口，实际访问的是docker的22端口。**
 
- --name  给启动的容器命名，方便后续操作
+ \-\-name  给启动的容器命名，方便后续操作
 
  9f38484d220f 就是IMAGE ID
 
- **注：--privileged  和/usr/sbin/init是必须的，否则会报错。**
+ **注：\-\-privileged  和/usr/sbin/init是必须的，否则会报错。**
  Failed to get D-Bus connection: Operation not permitted
 
 进入容器并配置ssh服务
@@ -132,7 +132,7 @@ ssh登录
 
  将新的镜像启动，并将docker服务器的50001端口映射到容器的22端口上,给容器命名 
 
- docker run --privileged -d -p 50001:22 --name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
+ docker run \-\-privileged -d -p 50001:22 \-\-name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
 
  
 
