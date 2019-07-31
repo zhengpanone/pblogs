@@ -32,7 +32,7 @@ docker pull 镜像名：TAG
 
 .. note::
 
- docker run \-\-privileged -itd -p 8888:22 \-\-name centos7_ssh 9f38484d220f /usr/sbin/init
+ docker run --privileged -itd -p 8888:22 --name centos7_ssh 9f38484d220f /usr/sbin/init
 
  --privileged 启动后让容器具备超级特权
 
@@ -76,6 +76,7 @@ docker pull 镜像名：TAG
  ListenAddress 0.0.0.0
 
  ListenAddress ::
+ 
  # 开启允许远程登录
 
  PermitRootLogin yes
