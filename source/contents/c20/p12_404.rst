@@ -1,0 +1,56 @@
+===================================
+20.12 编写统一的404页面
+===================================
+
+导入abort方法
+-------------------
+
+　　　　from flask import abort
+
+设置一个站位符
+-------------------------
+
+当404错误出现时，自己编写的404页面就会在占位符的位置进行显示
+
+　　　　abort(404)　　
+
+利用钩子编写自己的404页面
+-------------------------------------------
+
+::
+
+ @app.errorhandler(404)  # 404页面钩子
+ def page_404(er):  # 参数是原始的404页面提示信息
+    print(er)
+    return '这是统一的错误页面', 404, {}  # 返回自己编写的404页面信息
+
+
+::
+
+ from flask import Flask
+ from flask import abort
+
+ app = Flask(__name__)
+
+ @app.route('/')
+ def index():
+    return '测试主页面'
+
+ movies = [1,2,3,4,5]
+
+ @app.route('/movie/<int:num>/')
+ def movie(num):
+    if num in movies:
+        return '电影 {} 的详细信息为：...... '.format(num)
+    abort(404)  # 自己编写的404页面会显示在这里
+
+ @app.errorhandler(404)  # 404页面钩子
+ def page_404(er):  # 参数是原始的404页面提示信息
+    print(er)
+    return '这是统一的错误页面', 404, {}  # 返回自己编写的404页面信息
+
+
+ print(app.url_map)
+
+ if __name__ == '__main__':
+    app.run(debug=True)

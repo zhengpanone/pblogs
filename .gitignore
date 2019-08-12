@@ -1,6 +1,6 @@
-mkdocs/build/
+/build/
 *__pycache_/
-mkdocs/exts/__pycache__/
+/exts/__pycache__/
 venv
 *.gitignore
 .vscode/sftp.json
