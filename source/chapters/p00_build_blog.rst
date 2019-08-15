@@ -10,7 +10,3 @@
    :glob:
 
    ../contents/c00/*
-
-
-
-

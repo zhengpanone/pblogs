@@ -1,6 +1,6 @@
+import sphinx_rtd_theme
 import os
 import sys
-
 
 
 # -- Project information -----------------------------------------------------
@@ -18,13 +18,13 @@ release = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['chinese_search', 'recommonmark']
+extensions = ['chinese_search', 'recommonmark', 'sphinx_markdown_tables']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = ['.rst','.md']
+source_suffix = ['.rst', '.md']
 
 # The master toctree document.
 master_doc = 'index'
@@ -34,13 +34,13 @@ language = 'zh_CN'
 
 exclude_patterns = []
 
+pygments_style = 'sphinx'
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
@@ -56,14 +56,14 @@ htmlhelp_basename = 'Python\'S BLOG'
 # 注：在生成html的时候这句话要注释
 # latex_engine = 'xelatex'
 
-latex_elements={# The paper size ('letterpaper' or 'a4paper').
-'papersize':'a4paper',# The font size ('10pt', '11pt' or '12pt').
-'pointsize':'16pt',
-'classoptions':',oneside','babel':'',#必须
-'inputenc':'',#必须
-'utf8extra':'',#必须
-# Additional stuff for the LaTeX preamble.
- 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
+latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper',  # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '16pt',
+    'classoptions': ',oneside', 'babel': '',  # 必须
+    'inputenc': '',  # 必须
+    'utf8extra': '',  # 必须
+    # Additional stuff for the LaTeX preamble.
+    'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
 }
 
 '''
@@ -84,8 +84,8 @@ latex_elements={# The paper size ('letterpaper' or 'a4paper').
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'mkdocs.tex', u'《Python博客》',
-   u'郑攀', 'howto'),
+    ('index', 'mkdocs.tex', u'《Python博客》',
+     u'郑攀', 'howto'),
 ]
 
 # -- Options for manual page output ---------------------------------------
@@ -107,13 +107,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Python-blog', u'《Python博客》',
-   u'郑攀', 'Python-blog', '《Python博客》',
-   'Miscellaneous'),
+    ('index', 'Python-blog', u'《Python博客》',
+     u'郑攀', 'Python-blog', '《Python博客》',
+     'Miscellaneous'),
 ]
 
 
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -122,7 +122,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 _exts = "../exts"
 sys.path.append(os.path.abspath(_exts))
