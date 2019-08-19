@@ -123,6 +123,9 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
    # 对一个不包含target属性的Process类执行start()方法，就会运行这个类中的run()方法
    p.start()
 
+dummy
+============================
+
 
 
 
@@ -134,4 +137,5 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 https://blog.csdn.net/topleeyap/article/details/78981848
 https://blog.csdn.net/u014556057/article/details/61616902
 
+ 涛哥聊Python_:`_https://mp.weixin.qq.com/s/dlJXV4mmDe2CjFQ_at1_6w`
 
