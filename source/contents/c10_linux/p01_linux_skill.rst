@@ -57,27 +57,50 @@ find 查找文件
 
 .. note::
 
- find / -name filename 从/ 开始进入根文件系统搜索文件和目录 # #找到安装的目录 find / -name ipython 
+ 
 
- #增加快速快捷 vim ~/.bashrc
+ find / -name filename 从/ 开始进入根文件系统搜索文件和目录
 
- alias ipython3='python3 /usr/local/python37/bin/ipython'
+**正则查找文件**
 
- source ~/.bashrc
+ find . -regex ".*(.txt|.pdf)$"
 
- 如何配置环境变量
+ -iregex: 忽略大小写的正则
 
- vim /etc/profile
+ **否定参数**
 
- export PATH=$PATH:/usr/local/python37/bin
+ find . ! -name  "*.txt" -print  查找所有非txt文本
+ 
+ **指定搜索深度**
+ 
+ find . -maxdepth 1 -type f 打印当前目录的文件深度为1
 
- source /etc/profile
+ **定制搜索**
 
- find / -user username 搜索属于用户 "username" 的文件和目录
+    **按类型搜索：**
+    
+    find . -type d -print 
+    
+    -type f 文件 /l 符号链接
+
+    **按时间搜索**
+
+    -atime  访问时间(单位是天，分钟单位是-amin)
+
+    -mtime  修改时间(内容被修改)
+
+    -ctime  变化时间(元数据或权限变化)
+
+ find . -atime 7 -type f -print 最近7天被访问的所有文件
 
  find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件
 
  find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件
+
+
+ find / -user username 搜索属于用户 "username" 的文件和目录
+
+
 
  whereis halt 显示一个二进制文件、源码或man的位置
 
@@ -120,3 +143,20 @@ chgrp命令
 .. note::
 
  chgrp group1 file1 改变文件的群组
+
+
+ #找到安装的目录 find / -name ipython 
+
+ #增加快速快捷 vim ~/.bashrc
+
+ alias ipython3='python3 /usr/local/python37/bin/ipython'
+
+ source ~/.bashrc
+
+ 如何配置环境变量
+
+ vim /etc/profile
+
+ export PATH=$PATH:/usr/local/python37/bin
+
+ source /etc/profile
