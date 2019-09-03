@@ -93,8 +93,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'python3-blog', u'《Python博客》',
-     [u'郑攀'], 1)
+    ('index', 'python3-blog', '《Python博客》',
+     ['郑攀'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -107,8 +107,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'Python-blog', u'《Python博客》',
-     u'郑攀', 'Python-blog', '《Python博客》',
+    ('index', 'Python-blog', '《Python博客》',
+     '郑攀', 'Python-blog', '《Python博客》',
      'Miscellaneous'),
 ]
 
