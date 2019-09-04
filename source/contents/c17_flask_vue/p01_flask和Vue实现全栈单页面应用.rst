@@ -21,7 +21,29 @@ github源代码
 
 1. vue-cli搭建Vue.js的基础框架
 
-`npm install -g vue-cli`
+    ``npm install -g vue-cli``
+
+2. 创建前端的项目
+
+.. code-block:: shell
+    :linenos:
+
+    mkdir flaskvue
+    cd flaskvue
+    vue init webpack frontend
+
+3. 安装向导的项目设置
+
+4. 进入前端项目文件夹
+
+.. code-block:: shell
+    :linenos:
+
+    cd frontend
+    npm install
+    npm run dev
+
+
 
 
 参考文档
