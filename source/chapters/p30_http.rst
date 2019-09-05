@@ -8,4 +8,4 @@ HTTP基础知识
    :maxdepth: 1
    :glob:
 
-   ../contents/c30/*
+   ../contents/c30_http/*
