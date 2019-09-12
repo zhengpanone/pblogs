@@ -29,18 +29,21 @@
 
 * 配置webpack，在项目根目录创建webpack.config.js文件 
 
-.. code::
+.. code-block:: javascript
+    :linenos:
 
- const path = require('path')
+    const path = require('path')
 
- module.exports={
-    entry:path.join(__dirname, './src/main.js'),
-    output:{
-        path:path.join(__dirname, './dist'),
-        filename: 'bundle.js'
-    },
-    mode:'development'
- }
+    module.exports={
+        entry:{ //main是默认入口,也可以是多入口
+        main: path.join(__dirname, './src/main.js')
+        },
+        output:{
+            path:path.join(__dirname, './dist'),
+            filename: 'bundle.js'
+        },
+        mode:'development'
+    }
 
 * 在项目根目录直接运行 **webpack** 命令
 
@@ -101,3 +104,15 @@ babel
 ==============================
 
 babel的用处
+
+
+webpack 完整配置
+==============================
+
+.. literalinclude:: ./code/webpack.config.js
+    :encoding: utf-8
+    :language: javascript
+    :emphasize-lines: 2
+    :lines: 1-
+    :linenos:  
+

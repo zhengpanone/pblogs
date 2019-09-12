@@ -8,6 +8,8 @@ github源代码_.
 简介
 ===============
 
+单页面应用(SinglePage Web Application,SPA ),
+
 用 Vue.js,使用单页面组件，在 vue-router 开启 HTML5 history 模式
 
 - Flask运行的服务可以访问 index.html 首页和 Vue.js 应用
