@@ -78,3 +78,11 @@ socket端口为配置文件中的端口:5000.在浏览器内访问: http://127.0
 ::
 
  ps aux |grep uwsgi
+
+参考文档
+======================
+
+Flask的部署_
+
+.. _Flask的部署: https://windard.com/project/2016/12/01/Deploy-Flask-APP
+
