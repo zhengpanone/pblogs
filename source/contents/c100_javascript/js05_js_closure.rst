@@ -165,7 +165,7 @@
 
 函数的4种调用方式
 
-1. 函数调用[1]_
+1. 函数调用 [1]_
 
 #. 方法调用
 #. new调用(构造函数)
@@ -200,6 +200,15 @@
     :encoding: utf-8
     :language: html
     :lines: 10-19
+    :emphasize-lines: 9
+    :linenos:
+
+**4. 上下文方式(call、apply、bind)**
+
+.. literalinclude:: ./code/js05/04.上下文方式.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-20
     :emphasize-lines: 9
     :linenos:
 
@@ -241,19 +250,6 @@
 
 
 
-
-.. code:: js 
-
- var length=21;
- function f1(){
-     console.log(this.length);
-
- }
-
- f1.call([1,3,5])
- f1.apply(this)
- f1.call(5)     //上下文方式
-
 闭包内存释放问题
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -287,4 +283,4 @@ es6内容
 + 7、async 
 + 8、class 
 + 9、module
- 
+
