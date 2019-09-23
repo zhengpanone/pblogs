@@ -165,24 +165,44 @@
 
 函数的4种调用方式
 
-1 函数调用
-# 方法调用
-# new调用(构造函数)
-# 上下文方式(call、apply、bind)
+1. 函数调用[1]_
+
+#. 方法调用
+#. new调用(构造函数)
+#. 上下文方式(call、apply、bind)
 
 **在ES6的箭头函数之前的时代,想要判断一个函数内部的this指向谁,就是根据上面的四种方式来决定的**
 
-.. code:: js 
+.. [1]
 
- var age=18;
- var p={
-     age:15
-     say:function(){
-         console.log(this.age);
-     }
- }
- var s1=p.say()
- s1();      //函数调用
+**1. 函数调用** 
+
+
+.. literalinclude:: ./code/js05/01.函数调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-20
+    :emphasize-lines: 9,10
+    :linenos:
+
+**2. 方法调用**
+
+.. literalinclude:: ./code/js05/02.方法调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-19
+    :emphasize-lines: 9
+    :linenos:
+
+**3. new调用(构造函数)**
+
+.. literalinclude:: ./code/js05/03.new调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-19
+    :emphasize-lines: 9
+    :linenos:
+
 
 **this的指向**
 
@@ -217,27 +237,10 @@
  **函数调用：函数内部的this指向window**
 
 
-.. code:: js 
 
- var age=18;
- var p={
-     age:15
-     say:function(){
-         console.log(this.age);
-     }
- }
- p.say()    //方法调用
 
-.. code:: js 
 
- var age=18;
- var p={
-     age:15
-     say:function(){
-         console.log(this.age);
-     }
- }
- new p.say()    //构造函数调用
+
 
 .. code:: js 
 
