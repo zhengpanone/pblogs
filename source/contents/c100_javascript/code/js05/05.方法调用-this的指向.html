@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function Person() {
+        this.age = 20;
+    }
+    Person.prototype.run = function () {
+        console.log(this.age);
+    }
+    var p1 = new Person()
+    p1.run(); //打印结果20
+
+    var p2 = {
+        height: 180,
+        travel: function () {
+            console.log(this.height);
+        }
+    }
+    p2.travel() //打印结果180
+
+    var clear = function () {
+        console.log(this.length);
+    }
+    var length = 50;
+    var tom = { c: clear, length: 100 };
+    tom.c(); //打印的是100
+    // this指向的是tom而不是window
+
+</script>
+
+<body>
+
+</body>
+
+</html>

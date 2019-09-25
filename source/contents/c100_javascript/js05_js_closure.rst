@@ -163,93 +163,6 @@
 - 模块化
 - 防止变量被破坏
 
-函数的4种调用方式
-
-1. 函数调用 [1]_
-
-#. 方法调用
-#. new调用(构造函数)
-#. 上下文方式(call、apply、bind)
-
-**在ES6的箭头函数之前的时代,想要判断一个函数内部的this指向谁,就是根据上面的四种方式来决定的**
-
-.. [1]
-
-**1. 函数调用** 
-
-
-.. literalinclude:: ./code/js05/01.函数调用.html
-    :encoding: utf-8
-    :language: html
-    :lines: 10-20
-    :emphasize-lines: 9,10
-    :linenos:
-
-**2. 方法调用**
-
-.. literalinclude:: ./code/js05/02.方法调用.html
-    :encoding: utf-8
-    :language: html
-    :lines: 10-19
-    :emphasize-lines: 9
-    :linenos:
-
-**3. new调用(构造函数)**
-
-.. literalinclude:: ./code/js05/03.new调用.html
-    :encoding: utf-8
-    :language: html
-    :lines: 10-19
-    :emphasize-lines: 9
-    :linenos:
-
-**4. 上下文方式(call、apply、bind)**
-
-.. literalinclude:: ./code/js05/04.上下文方式.html
-    :encoding: utf-8
-    :language: html
-    :lines: 10-20
-    :emphasize-lines: 9
-    :linenos:
-
-
-**this的指向**
-
-.. code:: js
-
- var age=18;
- var p={
-     age:15,
-     say:function(){
-         console.log(this.age)
-     }
- }
- var f1=p.say;  //f1是函数
- f1();
-
- function Person(name){
-     this.name=name;
- }
-
- Person.prototype={
-     constructor:Person,
-     say:function(){
-         console.log(this.name);
-     }
- }
- // 函数的第一种调用方式：函数调用
- // **函数内部的this指向window**
- Person("abc")
-
-.. note::
-
- **函数调用：函数内部的this指向window**
-
-
-
-
-
-
 闭包内存释放问题
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -267,6 +180,95 @@
  // 要想释放q1里面保存的a,只能通过释放q1
  q1=null;   //q1=undefined
 
+
+函数的4种调用方式
+============================================
+
+1. 函数调用 [1]_
+
+#. 方法调用 [2]_
+
+#. new调用(构造函数) [3]_
+
+#. 上下文方式(call、apply、bind) [4]_
+
+**在ES6的箭头函数之前的时代,想要判断一个函数内部的this指向谁,就是根据上面的四种方式来决定的**
+
+.. [1]
+
+1. 函数调用 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+.. literalinclude:: ./code/js05/01.函数调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-20
+    :emphasize-lines: 9,10
+    :linenos:
+
+.. [2]
+
+2. 方法调用
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/02.方法调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-19
+    :emphasize-lines: 9
+    :linenos:
+
+.. [3]
+
+3. new调用(构造函数)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/03.new调用.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-19
+    :emphasize-lines: 9
+    :linenos:
+
+.. [4]
+
+4. 上下文方式(call、apply、bind)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/04.上下文方式.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-20
+    :emphasize-lines: 9
+    :linenos:
+
+
+this的指向
+======================================
+
+window对象中的方法都是全局函数;
+window对象中的属性都是全局变量
+
+1. 函数调用:函数内部的this指向window
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/05.函数调用-this的指向.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-40
+    :emphasize-lines: 9
+    :linenos:
+
+2. 方法调用:函数内部的this指向调用该方法的对象
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/05.方法调用-this的指向.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-36
+    :emphasize-lines: 9
+    :linenos:
 
 es6内容
 ========================
