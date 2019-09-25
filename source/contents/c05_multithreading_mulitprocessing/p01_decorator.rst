@@ -2,47 +2,21 @@
 1 装饰器
 ========================
 
-::
-
- def func(functionName):
-    print("-------func----1----")
-    def func_in():
-        print("--------func_in------1-----")
-        functionName()
-        print("--------func_in------2------------")
-    print("------func-----2-------")
-    return func_in
-
- @func
- def test():
-    print('--------test-------------')
-
- #test = func(test)
- test()
-
+.. literalinclude:: ./code/01装饰器/01.装饰器.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 11
+    :linenos:
 
 1.装饰器执行顺序
 =========================
 
-::
+.. literalinclude:: ./code/01装饰器/02.装饰器执行顺序.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 11
+    :linenos:
 
- def makeBold(fn):
-    def wrapped():
-        print("==========1=========")
-        return "<b>"+fn()+"</b>"
-    return wrapped
-
- def makeItalic(fn):
-    def wrapped():
-        print("==========2=========")
-        return "<i>"+fn()+"</i>"
-    return wrapped
-
- @makeBold
- @makeItalic
- def test():
-    print("==========3=========")
-    return "hello world"
 
 
 >>> ==========1=========
@@ -54,47 +28,22 @@
 2.装饰器进行装饰的时间
 ================================
 
-::
-
- def w1(func):
-    print("----------正在装饰---------------")
-    def inner():
-        print("--------验证权限--------------")
-        return func()
-    return inner
-
- @w1
- def f1():
-    print("--------f1-------------")
+.. literalinclude:: ./code/01装饰器/03.装饰器进行装饰的时间.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 11
+    :linenos:
 
 从上面可以看出当python解释器运行到装饰器哪一行，就已经开始装饰，不用等到调用的时候才装饰，即装饰器在f1调用之前就已经进行装饰了
 
 3.装饰器的装饰和执行顺序
 ==================================================
 
-::
-
- def w1(func):
-    print("------正在进行装饰1-------")
-    def inner():
-        print("-------------正在进行权限验证1-------------")
-        func()
-    return inner
-
- def w2(func):
-    print("--------正在进行装饰2-------------")
-    def inner():
-        print("----------正在进行权限验证2------------")
-        func()
-    return inner
- 
- # 在f1调用之前，已经进行装饰了
- @w1
- @w2
- def f1():
-    print("--------f1---------")
-
- f1()
+.. literalinclude:: ./code/01装饰器/04.装饰器的装饰和执行顺序.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 11
+    :linenos:
 
 >>> --------正在进行装饰2-------------
 >>> ------正在进行装饰1-------

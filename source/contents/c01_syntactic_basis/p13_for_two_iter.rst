@@ -2,14 +2,11 @@
 13 Python 如何在一个for循环中遍历两个列表
 ====================================================
 
-.. note:: python 
-
- list1 = ['a', 'b', 'c', 'd']
-
- list2 = ['apple', 'boy', 'cat', 'dog']
-
- for x,y in zip(list1, list2):
-    print(x, "is", y)
+.. literalinclude:: ./code/13.python同时遍历两个列表.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 5
+    :linenos:
 
 原理
 =================
