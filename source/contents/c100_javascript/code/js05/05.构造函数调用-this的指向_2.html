@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+
+<body>
+
+</body>
 <script>
     // 1、
     function fn(name) {
@@ -26,17 +31,21 @@
         constructor: jQuery,
         length: 100,
         init: function () {
-            // this可以访问到实例本身的属性,也可以访问到init.prototype属性
-            // 这里的init.prototype并不是JQuery.prototype
-            console.log(this.length); 
+            // this 指向init构造函数的实例
+            // 1. 首先查找本身有没有length属性
+            // 2. 如果本身没有,就去它的原型链中查找
+            // 3. 如果原型链中没有,那么就去原型对象的原型对象中查找,
+            // 最终查找到根对象(Object.prototype)
+            // 4. 最终都没有找到的话,表示该对象中并没有该属性,
+            // 获取该属性的值: undefined
+            console.log(this.length);
         }
 
     }
-
+    var $init = jQuery.prototype.init;
+    // 修改init函数的默认原型,指向新原型
+    $init.prototype = jQuery.prototype;
+    jQuery();
 </script>
-
-<body>
-
-</body>
 
 </html>

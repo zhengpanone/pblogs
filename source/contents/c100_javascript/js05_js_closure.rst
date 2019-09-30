@@ -166,7 +166,7 @@
 闭包内存释放问题
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-.. code:: js 
+.. code:: html 
 
  function f1(){
      var a=5;
@@ -269,6 +269,82 @@ window对象中的属性都是全局变量
     :lines: 10-36
     :emphasize-lines: 9
     :linenos:
+
+3. 构造函数调用:
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/05.构造函数调用-this的指向.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-36
+    :emphasize-lines: 9
+    :linenos:
+
+.. literalinclude:: ./code/js05/05.构造函数调用-this的指向_2.html
+    :encoding: utf-8
+    :language: html
+    :lines: 15-49
+    :emphasize-lines: 9
+    :linenos:
+
+4. 上下文调用:
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/js05/05.上下文调用方式.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-22
+    :emphasize-lines: 9
+    :linenos:
+
+call 方法的第一个参数：
+
+    如果是对象类型,那个函数内部的this指向该对象
+
+    如果是undefined，null，那么函数内部的this指向window
+
+    如果是数字,this 对应Number构造函数的实例  --> new Number(1)
+    
+    如果是字符串,this对应String构造函数的实例 --> new String("abc")
+
+    如果是布尔值,this对应Boolen构造函数的实例 --> new Boolean(false)
+
+call 和apply的异同
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+call和apply都可以改变函数内部的this的值
+传参的形式不同
+
+.. literalinclude:: ./code/js05/05.call和apply异同.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-17
+    :emphasize-lines: 3
+    :linenos:
+
+bind基本用法
+
+.. literalinclude:: ./code/js05/05.bind基本用法.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-41
+    :emphasize-lines: 9
+    :linenos:
+
+.. literalinclude:: ./code/js05/05.上下文调用bind.html
+    :encoding: utf-8
+    :language: html
+    :lines: 10-41
+    :emphasize-lines: 9
+    :linenos:
+
+call、apply是立刻执行函数,并且在执行过程中绑定了this的值
+bind 并没有立刻执行这个函数,而是创建一个新函数,新函数绑定了this的值
+
+
+如何解决bind的浏览器兼容性问题？
+=========================================
+
 
 es6内容
 ========================

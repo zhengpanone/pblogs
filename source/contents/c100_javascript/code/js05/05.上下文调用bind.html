@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var obj = {
+        age: 18,
+        run: function () {
+            // this指向obj
+            console.log(this);
+            var _that = this;
+            setTimeout(function () {
+                //this指向window
+                console.log(this.age); //undefined
+
+                console.log(_that.age);
+            }, 50)
+        }
+    }
+    obj.run()
+    // bind是es5中才有的
+    var obj2 = {
+        age: 18,
+        run: function () {
+            // this指向obj
+            console.log(this);
+            setTimeout((function () {
+                console.log(this.age);
+
+            }).bind(this), 50) //this指向obj2,
+            // 通过执行bind方法,匿名函数本身并没有执行,
+            // 只是改变了函数内部的this值,执行obj2
+        }
+    }
+    obj2.run()
+</script>
+
+<body>
+
+</body>
+
+</html>

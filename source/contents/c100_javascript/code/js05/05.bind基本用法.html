@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function speed() {
+        console.log(this.seconds);
+    }
+    // 执行bind方法后,产生了一个新函数,这个新函数里的逻辑还是和原来一样,
+    // 唯一不同是this指向
+    var speedBind = speed.bind({ seconds: 100 });
+
+    (function eat() {
+        console.log(this.seconds);
+    }).bind({ seconds: 360 })();
+
+    var obj = {
+        name: '西瓜',
+        drink: (function () {
+            // this指向了bind中的对象自变量
+            console.log(this.name);
+        }).bind({ name: "橙汁" })
+    }
+    obj.drink(); //橙汁
+
+    var p10 = {
+        height: 88,
+        run: function () {
+            setInterval((function () {
+                console.log(this.height);
+            }).bind(this), 100)
+        }
+    }
+    p10.run();
+
+</script>
+
+<body>
+
+</body>
+
+</html>
