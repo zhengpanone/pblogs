@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var obj = { name: 'abc', age: 18 }
+    // 解构赋值的方式获取属性
+    let { name } = obj; //创建一个变量name, 值为obj.name
+    console.log(name);
+
+    //let { name, age } = obj;
+    // 创建name = obj.name
+    // 创建age= obj.age
+    //解构赋值的意义
+    function fn1({ width, height, age}) {
+        console.log(`width: ${width} height: ${height} age: ${age}`)
+    }
+    fn1({
+        width: 100,
+        height: 100,
+        age: 50
+    })
+    fn1();
+
+</script>
+
+<body>
+
+</body>
+
+</html>
