@@ -83,55 +83,6 @@ Thread子类完成创建多线程
     time.sleep(2)
   print("------thread is %s-----num=%d----"%(name,num))
 
-死锁
-============================
-
-在线程间共享多个资源时，如果两个线程分别占用一部分资源并且等待对方资源，就会造成死锁
-
-死锁例子
-
-::
-
- import threading
- import time
-
- class MyThread1(threading.Thread):
-  def run(self):
-    if mutexA.acquire():
-      print(self.name+"-----do1------up-----")
-      time.sleep()
-
-    if mutexB.acquire():
-      print(self.name+"-----do1-------down--------")
-      mutexB.release()
-    mutexA.release()
-
- class MyThread2(threading.Thread):
-  def run(self):
-    if mutexB.acquire():
-      print(self.name+"-----do2------up-----")
-      time.sleep()
-
-    if mutexA.acquire():
-      print(self.name+"-----do2-------down--------")
-      mutexA.release()
-    mutexB.release()
-
- mutexA = threading.Lock()
- mutexB = threading.Lock()
-
- if __name__ == "__main__":
-  t1 = MyThread1()
-  t2 = MyThread2()
-  t1.start()
-  t2.start()
-
-避免死锁
-=================================
-
-可添加超时时间
-
-
 
 线程同步
 ============================
@@ -154,62 +105,69 @@ Lock
     :emphasize-lines: 1
     :linenos:
 
+.. literalinclude:: ./code/03.多线程编程/05通过类实现互斥锁.py
+    :encoding: utf-8
+    :language: python
+    :lines: 1-
+    :emphasize-lines: 1
+    :linenos:
+
 - 影响
 
   - 用锁会影响性能
   - 锁会引起死锁
 
-::
+死锁
+>>>>>>>>>>>>>>>>>>>
 
- from threading import Lock,Thread
- from time import sleep
+在线程间共享多个资源时，如果两个线程分别占用一部分资源并且等待对方资源，就会造成死锁
 
- class Task1(Thread):
-  def run(self):
-    while True:
-      if lock1.acquire():
-        print("------------Task1-------------")
-        sleep(0.5)
-        lock2.release()
+- 死锁例子
 
- class Task2(Thread):
-  def run(self):
-    while True:
-      if lock2.acquire():
-        print("------------Task1-------------")
-        sleep(0.5)
-        lock3.release()
-
- class Task3(Thread):
-  def run(self):
-    while True:
-      if lock3.acquire():
-        print("------------Task1-------------")
-        sleep(0.5)
-        lock1.release()
-
- lock1 = Lock()
- lock2 = Lock()
- lock2.acquire()
- lock3 = Lock()
- lock3.acquire()
-
- t1 = Task1()
- t2 = Task2()
- t3 = Task3()
-
- t1.start()
- t2.start()
- t3.start()
+.. literalinclude:: ./code/03.多线程编程/06死锁.py
+    :encoding: utf-8
+    :language: python
+    :lines: 1-
+    :emphasize-lines: 1
+    :linenos:
 
 
- 
+避免死锁
+>>>>>>>>>>>>>>>>>>>
+
+- 可添加超时时间
+- 使用重入锁RLock [1]_
+
+.. [1] 
+
+在同一个线程中,可以连续调用多次acquire,一定要注意acquire的次数要和release的**次数一致**
+
+- 重入锁使用
+
+.. literalinclude:: ./code/03.多线程编程/07重入锁.py
+    :encoding: utf-8
+    :language: python
+    :lines: 1-
+    :emphasize-lines: 1
+    :linenos:
+
+条件变量(Condition)
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+条件变量,用于复杂的线程间同步
+
+Semaphore 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+用于控制进入数量的锁,文件读写,写一般只是用于一个线程写,读可以允许有多个 
+
+
 
 生成者与消费者模式
 ===================================
 
 1.队列
-=======================
+>>>>>>>>>>>>>>>>>>>>>>
 
 先进先出（fifo:first in first out）
 
@@ -217,7 +175,7 @@ Lock
 
 
 2.栈
-==========================
+>>>>>>>>>>>>>>>>>>>>>>>>>
 
 先进后出(filo:first in last out)
 
@@ -227,6 +185,8 @@ ThreadLocal 的使用
 
 异步的实现
 ================================
+
+
 
 :ref:`topics-index`
 =============================
