@@ -4,7 +4,7 @@
 
 带有yield的函数在python中称之为generator(生成器)
 
-如何生成斐波拉契数列
+如何生成斐波那契数列
 
 ::
 
@@ -16,6 +16,14 @@
          n = n + 1
 
 执行fab(5)
+
+通过命名表达式生成斐波那契数列
+
+>>> (lambda f: f(f, int(input("Input: ")),1,0,1))(lambda f,t,i,a,b: print(f'fib({i})={b}') or t==i or f(f,t,i+1,b,a+b))
+
+基于Raymond Hettinger版本改写
+
+>>> [(t:=(t[1], sum(t)) if i else (0,1))[1] for i in range(10)]
 
 ::
 
