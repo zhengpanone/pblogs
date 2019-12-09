@@ -33,7 +33,7 @@
 
  })
 
-.. code:: 
+.. code:: html
 
  <body>
     <div>1</div>
