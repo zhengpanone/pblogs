@@ -16,3 +16,9 @@ SELECT DATABASE();
 显示当前时间、用户、数据库版本
 SELECT now(), user(), version();
 
+
+USE 数据库名称;
+SHOW TABLES;
+SHOW CREATE TABLE 表名;
+
+

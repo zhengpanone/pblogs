@@ -34,9 +34,9 @@
                     // 这样的话,随着$()操作频次的增加,会产生无数个相同的css方法,造成内存浪费
 
                 } */
-                return new F(selector);
+                return new init(selector);
             }
-            function F(selector) {
+            function init(selector) {
                 // jquery内部封装了一个Sizzle.js引擎,来获取DOM元素
                 // 把DOM元素放到这个对象中
                 //const elements = document.getElementsByTagName(selector);
@@ -53,7 +53,7 @@
                 this.length = elements.length;
 
             }
-            /* F.prototype.css = function (name, value) {
+            /* init.prototype.css = function (name, value) {
                 for (let i = 0; i < this.length; i++) {
                     let element = this[i];
                     // 为了让这些元素可以在css方法中进行访问,所以需要把这些元素放在对象上面进行传递
@@ -61,8 +61,8 @@
                 }
             } */
 
-            F.prototype = {
-                constructor: F,
+            init.prototype = {
+                constructor: init,
                 css(name, value) {
                     for (let i = 0; i < this.length; i++) {
                         let element = this[i];
