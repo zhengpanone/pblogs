@@ -260,22 +260,6 @@ Partial application(闭包)
  print x[1::2]
  >>> [2,4,6]
  
-迭代工具
-====================================
-
-::
-
- from itertools import combinations
- teams = ["Packers", "49ers", "Ravens", "Patriots"]
- for game in combinations(teams, 2):
-    print game
- >>> ( Packers ,  49ers )
- >>> ( Packers ,  Ravens )
- >>> ( Packers ,  Patriots )
- >>> ( 49ers ,  Ravens )
- >>> ( 49ers ,  Patriots )
- >>> ( Ravens ,  Patriots )
-
 
 1.1 赋值
 ====================================

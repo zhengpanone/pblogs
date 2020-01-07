@@ -257,7 +257,7 @@ Path.rglob()　　# 递归遍历所有子目录的文件
     :linenos:
 
     class PurePath(object):
-    
+
         def __truedir__(self, key):
             return self._make_chil((key,))
 
@@ -265,3 +265,251 @@ Path.rglob()　　# 递归遍历所有子目录的文件
 .. |image1| image:: ./image/640.webp
 
 https://mp.weixin.qq.com/s/4Lf-t_8WrAPYEvfG8sKEtg
+
+
+pathlib用列
+====================
+
+
+1、基础用例
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+有一个目录里装了很多数据文件，但是它们的后缀名并不统一，既有 .txt，又有 .csv。我们需要把其中以 .txt 结尾的文件都修改为 .csv 后缀名。
+
+.. code-block:: python
+    :linenos:
+
+    from pathlib import Path
+
+    def unify_ext_with_path(path):
+        for fpath in Path(path).glob('*.txt'):
+            fpath.rename(fpath.with_suffix('.csv'))
+
+
+2、如何流式读取大文件
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+2.1 初步版本
+::::::::::::::::::::::::::
+
+.. code-block:: python
+    :linenos:
+
+    def count_nine(fnames):
+        """
+            计算文件中包含多少个数字9
+        """
+        count = 0
+        with open(fname) as file:
+            for line in file:
+                count += line.count('9')
+        return count 
+
+如果被读取的文件里，根本就没有任何换行符。当代码执行到 forlineinfile 时，line 将会变成一个非常巨大的字符串对象，消耗掉非常可观的内存。
+
+2.2 使用 read 方法分块读取
+:::::::::::::::::::::::::::::::::::
+
+.. code-block:: python 
+    :linenos:
+
+    def count_nine_v2(fname):
+        """
+        计算文件里包含多少个数字 '9'，每次读取 8kb
+        """
+        count = 0
+        block_size = 1024*8
+        with open(fname) as fp:
+            while True:
+                chunk = fp.read(block_size)
+                if not chunk:
+                    break
+                count += chunk.count('9')
+        return count
+
+2.3 利用生成器解耦合
+:::::::::::::::::::::::::::::::::::
+
+
+ count_nine_v2 函数，你会发现在循环体内部，存在着两个独立的逻辑：数据生成（read 调用与 chunk 判断） 与 数据消费。而这两个独立逻辑被耦合在了一起。
+
+我们可以定义一个新的 chunked_file_reader 生成器函数，由它来负责所有与“数据生成”相关的逻辑。这样 count_nine_v3 里面的主循环就只需要负责计数即可。
+
+.. code-block:: python
+    :linenos:
+
+    def chunked_file_reader(fp, block_size=1024*8):
+        """
+        生成器函数：分块读取文件内容
+        """
+
+        while True:
+            chunk = fp.read(block_size)
+            if not chunk:
+                break
+            yield chunk
+
+    def count_nine_v3(fname):
+        count = 0
+        with open(fname) as fp:
+            for chunk in chunked_file_reader(fp):
+                count += chunk.count('9')
+
+        return count
+
+2.4 iter() 函数优化chunk_file_reader()
+:::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一个更少人知道的用法。当我们使用 iter(callable,sentinel) 的方式调用它时，会返回一个特殊的对象，迭代它将不断产生可调用对象 callable 的调用结果，直到结果为 setinel 时，迭代终止。
+
+.. code-block:: python
+    :linenos:
+
+    from functools import partial
+
+    def chunked_file_reader(file, block_size=1024*8):
+        """
+        生成器函数：分块读取文件内容，使用 iter 函数
+        """
+        # 首先使用 partial(fp.read, block_size) 构造一个新的无需参数的函数
+        # 循环将不断返回 fp.read(block_size) 调用结果，直到其为 '' 时终止
+
+        for chunk in iter(partial(file.read, block_size),''):
+            yield chunk
+
+2.5 设计接受文件对象的函数
+:::::::::::::::::::::::::::::::::::
+
+统计完文件里的 “9” 之后，让我们换一个需求。现在，我想要统计每个文件里出现了多少个英文元音字母（aeiou）。只要对之前的代码稍作调整，很快就可以写出新函数 count_vowels。
+
+.. code-block:: python 
+    :linenos:
+
+    def count_vowels(filename):
+        """
+        统计某个文件中，包含元音字母(aeiou)的数量
+        """
+
+        VOWELS_LETTERS = {'a', 'e', 'i', 'o', 'u'}
+        count = 0
+        with open(filename, 'r') as fp:
+            for line in fp:
+                for char in line:
+                    if char.lower() in VOWELS_LETTERS:
+                        count += 1
+        return count
+
+和之前“统计 9”的函数相比，新函数变得稍微复杂了一些。为了保证程序的正确性，我需要为它写一些单元测试。但当我准备写测试时，却发现这件事情非常麻烦，主要问题点如下：
+
+1. 函数接收文件路径作为参数，所以我们需要传递一个实际存在的文件
+#. 为了准备测试用例，我要么提供几个样板文件，要么写一些临时文件
+#. 而文件是否能被正常打开、读取，也成了我们需要测试的边界情况
+
+如果，你发现你的函数难以编写单元测试，那通常意味着你应该改进它的设计。上面的函数应该如何改进呢？答案是：让函数依赖“文件对象”而不是文件路径。 
+
+修改后的函数代码如下：
+
+.. code-block:: python
+    :linenos:
+
+    def count_vowels_v2(fp):
+        """
+        统计某个文件中，包含元音字母(aeiou)的数量
+        """
+
+        VOWELS_LETTERS = {'a', 'e', 'i', 'o', 'u'}
+        count = 0
+        for line in fp:
+            for char in line:
+            if char.lower() in VOWELS_LETTERS:
+                count += 1
+        return count
+
+    with open('small_file.txt') as fp:
+        print(count_vowels_v2(fp))
+
+这个改动带来的主要变化，在于它提升了函数的适用面。因为 Python 是“鸭子类型”的，虽然函数需要接受文件对象，但其实我们可以把任何实现了文件协议的 “类文件对象（file-like object）” 传入 count_vowels_v2 函数中。
+
+而 Python 中有着非常多“类文件对象”。比如 io 模块内的 StringIO 对象就是其中之一。它是一种基于内存的特殊对象，拥有和文件对象几乎一致的接口设计。
+
+利用 StringIO，我们可以非常方便的为函数编写单元测试。   
+
+
+.. code-block:: python
+    :linenos:
+
+    import pytest
+    from io import StringIO
+    @pytest.mark.parametrize(
+    "content, vowels_count",[
+        # 使用 pytest 提供的参数化测试工具，定义测试参数列表    
+        # (文件内容, 期待结果)
+        ('', 0),
+        ('Hello World！', 3),
+        ('HELLO WORLD!', 3),
+        ('你好，世界', 0),
+    ]
+    )
+    def test_count_vowels_v2(content, vowels_count):
+        # 利用 StringIO 构造类文件对象 "file"
+        file = StringIO(content)
+        assert count_vowels_v2(file) == vowels_count
+
+而让编写单元测试变得更简单，并非修改函数依赖后的唯一好处。除了 StringIO 外，subprocess 模块调用系统命令时用来存储标准输出的 PIPE 对象，也是一种“类文件对象”。这意味着我们可以直接把某个命令的输出传递给 count_vowels_v2 函数来计算元音字母数：
+
+.. code-block:: python 
+    :linenos:
+
+    import subprocess
+    # 统计 /tmp 下面所有一级子文件名（目录名）有多少元音字母
+    p = subprocess.Popen(['ls', '/tmp'], stdout=subprocess.PIPE, encoding='utf-8')
+    # p.stdout 是一个流式类文件对象，可以直接传入函数
+    print(count_vowels_v2(p.stdout))
+
+将函数参数修改为“文件对象”，最大的好处是提高了函数的 适用面 和 可组合性。通过依赖更为抽象的“类文件对象”而非文件路径，给函数的使用方式开启了更多可能，StringIO、PIPE 以及任何其他满足协议的对象都可以成为函数的客户。
+
+不过，这样的改造并非毫无缺点，它也会给调用方带来一些不便。假如调用方就是想要使用文件路径，那么就必须得自行处理文件的打开操作。
+
+2.6 编写兼容二者的函数
+:::::::::::::::::::::::::::::::::::
+
+打开标准库里的 xml.etree.ElementTree 模块，翻开里面的 ElementTree.parse 方法。你会发现这个方法即可以使用文件对象调用，也接受字符串的文件路径。而它实现这一点的手法也非常简单易懂：
+
+.. code-block:: python
+    :linenos:
+
+    def parse(self, source, parser=None):
+        """
+        *source* is a file name or file object, *parser* is an optional parser
+        """
+        close_source = False
+        # 通过判断 source 是否有 "read" 属性来判定它是不是“类文件对象” 
+        # 如果不是，那么调用 open 函数打开它并负担起在函数末尾关闭它的责任
+        if not hasattr(source, 'read'):
+            source = open(source, 'rb')
+            close_source = True 
+
+修改可以接受文件对象有可以接受文件路径
+
+.. code-block:: python
+    :linenos:
+
+    def count_vowels_v3(fp):
+        VOWELS_LETTERS = {'a', 'e', 'i', 'o', 'u'}
+        count = 0
+        close_source = False
+        if not  hasattr(fp, 'read'):
+            fp = open(fp, 'r')
+            close_source=True
+        for line in fp:
+            for char in line:
+                if char.lower() in VOWELS_LETTERS:
+                    count += 1
+        if close_source:
+            fp.close()
+
+        return count
+
+
+
+
