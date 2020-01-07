@@ -232,3 +232,12 @@ type()和isinstance()来查询变量所指的对象类型
  - A >> B 按比特位右移
  - A << B 按比特位左移
 
+format
+===========================
+
+.. code-block:: python
+    :linenos:
+
+   print("test{:03d}.txt".format(2))
+
+ >>> test002.txt
