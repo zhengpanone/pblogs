@@ -60,6 +60,10 @@
  
  git reflog
 
+把两段不相干的 分支进行强行合并
+
+git pull origin master --allow-unrelated-histories
+
 1.4 其他重要概念
 
 - HEAD
