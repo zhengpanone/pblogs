@@ -93,9 +93,9 @@ docker pull 镜像名：TAG
 
  systemctl restart sshd.service
 
-设置服务开启自启命令 
+ 设置服务开启自启命令 
 
-systemctl enable sshd.service
+ systemctl enable sshd.service
 
  **centos解决bash: service: command not found**
 
