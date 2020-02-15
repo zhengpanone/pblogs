@@ -2,6 +2,9 @@
 1. 安装Python
 ===============================
 
+linux安装
+=========================
+
 1.安装依赖环境
 --------------------------
 
@@ -187,3 +190,77 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 `良许Linux`_
 
 .. _`良许Linux`: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485198&amp;idx=1&amp;sn=0792d4da7ca2346ec3282c73bb608198&source=41#wechat_redirect
+
+
+更改PyPI 镜像（源）
+============================
+
+更改pip
+------------------
+
+临时设置
+>>>>>>>>>>>>>>>>>>>>>
+
+
+pip临时设置可以通过 -i 选项：
+
+.. code-block:: shell
+
+    pip install -i https://pypi.doubanio.com/simple/ flask
+
+全局设置
+>>>>>>>>>>>>>>>>>>>>>
+
+全局设置有不同的层级和文件位置，以用户全局（per-user）为例，在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 文件中；Windows 中，配置文件位置为 **%HOMEPATH%\pip\pip.ini**，%HOMEPATH% 即你的用户文件夹，一般为“**\Users\<你的用户名>**”，具体值可以使用 **echo %HOMEPATH%** 命令查看。
+
+通常你需要手动创建对应的目录和文件，然后写入下面的内容：
+
+
+.. code-block:: text
+    :linenos:
+
+    [global]
+    index-url = https://pypi.doubanio.com/simple
+    [install]
+    trusted-host = pypi.doubanio.com
+
+附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 $HOME/.config/pip/pip.conf，Windows 则放到 %APPDATA%\pip\pip.ini。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
+
+Pipenv
+-----------------
+
+类似 pip 的 -i （--index-url）选项，你可以使用 --pypi-mirror 临时设置镜像源地址：
+
+
+.. code-block:: shell
+    
+    pipenv install --pypi-mirror https://pypi.doubanio.com/simple flask
+
+
+如果想对项目全局（per-project）设置，可以修改 Pipfile 中 [[source]] 小节：
+
+.. code-block:: text
+    :linenos:
+
+    [[source]]
+
+    url = "https://pypi.doubanio.com/simple"
+    verify_ssl = true
+    name = "douban"
+
+另外一种方式是使用环境变量 PIPENV_PYPI_MIRROR 设置（Windows 系统使用 set 命令）：
+
+.. code-block:: shell
+
+    export PIPENV_PYPI_MIRROR=https://pypi.doubanio.com/simple
+
+常用的国内 PyPI 镜像列表
+-------------------------------------
+
+.. code-block:: text
+    :linenos:
+
+    豆瓣 https://pypi.doubanio.com/simple/
+    网易 https://mirrors.163.com/pypi/simple/
+    阿里云 https://mirrors.aliyun.com/pypi/simple/
+    清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
