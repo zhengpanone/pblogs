@@ -19,7 +19,6 @@ release = '1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['chinese_search', 'recommonmark']
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -47,7 +46,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['../build/html/_static']
 htmlhelp_basename = 'Python\'S BLOG'
 
 

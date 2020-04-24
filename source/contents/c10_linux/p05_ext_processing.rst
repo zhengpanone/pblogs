@@ -9,17 +9,18 @@ grep
 
 .. note::
 
- * -v #显示不包含匹配关键字的所有行。
- + -l #显示包含匹配关键字的文件
- * -L #显示不包含匹配关键字的文件
- * -r #递归搜索
- * -i #忽略大小写
- * -n #显示关键字所在行号
- * -A n #显示关键字后n行
- * -B n #显示关键字前n行
- # --exclude #搜索时排除某些文件
- * --exclude-dir #搜索时排除某些目录
- * -f #指定规则文件进行搜索
+    * -d #取反
+    * -v #显示不包含匹配关键字的所有行。
+    * -l #显示包含匹配关键字的文件
+    * -L #显示不包含匹配关键字的文件
+    * -r #递归搜索
+    * -i #忽略大小写
+    * -n #显示关键字所在行号
+    * -A n #显示关键字后n行
+    * -B n #显示关键字前n行
+    * --exclude #搜索时排除某些文件
+    * --exclude-dir #搜索时排除某些目录
+    * -f #指定规则文件进行搜索
 
 
 - grep Aug /var/log/messages  在文件 '/var/log/messages'中查找关键词"Aug" 
@@ -52,7 +53,7 @@ grep
 
 - grep -rn "int main(void)" -A 1 -B 1  显示指定关键字前后内容  查看包含指定关键字行附近的行，前面的方式是没有办法看到的，不过我们可以用-A(--after-context=)和-B(--before-context=)参数来显示前后的行
 
-- cat filename |grep -f key.txt  把关键字写在一个文件，搜索时指定文件即可，例如规则文件为key.txt
+- cat filename | grep -f key.txt  把关键字写在一个文件，搜索时指定文件即可，例如规则文件为key.txt
  
 
 sed 
