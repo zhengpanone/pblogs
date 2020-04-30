@@ -11,6 +11,6 @@ Python 正则表达式用法
    :maxdepth: 1
    :glob:
 
-   ../contents/c02/*
+   ../contents/c02_regex/*
 
 
