@@ -18,32 +18,11 @@
 
  2、模糊了对象和函数的区别  （统一调用接口）
 
-
-::
-
- class A():
-    def __call__(self):
-        return object()
-
- class B():
-    def run(self):
-        return object()
-
- def func():
-    return object()
-
- def main(callable):  # 可调用对象
-    callable()
-    # 在main 中调用传入的参数，得到一个对象object
-    # b.run()
-    # func()
-    # ...
-
-    pass
-
- main(A())
- main(B())
- main(func)
+.. literalinclude:: ./code/p04/01_callback.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 11
+    :linenos:
 
 and 和or 
 =======================================
@@ -122,6 +101,23 @@ python中常见的内置类型
 ==========================
 
 Python中的字符串（String）、元组（Tuple）、列表（List）都属于序列(Sequence)类型簇。可以将字符串看作由字符组成的序列类型，元祖是任意对象组成的不可修改序列类型，列表是任意对象组成的可修改序列。
+
+数值型
+>>>>>>>>>>>>>>>>>
+
+- 前缀 **0x** ，创建一个十六进制的整数
+
+.. code-block:: python
+   :linenos:
+
+   0xa5 # 等于十进制的165
+
+- 使用 **e** 创建科学计数法表示浮点数
+
+.. code-block:: python
+   :linenos:
+
+   1.05e3   # 1050.0
 
 多变量赋值
 >>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -236,8 +232,8 @@ format
 ===========================
 
 .. code-block:: python
-    :linenos:
+   :linenos:
 
    print("test{:03d}.txt".format(2))
 
- >>> test002.txt
+   >>> test002.txt

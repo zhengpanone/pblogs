@@ -4,64 +4,25 @@ Flask源码学习
 
 flask_source.py源码：
 
-::
-
- #源码样例-1
- from flask import Flask
-
- app = Flask(__name__)
-
-
- @app.route('/')
- def hello_world():
-    return 'Hello World!'
-
-
- if __name__ == '__main__':
-    app.run()
+.. literalinclude:: ./code/p00_flask_source/flask_source.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 5
+    :linenos:
 
 
 WSGI
 --------
 
 WSGI，全称Web Server Gateway Interface，或者Python Web Server Gateway Interface，是基于Python 定义的Web服务器和Web应用程序或框架之间的一种简单而通用的接口。WSGI接口的作用是确保HTTP请求能够转化成python应用的一个功能调用，这就是Gateway的意义所在，网关的作用就是在协议之前进行转换
+
 WSGI接口中有一个非常明确的标准，每个Python Web应用必须是可调用callbale对象且返回一个iterator，并且实现了app(environ，start_response) 的接口，server会调用application，并传给它两个参数：environ包含了请求的所有信息，start_response是application处理完之后需要调用的函数，参数是状态码、响应头部还有错误信息。引用代码示例：
 
-::
- 
- # 1.可调用对象是一个函数
- def application(environ，start_response):
-    response_body = 'The request method was %s'%environ['REQUEST_METHOD']
-
-    # HTTP response code and message
-    status = '200 OK'
-
-    # 应答头部是一个列表，每对键值都必须是一个tuble
-    response_headers = [('Content-Type','text/plain'),
-                                        ('Content-Length',str(len(response_body)))]
-
-    # 调用服务器程序提供的start_response，填入两个参数
-    start_response(status,response_headers)
-
-    # 返回必须是iterable
-    return [response_body]
-
-
- class AppClass:
-    '''这里的可调用对象就是 AppClass 的实例，使用方法类似于： 
-        app = AppClass()
-        for result in app(environ, start_response):
-            do_somthing(result)
-    '''
-    def __init__(self):
-        pass
-
-    def __call__(self,environ,start_response):
-        status = '200 OK'
-        response_headers = [('Content-type','test/plain')]
-        self.start(status,response_headers)
-        yield "Hello world!\n"
-
+.. literalinclude:: ./code/p00_flask_source/wsgi_server.py
+    :encoding: utf-8
+    :language: python
+    :emphasize-lines: 5
+    :linenos:
 
 |image0|
 

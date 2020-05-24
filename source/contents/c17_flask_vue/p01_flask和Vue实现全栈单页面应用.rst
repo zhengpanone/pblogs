@@ -109,7 +109,7 @@ github源代码_.
 
 在frontend/config/index.js 找到下面的两行
 
-.. code-block::
+..code-block::
     :linenos:
 
     index: path.resolve(__dirname, '../dist/index.html'),
