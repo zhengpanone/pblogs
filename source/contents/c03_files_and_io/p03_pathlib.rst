@@ -421,8 +421,8 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
         count = 0
         for line in fp:
             for char in line:
-            if char.lower() in VOWELS_LETTERS:
-                count += 1
+                if char.lower() in VOWELS_LETTERS:
+                    count += 1
         return count
 
     with open('small_file.txt') as fp:
