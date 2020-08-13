@@ -18,7 +18,7 @@ print(get_python_lib())
 
 ## 直接运行zip包
 
-![](.\image\p02_magic\20200812194811.png)
+![](image/p02_magic.assets/20200812194811.png)
 
 ```python
 python -m zipfile -c demo.zip demo/*
