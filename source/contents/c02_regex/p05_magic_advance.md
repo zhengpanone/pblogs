@@ -1,0 +1,1 @@
+http://magic.iswbm.com/zh/latest/chapters/p04.html

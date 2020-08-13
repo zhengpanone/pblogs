@@ -1,0 +1,481 @@
+==========================
+构建 Python C 扩展模块
+==========================
+
+要用 C 语言编写 Python 模块，你需要了解 Python API，它定义了允许 Python 解释器调用你的 C 代码的各种函数、宏和变量。所有这些工具以及更多的工具都打包在Python.h头文件中。
+
+用 C 语言编写 Python 接口
+=================================
+
+在本教程中，你将为一个 C 库函数编写一个包装器，然后在 Python 中调用它。自己实现包装器可以更好地了解何时以及如何使用 C 来扩展 Python 模块。
+
+理解 C 语言中的 fputs()
+=================================
+
+**fputs()**就是我们将要包装的 C 库函数。下面是 fputs() 函数的声明。
+
+.. code-block:: c
+    :linenos:
+
+    int fputs(const char *str, FILE *stream)
+
+这个函数有两个参数:
+
+1.str ：这是一个数组，包含了要写入的以空字符终止的字符序列。
+
+2.stream * ：这是指向 FILE 对象的指针，该 FILE 对象标识了要被写入字符串的流,该函数返回一个非负值，如果发生错误则返回 EOF。
+
+下面的实例演示了 fputs() 函数的用法。
+
+.. code-block:: c
+    :linenos:
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <unistd.h>
+
+    int main() {
+        FILE *fp = fopen("write.txt", "w");
+        fputs("I Love NightTeam!", fp);
+        fclose(fp);
+        return 1;
+    }
+
+简单总结上面的代码：
+
+1.打开一个当前目录下叫 write.txt 的文件
+
+2.然后在这个文件中写入 "I Love NightTeam!"
+
+在下一节中，我们将为该函数提供更丰富的功能。
+
+包装 fputs() 函数
+================================
+
+首先我们看最终完善之后的代码
+
+.. code-block:: text
+    :linenos:
+
+    #include <Python.h>
+
+    static PyObject *method_fputs(PyObject *self, PyObject *args) {
+        //str 是要写入文件流的字符串。
+        //filename 是要写入的文件的名称。
+        char *str, *filename = NULL;
+        int bytes_copied = -1;
+
+        /* Parse arguments */
+        if(!PyArg_ParseTuple(args, "ss", &str, &filename)) {
+            return NULL;
+        }
+
+        FILE *fp = fopen(filename, "w");
+        bytes_copied = fputs(str, fp);
+        fclose(fp);
+
+        return PyLong_FromLong(bytes_copied);
+    }
+
+接下来，我们来一点点分析上面的代码。我们这里面的代码是按照Python API来写的，第一行
+
+.. code-block:: c
+    :linenos:
+
+    #include <Python.h>
+
+我们通过它导入 Python.h 这个头文件，在 C 语言里是没这个头文件的，不过不用担心，它在后期Python 运行的时候会找到对应的文件。这段代码中引用了 Python.h 中定义的三个对象结构。
+
+1.PyObject
+
+2.PyArg_ParseTuple()
+
+3.PyLong_FromLong()
+
+这些都是用于定义 Python 语言的数据类型，开头都是 Py，现在我们一一来看。
+
+PyObject
+===============
+
+PyObject 是用于为 Python 定义对象的类型。所有的 Python 对象都是在 PyObject 基础上进行拓展的,比如 Python 中的 int，在 C 语言中实际上是一个 PyLongObject 函数。PyObject 告诉 Python 解释器将指向对象的指针视为对象。例如，将上述函数的返回类型设置为 PyObject，这就定义了 Python 解释器所需的公共字段。
+
+PyArg_ParseTuple
+=========================
+
+PyArg_ParseTuple() 将从 Python 程序接收的参数解析为局部变量，返回一个整型。相关代码片段
+
+.. code-block:: c
+    :linenos:
+
+    if(!PyArg_ParseTuple(args, "ss", &str, &filename)) {
+        return NULL;
+    }
+
+它的语法是这样的
+
+.. code-block:: c
+    :linenos:
+    int PyArg_ParseTuple(PyObject* tuple,char* format,...)
+
+1.args:参数arg必须是一个元组对象，包含一个从Python传递给C函数的参数列表
+
+2."ss":是一个格式参数它必须是格式字符串，初次之外还有很多个参数，最后面我会给出参考地址。
+
+3.&str 和 &filename:可变参数，指向局部变量的指针，解析后的值将赋给这些局部变量。这里我们的例子是 PyArg_ParseTuple() 如果执行失败结果为 false 。如函数将返回 NULL，不再继续。
+
+fputs()
+====================
+
+如前所述，fputs()有两个参数，其中一个是 FILE * 对象。由于在 C 语言中无法使用 Python API 解析 Python textIOwrapper 对象，因此必须使用一种变通方法
+
+.. code-block:: c
+    :linenos:
+
+    FILE *fp = fopen(filename, "w"); 
+    bytes_copied = fputs(str, fp); 
+    fclose(fp);
+
+然后，将 fputs() 的返回值存储在 bytes_copied 中。该整数变量将返回到 Python 解释器中的fputs()调用
+
+PyLong_FromLong(bytes_copied)
+==============================================
+
+PyLong_FromLong() 返回一个 PyLongObject，它在 Python 中表示一个整数对象。通过它将返回一个 PyObject 对象给 Python。
+
+编写 Init 函数
+==========================
+
+我们已经编写了构成 Python C 扩展模块核心功能的代码。但是，仍然需要一些额外的功能来启动和运行模块。需要编写模块及其包含的方法的定义，如下所示：
+
+.. code-block:: c
+    :linenos:
+
+    static PyMethodDef FputsMethods[] = {
+        {"fputs", method_fputs, METH_VARARGS, "Python interface for fputs C library function"},
+        {NULL, NULL, 0, NULL}
+    };
+
+
+    static struct PyModuleDef fputsmodule = {
+        PyModuleDef_HEAD_INIT,
+        "fputs",
+        "Python interface for the fputs C library function",
+        -1,
+        FputsMethods
+    };
+
+这些函数包括有关模块的元信息，Python 解释器将使用这些元信息。让我们看看上面的每个结构是如何工作的。
+
+PyMethodDef
+========================
+
+这是一个函数列表，因为我们一般会定义多个函数，使用 {NULL, NULL, 0, NULL} 表示最后一个函数。先看第一部分代码
+
+.. code-block:: c
+    :linenos:
+
+    static PyMethodDef FputsMethods[] = {
+        {"fputs", method_fputs, METH_VARARGS, "Python interface for fputs C library function"},
+        {NULL, NULL, 0, NULL}
+    };
+
+函数列表的单个元素，由4个参数组成。第一个参数是用户要调用的函数名称，第二个是要调用的C函数名称，第三个是模块的标示，告诉解释器函数将接受两个 PyObject 类型的参数，self 模块对象和arg 函数的实际参数的元组。第四个就是函数的 docstring ，我们可以通过 help(fputs) 获取。
+
+PyModuleDef
+======================
+
+正如 PyMethodDef 保留有关 Python C 扩展模块中方法的信息一样，PyModuleDef 结构也保留有关模块本身的信息。但是它不是结构的数组，而是用于模块定义的单个结构。
+
+.. code-block:: c
+    :linenos:
+
+    static struct PyModuleDef fputsmodule = {
+        PyModuleDef_HEAD_INIT,
+        "fputs",
+        "Python interface for the fputs C library function",
+        -1,
+        FputsMethods
+    };
+
+第一个参数固定写就可以了，第二个参数是 Python C 扩展模块的名称。第三个参数表示模块docstring 的值。第四个参数模块空间，一般子解释器使用的，-1 表示不使用，第五个参数就是上面定义的函数列表。
+
+PyMODINIT_FUNC
+=========================
+既然已经定义了 Python C 扩展模块和方法结构，现在就该使用它们了。当 Python 程序第一次导入模块时，它将调用 PyInit_fputs()
+
+.. code-block:: c
+    :linenos:
+
+    PyMODINIT_FUNC PyInit_fputs(void) {
+        return PyModule_Create(&fputsmodule);
+    }
+
+PyMODINIT_FUNC 在声明为函数返回类型时隐式地做了三件事：1.它将函数的返回类型隐式设置为 PyObject *。2.它声明任何特殊的链接。3.它将函数声明为 extern C。如果你在使用 C++，它会告诉 C++ 编译器以 C 的方式运行。PyInit/_ 作为固定开头，然后加模块的名字 fputs。PyModule_Create() 将返回一个类型为 PyObject * 的新模块对象。参数传入的是上面定义的fputsmodule。
+
+注意:在 Python3 中，你的 init 函数必须返回一个 PyObject * 类型。但是，如果使用的是Python2，那么 PyMODINIT_FUNC 将函数返回类型声明为 void。
+
+回顾整个过程
+========================
+
+现在我们已经编写了 Python C 扩展模块的必要部分，让我们回过头来看看它们是如何组合在一起的。下图显示了模块的组件以及它们如何与 Python 解释器交互当你通过 Python 导入 fputs 模块的使用，首先会进入 PyInit_fputs 这个入口函数，在将引用返回给 Python 解释器之前,该函数随后调用 PyModule_Create(),它将初始化 PyModuleDef 和 PyMethodDef 函数，其中包含关于模块的元信息。准备好它们是有意义的，因为你将在 init 函数中使用它们。完成之后，对模块对象的引用最终返回给 Python 解释器。下图显示了模块的内部流程
+
+PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的引用，该结构又有一个对方法 PyMethodDef 的引用。当你调用在 Python C 扩展模块中定义的方法时，Python 解释器使用模块对象及其携带的所有引用来执行特定的方法。同样，你可以访问模块的各种其他方法和属性，例如模块 docstring 或方法 docstring。这些定义在它们各自的结构内部。
+
+现在你已经了解了从 Python 解释器调用 fputs() 时会发生什么，解释器使用模块对象以及模块和方法引用来调用方法。最后，让我们看看解释器如何处理 Python C 扩展模块运行的：调用 fputs() 方法后，程序将执行以下步骤:
+
+1.使用 PyArg_ParseTuple() 解析从 Python 解释器传递的参数
+
+2.将这些参数传递给 fputs()，这是构成模块核心的 C 库函数。
+
+3.使用 PyLong_FromLong 从 fput() 返回值
+
+最后是完整代码
+
+.. code-block:: c
+    :linenos:
+
+    #include <Python.h>
+
+    static PyObject *method_fputs(PyObject *self, PyObject *args) {
+        //str是要写入ss文件流的字符串。
+        //filename是要写入的文件的名称。
+        char *str, *filename = NULL;
+        int bytes_copied = -1;
+
+        /* Parse arguments */
+        if(!PyArg_ParseTuple(args, "ss", &str, &filename)) {
+            return NULL;
+        }
+
+        FILE *fp = fopen(filename, "w");
+        bytes_copied = fputs(str, fp);
+        fclose(fp);
+
+        return PyLong_FromLong(bytes_copied);
+    }
+    static PyMethodDef FputsMethods[] = {
+        {"fputs", method_fputs, METH_VARARGS, "Python interface for fputs C library function"},
+        {NULL, NULL, 0, NULL}
+    };
+
+
+    static struct PyModuleDef fputsmodule = {
+        PyModuleDef_HEAD_INIT,
+        "fputs",
+        "Python interface for the fputs C library function",
+        -1,
+        FputsMethods
+    };
+    PyMODINIT_FUNC PyInit_fputs(void) {
+        return PyModule_Create(&fputsmodule);
+    }
+
+
+打包 Python C 扩展模块
+==================================
+
+在导入新模块之前，首先需要构建它。可以通过使用 Python 的 distutils 模块实现这一点。下面先上代码，文件名setup.py
+
+.. code-block:: c
+    :linenos:
+
+    from distutils.core import setup, Extension
+
+    def main():
+        setup(name="fputs",
+            version="1.0.0",
+            description="Python interface for the fputs C library function",
+            author="cxa",
+            author_email="1598828268@qq.com",
+            ext_modules=[Extension("fputs", ["fputsmodule.c"])])
+
+    if __name__ == "__main__":
+        main()
+
+代码很简单，我主要是解释下 setup 里面的参数函数含义, name 就是打包文件名称,version 版本号，一般都是 1.0.0 开始的。description 就是模块描述，ext_modules 是一个数组类型，Extension("fputs", ["fputsmodule.c"])，Extension里面第一个参数是模块，第二个参数注意它是一个列表类型。它表示的是我们编写好的 C 文件的路径。
+
+构建模块
+===================
+现在你已经有了 setup.py 文件，可以使用它来构建 Python C 扩展模块了。构建非常简单一句话就可以了
+.. code-block:: shell
+    :linenos:
+
+    python3 setup.py install
+
+该命令将编译并安装当前目录下的Python C扩展模块。如果失败了就根据具体错误信息，百度搜下就可以解决了。
+运行你的模块
+现在一切都就绪了，是时候看看你的模块是如何工作的了!
+
+.. code-block:: shell
+    :linenos:
+
+    >>> import fputs
+    >>> fputs.__doc__
+    'Python interface for the fputs C library function'
+    >>> fputs.__name__
+    'fputs'
+    >>> # Write to an empty file named `write.txt`
+    >>> fputs.fputs("NightTeam!", "write.txt")
+    13
+    >>> with open("write.txt", "r") as f:
+    >>>     print(f.read())
+    'NightTeam!'
+
+引发异常
+===================
+
+Python 异常与 C++ 异常非常不同。如果希望从 C 扩展模块中引发 Python 异常，那么可以使用Python API 来实现。Python API 提供的一些用于异常引发的函数如下
+函数名	描述
+PyErr_SetString(PyObject *type, const char *message)	带有两个参数：一个PyObject *类型的参数，指定异常的类型，以及一个向用户显示的自定义消息
+PyErr_Format(PyObject *type,const char *format)	带有两个参数：一个PyObject *类型的参数，指定异常的类型，以及一个向用户显示的格式化自定义消息
+PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是PyObject *类型:第一个参数指定异常的类型，第二个参数设置一个任意的Python对象作为异常值
+你可以使用其中任何一个来引发异常。但是，使用哪一个以及何时使用完全取决具体的需求。Python API拥有所有预先定义为PyObject类型的标准异常。
+
+从C代码中引发异常
+===========================
+
+虽然在C语言中不能引发异常，但Python API允许你从Python C扩展模块中引发异常。我们通过向代码中添加PyErr_SetString()来测试这个功能。
+
+.. code-block:: c
+    :linenos:
+
+    static PyObject *method_fputs(PyObject *self, PyObject *args) {
+        char *str, *filename = NULL;
+        int bytes_copied = -1;
+
+        /* Parse arguments */
+        if(!PyArg_ParseTuple(args, "ss", &str, &fd)) {
+            return NULL;
+        }
+
+        if (strlen(str) < 10) {
+            PyErr_SetString(PyExc_ValueError, "String length must be greater than 10");
+            return NULL;
+        }
+
+        fp = fopen(filename, "w");
+        bytes_copied = fputs(str, fp);
+        fclose(fp);
+
+        return PyLong_FromLong(bytes_copied);
+    }
+
+在这里，在解析参数之后和调用 fputs() 之前，检查输入字符串的长度。如果用户传递的字符串小于10 个字符，则程序将使用自定义消息引发 ValueError 错误。一旦异常发生，程序执行就会停止。注意上面的 fputs() 方法在引发异常后返回了一个 NULL。这是因为只要你使用 PyErr_*()引发异常。不需要调用函数来随后再次设置该条目。因此，调用函数返回一个指示失败的值，通常为NULL或-1。(这也应该解释为什么当使用 PyArg_ParseTuple()解析 method_fputs()中的参数时，为什么需要返回 NULL。)
+
+增加自定义异常
+========================
+
+你还可以在 Python C 扩展模块中引发自定义异常。但是，使用方法和上面有所不同。在前面的PyMODINIT_FUNC 中，你只需返回由 PyModule_Create 返回的实例即可。但是如果让使用模块的用户能够访问自定义异常，就需要在返回之前将自定义异常添加到模块实例。
+
+.. code-block:: c
+    :linenos:
+
+    static PyObject *StringTooShortError = NULL;
+
+    PyMODINIT_FUNC PyInit_fputs(void) {
+        /* 分配模块值 */
+        PyObject *module = PyModule_Create(&fputsmodule);
+
+        /* 初始化新的异常对象 */
+        StringTooShortError = PyErr_NewException("fputs.StringTooShortError", NULL, NULL);
+
+        /* 将异常对象添加到模块中 */
+        PyModule_AddObject(module, "StringTooShortError", StringTooShortError);
+
+        return module;
+    }
+
+与前面一样，首先创建一个模块对象。然后使用 PyErr_NewException 创建一个新的异常对象。第一个参数采用 module.classname 的形式作为要创建的异常类的名称，选择描述性内容，以使用户更容易解释实际出了什么问题。接下来，使用 PyModule_AddObject 将其添加到模块对象中。第一个参数是上面创建的模块对象，第二个参数是异常对象的名称，第三个参数 就是异常对象本身。最后返回模块对象。
+既然已经定义了新的异常方法，那么我们就可以将核心代码改为下面这样:
+
+.. code-block:: c
+    :linenos:
+
+    static PyObject *method_fputs(PyObject *self, PyObject *args) {
+        char *str, *filename = NULL;
+        int bytes_copied = -1;
+
+        /* Parse arguments */
+        if(!PyArg_ParseTuple(args, "ss", &str, &fd)) {
+            return NULL;
+        }
+
+        if (strlen(str) < 10) {
+            /* Passing custom exception */
+            PyErr_SetString(StringTooShortError, "String length must be greater than 10");
+            return NULL;
+        }
+
+        fp = fopen(filename, "w");
+        bytes_copied = fputs(str, fp);
+        fclose(fp);
+
+        return PyLong_FromLong(bytes_copied);
+    }
+之后打包，构建生成新的模块。通过下面的代码进行测试
+
+.. code-block:: shell
+    :linenos:
+
+    >>> import fputs
+    >>> # Custom exception
+    >>> fputs.fputs("NT!", fp.fileno())
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    fputs.StringTooShortError: String length must be greater than 10
+
+如果字符串长度小于 10，这个时候我们定义异常就会抛出了。
+
+定义常量
+====================
+在某些情况下，需要在 Python C 扩展模块中使用或定义常量。这与您在前一节中定义自定义异常的方式非常相似。可以使用 PyModule_AddIntConstant() 定义一个新常量并将其添加到模块实例中。
+.. code-block:: c
+    :linenos:
+
+    PyMODINIT_FUNC PyInit_fputs(void) {
+        /* Assign module value */
+        PyObject *module = PyModule_Create(&fputsmodule);
+
+        /* Add int constant by name */
+        PyModule_AddIntConstant(module, "FPUTS_FLAG", 64);
+
+        /* Define int macro */
+        #define FPUTS_MACRO 256
+
+        /* Add macro to module */
+        PyModule_AddIntMacro(module, FPUTS_MACRO);
+
+        return module;
+    }
+
+其中
+
+    PyModule_AddIntConstant(module, "FPUTS_FLAG", 64);
+
+里面包含三个参数，分别是模块的名字，常量的名称和常量的值。你还可以使用 
+
+PyModule_AddIntMacro() 对宏执行相同的操作。
+    /* 定义宏 */
+    #define FPUTS_MACRO 256
+
+    /* 添加宏到模块*/
+    PyModule_AddIntMacro(module, FPUTS_MACRO);
+
+重新打包构建并运行观察结果
+>>> import fputs
+>>> # Constants
+>>> fputs.FPUTS_FLAG
+64
+>>> fputs.FPUTS_MACRO
+256
+我们发现，可以从Python解释器中访问这些常量。
+考虑替代方案
+在本教程中，你已经为C库函数构建了一个接口，以了解如何编写 Python C 扩展模块。但是，有时你需要做的只是调用一些系统调用或一些C库函数，并且希望避免编写两种不同语言的开销。在这些情况下，你可以使用 Python 库，如 ctypes 或 cffi。关于 ctypes 是的使用可以看我公众号之前写的文章。
+总结
+在本教程中，你学习了如何使用 Python API 以 C 编程语言编写 Python 接口。为 C 库函数fputs() 编写了一个 Python 包装器。在构建之前，我们还向模块添加了自定义异常和常量。
+Python API 为用 C 编程语言编写复杂的 Python 接口提供了大量特性。同时，像 cffi 或ctypes 这样的库可以降低编写 Python C 扩展模块所涉及的开销。所以应该按照自己的需求选择合理的拓展方式。
+
+参考资料
+https://realpython.com/build-python-c-extension-module/
+https://www.oreilly.com/library/view/python-in-a/0596001886/re1107.html
+https://mp.weixin.qq.com/s/QOTZBj1mqdIRuKWX0oZC2Q
