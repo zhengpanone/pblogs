@@ -28,7 +28,7 @@
  
 .. note:: 
 
- for i in $(ls *.tar);do tar xvf $i;done
+	for i in $(ls *.tar);do tar xvf $i;done
 
 批量修改文件内容
 =========================
