@@ -1,4 +1,4 @@
-# 上下文管理器
+# 7、上下文管理器
 
 ## 1、what context manager？
 
@@ -182,4 +182,3 @@ with open_func('/Users/MING/mytest.txt') as file_in:
 2. 提高代码的优雅度；
 3. 提高代码的可读性；
 
-#### fasdfa

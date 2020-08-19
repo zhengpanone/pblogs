@@ -64,14 +64,15 @@
 
 创建完两个空文件夹之后，打开cmd命令窗口，输入
 
-npm config set prefix "D:\Develop\nodejs\node_global"
-npm config set cache "D:\Develop\nodejs\node_cache"
+npm config set prefix "D:\\Develop\\nodejs\\node_global"
+
+npm config set cache "D:\\Develop\\nodejs\\node_cache"
 
 ..  image:: ./image/11.png
     :align: center
     :alt: install node.js
 
-进入环境变量对话框，在【系统变量】下新建【NODE_PATH】，输入【D:\Develop\nodejs\node_global\node_modules】，将【用户变量】下的【Path】修改为【D:\Develop\nodejs\node_global】
+进入环境变量对话框，在【系统变量】下新建【NODE_PATH】，输入【D:\\Develop\\nodejs\\node_global\\node_modules】，将【用户变量】下的【Path】修改为【D:\\Develop\\nodejs\\node_global】
 
 ..  image:: ./image/12.png
     :align: center
