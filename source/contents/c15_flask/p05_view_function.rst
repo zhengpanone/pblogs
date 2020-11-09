@@ -67,38 +67,39 @@
 　　　　一旦路由进来，就会调用 dispatch_request 方法
 　　　　类视图的目的就是实现逻辑分离、方便管理
 
-::
+.. code-block:: python
+   :linenos:
 
- from flask import Flask
- from flask.views import View
+    from flask import Flask
+    from flask.views import View
 
- app = Flask(__name__)
+    app = Flask(__name__)
 
- @app.route('/')
- def index():
-    return 'Hello World'
+    @app.route('/')
+    def index():
+        return 'Hello World'
 
- class MyView(View): # MyView继承于View
+    class MyView(View): # MyView继承于View
 
-    def test(self):  #  自定义的方法
-        return '测试类视图'
+        def test(self):  #  自定义的方法
+            return '测试类视图'
 
-    def dispatch_request(self):   # 必须重写这个方法
-        resp = self.test()
-        return resp
+        def dispatch_request(self):   # 必须重写这个方法
+            resp = self.test()
+            return resp
 
 
- app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('test') 返回的是一个方法
+    app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('test') 返回的是一个方法
 
- print(app.url_map)
+    print(app.url_map)
 
- if __name__ == '__main__':
-    app.run(debug=True)
+    if __name__ == '__main__':
+        app.run(debug=True)
 
- # 把as_view方法返回的结果赋值给view_func
- # as_view方法返回的是一个方法(注意：as_view方法传入的参数就是as_view返回的那个方法的名字)，该方法会调用dispatch_request方法
- # 一旦路由进来，就会调用 dispatch_request 方法
- # 类视图的目的就是实现逻辑分离、方便管理
+    # 把as_view方法返回的结果赋值给view_func
+    # as_view方法返回的是一个方法(注意：as_view方法传入的参数就是as_view返回的那个方法的名字)，该方法会调用dispatch_request方法
+    # 一旦路由进来，就会调用 dispatch_request 方法
+    # 类视图的目的就是实现逻辑分离、方便管理
 
 
 3. 方法视图及使用

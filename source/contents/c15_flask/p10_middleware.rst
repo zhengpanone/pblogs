@@ -9,49 +9,50 @@
 第二种：flask里面的扩展，相当于django中的中间件
 
 
-::
+.. code-block:: python
+   :linenos:
 
- from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
- app = Flask(__name__)
- app.secret_key ='sdfsdfsdf'
+   from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
+   app = Flask(__name__)
+   app.secret_key ='sdfsdfsdf'
 
- @app.before_request
- def process_request1():
-    print('process_request1')
+   @app.before_request
+   def process_request1():
+      print('process_request1')
 
- @app.after_request
- def process_response1(response):
-    print('process_response1')
-    return response
-
-
- @app.before_request
- def process_request2():
-    print('process_request2')
-
- @app.after_request
- def process_response2(response):   #参数也得有
-    print('process_response2')
-    return response   #必须有返回值
+   @app.after_request
+   def process_response1(response):
+      print('process_response1')
+      return response
 
 
- @app.route('/index')
- def index():
-    print('index')
-    return 'Index'
+   @app.before_request
+   def process_request2():
+      print('process_request2')
 
- @app.route('/order')
- def order():
-    print('order')
-    return 'order'
+   @app.after_request
+   def process_response2(response):   #参数也得有
+      print('process_response2')
+      return response   #必须有返回值
 
- @app.route('/test')
- def test():
-    print('test')
-    return 'test'
 
- if __name__ == '__main__':
-    app.run()
+   @app.route('/index')
+   def index():
+      print('index')
+      return 'Index'
+
+   @app.route('/order')
+   def order():
+      print('order')
+      return 'order'
+
+   @app.route('/test')
+   def test():
+      print('test')
+      return 'test'
+
+   if __name__ == '__main__':
+      app.run()
 
 
 运行结果：

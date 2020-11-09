@@ -5,29 +5,32 @@
 定义蓝图
 =========
 
-::
+.. code-block:: python
+    :linenos:
 
- from flask import Blueprint
- admin = Blueprint("admin",__name__)
- import views
+    from flask import Blueprint
+    admin = Blueprint("admin",__name__)
+    import views
 
 
 注册蓝图
 ============
 
-::
+.. code-block:: python
+    :linenos:
 
- from admin import admin as admin_buleprint
- app.register_blueprint(admin_buleprint,url_prefix="admin")
+    from admin import admin as admin_buleprint
+    app.register_blueprint(admin_buleprint,url_prefix="admin")
 
 
 调用蓝图
 ===========
 
-::
+.. code-block:: python
+    :linenos:
 
- from . import admin
- @admin.route("/")
+    from . import admin
+    @admin.route("/")
 
 
 

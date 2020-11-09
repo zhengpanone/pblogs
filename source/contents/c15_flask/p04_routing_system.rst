@@ -5,47 +5,50 @@
 1. 可传入参数
 ========================
 
-::
+.. code-block:: python
+   :linenos:
  
- @app.route('/user/<username>')     # 常用的   不加参数时默认字符串形式
- @app.route('/post/<int：post_id>')     # 常用的    指定int 说明是整型
- @app.route('/post/<float:post_id>')
- @app.route('/post/<path:path>')
- @app.route('/login', methods=['GET', 'POST'])
+   @app.route('/user/<username>')     # 常用的   不加参数时默认字符串形式
+   @app.route('/post/<int：post_id>')     # 常用的    指定int 说明是整型
+   @app.route('/post/<float:post_id>')
+   @app.route('/post/<path:path>')
+   @app.route('/login', methods=['GET', 'POST'])
 
 
-::
+.. code-block:: python
+   :linenos:
 
- DEFAULT_CONVERTERS = {
-    'default':          UnicodeConverter,
-    'string':           UnicodeConverter,
-    'any':              AnyConverter,
-    'path':             PathConverter,
-    'int':              IntegerConverter,
-    'float':            FloatConverter,
-    'uuid':             UUIDConverter,
- }
+   DEFAULT_CONVERTERS = {
+      'default':          UnicodeConverter,
+      'string':           UnicodeConverter,
+      'any':              AnyConverter,
+      'path':             PathConverter,
+      'int':              IntegerConverter,
+      'float':            FloatConverter,
+      'uuid':             UUIDConverter,
+   }
 
 2. 反向生成URL:url_for
 ============================================
 
 endpoint("name")   #别名，相当于django中的name
 
-::
+.. code-block:: python
+   :linenos:
 
- from flask import Flask,url_for
+   from flask import Flask,url_for
 
- @app.route('/index', endpoint='xxx')   # endpoint是别名
- def index():
-    v = url_for('xxx')
-    print(v)
-    return 'index'
+   @app.route('/index', endpoint='xxx')   # endpoint是别名
+   def index():
+      v = url_for('xxx')
+      print(v)
+      return 'index'
 
- @app.route('zzz/<int:nid>',endpoint='aaa')
- def zzz(nid):
-    v = url_for('aaa',nid=nid)
-    print(v)
-    return 'index2'
+   @app.route('zzz/<int:nid>',endpoint='aaa')
+   def zzz(nid):
+      v = url_for('aaa',nid=nid)
+      print(v)
+      return 'index2'
 
 3. @app.route 和 app.add_url_rule 参数
 ===============================================================
