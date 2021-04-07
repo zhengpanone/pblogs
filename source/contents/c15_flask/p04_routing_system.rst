@@ -28,7 +28,13 @@
       'uuid':             UUIDConverter,
    }
 
-2. 反向生成URL:url_for
+2.自定义URL转换器
+=======================================
+
+
+
+
+3. 反向生成URL:url_for
 ============================================
 
 endpoint("name")   #别名，相当于django中的name
@@ -55,64 +61,65 @@ endpoint("name")   #别名，相当于django中的name
 
 ::
 
+
  @app.route 和 app.add_url_rule 参数
         rule,                                               URL规则
         view_func,                                      视图函数名称
         defaults=None,                              默认值，当URL中无参数，函数需要参数是，使用defaults={k:v} 为函数提供参数
         endpoint=None,                            名称，用于反向生成URL，即： url_for('名称')
         methods=None,                            允许的请求方式，如：["GET","POST"]
-
         strict_slashes=None,                      对URL最后的 / 符号是否严格要求，
-                                                                如：
-                                                                @app.route('/index',strict_slashes=False)，　#当为False时，url上加不加斜杠都行
-                                                                访问 http://www.xx.com/index/ 或 http://www.xx.com/index均可
-                                                                @app.route('/index',strict_slashes=True)　　#当为True时，url后面必须不加斜杠
-                                                                仅访问 http://www.xx.com/index 
-        redirect_to=None,                           由原地址直接重定向到指定地址，原url有参数时，跳转到的新url也得传参，注意：新url中不用指定参数类型，直接用旧的参数的类型
-                                                                如：
-                                                                @app.route('/index/<int:nid>', redirect_to='/home/<nid>') # 访问index时，会直接自动跳转到home，执行home的函数，不执行index的
+
+如：
+@app.route('/index',strict_slashes=False)，　#当为False时，url上加不加斜杠都行访问 http://www.xx.com/index/ 或 http://www.xx.com/index均可
+@app.route('/index',strict_slashes=True)　　#当为True时，url后面必须不加斜杠仅访问 http://www.xx.com/index 
+redirect_to=None,                           # 由原地址直接重定向到指定地址，原url有参数时，跳转到的新url也得传参，注意：新url中不用指定参数类型，直接用旧的参数的类型
+如：
+@app.route('/index/<int:nid>', redirect_to='/home/<nid>') # 访问index时，会直接自动跳转到home，执行home的函数，不执行index的
                                             
-　　　　　　　　　　　　　　　　　　　　　　　　　　或
-                                                                def func(adapter, nid):
-                                                                return "/home/888"
-                                                                @app.route('/index/<int:nid>', redirect_to=func)
+或
 
-        subdomain=None,                         子域名访问
-                                                                from flask import Flask, views, url_for
+def func(adapter, nid):
+   return "/home/888"
 
-                                                                app = Flask(import_name=__name__)
-                                                                app.config['SERVER_NAME'] = 'haiyan.com:5000'
+@app.route('/index/<int:nid>', redirect_to=func)
+
+subdomain=None,                         # 子域名访问
+from flask import Flask, views, url_for
+
+app = Flask(import_name=__name__)
+app.config['SERVER_NAME'] = 'haiyan.com:5000'
 
 
-                                                                @app.route("/", subdomain="admin")
-                                                                def static_index():
-                                                                """Flask supports static subdomains
-                                                                This is available at static.your-domain.tld"""
+@app.route("/", subdomain="admin")
+def static_index():
+"""Flask supports static subdomains
+This is available at static.your-domain.tld"""
                                                                 
-                                                                    return "admin.xxx.com"
+return "admin.xxx.com"
 
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　#动态生成
-                                                                @app.route("/dynamic", subdomain="<username>")
-                                                                def username_index(username):
-                                                                    """Dynamic subdomains are also supported
-                                                                    Try going to user1.your-domain.tld/dynamic"""
-                                                                    return username + ".your-domain.tld"
+#动态生成
+@app.route("/dynamic", subdomain="<username>")
+def username_index(username):
+"""Dynamic subdomains are also supported
+Try going to user1.your-domain.tld/dynamic"""
+return username + ".your-domain.tld"
 
 
-                                                                if __name__ == '__main__':
-                                                                    app.run()
-            所有的域名都得与IP做一个域名解析：
-　　　　　　　　如果你想通过域名去访问，有两种解决方式：
-　　　　　　　　　　方式一：
-　　　　　　　　　　　　1、租一个域名   haiyan.lalala
-　　　　　　　　　　　　2、租一个公网IP  49.8.5.62
-　　　　　　　　　　　　3、域名解析：haiyan.com    49.8.5.62
-　　　　　　　　　　　　4、吧代码放在49.8.5.62这个服务器上，程序运行起来
-　　　　　　　　　　　　　 用户可以通过IP进行访问
-　　　　　　　　　　方式二：如果是自己测试用的就可以用这种方式。先在自己本地的文件中找
-　　　　　　　　　　　　 C:\Windows\System32\drivers\etc  找到HOST，修改配置
-　　　　　　　　　　　　然后吧域名修改成自己的本地服务器127.0.0.1
-　　　　　　　　　　　　加上配置：app.config["SERVER_NAME"] = "haiyan.com:5000"
+if __name__ == '__main__':
+   app.run()
+所有的域名都得与IP做一个域名解析：
+如果你想通过域名去访问，有两种解决方式：
+方式一：
+1、租一个域名   haiyan.lalala
+2、租一个公网IP  49.8.5.62
+3、域名解析：haiyan.com    49.8.5.62
+4、把代码放在49.8.5.62这个服务器上，程序运行起来用户可以通过IP进行访问
+
+方式二：如果是自己测试用的就可以用这种方式。先在自己本地的文件中找
+C:\Windows\System32\drivers\etc  找到HOST，修改配置
+然后吧域名修改成自己的本地服务器127.0.0.1
+加上配置：app.config["SERVER_NAME"] = "haiyan.com:5000"
 
 
 ::

@@ -1,0 +1,6 @@
+快捷键,作用
+Ctrl+Pagedown/Pageup,在已经打开的多个文件间进行切换
+Ctrl+Tab,在已经打开的多个文件之间进行跳转
+Ctrl+Shift+O,在当前文件的各种方法之间进行跳转
+Ctrl+G,跳转到指定行
+Ctrl+Shift+\,跳转到匹配的括号
