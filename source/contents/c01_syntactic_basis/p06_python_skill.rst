@@ -2,6 +2,78 @@
 6. Python编程技巧
 ====================================
 
+1、字符串操作
+==============
+
+format_map()函数
+>>>>>>>>>>>>>>>>>>>>>>>
+
+多个占位符格式化字符串
+
+.. code-block:: python
+   :linenos:
+
+   s6 = {'name': '张三', 'age': 18}
+   "my name is {name}, my age is {age}".format_map(s6)
+
+partition()函数
+>>>>>>>>>>>>>>>>>>>>>>>>
+
+搜索指定字符串,并将该字符串拆分为包含三个元素的元组
+
+.. code-block:: python 
+   :linenos:
+
+   s1 = "'my name is zhang san'"
+   s1.partition("is")
+
+rindex()函数
+>>>>>>>>>>>>>>>>>>>>
+
+查找指定值的最后一次出现的索引
+
+.. code-block:: python
+   :linenos:
+
+   s2 = "1_a_b_a_1_a_1_c"
+   s2.rindex('1')
+   s2.rindex('a')
+
+swapcase()函数
+>>>>>>>>>>>>>>>>>>>>>>
+
+返回一个字符串,其中所有大写字母均为小写字母,反之亦然
+
+.. code-block:: python
+   :linenos:
+
+   s3 = "mY name is zhang san"
+   s3.swapcase()
+
+
+center()函数
+>>>>>>>>>>>>>>>>>>>>>
+
+使用指定字符(默认空格)作为填充字符使字符串居中对齐
+
+.. code-block:: python
+   :linenos:
+
+   s4 = "ABCD"
+   s4.center(10,"*")
+
+capitalize()函数
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+返回一个字符串,其中第一个字符串为大写
+
+.. code-block:: python
+   :linenos:
+
+   s3 = "mY name is zhang san"
+   s3.capitalize()
+
+
 Lambda
 ====================================
 
@@ -306,23 +378,6 @@ print("b的值为"+str(b))    >>>   1
  >>> 18 < age < 60
 
  >>> False == False and False == True
-
-
-1.4 字符串操作
-====================================
-
-::
-
- # 不推荐
- colors = ['red','blue','green','yellow']
- result = ''
- for s in colors:
-    result += s # 每次赋值都丢弃以前的对象,生成新对象
-
-
- ##
- colors = ['red','blue','green','yellow']
- result = ''.join(colors) # 没有额外的内存分配
 
 
 1.5 字典键值列表
