@@ -43,7 +43,8 @@ pip
 安装软件
 >>>>>>>>>>>>>>>>>
 
-:: node 
+.. code-block:: shell
+   :linenos: 
 
    # 下载非二进制的包
    pip download --no-binary=:all: pkg 
@@ -177,27 +178,28 @@ pipenv install的时候有三种逻辑：
 
 pipenv 具有下列的选项：
 
-::
+.. code-block:: shell
+   :linenos:
 
- $ pipenv
- Usage: pipenv [OPTIONS] COMMAND [ARGS]...
+   pipenv
+   Usage: pipenv [OPTIONS] COMMAND [ARGS]...
 
- Options:
-  --update         更新Pipenv & pip
-  --where          显示项目文件所在路径
-  --venv           显示虚拟环境实际文件所在路径
-  --py             显示虚拟环境Python解释器所在路径
-  --envs           显示虚拟环境的选项变量
-  --rm             删除虚拟环境
-  --bare           最小化输出
-  --completion     完整输出
-  --man            显示帮助页面
-  --three / --two  使用Python 3/2创建虚拟环境（注意本机已安装的Python版本）
-  --python TEXT    指定某个Python版本作为虚拟环境的安装源
-  --site-packages  附带安装原Python解释器中的第三方库
-  --jumbotron      不知道啥玩意....
-  --version        版本信息
-  -h, --help       帮助信息
+   Options:
+   --update         更新Pipenv & pip
+   --where          显示项目文件所在路径
+   --venv           显示虚拟环境实际文件所在路径
+   --py             显示虚拟环境Python解释器所在路径
+   --envs           显示虚拟环境的选项变量
+   --rm             删除虚拟环境
+   --bare           最小化输出
+   --completion     完整输出
+   --man            显示帮助页面
+   --three / --two  使用Python 3/2创建虚拟环境（注意本机已安装的Python版本）
+   --python TEXT    指定某个Python版本作为虚拟环境的安装源
+   --site-packages  附带安装原Python解释器中的第三方库
+   --jumbotron      不知道啥玩意....
+   --version        版本信息
+   -h, --help       帮助信息
 
 pipenv 可使用的命令参数：
 
