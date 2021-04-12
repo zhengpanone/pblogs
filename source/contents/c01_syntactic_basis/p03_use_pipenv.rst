@@ -2,6 +2,68 @@
 3. Python虚拟环境
 ========================================
 
+pip
+===============
+
+查询软件包
+>>>>>>>>>>>>>>
+
+查询当前环境安装的所有软件包
+
+>>> pip list
+
+查询pypi上含有某个名字的包
+
+>>> pip search pkg 
+
+查询当前环境中可升级的包
+
+>>> pip list --outdated
+
+查询一个包的详细内容
+
+>>> pip show pkg
+
+下载软件包
+>>>>>>>>>>>>>>>>>>>>
+
+不安装软件包的情况下载软件到本地
+
+>>> pip download --destination-directory /local/wheels -r requirements.txt 
+
+指定目录中安装软件包,不从pypi上安装
+
+>>> pip install --no-index --find-links=/local/wheels -r requirements.txt 
+
+从下载的包中,自己构建生成wheel文件
+
+>>> pip install wheel
+>>> pip wheel --wheel-dir=/local/wheels -r requirements.txt
+
+安装软件
+>>>>>>>>>>>>>>>>>
+
+:: node 
+
+   # 下载非二进制的包
+   pip download --no-binary=:all: pkg 
+
+   # 安装非二进制的包
+   pip install pkg --no-binary
+
+
+安装用户私有软件包
+>>>>>>>>>>>>>>>>>>>>
+
+>>> pip install --user pkg
+
+
+升级软件包
+>>>>>>>>>>>>>
+
+>>> pip install --upgrade pkg 
+
+
 Virtualenv、Virtualenvwrapper、Pyenv、
 
 Virtualenv 
