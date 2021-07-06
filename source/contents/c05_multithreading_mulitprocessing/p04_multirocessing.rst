@@ -2,10 +2,11 @@
 4. 多进程编程
 ===========================
 
-multiprocessing
-=======================
 
 python 中的多线程并不是真正的多线程，如果想要重分利用多核CPU资源，在python中大部分情况使用的是多进程。Python提供了非常好用的多进程包multiprocessing，只需要定义一个函数，Python会完成其他所有事情。借助这个包，可以轻松完成从单进程到并发执行的转换。multiprocessing支持子进程、通信和共享数据、执行不同形式的同步，提供了Process、Queue、Pipe、Lock等组件。
+
+
+
 
 1. Process
 =============
@@ -25,103 +26,31 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 1.1 创建函数并将其作为单个进程：
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. literalinclude:: ./code/04_multiprocessing/process_demo01.py
+    :encoding: utf-8
+    :language: python
+    :linenos:
 
- from multiprocessing import Process
- import time
-
- def test():
-   while True:
-      print("-----test--------")
-      time.sleep(1)
-
- p = Process(target=test)
- p.start()  # 让这个进程开始执行test函数中的代码
- p.join()   # 等待进程实例执行结束后继续执行，即堵塞
-
- while True:
-   print("--------main----------")
-   time.sleep(1)
 
 1.2 创建函数并将其作为多个进程
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
-
- import multiprocessing
- import time
-
- def worker_1(interval):
-    print("worker_1")
-    time.sleep(interval)
-    print("end_worker_1")
-
- def worker_2(interval):
-    print("worker_2")
-    time.sleep(interval)
-    print("end_worker_2")
-
- def worker_3(interval):
-    print("worker_3")
-    time.sleep(interval)
-    print("end_worker_3")
-
- if __name__ == "__main__":
-    p1 = multiprocessing.Process(target=worker_1,args=(2,))
-    p2 = multiprocessing.Process(target=worker_2,args=(2,))
-    p3 = multiprocessing.Process(target=worker_3,args=(4,))
-
-    p1.start()
-    p2.start()
-    p3.start()
-
-    print("The number of CPU is："+str(multiprocessing.cpu_count()))
-    for p in multiprocessing.active_children():
-        print("child p.name"+ p.name + "\t p.id"+str(p.pid))
-    print("END！！！！！")
-
-
->>> The number of CPU is:16
-    child p.name:Process-1	 p.id9792
-    child p.name:Process-3	 p.id9794
-    worker_1
-    child p.name:Process-2	 p.id9793
-    END!!!!
-    worker_2
-    worker_3
-    end worker_1
-    end worker_2
-    end worker_3
+.. literalinclude:: ./code/04_multiprocessing/process_demo02.py
+    :encoding: utf-8
+    :language: python
+    :linenos:
 
 1.3 将进程定义为类
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 继承Process类，重写__init__方法，并且完全初始化一个Process类即：将继承类本身传递为Process.__int__方法，完成初始化，重写Processe类的run()方法
 
-::
+.. literalinclude:: ./code/04_multiprocessing/process_demo03.py
+    :encoding: utf-8
+    :language: python
+    :linenos:
 
- from multiprocessing import Process
- import time
 
- class ClockProcess(Process):
-    def __int__(self,interval):
-        Process.__int__(self) 
-        self.interval = interval
-
-    def run(self):
-         print("子进程(%s)开始执行，父进程为(%s)"%(os.getpid(),os.getppid()))
-         t_start = time.time()
-         time.sleep(self.interval)
-         t_stop = time.time()
-         print("(%s)执行结束，耗时%0.2f秒"%(os.getpid(),t_stop-t_start))
-      
-
- if __name__ == "__main__":
-   t_start = time.time()
-   print("当前程序进程(%s)"%os.getpid())
-   p1 = ClockProcess(2)
-   # 对一个不包含target属性的Process类执行start()方法，就会运行这个类中的run()方法
-   p.start()
 
 dummy
 ============================

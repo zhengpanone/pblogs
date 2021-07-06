@@ -2,24 +2,26 @@
 1. Docker 基本概念
 ========================================
 
-1.组成
-=================
+基本概念
+====================
+
+Docker组成
+>>>>>>>>>>>>>>>>>>>>>
 
 Docker组成：Docker Client 和 Docker Server
 
 Docker组件：
+
 - 镜像（Image）
+ 
 - 容器（Container）
+ 
 - 仓库（Repository）
-
-
-容器
-============================
 
 容器（Container）：容器是一种轻量级、可移植、并将应用程序进行的打包的技术，使应用程序可以在几乎任何地方以相同的方式运行，Docker将镜像文件运行起来后，产生的对象就是容器。容器相当于是镜像运行起来的一个实例且容器具备一定的生命周期。
 
 Docker容器和虚拟机的区别
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 相同点：
 
@@ -36,37 +38,20 @@ Docker容器和虚拟机的区别
 也因此，意味着在给定的硬件上能运行更多数量的容器，甚至可以直接把Docker运行在虚拟机上。
 
 容器的生命周期管理
-======================================
+>>>>>>>>>>>>>>>>>>>>>>>
 
 |image1|
 
 Docker内部组件
-==========================================
+>>>>>>>>>>>>>>>>>>>>>>
 
-1. Namespaces 命名空间，Linux内核提供的一种对进程**资源隔离**的机制，例如进程，网络，挂载点等资源。
-2. CGroups 控制组，Linux内核提供的一种**限制进程资源**的机制；例如cpu,内存等资源。 ls -l /sys/fs/cgroups   主要防止某一个容器资源过多导致宿主机资源紧张
-3. UnionFS 联合文件系统，支持将不同位置的目录挂载到同一虚拟文件系统，形成一种分层的模型。 ls 
+1. Namespaces 命名空间，Linux内核提供的一种对进程 **资源隔离** 的机制，例如进程，网络，挂载点等资源。
+2. CGroups 控制组，Linux内核提供的一种 **限制进程资源** 的机制；例如cpu,内存等资源。 ls -l /sys/fs/cgroups   主要防止某一个容器资源过多导致宿主机资源紧张
+3. UnionFS 联合文件系统，支持将不同位置的目录挂载到同一虚拟文件系统，形成一种分层的模型。  
 
-容器创建(docker create)
-=================================
 
-命令格式：
-docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
-
-常用参数：
-
-# -t 分配一个虚拟终端
-
-# -i 保持输入打开
-
-# -d 容器后台运行，并打印容器id
-
-# -rm 容器结束后自动删除容器
-
-推荐使用 docker run -dti 来启动所需容器。
-
-2.使用场景
-=========================
+使用场景
+>>>>>>>>>>>>>>>>>>>>>>>>>
 
 1. Simplifying Configuration(简化配置)
 #. Developer Productivity(简化开发环境)
@@ -79,24 +64,318 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 #. 持续集成：CI(持续集成)、CD(持续部署) ;自动化项目测试流程:构建、部署、部署、测试、发布
 
 
-docker 基本使用
-==============================
+Docker安装与启动
+======================
+
+1. 安装Docker
+>>>>>>>>>>>>>>>>>>>
+
+1) yum包更新到最新
+
+.. code-block:: shell
+
+   sudo yum update 
+
+2）安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
+
+.. code-block:: shell
+
+   sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+   
+   
+3）设置yum源为阿里云
+   
+.. code-block:: shell
+
+   sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+   
+   
+4）安装docker
+   
+.. code-block:: shell
+
+   sudo yum install docker-ce
+   
+5）安装后查看docker版本
+   
+.. code-block:: shell
+
+   docker -v
+   docker version # 查看Docker版本
+   
+   
+2. 设置ustc的镜像
+>>>>>>>>>>>>>>>>>>> 
+
+ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本的时候就在用。ustc的docker镜像加速器速度很快。ustc docker mirror的优势之一就是不需要注册，是真正的公共服务。
+
+`https://lug.ustc.edu.cn/wiki/mirrors/help/docker <https://lug.ustc.edu.cn/wiki/mirrors/help/docker>`_
+
+编辑该文件：
+
+.. code-block:: shell
+
+   vi /etc/docker/daemon.json  
+
+在该文件中输入如下内容：
+
+.. code-block:: json
+
+   {
+   "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
+   }
+
+
+3. Docker的启动与停止
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+**systemctl** 命令是系统服务管理器指令
+   
+启动docker：
+   
+.. code-block:: shell
+
+   systemctl start docker
+   
+   
+停止docker：
+   
+.. code-block:: shell
+
+   systemctl stop docker
+   
+   
+重启docker：
+   
+.. code-block:: shell
+
+   systemctl restart docker
+   
+   
+查看docker状态：
+   
+.. code-block:: shell
+
+   systemctl status docker
+   
+   
+开机启动：
+   
+.. code-block:: shell
+
+   systemctl enable docker
+   
+   
+查看docker概要信息
+   
+.. code-block:: shell
+
+   docker info
+   
+   
+查看docker帮助文档
+
+.. code-block:: shell
+
+   docker --help
+
+
+Docker常用命令
+===================
+
+
+1. 镜像相关命令
+>>>>>>>>>>>>>>>>>>>>
+
+.. code-block:: shell
+
+   docker search centos #查看搜索镜像
+
+   docker pull centos:latest # 下载镜像
+
+   docker images # 查看当前系统中的images信息
+
+1. 查看docker容器中运行的容器
+::::::::::::::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker ps  # 查看docker容器中运行的容器
+   docker ps -a # 查看所有容器
+   docker ps -l # 查看最后一次运行的容器
+   docker ps -f status=exited # 查看停止的容器
+
+2. 容器相关命令
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+容器创建(docker create)
+:::::::::::::::::::::::::::::::
+
+命令格式：
+docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
+
+.. code-block:: shell
+
+   docker run -itd --name=容器名称 镜像名称:标签 /bin/bash
+
+常用参数：
+
+- -t 分配一个虚拟终端
+
+- -i 保持输入打开
+
+- -d 守护式容器在后台运行，并打印容器id
+
+- --name 为创建的容器命令
+
+- -rm 容器结束后自动删除容器
+
+推荐使用 docker run -dti 来启动所需容器。
+
+登录守护式容器方式
+
+.. code-block:: shell
+
+   docker exec -it 容器名称/容器ID /bin/bash
+
+停止与启动容器
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker stop 容器名称/容器ID   # 停止容器
+   docker start 容器名称/容器ID  # 启动容器
+
+文件拷贝
+::::::::::::::
+
+.. code-block:: shell 
+
+   docker cp 需要拷贝的文件或目录  容器名称:容器目录   # 将文件拷贝到容器
+   docker cp 容器名称:容器目录   需要拷贝的文件或目录  # 将文件从容器拷贝出来
+
+目录挂载
+::::::::::::::
+
+创建容器 -v **宿主目录:容器目录**
+
+.. code-block:: shell
+
+   docker run -id -v /usr/local/myhtml:/usr/local/myhtml --name=mycentos7 centos:7
+
+如果共享的是多级目录,可能出现权限不足提示
+
+这是因为Centos7中的安全模块selinux把权限禁用了, 添加参数 **--privileged=true** 来解决挂载的目录没有权限的问题
+
+查看容器IP地址
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker inspect 容器名称/容器ID
+
+   # 可以直接执行下面的命令直接输出IP地址
+   docker inspect --format='{{.NetworkSettings.IPAddress}}' 容器名称/容器ID
+
+应用部署
+================
+
+1、MySQL部署
+>>>>>>>>>>>>>>>>
+
+1. 拉取mysql镜像
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker pull centos/mysql-57-centos7
+
+2. 创建容器 
+:::::::::::::::
+
+.. code-block:: shell
+
+   # -p 表示端口映射,格式为宿主机映射端口:容器运行端口
+   # -e 表示添加环境变量 MYSQL_ROOT_PASSWORD 是root用户的登录密码
+   docker run -di --name=tensquare_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql 
+
+2、tomcat部署
+>>>>>>>>>>>>>>>>>>
+
+1. 拉取tomcat镜像
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker pull tomcat:7-jre7
+
+2. 创建容器 
+::::::::::::::::::
+
+.. code-block:: shell
+
+   docker run -di --name=mytomcat -p 9000:8080 \
+   -v /usr/local/webapps:/usr/local/tomcat/webapps tomcat:7-jre7
+
+
+
+3、Redis部署
+>>>>>>>>>>>>>>>>>>>
+
+1. 拉取Redis镜像
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker pull redis
+
+2. 创建容器 
+:::::::::::::::
+
+.. code-block:: shell
+
+   docker run -di --name=myredis -p 6379:6379 redis
+
+4、Nginx部署
+>>>>>>>>>>>>>>>>>>>>>
+
+1. 拉取nginx镜像
+::::::::::::::::::::
+
+.. code-block:: shell
+
+   docker pull nginx
+
+2. 创建容器 
+:::::::::::::::
+
+.. code-block:: shell 
+
+   docker run -di --name=mynginx -p 80:80 nginx
+
+迁移与备份
+=====================
+
+.. code-block:: shell
+
+   # 容器保存为镜像
+   docker commit mynginx mynginx_i 
+
+   # 镜像备份
+   docker save -o mynginx.tar mynginx_i
+
+   # 镜像恢复与迁移
+   
+   docker load -i mynginx.tar
+
 
 ::
-
- docker version # 查看Docker版本
-
- docker search centos #查看搜索镜像
-
- docker pull centos:latest # 下载镜像
-
- docker images # 查看当前系统中的images信息
 
  docker run -it centos:latest  #运行docker容器
 
  winpty docker run -it zhengpanone/centos-python  # **在windows下使用git bash 使用**
 
- docker ps -a # 查看docker容器中运行的容器
+
 
  docker commit -m '' CONTAINER ID IMAGE  # 将容器转化为一个镜像
 
@@ -220,6 +499,8 @@ Docker 基础命令
  docker rmi  `docker images -aq`   # 一次性删除所有本地的镜像记录
 
 .. |image1| image:: ./image/640.webp
+
+
 
 
 https://www.cnblogs.com/521football/p/10483980.html

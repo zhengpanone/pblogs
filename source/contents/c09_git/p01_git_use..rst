@@ -4,38 +4,28 @@
 
 下图是git命令对仓库的影响 |image1|
 
-..  image:: ./image/640.webp
-    :align: center
-    :alt: git strucer
 
-1.1 名词解释
 
-    1 工作区(Working Directory)  文件夹所在的文件夹
 
-    2 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上。暂存区的内容提交到我们的本地仓库，
-    又名版本库（respository），可将其理解成一个目录，该目录下的所有文件都会被 git 管理起来，每个文件的修改、删除、git 都能跟踪，以便随时追踪历史，和还原。
-    .git 隐藏目录就是 git 的版本库，里面存了很多东西，最重要的就是 stage（index） 暂存区，还有第一个分支 master，以及指向 master 的 HEAD 指针。
+- **工作区(Working Directory)**  文件夹所在的文件夹
 
-    3.暂存区（Stage/Index） 就是每次 git add 时，文件的修改存放的地方。 git commit 时就是一次性把暂存区所有修改提交到分支。
+- 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上。暂存区的内容提交到我们的本地仓库，又名版本库（respository），可将其理解成一个目录，该目录下的所有文件都会被 git 管理起来，每个文件的修改、删除、git 都能跟踪，以便随时追踪历史，和还原。.git 隐藏目录就是 git 的版本库，里面存了很多东西，最重要的就是 stage（index） 暂存区，还有第一个分支 master，以及指向 master 的 HEAD 指针。
 
-    4. 本地历史仓库（Repository）
+   - **暂存区(Stage/Index)** 就是每次 git add 时，文件的修改存放的地方。 git commit 时就是一次性把暂存区所有修改提交到分支。
 
-    5. 远程仓库（Remote）
+   - **本地历史仓库(Local Repository)**
 
-..  image:: ./image/3.webp
-    :align: center
-    :alt: git strucer
+   - **远程仓库(Remote Repository)**
 
-..  image:: ./image/Image.png
-    :align: center
-    :alt: git strucer
 
-1.2 用户配置
+用户配置
+==========
 
-::
+.. code-block:: shell
  
- git config --global user.name 'zhengpanone'
- git config --global user.email "zhengpanone@hotmail.com"
+   git config --global user.name 'zhengpanone'
+   git config --global user.email "zhengpanone@hotmail.com"
+
 
 配置级别
 
@@ -46,13 +36,14 @@
 
 1.3 查看版本
 
-::
+.. code-block:: shell
 
- git log // 查看历史纪录
- git log --pretty = oneline // 版本ID一行显示
- git log --oneline --graph 
- git reset --hard HEAD^ // 回退到上一版本
- git reset --hard commit_id // 回退到指定ID 版本
+   git log // 查看历史纪录
+   git log --pretty = oneline // 版本ID一行显示
+   git log --oneline --graph 
+   git reset --hard HEAD^ // 回退到上一版本
+   git reset --hard commit_id // 回退到指定ID 版本
+
 
 上一个版本是HEAD^,上上一个版本HEAD^^ ,往上100可以写成HEAD~100，有时候由于回退到之前的版本，原来的版本没有显示，可以使用 
 
@@ -62,7 +53,9 @@
 
 把两段不相干的 分支进行强行合并
 
-git pull origin master --allow-unrelated-histories
+.. code-block:: shell
+
+   git pull origin master --allow-unrelated-histories
 
 1.4 其他重要概念
 
@@ -84,13 +77,14 @@ git pull origin master --allow-unrelated-histories
    
    3、分支策略：master 分支应该是非常稳定的，仅用来发布新版本，平时不能在上面干活，干活都在 dev 分支，dev 是不稳定的，到 1.0 发布时，再将 dev 合并到 master 上，由 master 发布新版本。
 
-1.5 linux 服务器git pull/push 时免除输入账号密码设置
+linux 服务器git pull/push 时免除输入账号密码设置
+
 
 进入到当前仓库执行
 
-::
+.. code-block:: shell
 
- git config --local credential.helper store
+   git config --local credential.helper store
 
 执行之后会在.git/config文件中多加[credential] helper = store
 
