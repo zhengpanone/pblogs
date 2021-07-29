@@ -115,25 +115,35 @@ docker pull 镜像名：TAG
 ssh登录
 ====================================
 
-.. note::
+.. code-block:: shell
 
- ssh root@localhost -p 8888
+    ssh root@localhost -p 8888
 
- 宿主机root用户仍然可以直接通过下面命令登录
+宿主机root用户仍然可以直接通过下面命令登录
 
- docker exec -it centos7 /bin/bash
+.. code-block:: shell
+
+    docker exec -it centos7 /bin/bash
+
+添加/更改容器映射端口
+===============================
+
+在宿主机修改 /var/lib/docker/containers/[hash_of_the_container]/hostconfig.json / config.v2.json 两个文件
 
 将docker容器提交为镜像
 ==========================================
 
-.. note::
- docker commit 481b2aad8d5f centos_ssh 
+.. code-block:: shell
 
- 481b2aad8d5f 为容器id、centos_ssh为镜像名称
+    docker commit 481b2aad8d5f centos_ssh 
 
- 将新的镜像启动，并将docker服务器的50001端口映射到容器的22端口上,给容器命名 
+    # 481b2aad8d5f 为容器id、centos_ssh为镜像名称
 
- docker run \-\-privileged -d -p 50001:22 \-\-name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
+将新的镜像启动，并将docker服务器的50001端口映射到容器的22端口上,给容器命名 
+
+.. code-block:: shell
+
+    docker run --privileged -d -p 50001:22 --name=centos_ssh_servier 371a214b38b5 /usr/sbin/init
 
  
 
