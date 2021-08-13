@@ -81,6 +81,32 @@
 构建ActiveMQ容器
 =========================
 
+firewall-cmd --list-port #查看开放的端口，如果不包括8161/tcp，则继续执行以下语句
+firewall-cmd --zone=public --add-port=8161/tcp --permanent #将端口8161设置为永久生效的公共端口
+firewall-cmd --reload #重新加载，使端口生效
+
+
 1、ActiveMQ启动宿主机无法访问8161端口
 
    ActiveMQ的配置文件中进行端口设置,修改jetty.xml，需要修改该文件中配置的端口，将其设置为0.0.0.0
+
+
+常用命令
+>>>>>>>>>>>>>>>
+
+- activemq start      启动activemq
+  
+- acitvemq status    查看状态
+
+- activemq consloe  查看日志
+  
+.. code-block:: shell
+   :linenos:
+
+   ps -ef | grep activemq | grep -v grep
+
+   netstat -anp | grep 61616
+
+   lsot -i:61616
+
+activemq 运行的默认后台端口是61616，默认前端端口是8161，用户名和密码是admin/admin

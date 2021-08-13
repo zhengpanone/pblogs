@@ -29,6 +29,18 @@ mysql基本使用
     :language: html
     :linenos:
 
+**数据库外键约束**
+
+删除和更新有四种设置方式
+
+- cascade：级联，当父表更新、删除，子表会同步更新和删除
+
+- set null：置空，当父表更新、删除的时候，字表会把外键字段变为null，所以这个时候设计表的时候该字段要允许为null，否则会出错
+
+- restrict：父表在删除和更新记录的时候，要在子表中检查是否有有关该父表要更新和删除的记录，如果有，则不允许删除个更改
+
+- no action：和restrict一样
+
 
 
 
@@ -38,18 +50,7 @@ https://mp.weixin.qq.com/s/6QemK32sLR1tlSDomuGDmw
 
 
 pymysql
------------
-
-
-
-
-
-
-
-
-
-
-
+----------
 
 .. code:: python
 

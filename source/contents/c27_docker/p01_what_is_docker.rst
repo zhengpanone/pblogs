@@ -189,11 +189,15 @@ Docker常用命令
 
 .. code-block:: shell
 
-   docker search centos #查看搜索镜像
+   docker search centos -f STARS=2000 #搜索过滤STARS大于2000的镜像
 
    docker pull centos:latest # 下载镜像
 
    docker images # 查看当前系统中的images信息
+
+   docker rmi -f 容器ID/镜像ID/名称  # 删除容器/镜像
+
+   docker rmi -f $(docker images -q) # 删除全部镜像
 
 1. 查看docker容器中运行的容器
 ::::::::::::::::::::::::::::::::
@@ -384,9 +388,7 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
  # -a 指定用户信息 ;5301d7c9bc21代表容器id; 
  zhengpanone/centos-python:V1指定目标镜像的用户名、仓库名和tag信息
 
- docker rmi -f d0049ff7d6d7 #删除docker容器 docker rmi image_name/image_id
 
- docker rm container_name/container_id # 删除docker容器
 
  docker save -o ./centos.tar zhengpanone/centos:git # 保存镜像 -o/--output
 
