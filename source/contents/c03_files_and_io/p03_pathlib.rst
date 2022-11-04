@@ -160,11 +160,11 @@ pathlib不仅封装了 os.path 相关常用方法，还集成了 os 的其他模
 基本用法
 >>>>>>>>>>>>>>>>>>>>>>
 
-Path.iterdir()　　# 遍历目录的子目录或者文件
+Path.iterdir()    # 遍历目录的子目录或者文件
 
-Path.is_dir()　　# 判断是否是目录
+Path.is_dir()     # 判断是否是目录
 
-Path.resolve()　　# 返回绝对路径
+Path.resolve()    # 返回绝对路径
 
 Path.exists()　　# 判断路径是否存在
 

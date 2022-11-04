@@ -1,5 +1,5 @@
 # 1.可调用对象是一个函数
-def application(environ，start_response):
+def application(environ, start_response):
     response_body = 'The request method was %s' % environ['REQUEST_METHOD']
 
     HTTP response code and message

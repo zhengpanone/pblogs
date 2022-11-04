@@ -76,7 +76,7 @@ Docker安装与启动
 
    sudo yum update 
 
-2）安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
+2）安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
 
 .. code-block:: shell
 
@@ -115,7 +115,7 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 
 .. code-block:: shell
 
-   vi /etc/docker/daemon.json  
+   vi /etc/docker/daemon.json  
 
 在该文件中输入如下内容：
 
@@ -135,28 +135,28 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
    
 .. code-block:: shell
 
-   systemctl start docker
+   systemctl start docker
    
    
 停止docker：
    
 .. code-block:: shell
 
-   systemctl stop docker
+   systemctl stop docker
    
    
 重启docker：
    
 .. code-block:: shell
 
-   systemctl restart docker
+   systemctl restart docker
    
    
 查看docker状态：
    
 .. code-block:: shell
 
-   systemctl status docker
+   systemctl status docker
    
    
 开机启动：
@@ -195,16 +195,20 @@ Docker常用命令
 
    docker images # 查看当前系统中的images信息
 
-   docker rmi -f 容器ID/镜像ID/名称  # 删除容器/镜像
+   docker rmi -f 容器ID/镜像ID/名称  # 删除容器/镜像 -f强制删除镜像
 
    docker rmi -f $(docker images -q) # 删除全部镜像
+
+   docker build -t express-demo . # 通过当前目录下Dockerfile构建镜像指定镜像名字为express-demo 参数t是tag的意思
+
+   docker tag e6fasc zhengpanone/express-demo:v1.0 # 对镜像进行重命名
 
 1. 查看docker容器中运行的容器
 ::::::::::::::::::::::::::::::::
 
 .. code-block:: shell
 
-   docker ps  # 查看docker容器中运行的容器
+   docker ps  # 查看docker容器中运行的容器 ps表示process status的意思
    docker ps -a # 查看所有容器
    docker ps -l # 查看最后一次运行的容器
    docker ps -f status=exited # 查看停止的容器
@@ -224,17 +228,58 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
 常用参数：
 
-- -t 分配一个虚拟终端
-
-- -i 保持输入打开
-
-- -d 守护式容器在后台运行，并打印容器id
-
-- --name 为创建的容器命令
-
-- -rm 容器结束后自动删除容器
+- \-i 表示interactive交互，保持输入打开
+- \-t 表示pseudo-TTY伪终端,分配一个虚拟终端
+- \-d  detached mode的缩写，守护式容器在后台运行，并打印容器id 
+- \--name 为创建的容器命令
+- \-rm 容器结束后自动删除容器
+- /bin/bash 表示执行一个新的bash shell
 
 推荐使用 docker run -dti 来启动所需容器。
+
+.. code-block:: shell
+   
+   docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app -p 3000:3000 \
+   --name express-demo-container express-demo-image
+
+   docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app:ro -v /app/node_module -p 3000:3000 \
+    --name express-demo-container express-demo-image
+   # ro表示容器中的有新增文件,本地不会进行新增,让本地变为只读readonly
+   # 表示 容器中的/app/node_module 不进行同步
+
+   docker rm -fv express-demo-container # v表示销毁容器的时候把对应的volume给删掉,不然volume会越来越多
+
+docker-compose启动容器
+
+
+   
+编写docker-compose.yml文件
+
+.. code-block:: yaml
+
+   version: "3.8" # 指定compose版本
+   services:
+      express-demo-container: # 容器名称
+         build: . # 容器是根据哪个镜像构建的，根据当前文件下的Dockerfile构建
+         ports:
+            - "3000:3000"
+         volumes:
+            - ./:/app:ro
+            - /egg/node_module
+
+运行docker-compose 
+.. code-block:: shell
+  
+   # -d 表示后台运行容器 
+   # --build 表示如果镜像有修改docker-compose就会重建,不加上--build下次就会使用之前的缓存
+   docker-compose up -d --build 
+
+docker-compose清除容器
+.. code-block:: shell
+
+   # -v表示清除对应的volume
+   docker-compose down -v 
+
 
 登录守护式容器方式
 
@@ -379,16 +424,12 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
  winpty docker run -it zhengpanone/centos-python  # **在windows下使用git bash 使用**
 
-
-
  docker commit -m '' CONTAINER ID IMAGE  # 将容器转化为一个镜像
 
  docker commit -m "安装 net-tools" -a 'zhengpanone'  5301d7c9bc21 zhengpanone/centos-python:V1
  # -m 指定说明信息; 
  # -a 指定用户信息 ;5301d7c9bc21代表容器id; 
- zhengpanone/centos-python:V1指定目标镜像的用户名、仓库名和tag信息
-
-
+ # zhengpanone/centos-python:V1指定目标镜像的用户名、仓库名和tag信息
 
  docker save -o ./centos.tar zhengpanone/centos:git # 保存镜像 -o/--output
 
@@ -421,14 +462,11 @@ Docker 基础命令
 
 .. code::
 
- 
  Usage:
  docker [OPTIONS] COMMAND [arg...]
        docker daemon [ --help | ... ]
        docker [ --help | -v | --version ]
  
-
-
  Options:
   --config=~/.docker              Location of client config files  #客户端配置文件的位置
   -D, --debug=false               Enable debug mode  #启用Debug调试模式
@@ -501,8 +539,6 @@ Docker 基础命令
  docker rmi  `docker images -aq`   # 一次性删除所有本地的镜像记录
 
 .. |image1| image:: ./image/640.webp
-
-
 
 
 https://www.cnblogs.com/521football/p/10483980.html

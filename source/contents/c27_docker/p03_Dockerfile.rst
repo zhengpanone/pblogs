@@ -50,5 +50,24 @@
 
  ONBUILD [INSTRUCTION] 镜像触发器,当一个镜像被其他镜像作为基础镜像时执行会在构建过程中插入指令
 
+.. code-block:: shell
+
+   docker tag e6fasc zhengpanone/express-demo:v1.0 # 对镜像进行重命名
+   docker build -t express-demo . # 指定build的image的名字为 express-demo
+
+docker compose
+============================
+
+.. code-block:: yaml
+
+   version: "3.8" # 指定compose版本
+   services:
+      express-demo-container: # 容器名称
+         build: . # 容器是根据哪个镜像构建的，根据当前文件下的Dockerfile构建
+         ports:
+            - "3000:3000"
+         volumes:
+            - ./:/app:ro
+            - /egg/node_module
 
 
