@@ -18,7 +18,7 @@ release = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['chinese_search', 'recommonmark','sphinx.ext.autodoc']
+extensions = ['chinese_search', 'recommonmark', 'sphinx.ext.autodoc']
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -60,24 +60,13 @@ latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
     'pointsize': '16pt',
     'classoptions': ',oneside', 'babel': '',  # 必须
     'inputenc': '',  # 必须
-    'utf8extra': '',  # 必须
-    # Additional stuff for the LaTeX preamble.
-    'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
-}
+    'utf8extra': ''}  # 必须
+# Additional stuff for the LaTeX preamble.
+# 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
 
-'''
-'preamble': r"""
-\usepackage{xeCJK}
-\usepackage{indentfirst}
-\setlength{\parindent}{2em}
-\setCJKmainfont{WenQuanYi Micro Hei}
-\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{song}{WenQuanYi Micro Hei}
-\setCJKfamilyfont{sf}{WenQuanYi Micro Hei}
-\XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt
-"""
-'''
+
+# 'preamble': r"""\usepackage{xeCJK}\usepackage{indentfirst}\setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei}\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}\setCJKfamilyfont{song}{WenQuanYi Micro Hei}\setCJKfamilyfont{sf}{WenQuanYi Micro Hei}\XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt
+
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
@@ -97,7 +86,7 @@ man_pages = [
 ]
 
 # If true, show URL addresses after external links.
-#man_show_urls = False
+# man_show_urls = False
 
 
 # -- Options for Texinfo output -------------------------------------------
@@ -122,6 +111,6 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-highlight_langeuage="java,javascript,python,html"
+highlight_langeuage = "java,javascript,python,html"
 _exts = "../exts"
 sys.path.append(os.path.abspath(_exts))

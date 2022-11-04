@@ -292,7 +292,7 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
 .. code-block:: shell
 
-   docker pull centos/mysql-57-centos7
+   docker pull mysql
 
 2. 创建容器 
 :::::::::::::::
@@ -301,7 +301,7 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
    # -p 表示端口映射,格式为宿主机映射端口:容器运行端口
    # -e 表示添加环境变量 MYSQL_ROOT_PASSWORD 是root用户的登录密码
-   docker run -di --name=tensquare_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql 
+   docker run --privileged=true --name=centos_mysql  -p 3306:3306 -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql   -e MYSQL_ROOT_PASSWORD=123456  -d mysql  
 
 2、tomcat部署
 >>>>>>>>>>>>>>>>>>

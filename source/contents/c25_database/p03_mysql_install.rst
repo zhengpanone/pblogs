@@ -17,20 +17,23 @@ mysql安装
 默认情况下没有my.ini文件，这需要我们手工创建一个。怎么创建呢？有没有像php.ini那样有模板呢？其实在MySQL5.6.13中带了一个my-default.ini，可以算作模板，只是里面的内容实在太少了。于是洪哥带大家手工创建一个my.ini。
 直接创建一个文本文件，命名为my.ini。打开它，输入如下内容：
 
-[mysqld]
+.. code-block:: text
+   :linenos:
 
-#绑定IPv4和3306端口
-bind-address = 0.0.0.0
-port = 3306
+   [mysqld]
 
-# 设置mysql的安装目录
-basedir=D:/mysql-5.6.13
+   #绑定IPv4和3306端口
+   bind-address = 0.0.0.0
+   port = 3306
 
-# 设置mysql数据库的数据的存放目录
-datadir=D:/mysql-5.6.13/data
+   # 设置mysql的安装目录
+   basedir=D:/mysql-5.6.13
 
-# 允许最大连接数
-max_connections=200
+   # 设置mysql数据库的数据的存放目录
+   datadir=D:/mysql-5.6.13/data
+
+   # 允许最大连接数
+   max_connections=200
 
 好了，这样一个基本的MySQL环境所需要的参数就够了。
 
