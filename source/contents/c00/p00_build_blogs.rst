@@ -244,10 +244,15 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 参考文档
 ----------
+- `Sphinx配置MarkDown解析`_
+- `Sphinx使用手册(部分汉化)`_
+- `搭建参考文章`_
+- `RST中文文档 <https://www.wenjiangs.com/doc/sypeug9v>`_ 
 
-- Sphinx配置MarkDown解析：http://www.sphinx-doc.org/en/master/usage/markdown.html
-- Sphinx使用手册(部分汉化)：http://www.pythondoc.com/sphinx/contents.html
-- 搭建参考文章：https://www.xncoding.com/2017/01/22/fullstack/readthedoc.html
+.. _`Sphinx配置MarkDown解析`: http://www.sphinx-doc.org/en/master/usage/markdown.html
+.. _`Sphinx使用手册(部分汉化)`: http://www.pythondoc.com/sphinx/contents.html
+.. _`搭建参考文章`: https://www.xncoding.com/2017/01/22/fullstack/readthedoc.html
+
 
 
 --------------

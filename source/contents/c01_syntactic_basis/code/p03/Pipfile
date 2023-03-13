@@ -1,0 +1,19 @@
+
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "pypi"
+ 
+[packages]
+requests = "*"
+pyyaml = "*"
+Django = "*"
+ 
+[dev-packages]
+pytest = "*"
+ 
+[requires]
+python_version = "3.7"
+ 
+[scripts]
+django = "python manage.py runserver 0.0.0.0:8080"

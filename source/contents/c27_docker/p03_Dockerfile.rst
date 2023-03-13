@@ -71,3 +71,15 @@ docker compose
             - /egg/node_module
 
 
+运行docker-compose 
+.. code-block:: shell
+  
+   # -d 表示后台运行容器 
+   # --build 表示如果镜像有修改docker-compose就会重建,不加上--build下次就会使用之前的缓存
+   docker-compose up -d --build 
+
+docker-compose清除容器
+.. code-block:: shell
+
+   # -v表示清除对应的volume
+   docker-compose down -v 
