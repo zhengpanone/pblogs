@@ -220,8 +220,8 @@ A) 枚举列表1
 参考文档
 ------------
 
-`reStructuredText(rst)快速入门语法说明`_
+`reStructuredText(rst)快速入门语法说明 <https://www.jianshu.com/p/1885d5570b37>`_
+`reStructuredText 简介 <https://wklchris.github.io/blog/reStructuredText/Advance.html#id3>`_
 
-.. _`reStructuredText(rst)快速入门语法说明`: https://www.jianshu.com/p/1885d5570b37
 
 .. |image2| image:: ./img/18112101.png
