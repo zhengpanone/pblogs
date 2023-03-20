@@ -49,3 +49,29 @@
     :encoding: utf-8
     :language: js
     :linenos:
+
+文件重命名和移动
+=================
+
+文件重命名&移动
+
+.. literalinclude:: ./code/p04_fs/07_文件重命名.js
+    :encoding: utf-8
+    :language: js
+    :linenos:
+
+文件删除
+=================
+
+.. literalinclude:: ./code/p04_fs/08_文件删除.js
+    :encoding: utf-8
+    :language: js
+    :linenos:
+
+文件夹操作
+=============
+
+.. literalinclude:: ./code/p04_fs/09_文件夹操作.js
+    :encoding: utf-8
+    :language: js
+    :linenos:
