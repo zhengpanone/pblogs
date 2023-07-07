@@ -63,6 +63,32 @@ Docker内部组件
 #. Repid Deployment(交付方式改变)
 #. 持续集成：CI(持续集成)、CD(持续部署) ;自动化项目测试流程:构建、部署、部署、测试、发布
 
+Docker 镜像加载原理
+======================
+
+UnionFs：联合文件系统
+>>>>>>>>>>>>>>>>>>>>>>>
+
+UnionFs(联合文件系统)：Union文件系统(UnionFs)是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下，UnionFs联合文件系统是Docker镜像的基础，镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。
+
+
+**特性：** 一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录
+
+Docker镜像加载原理
+>>>>>>>>>>>>>>>>>>>>>>
+
+Docker的镜像实际上由一层一层的UnionFs文件系统组成
+bootfs：主要包含 bootloader和 Kernel，bootloader主要是引导加 kernel，Linux刚启动时会加bootfs文件系统，在 Docker镜像的最底层是bootfs，这一层与我们典型的Linux/Unix系统是一样的，包含bootfs加载器和内核，当bootfs加载完成之后整个内核就都在内存中了，此时内存的使用权已由 bootfs转交给内核，此时系统也会卸载bootfs。
+
+
+rootfs：在 bootfs之上，包含的就是典型 Linux系统中的/dev、/proc、/bin、/etc等标准目录和文件，rootfs就是各种不同的操作系统发行版，比如：Ubuntu,、CentOS等等
+
+简单理解：
+
+1. 对于Docker安装OS来说：就是Docker使用了Linux本身的bootfs，只需要安装自己所需的rootfs  2. 对于Docker安装普通镜像来说：就是Docker本身是分层下载镜像，所以可以提取出公共层镜像，进行复用
+Docker镜像的特点
+Docker镜像都是只读的，当容器启动时，一个新的可写层加载到镜像的顶部
+这一层就是我们通常说的容器层，容器之下的都叫镜像层
 
 Docker安装与启动
 ======================
@@ -72,33 +98,27 @@ Docker安装与启动
 
 1) yum包更新到最新
 
-.. code-block:: shell
-
-   sudo yum update 
+>>> sudo yum update
 
 2）安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
 
-.. code-block:: shell
-
-   sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+>>> sudo yum install -y yum-utils device-mapper-persistent-data lvm2
    
    
 3）设置yum源为阿里云
    
-.. code-block:: shell
-
-   sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+>>> sudo yum-config-manager \
+--add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
    
    
 4）安装docker
    
-.. code-block:: shell
-
-   sudo yum install docker-ce
+>>> sudo yum install docker-ce
    
 5）安装后查看docker版本
    
 .. code-block:: shell
+   :linenos:
 
    docker -v
    docker version # 查看Docker版本
@@ -113,13 +133,12 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 
 编辑该文件：
 
-.. code-block:: shell
-
-   vi /etc/docker/daemon.json  
+>>> vi /etc/docker/daemon.json  
 
 在该文件中输入如下内容：
 
 .. code-block:: json
+   :linenos:
 
    {
    "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
@@ -132,52 +151,38 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 **systemctl** 命令是系统服务管理器指令
    
 启动docker：
-   
-.. code-block:: shell
 
-   systemctl start docker
+>>> systemctl start docker
    
    
 停止docker：
    
-.. code-block:: shell
-
-   systemctl stop docker
+>>> systemctl stop docker
    
    
 重启docker：
    
-.. code-block:: shell
-
-   systemctl restart docker
+>>> systemctl restart docker
    
    
 查看docker状态：
    
-.. code-block:: shell
-
-   systemctl status docker
+>>> systemctl status docker
    
    
 开机启动：
    
-.. code-block:: shell
-
-   systemctl enable docker
+>>> systemctl enable docker
    
    
 查看docker概要信息
    
-.. code-block:: shell
-
-   docker info
+>>> docker info
    
    
 查看docker帮助文档
 
-.. code-block:: shell
-
-   docker --help
+>>> docker --help
 
 
 Docker常用命令
@@ -188,15 +193,26 @@ Docker常用命令
 >>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
+   :linenos:
 
    docker search centos -f STARS=2000 #搜索过滤STARS大于2000的镜像
+   docker search redis --limit 5 # 默认25个
+   docker search --filter=stars=600 mysql # 只显示starts>=600 的镜像
+   docker search --no-trunc mysql # 显示镜像完整description描述
+   docker search --automated mysql # 只列出automated=ok 的镜像
 
    docker pull centos:latest # 下载镜像
 
-   docker images # 查看当前系统中的images信息
+   docker images # 查看本地的images信息
+   docker images -a # 查看含中间映像层
+   docker images -q # 只展示镜像ID
+   docker images -qa # 含中间映像层
+   docker images --digests # 显示镜像摘要信息
+   docker images --no-trunc # 显示镜像完整信息
 
+   docker system df 查看镜像/容器/数据卷所占的空间
+   
    docker rmi -f 容器ID/镜像ID/名称  # 删除容器/镜像 -f强制删除镜像
-
    docker rmi -f $(docker images -q) # 删除全部镜像
 
    docker build -t express-demo . # 通过当前目录下Dockerfile构建镜像指定镜像名字为express-demo 参数t是tag的意思
@@ -207,6 +223,7 @@ Docker常用命令
 ::::::::::::::::::::::::::::::::
 
 .. code-block:: shell
+   :linenos:
 
    docker ps  # 查看docker容器中运行的容器 ps表示process status的意思
    docker ps -a # 查看所有容器
@@ -223,27 +240,30 @@ Docker常用命令
 docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
 .. code-block:: shell
+   :linenos:
 
    docker run -itd --name=容器名称 镜像名称:标签 /bin/bash
 
 常用参数：
 
-- \-i 表示interactive交互，保持输入打开
-- \-t 表示pseudo-TTY伪终端,分配一个虚拟终端
-- \-d  detached mode的缩写，守护式容器在后台运行，并打印容器id 
-- \--name 为创建的容器命令
-- \-rm 容器结束后自动删除容器
-- /bin/bash 表示执行一个新的bash shell
+- ``-i`` 表示interactive交互，保持输入打开
+- ``-t`` 表示pseudo-TTY伪终端,分配一个虚拟终端
+- ``-d``  detached mode的缩写，守护式容器在后台运行，并打印容器id 
+- ``--name`` 为创建的容器命令
+- ``-rm`` 容器结束后自动删除容器
+- ``/bin/bash`` 表示执行一个新的bash shell
 
 推荐使用 docker run -dti 来启动所需容器。
 
 .. code-block:: shell
+   :linenos:
    
    docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app -p 3000:3000 \
    --name express-demo-container express-demo-image
 
-   docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app:ro -v /app/node_module -p 3000:3000 \
-    --name express-demo-container express-demo-image
+   docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app:ro \
+   -v /app/node_module -p 3000:3000 \
+   --name express-demo-container express-demo-image
    # ro表示容器中的有新增文件,本地不会进行新增,让本地变为只读readonly
    # 表示 容器中的/app/node_module 不进行同步
 
@@ -256,6 +276,7 @@ docker-compose启动容器
 编写docker-compose.yml文件
 
 .. code-block:: yaml
+   :linenos:
 
    version: "3.8" # 指定compose版本
    services:
@@ -267,7 +288,8 @@ docker-compose启动容器
             - ./:/app:ro
             - /egg/node_module
 
-运行docker-compose 
+运行docker-compose
+
 .. code-block:: shell
   
    # -d 表示后台运行容器 
@@ -275,6 +297,7 @@ docker-compose启动容器
    docker-compose up -d --build 
 
 docker-compose清除容器
+
 .. code-block:: shell
 
    # -v表示清除对应的volume
@@ -291,6 +314,7 @@ docker-compose清除容器
 ::::::::::::::::::::
 
 .. code-block:: shell
+   :linenos:
 
    docker stop 容器名称/容器ID   # 停止容器
    docker start 容器名称/容器ID  # 启动容器
@@ -299,6 +323,7 @@ docker-compose清除容器
 ::::::::::::::
 
 .. code-block:: shell 
+   :linenos:
 
    docker cp 需要拷贝的文件或目录  容器名称:容器目录   # 将文件拷贝到容器
    docker cp 容器名称:容器目录   需要拷贝的文件或目录  # 将文件从容器拷贝出来
@@ -309,6 +334,7 @@ docker-compose清除容器
 创建容器 -v **宿主目录:容器目录**
 
 .. code-block:: shell
+   :linenos:
 
    docker run -id -v /usr/local/myhtml:/usr/local/myhtml --name=mycentos7 centos:7
 
@@ -320,6 +346,7 @@ docker-compose清除容器
 ::::::::::::::::::::
 
 .. code-block:: shell
+   :linenos:
 
    docker inspect 容器名称/容器ID
 
@@ -346,7 +373,9 @@ docker-compose清除容器
 
    # -p 表示端口映射,格式为宿主机映射端口:容器运行端口
    # -e 表示添加环境变量 MYSQL_ROOT_PASSWORD 是root用户的登录密码
-   docker run --privileged=true --name=centos_mysql  -p 3306:3306 -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql   -e MYSQL_ROOT_PASSWORD=123456  -d mysql  
+   docker run --privileged=true --name=centos_mysql  -p 3306:3306 \
+   -v $PWD/conf:/etc/mysql/conf.d -v $PWD/logs:/logs -v $PWD/data:/var/lib/mysql \
+   -e MYSQL_ROOT_PASSWORD=123456  -d mysql  
 
 2、tomcat部署
 >>>>>>>>>>>>>>>>>>
@@ -354,16 +383,12 @@ docker-compose清除容器
 1. 拉取tomcat镜像
 ::::::::::::::::::::
 
-.. code-block:: shell
-
-   docker pull tomcat:7-jre7
+>>> docker pull tomcat:7-jre7
 
 2. 创建容器 
 ::::::::::::::::::
 
-.. code-block:: shell
-
-   docker run -di --name=mytomcat -p 9000:8080 \
+   >>> docker run -di --name=mytomcat -p 9000:8080 \
    -v /usr/local/webapps:/usr/local/tomcat/webapps tomcat:7-jre7
 
 
@@ -374,16 +399,12 @@ docker-compose清除容器
 1. 拉取Redis镜像
 ::::::::::::::::::::
 
-.. code-block:: shell
-
-   docker pull redis
+>>> docker pull redis
 
 2. 创建容器 
 :::::::::::::::
 
-.. code-block:: shell
-
-   docker run -di --name=myredis -p 6379:6379 redis
+>>> docker run -di --name=myredis -p 6379:6379 redis
 
 4、Nginx部署
 >>>>>>>>>>>>>>>>>>>>>
@@ -391,21 +412,18 @@ docker-compose清除容器
 1. 拉取nginx镜像
 ::::::::::::::::::::
 
-.. code-block:: shell
-
-   docker pull nginx
+>>> docker pull nginx
 
 2. 创建容器 
 :::::::::::::::
 
-.. code-block:: shell 
-
-   docker run -di --name=mynginx -p 80:80 nginx
+>>> docker run -di --name=mynginx -p 80:80 nginx
 
 迁移与备份
 =====================
 
 .. code-block:: shell
+   :linenos:
 
    # 容器保存为镜像
    docker commit mynginx mynginx_i 
@@ -418,38 +436,40 @@ docker-compose清除容器
    docker load -i mynginx.tar
 
 
-::
+.. code-block::shell
+   :linenos:
 
- docker run -it centos:latest  #运行docker容器
+   docker run -it centos:latest  #运行docker容器
 
- winpty docker run -it zhengpanone/centos-python  # **在windows下使用git bash 使用**
+   winpty docker run -it zhengpanone/centos-python  # **在windows下使用git bash 使用**
 
- docker commit -m '' CONTAINER ID IMAGE  # 将容器转化为一个镜像
+   docker commit -m '' CONTAINER ID IMAGE  # 将容器转化为一个镜像
 
- docker commit -m "安装 net-tools" -a 'zhengpanone'  5301d7c9bc21 zhengpanone/centos-python:V1
- # -m 指定说明信息; 
- # -a 指定用户信息 ;5301d7c9bc21代表容器id; 
- # zhengpanone/centos-python:V1指定目标镜像的用户名、仓库名和tag信息
+   docker commit -m "安装 net-tools" -a 'zhengpanone'  5301d7c9bc21 zhengpanone/centos-python:V1
+   # -m 指定说明信息; 
+   # -a 指定用户信息 ;5301d7c9bc21代表容器id; 
+   # zhengpanone/centos-python:V1指定目标镜像的用户名、仓库名和tag信息
 
- docker save -o ./centos.tar zhengpanone/centos:git # 保存镜像 -o/--output
+   docker save -o ./centos.tar zhengpanone/centos:git # 保存镜像 -o/--output
 
- docker load -i ./centos.tar # 加载镜像 -i/--input 
+   docker load -i ./centos.tar # 加载镜像 -i/--input 
 
 利用Dockerfile创建镜像
 Dockerfile可以理解为一种配置文件,用来告诉docker build命令应该执行那些操作。
 一个简易的Dockerfile文件如下所示
 
-::
+.. code-block::shell
+   :linenos:
 
- # 说明该镜像以那个镜像为基础
- FROM centos:latest 
+   # 说明该镜像以那个镜像为基础
+   FROM centos:latest 
 
- # 构建者的基本信息
- MAINTAINER zhengpanone 
+   # 构建者的基本信息
+   MAINTAINER zhengpanone 
 
- # 在build 这个镜像时执行的操作
- RUN yum update
- RUN yum install -y git
+   # 在build 这个镜像时执行的操作
+   RUN yum update
+   RUN yum install -y git
 
 有了Dockerfile 利用build命令构建镜像
 

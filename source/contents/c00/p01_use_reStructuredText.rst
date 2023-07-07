@@ -220,8 +220,12 @@ A) 枚举列表1
 参考文档
 ------------
 
-`reStructuredText(rst)快速入门语法说明`_
+`reStructuredText(rst)快速入门语法说明 <https://www.jianshu.com/p/1885d5570b37>`_
 
-.. _`reStructuredText(rst)快速入门语法说明`: https://www.jianshu.com/p/1885d5570b37
+`reStructuredText 简介 <https://wklchris.github.io/blog/reStructuredText/Advance.html#id3>`_
+
+`LVGL <https://docs.lvgl.io/master/index.html>`_
+
+`野火sphinx规范 <https://ebf-contribute-guide.readthedocs.io/zh_CN/latest/rest-syntax/base-syntax.html>`_
 
 .. |image2| image:: ./img/18112101.png

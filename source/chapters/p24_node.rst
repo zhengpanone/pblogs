@@ -8,4 +8,4 @@ node.js使用
    :maxdepth: 1
    :glob:
 
-   ../contents/c24/*
+   ../contents/c24_node/*

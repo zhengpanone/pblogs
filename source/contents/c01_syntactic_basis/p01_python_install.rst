@@ -10,9 +10,10 @@ linux安装
 
 Python3在安装的过程中可能会用到各种依赖库，所以在正式安装Python3之前，需要将这些依赖库先行安装好。
 
-::
 
- yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+
+>>> yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel \
+    sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
 
 2. 下载Python3源代码
 --------------------------------------
@@ -25,60 +26,47 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 另外一种方式是通过wget直接下载，如以下命令：
 
-::
 
- wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
+
+>>> wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
 
 3. 创建安装目录
 ------------------------------
 
 安装目录可依个人喜好创建，比如在此创建在 /usr/local/python3 ：
 
-::
-
- mkdir -p /usr/local/python3
+>>> mkdir -p /usr/local/python3
 
 4. 解压源码包
 --------------------------------
 
 将第2步下载到的源码包进行解压，命令为：
-
-::
  
- tar -zxvf Python-3.6.1.tgz
+>>> tar -zxvf Python-3.6.1.tgz
 
 5. 编译源码
 -------------------------------
 
 先进入解压后源码包的目录，再进行配置：
 
-::
-
- cd Python-3.6.1
+>>> cd Python-3.6.1 && \
  ./configure --prefix=/usr/local/python3
 
 之后再编译，然后再安装：
 
-::
-
- make
- make install
+>>> make && make install
 
 6. 建立Python3的软链接
 ------------------------------------------------
-
-::
  
- ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+>>> ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 
 7.  将/usr/local/python3/bin加入PATH
 -------------------------------------------------------------------
 
 编辑bash_profile进行修改环境变量：
 
-::
-
- vim ~/.bash_profile
+>>> vim ~/.bash_profile
 
 在PATH变量下将Python3的启动目录添加进去：
 
@@ -121,9 +109,7 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 这个问题就比较简单，就是缺少gcc编译环境。将gcc安装上即可：
 
-::
-
- yum install -y gcc
+>>> yum install -y gcc
 
 当然除此之外，采用源码安装的方式也可以。
 
