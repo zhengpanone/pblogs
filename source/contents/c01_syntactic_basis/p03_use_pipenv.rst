@@ -5,6 +5,12 @@
 pip
 ===============
 
+升级 pip
+>>>>>>>>>>
+
+>>> pip install --upgrade pip
+>>> pip install -U pip
+
 查询软件包
 >>>>>>>>>>>>>>
 
