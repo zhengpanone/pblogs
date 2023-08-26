@@ -30,11 +30,8 @@ echo输出颜色
 .. literalinclude:: ./code/shell/parameter.sh
     :encoding: utf-8
     :language: shell
-    :emphasize-lines: 0,17
+    :emphasize-lines: 0,16
     :linenos:
-
-
-
 
 
 

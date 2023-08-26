@@ -4,6 +4,24 @@
 
 .. __ : https://www.cnblogs.com/huchong/p/8227606.html#_lab2_1_0
 
+
+1. 加载配置文件的两种方式
+=========================
+
+1.1 app.config.from_object
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+1. 导入 ``import config`` , ``config`` 为 ``config.py`` 文件
+#. 使用 `app.config.from_object(config)`
+
+
+1.2 app.config.from_pyfile
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+- from_pyfile 不局限于只加载`.py`文件，还可以加载其他类型文件如`.txt`文件
+- 可以传递`silent=True`,那么静态文件没有找到的时候不会抛出异常
+
+
 1. 实例化Flask对象时，可选参数
 
 .. code-block:: python
