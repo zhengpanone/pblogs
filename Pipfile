@@ -12,6 +12,7 @@ recommonmark = "*"
 sphinx-copybutton = "*"
 
 [dev-packages]
+flask = "*"
 
 [requires]
 python_version = "3.6"

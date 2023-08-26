@@ -5,21 +5,24 @@
 .. __ : https://www.cnblogs.com/huchong/p/8227606.html#_lab2_1_0
 
 
-1. 加载配置文件的两种方式
-=========================
+2. URL与函数映射
+===================
 
-1.1 app.config.from_object
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+``app.route(<converter:variable_name>)``,其中converter就是类型名称，可以有以下几种
 
-1. 导入 ``import config`` , ``config`` 为 ``config.py`` 文件
-#. 使用 `app.config.from_object(config)`
+- ``string``: 默认的数据类型，接受任何没有斜杠 ``/\\`` 的文本
+- ``int``: 接受整型
+- ``float``: 接受浮点型
+- ``path``: 和 ``string`` 类型类似，但是可以接受斜杠
+- ``uuid``: 只接受uuid字符串
+- ``any``: 可以指定多种路径
 
+.. code-block:: python
+    :linenos:
 
-1.2 app.config.from_pyfile
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-- from_pyfile 不局限于只加载`.py`文件，还可以加载其他类型文件如`.txt`文件
-- 可以传递`silent=True`,那么静态文件没有找到的时候不会抛出异常
+    @app.route('<any(article,blog):url_path>/<id>')
+    def item(url_path,id):
+        return url_path
 
 
 1. 实例化Flask对象时，可选参数

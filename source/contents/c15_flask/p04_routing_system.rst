@@ -28,13 +28,7 @@
       'uuid':             UUIDConverter,
    }
 
-2.自定义URL转换器
-=======================================
-
-
-
-
-3. 反向生成URL:url_for
+2. 反向生成URL:url_for
 ============================================
 
 endpoint("name")   #别名，相当于django中的name
@@ -108,6 +102,7 @@ return username + ".your-domain.tld"
 
 if __name__ == '__main__':
    app.run()
+  
 所有的域名都得与IP做一个域名解析：
 如果你想通过域名去访问，有两种解决方式：
 方式一：
@@ -135,15 +130,23 @@ C:\Windows\System32\drivers\etc  找到HOST，修改配置
     return "%s.bjg.com" %(xxxxx,)
 
 
-4.自定制正则路由匹配
+3.自定义URL转换器
 ============================================
+
+自定制正则路由匹配
+>>>>>>>>>>>>>>>>>>>>>>
 
 扩展Flask 的路由系统，让她支持正则，这个类必须这样写，必须去继承BaseConverter
 
-.. literalinclude:: ./code/自定制正则路由匹配.py
+.. literalinclude:: ./code/p04_routing_system/regexConverter.py
     :encoding: utf-8
     :language: python
-    :emphasize-lines: 7
-    :lines: 1-
     :linenos: 
 
+自定义手机号转换器
+>>>>>>>>>>>>>>>>>>>>>>>
+
+.. literalinclude:: ./code/p04_routing_system/telephoneConverter.py
+    :encoding: utf-8
+    :language: python
+    :linenos: 
