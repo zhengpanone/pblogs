@@ -1,18 +1,12 @@
 [[source]]
-url = "http://mirrors.aliyun.com/pypi/simple/"
+url = "http://pypi.douban.com/simple/"
 verify_ssl = false
 name = "pip_conf_index_global"
 
 [packages]
 sphinx = "*"
-sphinx-autobuild = "*"
-sphinx-rtd-theme = "*"
-recommonmark = "*"
-"repoze.sphinx.autointerface" = "*"
-sphinx-copybutton = "*"
 
 [dev-packages]
-flask = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.9"

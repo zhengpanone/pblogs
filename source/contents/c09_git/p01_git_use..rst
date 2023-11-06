@@ -341,3 +341,16 @@ Git的配置文件是.gitconfig，可以放在用户的主目录（全局配置�
 
 
 .. |image1| image:: ./image/181121.jpg
+
+
+git remote 
+==============
+
+.. code-block:: shell
+   :linenos:
+
+   git remote add <name> <url> # 创建一个与远程仓库的关联关系
+
+   git remote rm <name> # 删除别名为<name>的远程仓库的关联关系
+
+   git remote rename <old-name> <new-name> # 将别名<old-name>的远程仓库的关联关系重命名为<new-name>
