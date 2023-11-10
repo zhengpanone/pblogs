@@ -7,17 +7,35 @@
 
 
 
-- **工作区(Working Directory)**  文件夹所在的文件夹
+- **工作区(Working Directory)**：文件夹所在的文件夹
 
-- 版本区  文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上。暂存区的内容提交到我们的本地仓库，又名版本库（respository），可将其理解成一个目录，该目录下的所有文件都会被 git 管理起来，每个文件的修改、删除、git 都能跟踪，以便随时追踪历史，和还原。.git 隐藏目录就是 git 的版本库，里面存了很多东西，最重要的就是 stage（index） 暂存区，还有第一个分支 master，以及指向 master 的 HEAD 指针。
+- **版本区**：文件夹中含有.git的隐藏文件夹 通过add 添加的文件被添加到暂存区 , commit 提交后, 把暂存区的内容提交到分支上。暂存区的内容提交到我们的本地仓库，又名版本库（respository），可将其理解成一个目录，该目录下的所有文件都会被 git 管理起来，每个文件的修改、删除、git 都能跟踪，以便随时追踪历史，和还原。.git 隐藏目录就是 git 的版本库，里面存了很多东西，最重要的就是 stage（index） 暂存区，还有第一个分支 master，以及指向 master 的 HEAD 指针。
 
-   - **暂存区(Stage/Index)** 就是每次 git add 时，文件的修改存放的地方。 
+- **暂存区(Stage/Index)**：就是每次 git add 时，文件的修改存放的地方。  git commit 时就是一次性把暂存区所有修改提交到分支。
 
-      git commit 时就是一次性把暂存区所有修改提交到分支。
+- **本地历史仓库(Local Repository)**：
 
-   - **本地历史仓库(Local Repository)**
+- **远程仓库(Remote Repository)**：
 
-   - **远程仓库(Remote Repository)**
+- HEAD
+
+  HEAD   就是当前活跃分支的游标，你现在在哪儿，HEAD 就指向哪儿。
+  HEAD 是一个指针，总是指向当前分支。仓库版本的回退和追踪都是通过操作 HEAD 指针来完成。
+  不过 HEAD 并非只能指向分支的最顶端（时间节点距今最近的那个），实际上它可以指向任何一个节点，它就是 Git 内部用来追踪当前位置的东东。
+
+- 标签
+
+  因为 commit id 不好找，tag 是有意义的名字，它与 commit 绑在一起。
+
+- 其他要点
+
+  1、每一次 git commit，都会生成一个 commit id 记录该次提交，Git 都会将它们串成一条时间线，这条时间线就是一个分支。
+
+  2、因为创建、合并、删除分支都很快，所以 git 鼓励你使用分支完成某个任务，合并后再删除分支。过程比直接在 master 分支工作更安全，且效果一样。
+  
+  3、分支策略：master 分支应该是非常稳定的，仅用来发布新版本，平时不能在上面干活，干活都在 dev 分支，dev 是不稳定的，到 1.0 发布时，再将 dev 合并到 master 上，由 master 发布新版本。
+
+
 
 
 用户配置
@@ -36,51 +54,14 @@
 #. --system 低优先级，影响全系统的git 仓库 /etc/gitconfig
 
 
-1.3 查看版本
-
-.. code-block:: shell
-
-   git log // 查看历史纪录
-   git log --pretty = oneline // 版本ID一行显示
-   git log --oneline --graph 
-   git reset --hard HEAD^ // 回退到上一版本
-   git reset --hard commit_id // 回退到指定ID 版本
-
-
-上一个版本是HEAD^,上上一个版本HEAD^^ ,往上100可以写成HEAD~100，有时候由于回退到之前的版本，原来的版本没有显示，可以使用 
-
-::
- 
- git reflog
-
 把两段不相干的 分支进行强行合并
 
 .. code-block:: shell
 
    git pull origin master --allow-unrelated-histories
 
-1.4 其他重要概念
 
-- HEAD
-
-   HEAD   就是当前活跃分支的游标，你现在在哪儿，HEAD 就指向哪儿。
-   HEAD 是一个指针，总是指向当前分支。仓库版本的回退和追踪都是通过操作 HEAD 指针来完成。
-   不过 HEAD 并非只能指向分支的最顶端（时间节点距今最近的那个），实际上它可以指向任何一个节点，它就是 Git 内部用来追踪当前位置的东东。
-
-- 标签
-
-   因为 commit id 不好找，tag 是有意义的名字，它与 commit 绑在一起。
-
-- 其他要点
-
-   1、每一次 git commit，都会生成一个 commit id 记录该次提交，Git 都会将它们串成一条时间线，这条时间线就是一个分支。
-
-   2、因为创建、合并、删除分支都很快，所以 git 鼓励你使用分支完成某个任务，合并后再删除分支。过程比直接在 master 分支工作更安全，且效果一样。
-   
-   3、分支策略：master 分支应该是非常稳定的，仅用来发布新版本，平时不能在上面干活，干活都在 dev 分支，dev 是不稳定的，到 1.0 发布时，再将 dev 合并到 master 上，由 master 发布新版本。
-
-
-**linux 服务器git pull/push 时免除输入账号密码设置**
+**git pull/push 时免除输入账号密码设置**
 
 进入到当前仓库执行
 
@@ -92,7 +73,7 @@
 执行之后会在.git/config文件中多加[credential] helper = store
 
 .. code-block:: text
-   :emphasize-lines: 5
+   :emphasize-lines: 10
    :linenos:
 
    [core]
@@ -108,10 +89,10 @@
 
 执行git pull命令，会提示输入账号密码。输完这一次以后就不再需要，并且会在家目录生成一个.git-credentials文件
 
-::
 
- cat ~/.git-credentials
- >>> https://Username:Password@github.com
+
+>>> cat ~/.git-credentials
+https://Username:Password@github.com
 
 
 1.6 Git常用命令
@@ -354,3 +335,126 @@ git remote
    git remote rm <name> # 删除别名为<name>的远程仓库的关联关系
 
    git remote rename <old-name> <new-name> # 将别名<old-name>的远程仓库的关联关系重命名为<new-name>
+
+查看日志
+==============
+
+
+.. code-block:: shell
+
+   git log // 查看历史纪录
+   git log --pretty = oneline // 版本ID一行显示
+   git log --oneline --graph 
+   git reset --hard HEAD^ // 回退到上一版本
+   git reset --hard commit_id // 回退到指定ID 版本
+
+上一个版本是HEAD^,上上一个版本HEAD^^ ,往上100可以写成HEAD~100
+
+
+git log
+>>>>>>>>>>>>>>>
+
+- 根据作者过滤,支持模糊搜索。
+
+>>> git log --author="xxx"
+
+- 根据 commit 的内容来过滤
+
+>>> git log --grep="xxx"
+
+- --grep 和 --author 不一样，它是支持正则的，你可以根据正则来过滤 commit message比如这样：
+
+>>> git log --grep="Add.*runtime"
+
+就是过滤 commit message 里有 Add 开头、中间任意个字符然后加 runtime 的 commit：
+
+- 根据时间来过滤
+
+>>> git log --after="2022-01-01" --before="2022-01-31"
+
+- 根据日期来过滤
+
+>>> git log --until="2023-11" --since="2023-01"
+
+- 控制打印的格式
+
+>>> git log --format="%h %as %s %an"
+   
+.. admonition:: format字段含义
+   :class: note
+
+   - %h 是缩写的 commit hash，
+   - %as 是日期的一种格式，
+   - %s 是 commit 的主题，
+   - %an 是 commit 的作者。
+
+- 给它加上一些换行，通过 %n
+
+>>> git log --format="hash: %h %n日期: %as %n主题: %s %n作者: %an %n"
+
+- 文字添加颜色
+
+>>> git log --format="hash:%Cred %h %Creset%n日期: %as %n主题:%Cblue %s %Creset%n作者: %an %n"
+
+用 %Cred %Creset 包裹来把中间字符串变红，或者 %Cblue %Creset 包裹，把中间字符串变蓝：
+
+- 查看某个同学上一周的 commit
+
+>>> git log --author="zhengpanone" --after="2022-01-01" --before="2022-01-07"
+
+- 查看在所有分支的过去一周的 commit 
+
+  加个 ``--all`` 就好了
+
+>>> git log --author="guang" --after="2022-01-01" --before="2022-01-07" --all
+
+- 剔除merge 的 commit
+
+  加个 ``--no-merges``
+
+  >>> git log --author="guang" --after="2022-01-01" --before="2022-01-07" --all --no-merges
+
+- merges 是只保留 merge 的 commit 
+
+  >>> git log --author="guang" --after="2022-01-01" --before="2022-01-07" --all --merges
+
+git shortlog
+>>>>>>>>>>>>>>>
+
+按照人来分组统计，默认是按照作者名的字母顺序来排列的，也可以按照 commit 数来倒序排列
+
+>>> git shortlog -n
+
+- 看某段时间内，谁提交了哪些 commit
+
+>>> git shortlog -n --after="2022-01-01" --before="2022-01-31" --all --no-merges
+>>> git shortlog -n --after="2022-01-01" --before="2022-01-31" --all --no-merges --format="%h %as %s"
+
+git reflog
+>>>>>>>>>>>>>>>
+
+git reflog 它是记录 ref 的修改历史的。
+
+什么 ref 前面讲过了，branch、HEAD、tag 这些都是。
+
+比如你新增了一个 commit、新建了一个 branch、新增了一个 tag、刚 pull 下来一个分支，这些都是对 ref 的修改。
+
+git 会把它记录在 reflog 里。
+
+总结
+>>>>>>>>>>>>>>>
+
+git 有 3 个 log 命令：git log、git shortlog、git reflog。
+
+git log 是查看 commit 历史的，可以指定 branch、tag、某个 commit 等来查看对应的 commit 历史。
+
+可以通过 ``--author``、``--before``、``--after``、``--grep``、``--merges``、``--no-merges``、``--all`` 来过滤某个作者、某段时间内、某个 commit 内容、非 merge 的 commit、全部分支的 commit 等 commit。
+
+还可以通过 ``--format`` 来指定输出的颜色和格式。
+
+git shortlog 是 git log 的统计结果，可以按照作者来分组统计。比如查看上一周每个人提交了多少个 commit。
+
+git reflog 记录的是 ref 的变化历史，比如分支切换、reset、新的 commit 等都会记录下来。
+
+可以通过 git reflog 命令来查看，也可以直接在 .git/logs/refs 下查看。
+
