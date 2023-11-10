@@ -38,11 +38,19 @@
 
 安装Python工具包
 
-.. code:: shell
 
-    $ pip install sphinx sphinx-autobuild sphinx_rtd_theme
+>>> pip install sphinx sphinx-autobuild sphinx_rtd_theme
+
+或者安装``sphinx-doc``
+
+>>> pip install sphinx-doc
 
 初始化
+
+Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
+
+>>> sphinx-
+sphinx-apidoc      sphinx-autogen     sphinx-build       sphinx-quickstart
 
 .. code:: shell
 
