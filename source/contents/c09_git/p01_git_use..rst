@@ -336,17 +336,24 @@ git remote
 
    git remote rename <old-name> <new-name> # 将别名<old-name>的远程仓库的关联关系重命名为<new-name>
 
+   git remote set-url <name> <url> # 直接修改远程仓库地址
+
 查看日志
 ==============
 
 
 .. code-block:: shell
+   :linenos:
 
-   git log // 查看历史纪录
-   git log --pretty = oneline // 版本ID一行显示
+   git log # 查看历史纪录
+
+   git log --pretty = oneline # 版本ID一行显示
+
    git log --oneline --graph 
-   git reset --hard HEAD^ // 回退到上一版本
-   git reset --hard commit_id // 回退到指定ID 版本
+
+   git reset --hard HEAD^ # 回退到上一版本
+   
+   git reset --hard commit_id # 回退到指定ID 版本
 
 上一个版本是HEAD^,上上一个版本HEAD^^ ,往上100可以写成HEAD~100
 
