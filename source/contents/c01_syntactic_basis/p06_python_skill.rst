@@ -77,18 +77,20 @@ capitalize()函数
 Lambda
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- square = lambda x : x *x
- square(3)
- >>> 9
+   square = lambda x : x *x
+   square(3)
+   # 9
 
 lambda x:可以理解为，python 的lambda函数，输入叫x,冒号之后的任何内容是对输入的操作，它会自动返回结果，可以简化为一行代码：
 
-::
+.. code-block:: python 
+   :linenos:
 
- x = [1,2,3,4,5]
- print(list(map(lambda num*num , x)))
+   x = [1,2,3,4,5]
+   print(list(map(lambda num*num , x)))
 
 高阶函数
 ====================================
@@ -97,31 +99,33 @@ lambda x:可以理解为，python 的lambda函数，输入叫x,冒号之后的�
 
 高阶函数例子
 
-::
+.. code-block:: python 
+   :linenos:
 
- def summation(nums):
-    return sum(nums)
+   def summation(nums):
+      return sum(nums)
 
-def action(func,numbers):
-    return func(numbers)
+   def action(func,numbers):
+      return func(numbers)
 
- print(action(summation,[1,2,3]))
+   print(action(summation,[1,2,3]))
 
 
-::
+.. code-block:: python 
+   :linenos:
 
- def rtnBrandon():
-    return "brandon"
+   def rtnBrandon():
+      return "brandon"
 
- def rtnJohn():
-    return "John"
+   def rtnJohn():
+      return "John"
 
- def rtnPerson():
-    age = int(input("What's your age?"))
-    if age == 21:
-        return rtnBrandon()
-    else:
-        return rtnJohn()
+   def rtnPerson():
+      age = int(input("What's your age?"))
+      if age == 21:
+         return rtnBrandon()
+      else:
+         return rtnJohn()
 
 
 Python中的所有函数都具有以下一个或多个特征：
@@ -138,43 +142,48 @@ Partial application(闭包)
 
 创建一个函数，它接受2个参数，一个基数和一个指数，并返回指数幂的基数，如下所示：
 
-::
+.. code-block:: python 
+   :linenos:
 
- def power(base,exponent):
-    return  base**exponent
+   def power(base,exponent):
+      return  base**exponent
 
-::
+.. code-block:: python 
+   :linenos:
 
- from functools import partial
- square = partial(power,exponent=2)
- print(squaer(2))
- >>> 4
+   from functools import partial
+   square = partial(power,exponent=2)
+   print(squaer(2))
+   # 4
 
 使用一个循环来生成一个幂函数，该函数实现从立方体一直到1000的幂。
 
-::
+.. code-block:: python 
+   :linenos:
 
- from functools import partial
- powers = []
- for x in range(2,1001):
-    powers.append(partial(power,exponent=x))
+   from functools import partial
+   powers = []
+   for x in range(2,1001):
+      powers.append(partial(power,exponent=x))
 
- print(powers[0],[3])
- >>> 9
+   print(powers[0],[3])
+   # 9
 
 列表推导式
 ====================================
-::
 
- [function for item in iterable]
+.. code-block:: python 
+   :linenos:
 
- print([x*x for x in range(5)])
+   [function for item in iterable]
 
- all_less_than_zero = list(filter(lambda num :num <0,x))
+   print([x*x for x in range(5)])
 
- all_less_than_zero = [num for num in x if num < 0]
+   all_less_than_zero = list(filter(lambda num :num <0,x))
 
- all_less_than_zero = list(map(lambda num:num*num, list(filter(lambda num:num<0,x ))))
+   all_less_than_zero = [num for num in x if num < 0]
+
+   all_less_than_zero = list(map(lambda num:num*num, list(filter(lambda num:num<0,x ))))
 
 列表推导仅适用于列表。map,filter适合任何可迭代的对象
 
@@ -182,96 +191,116 @@ Partial application(闭包)
 三元表达式
 ====================================
 
-::
-
- print("Hello" if True else "World")
+>>> print("Hello" if True else "World")
 
 打印JSON
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- import json
- print(json.dumps(data,indent=2))
+   import json
+   print(json.dumps(data,indent=2))
 
 同时迭代两个列表
 ====================================
 
-::
+.. code-block:: python
+   :linenos:
 
- nfc = ["Packers", "49ers"]
- afc = ["Ravens", "Patriots"]
- for teama, teamb in zip(nfc, afc):
-   print teama + " vs. " + teamb
+   nfc = ["Packers", "49ers"]
+   afc = ["Ravens", "Patriots"]
+   for teama, teamb in zip(nfc, afc):
+      print teama + " vs. " + teamb
+
+
+
+原理
+>>>>>>>>>>>>>
+
+Python3中的zip函数可以把两个或两个以上的迭代器封装成生成器，这种zip生成器会从每个迭代器中获取该迭代器的下一个值,然后把这些值组装成元组。这样zip函数就实现了平行地遍历多个迭代器
+
+注意
+>>>>>>>>>>>>>
+
+如果输入的迭代器长度不同，那么，只要有一个迭代器遍历完，zip就不再产生元组了，zip会提前终止，这可能导致意外的结果，不可不察。如果不能确定zip所封装的列表是否等长，可以改用 **itertools** 内置模块中的zip_longest 函数，这个函数不在乎它们的长度是否相等。
+
+在Python2中，zip不是生成器，它平行地遍历这些迭代器，组装元组，并把这些元组所构成的列表一次性完整地返回，这可能会占用大量内存并导致程序崩溃，如果在Python2中要遍历数据量大的迭代器，推荐使用 **itertools** 内置模块中的 izip 函数。
+
 
 带索引的列表迭代
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- teams = ["Packers", "49ers", "Ravens", "Patriots"]
- for index,team in enumerate(teams):
-   print(index,team)
+   teams = ["Packers", "49ers", "Ravens", "Patriots"]
+   for index,team in enumerate(teams):
+      print(index,team)
 
 
 初始化列表的值
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
  
- items = [0]*3
- print(items)
-
->>> [0,0,0]
+   items = [0]*3
+   print(items)
+   # [0,0,0]
 
 
 列表转字符串
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- teams = ["Packers", "49ers", "Ravens", "Patriots"]
- print (", ".join(teams))
+   teams = ["Packers", "49ers", "Ravens", "Patriots"]
+   print (", ".join(teams))
 
 字典中获取元素
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- data = { user : 1,  name :  Max ,  three : 4}
- try:
-   is_admin = data[ admin ]
- except KeyError:
-   is_admin = False
+   data = { user : 1,  name :  Max ,  three : 4}
+   try:
+      is_admin = data[ admin ]
+   except KeyError:
+      is_admin = False
 
 替换为
 
-::
+.. code-block:: python 
+   :linenos:
 
- is_admin = data.get(admin,False)
+   is_admin = data.get(admin,False)
 
 
 获取列表的子集
 ====================================
 
-::
+.. code-block:: python 
+   :linenos:
 
- x = [1,2,3,4,5,6]
- #前3个
- print x[:3]
- >>> [1,2,3]
- #中间4个
- print x[1:5]
- >>> [2,3,4,5]
- #最后3个
- print x[3:]
- >>> [4,5,6]
- #奇数项
- print x[::2]
- >>> [1,3,5]
- #偶数项
- print x[1::2]
- >>> [2,4,6]
+   x = [1,2,3,4,5,6]
+   #前3个
+   print x[:3]
+   # [1,2,3]
+   #中间4个
+   print x[1:5]
+   # [2,3,4,5]
+   #最后3个
+   print x[3:]
+   # [4,5,6]
+   #奇数项
+   print x[::2]
+   # [1,3,5]
+   #偶数项
+   print x[1::2]
+   # [2,4,6]
  
 
 1.1 赋值
@@ -281,47 +310,50 @@ Partial application(闭包)
 1 交换赋值
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python 
+   :linenos:
 
- #不推荐
- temp = a
- a = b
- b = a
+   #不推荐
+   temp = a
+   a = b
+   b = a
 
- #推荐
- a, b = b, a  # 先生成一个元组对象(tuple),然后unpack
+   #推荐
+   a, b = b, a  # 先生成一个元组对象(tuple),然后unpack
 
 2. 多变量赋值
 >>>>>>>>>>>>>>>>>>>>>>
 
-::
-
- a, b, c, d = 0, 1, 2, 3, 4
+>>> a, b, c, d = 0, 1, 2, 3, 4
 
 3. 元组赋值
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
-a,b,c = 1,2,3
+>>> a,b,c = 1,2,3
 
 4. 同步赋值
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-a,b = 1,2
-a,b = a+b,a    # 同时运行，运算时都利原始值（旧值）
+.. code-block:: python 
+   :linenos:
 
-print("a的值为"+str(a))    >>>   3
-print("b的值为"+str(b))    >>>   1
+   a,b = 1,2
+   a,b = a+b,a    # 同时运行，运算时都利原始值（旧值）
+
+   print("a的值为"+str(a))    #   3
+   print("b的值为"+str(b))    #   1
 
 4. 自操做简化
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python 
+   :linenos:
 
- a+=1 # 自加1
- a-=1 # 自减1
- a*=2 # 自乘2
- a/=2 # 自除2
- a**=2   # 自己的2次方
+   a+=1 # 自加1
+   a-=1 # 自减1
+   a*=2 # 自乘2
+   a/=2 # 自除2
+   a**=2   # 自己的2次方
 
 
 1.2判断
@@ -772,7 +804,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 =========================
 
 1.区别
-====================================
+>>>>>>>>>>>>
 
 索引返回的是str 切片返回的是一个新的list
 
@@ -784,10 +816,10 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
  print("取出最后2个元素"+str(list_test[-2:]))       # 取出最后2个元素
 
 2.应用
-====================================
+>>>>>>>>>>>>
 
 1. 列表元素倒序
->>>>>>>>>>>>>>>>>>>>>
+:::::::::::::::::
 
 ::
 
@@ -795,7 +827,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
  >>> [5,4,3,2,1]
 
 2. 列表开头插入元素
->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+::::::::::::::::::::
 
 ::
 
@@ -803,7 +835,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
  print(list_test)          # [7,6,1,2,3,4,5]
 
 3.列表元素替换
->>>>>>>>>>>>>>>>>>>>>>>>
+:::::::::::::::
 
 ::
 

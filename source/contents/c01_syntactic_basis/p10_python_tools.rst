@@ -50,10 +50,11 @@ http://liyangliang.me/posts/2015/06/using-supervisor/
 python自带小型数据库
 =========================
 
+https://mp.weixin.qq.com/s/Zw3duGaX2Alr3Nd-fFGMmw
+
 dbm
 >>>>>>>>
 
-https://mp.weixin.qq.com/s/Zw3duGaX2Alr3Nd-fFGMmw
 
 DBM（DataBase Manager）是一种文件系统，专门用于键值对的存储，最初是在 Unix 平台实现，现在其它平台也可以用。对于 KV 模型，DBM 提供了一个轻量级、高效的存储解决方案。
 
