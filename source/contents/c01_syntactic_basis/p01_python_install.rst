@@ -70,20 +70,21 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 在PATH变量下将Python3的启动目录添加进去：
 
-::
+.. code-block:: text
+  :linenos:
 
- # .bash_profile
+    # .bash_profile
 
- # Get the aliases and functions
- if [ -f ~/.bashrc ]; then
-        . ~/.bashrc
- fi
+    # Get the aliases and functions
+    if [ -f ~/.bashrc ]; then
+            . ~/.bashrc
+    fi
 
- # User specific environment and startup programs
+    # User specific environment and startup programs
 
- PATH=$PATH:$HOME/bin:/usr/local/python3/bin
+    PATH=$PATH:$HOME/bin:/usr/local/python3/bin
 
- export PATH
+    export PATH
 
 改动完毕之后，按Esc，再输入:wq进行保存退出。
 
@@ -117,10 +118,8 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 这种问题就是因为缺少zlib 的相关工具包导致的，将相关依赖包装上即可：
-
-::
  
- yum -y install zlib*
+>>> yum -y install zlib*
 
 安装之后再重新编译源码，即可解决。
 
@@ -129,12 +128,13 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 这个问题是因为在./configure过程中，如果没有加上–with-ssl参数时，默认安装的软件涉及到ssl的功能不可用，刚好pip3过程需要ssl模块，而由于没有指定，所以该功能不可用。解决办法如下：
 
-::
+.. code-block:: text
+  :linenos:
 
- cd Python-3.6.2
- ./configure --with-ssl
- make
- sudo make install
+    cd Python-3.6.2
+    ./configure --with-ssl
+    make
+    sudo make install
 
 坑4：Multilib version problems
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -151,15 +151,11 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 可以看到系统里安装了openssl-1.0.0-27.el6_4.2.x86_64和openssl-1.0.0-27.el6_4.2.i686两个版本的openssl，我们留下x86的版本即可：
 
-::
-
- rpm --erase --nodeps openssl-1.0.0-27.el6_4.2.i686
+>>> rpm --erase --nodeps openssl-1.0.0-27.el6_4.2.i686
 
 再更新一下openssl：
 
-::
-
- # yum update "openssl*"
+>>> yum update "openssl*"
 
 再查询一下openssl，问题解决！
 
@@ -197,7 +193,7 @@ pip临时设置可以通过 -i 选项：
 全局设置
 >>>>>>>>>>>>>>>>>>>>>
 
-全局设置有不同的层级和文件位置，以用户全局（per-user）为例，在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 文件中；Windows 中，配置文件位置为 **%HOMEPATH%\pip\pip.ini**，%HOMEPATH% 即你的用户文件夹，一般为“**\Users\<你的用户名>**”，具体值可以使用 **echo %HOMEPATH%** 命令查看。
+全局设置有不同的层级和文件位置，以用户全局（per-user）为例，在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 或者 **~/.config/pip/pip.conf**文件中；Windows 中，配置文件位置为 **%HOMEPATH%\pip\pip.ini**，%HOMEPATH% 即你的用户文件夹，一般为“**\Users\<你的用户名>**”，具体值可以使用 **echo %HOMEPATH%** 命令查看。
 
 通常你需要手动创建对应的目录和文件，然后写入下面的内容：
 
@@ -210,7 +206,7 @@ pip临时设置可以通过 -i 选项：
     [install]
     trusted-host = pypi.doubanio.com
 
-附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 $HOME/.config/pip/pip.conf，Windows 则放到 %APPDATA%\pip\pip.ini。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
+附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 $HOME/.config/pip/pip.conf，Windows 则放到 %APPDATA%\\pip\\pip.ini。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
 
 Pipenv
 -----------------
