@@ -63,7 +63,7 @@ latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
     'inputenc': '',  # 必须
     'utf8extra': ''  # 必须
     # Additional stuff for the LaTeX preamble.
-    'preamble': """\usepackage{xeCJK} 
+    'preamble': r"""\usepackage{xeCJK} 
     \setlength{\parindent}{2em}
     \setCJKmainfont{WenQuanYi Micro Hei} 
     \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  
