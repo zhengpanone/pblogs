@@ -558,6 +558,11 @@ Docker 基础命令
  docker  rm `docker ps -aq`    # 一次性删除所有容器记录
  docker rmi  `docker images -aq`   # 一次性删除所有本地的镜像记录
 
+.. figure::|image1|
+   :width: 100%
+   :alt: image1
+
+   
 .. |image1| image:: ./image/640.webp
 
 

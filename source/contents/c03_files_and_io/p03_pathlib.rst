@@ -261,8 +261,10 @@ Path.rglob()　　# 递归遍历所有子目录的文件
         def __truedir__(self, key):
             return self._make_chil((key,))
 
+.. figure::|image1|
+   :width: 100%
+   :alt: image1
 
-.. |image1| image:: ./image/640.webp
 
 https://mp.weixin.qq.com/s/4Lf-t_8WrAPYEvfG8sKEtg
 
@@ -511,5 +513,5 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
         return count
 
 
-
+.. |image1| image:: ./image/640.webp
 
