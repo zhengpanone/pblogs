@@ -27,7 +27,6 @@ formats:
   - pdf
   - epub
   - htmlzip
-  - all
 
 # Optional but recommended, declare the Python requirements required
 # to build your documentation
