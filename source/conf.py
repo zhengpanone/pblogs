@@ -5,8 +5,8 @@ import sys
 
 # -- Project information -----------------------------------------------------
 
-project = "Python's Blog"
-copyright = '2019, PanZheng'
+project = "Python Blog"
+copyright = '2019, 郑攀'
 author = 'PanZheng'
 
 # The full version, including alpha/beta/rc tags
@@ -25,7 +25,7 @@ templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = ['.rst', '.md']
-
+source_encoding = 'utf-8'
 # The master toctree document.
 master_doc = 'index'
 
@@ -48,7 +48,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['../build/html/_static']
-htmlhelp_basename = 'Python\'S BLOG'
+htmlhelp_basename = 'Python BLOG'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -61,10 +61,17 @@ latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
     'pointsize': '16pt',
     'classoptions': ',oneside', 'babel': '',  # 必须
     'inputenc': '',  # 必须
-    'utf8extra': ''}  # 必须
-# Additional stuff for the LaTeX preamble.
-# 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
-
+    'utf8extra': ''  # 必须
+    # Additional stuff for the LaTeX preamble.
+    'preamble': """\usepackage{xeCJK} 
+    \setlength{\parindent}{2em}
+    \setCJKmainfont{WenQuanYi Micro Hei} 
+    \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  
+    \setCJKfamilyfont{song}{WenQuanYi Micro Hei} 
+    \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} 
+    \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt
+    """
+}
 
 # 'preamble': r"""\usepackage{xeCJK}\usepackage{indentfirst}\setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei}\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}\setCJKfamilyfont{song}{WenQuanYi Micro Hei}\setCJKfamilyfont{sf}{WenQuanYi Micro Hei}\XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt
 
