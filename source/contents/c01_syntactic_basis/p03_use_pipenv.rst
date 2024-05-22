@@ -70,6 +70,18 @@ pip
 
 >>> pip install --upgrade pkg 
 
+更新所有从软件包
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+>>> pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
+
+这个命令的执行步骤如下：
+
+1. pip list --outdated --format=columns：列出所有过时的包，并以列格式输出。
+#. tail -n +3：跳过前两行（表头）。
+#. awk '{print $1}'：从每一行中提取第一个字段，即包的名称。
+#. xargs -n1 pip install -U：对每个包执行 pip install -U 命令来更新。
+
 
 Virtualenv、Virtualenvwrapper、Pyenv、
 
