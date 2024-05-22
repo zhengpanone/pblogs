@@ -276,6 +276,7 @@ Git的配置文件是.gitconfig，可以放在用户的主目录（全局配置�
    git remote show [remote]
    # 新建一个远程仓库，并命名
    git remote add [shortname] [url]
+   git remote set-url [shortname] [url]
    # 检索远程存储库的更改，并与本地分支合并
    git pull [remote] [branch]
    # 将本地分支提交到远程仓库
