@@ -115,6 +115,7 @@ PyArg_ParseTuple() 将从 Python 程序接收的参数解析为局部变量，�
 
 .. code-block:: c
     :linenos:
+
     int PyArg_ParseTuple(PyObject* tuple,char* format,...)
 
 1.args:参数arg必须是一个元组对象，包含一个从Python传递给C函数的参数列表
@@ -297,6 +298,7 @@ PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的�
 构建模块
 ===================
 现在你已经有了 setup.py 文件，可以使用它来构建 Python C 扩展模块了。构建非常简单一句话就可以了
+
 .. code-block:: shell
     :linenos:
 
@@ -429,6 +431,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 定义常量
 ====================
 在某些情况下，需要在 Python C 扩展模块中使用或定义常量。这与您在前一节中定义自定义异常的方式非常相似。可以使用 PyModule_AddIntConstant() 定义一个新常量并将其添加到模块实例中。
+
 .. code-block:: c
     :linenos:
 

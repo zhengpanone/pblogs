@@ -23,18 +23,6 @@
 
 这是我的导航栏。是不是结构很清晰，很方便索引。 
 
-|image6|
-
-
-
-
-点击文章后，还可以很方便查看标题，跳转。 
-|image2|
-
-
-体验下搜索功能，速度很快。 
-|image3|
-
 
 看完这些你是不是也很想拥有这样一个博客呢？
 
@@ -99,10 +87,9 @@ sphinx-apidoc      sphinx-autogen     sphinx-build       sphinx-quickstart
         ├─_static
         └─_templates
 
-解释下这些文件/夹：
+解释下这些文件夹：
 
--  build：文件夹，当你执行make
-   html的时候，生成的html静态文件都存放在这里。
+-  build：文件夹，当你执行make html的时候，生成的html静态文件都存放在这里。
 -  source：文件夹：你的文档源文件全部应全部放在source根目录下。
 -  Makefile：编译文件。完全不用管。
 -  make.bat：WIN脚本。你也不用管。
@@ -110,7 +97,7 @@ sphinx-apidoc      sphinx-autogen     sphinx-build       sphinx-quickstart
 配置及扩展
 ---------------------
 
-Sphinx 的配置文件是 ``source\conifg.py``
+Sphinx 的配置文件是 ``source\conf.py``
 
 exts配置文件，我做了哪些事：
 
@@ -259,14 +246,8 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 |image6|
 
 构建网页后。右下方，你可以看见你的在线地址。   
-|image7|
+|image4|
 
-
-|image8|
-|image9|
-
-
-|image10|
 
 这里要提醒一下的是，Sphinx的文档格式，默认是 rst
 格式，如果你习惯了使用Markdown来写文章，可以使用 Pandoc
@@ -300,18 +281,14 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 --------------
 
 .. |image0| image:: ./img/1.png
-.. |image01| image:: ./img/0.1.1.png
-.. |image02| image:: ./img/0.1.2.png
+.. |image01| image:: ./img/2.png
+.. |image02| image:: ./img/3.png
 .. |image1| image:: ./img/0.1.webp
 .. |image2| image:: ./img/0.2.webp
 .. |image3| image:: ./img/0.3.webp
 .. |image4| image:: ./img/0.4.webp
-.. |image5| image:: ./img/0.5.webp
 .. |image6| image:: ./img/0.6.png
-.. |image7| image:: ./img/0.7.webp
-.. |image8| image:: ./img/0.8.webp
-.. |image9| image:: ./img/0.9.webp
-.. |image10| image:: ./img/0.10.webp
+
 
 .. figure:: http://ovzwokrcz.bkt.clouddn.com/18-10-28/9446245.jpg
    :alt: 关注公众号，获取最新文章

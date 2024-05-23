@@ -20,7 +20,7 @@ release = '1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 # sphinx_copybutton 在每个代码块中自动出现一个复制按钮
-extensions = ['chinese_search', 'recommonmark', 'sphinx.ext.autodoc','sphinx_copybutton']
+extensions = ['chinese_search', 'recommonmark', 'sphinx.ext.autodoc','sphinx_copybutton',]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
