@@ -23,9 +23,8 @@
  - 简单起见，我们假定一个订单一次只能享用一个折扣。
 
 UML类图如下：
-.. figure::|image1|
-   :width: 100%
-   :alt: image1
+|image1|
+
 
 Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkPromo、LargeOrderPromo三个子类实现具体策略,具体策略有上下文类的客户选择
 

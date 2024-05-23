@@ -21,11 +21,20 @@
 
 这是首页。显示了你所有的文章索引。 |image0|
 
-这是我的导航栏。是不是结构很清晰，很方便索引。 |image1|
+这是我的导航栏。是不是结构很清晰，很方便索引。 
 
-点击文章后，还可以很方便查看标题，跳转。 |image2|
+|image6|
 
-体验下搜索功能，速度很快。 |image3|
+
+
+
+点击文章后，还可以很方便查看标题，跳转。 
+|image2|
+
+
+体验下搜索功能，速度很快。 
+|image3|
+
 
 看完这些你是不是也很想拥有这样一个博客呢？
 
@@ -198,9 +207,17 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 执行完了后，你可以发现原先的build，不再是空文件夹了。
 
-我们点进去 build:raw-latex:`\html`，打开index.html |image4|
+我们点进去 build/html，打开index.html 
+|image01|
 
-点击 我们刚写的暴富指南。 |image5|
+
+
+
+
+
+点击 我们刚写的暴富指南。
+|image02| 
+
 
 托管项目
 --------
@@ -228,11 +245,28 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 你需要先去 ``Read the Docs`` 注册下帐号。
 
-关联一下GitHub |image6| |image7|
+关联一下GitHub 
 
-导入代码库。填好与你对应的信息。 |image8| |image9|
+|image1|
 
-构建网页后。右下方，你可以看见你的在线地址。 |image10|
+
+|image2|
+
+导入代码库。填好与你对应的信息。 
+
+|image3|
+
+|image6|
+
+构建网页后。右下方，你可以看见你的在线地址。   
+|image7|
+
+
+|image8|
+|image9|
+
+
+|image10|
 
 这里要提醒一下的是，Sphinx的文档格式，默认是 rst
 格式，如果你习惯了使用Markdown来写文章，可以使用 Pandoc
@@ -266,16 +300,18 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 --------------
 
 .. |image0| image:: ./img/1.png
-.. |image1| image:: http://ovzwokrcz.bkt.clouddn.com/FqsPadimKGTPMfh1T8CvJcbQJ1Ij
-.. |image2| image:: http://ovzwokrcz.bkt.clouddn.com/FiE6eIHnar1702oVUxF9632vh8y-
-.. |image3| image:: http://ovzwokrcz.bkt.clouddn.com/FnjBzmeFZqRN1mhZg4qxRv-9RsvI
-.. |image4| image:: http://ovzwokrcz.bkt.clouddn.com/FrTJnyJWbrHRAstGzRv2z1OyaJz_
-.. |image5| image:: http://ovzwokrcz.bkt.clouddn.com/FicHjZOcx8maJxUL2-SMOxP01dl1
-.. |image6| image:: http://ovzwokrcz.bkt.clouddn.com/ForICz1sdF-amCQC1fV1ibK_dJdx
-.. |image7| image:: http://ovzwokrcz.bkt.clouddn.com/FotJKY7vekhnO5C0WxAp6ZreBV8M
-.. |image8| image:: http://ovzwokrcz.bkt.clouddn.com/Fu4i5TtCg4qEx3tJGjiMkHkzCnZy
-.. |image9| image:: http://ovzwokrcz.bkt.clouddn.com/FoO03n5iSuk6hC0OFab6EzKHoKhG
-.. |image10| image:: http://ovzwokrcz.bkt.clouddn.com/FinA5jEGN9K9tw2A2fj8IRUyF0VT
+.. |image01| image:: ./img/0.1.1.png
+.. |image02| image:: ./img/0.1.2.png
+.. |image1| image:: ./img/0.1.webp
+.. |image2| image:: ./img/0.2.webp
+.. |image3| image:: ./img/0.3.webp
+.. |image4| image:: ./img/0.4.webp
+.. |image5| image:: ./img/0.5.webp
+.. |image6| image:: ./img/0.6.png
+.. |image7| image:: ./img/0.7.webp
+.. |image8| image:: ./img/0.8.webp
+.. |image9| image:: ./img/0.9.webp
+.. |image10| image:: ./img/0.10.webp
 
 .. figure:: http://ovzwokrcz.bkt.clouddn.com/18-10-28/9446245.jpg
    :alt: 关注公众号，获取最新文章

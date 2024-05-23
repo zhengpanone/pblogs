@@ -26,13 +26,11 @@ Socket
 
 - 高级层：会话层（Session)、表示层（Presentation）、应用层（Application)
 
-.. figure::|image1|
-   :width: 100%
-   :alt: image1 
+|image1|
 
-.. figure::|image2|
-   :width: 100%
-   :alt: image2
+
+|image2|
+
 
 Socket基础
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -148,20 +146,16 @@ IP，端口，远程服务器
  - 外界鸽子（信息）飞到不同窗户也就是给不同的人传递信息
  - 0到1023号端口以及1024到49151号端口都是特殊端口
 
-.. figure::|image3|
-   :width: 100%
-   :alt: image10
+|image3|
+
 
 - 计算机之间依照互联网传输层TCP/IP协议的协议通信，不同的协议都对应不同的端口
 - 49152到65535号端口属于“动态端口”范围，没有端口可以被正式地注册占用
 
-.. figure::|image4|
-   :width: 100%
-   :alt: image4
+|image4|
 
-.. figure::|image5|
-   :width: 100%
-   :alt: image5
+|image5|
+
 
 - UDP
 
@@ -172,9 +166,8 @@ IP，端口，远程服务器
  - DNS、TFTP、SNMP
  - 视频、音频、普通数据（无关紧要数据）
 
-.. figure::|image6|
-   :width: 100%
-   :alt: image10
+|image6|
+
 
  - 英语：User Datagram Protocol，缩写为UDP
  - 一种用户数据报协议，又称用户数据报文协议
@@ -223,16 +216,14 @@ UDP单播、广播、多播
 
 - 高频次广播有可能导致局域网或者某段网络的信息带宽被占满
 
-.. figure::|image7|
-   :width: 100%
-   :alt: image10
+|image7|
+
 
 IP地址类别
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-.. figure::|image8|
-   :width: 100%
-   :alt: image10
+|image8|
+
 
 - 广播地址
 
@@ -240,9 +231,8 @@ IP地址类别
  - C网广播地址一般为：XXX.XXX.XXX.255（192.168.1.255）
  - D类IP地址为多播预留
  
-.. figure::|image9|
-   :width: 100%
-   :alt: image10
+|image9|
+
 - ipv4的地址本来就是用32位来表示的,分成4个8位来书写, 所以ipv4和地址是可以和32位unsigned int
 
 - 广播地址运算
@@ -287,9 +277,8 @@ TCP（Transmission Control Protocol）
 - 三次握手、四次挥手
 - 具有校验机制、可靠、数据传输稳定
 
-.. figure::|image10|
-   :width: 100%
-   :alt: image10
+|image10|
+
 
 - 作用
 
@@ -307,13 +296,11 @@ TCP（Transmission Control Protocol）
  - write()：把数据写入到Socket输出流
  - read()：从Socket输入流读取数据
 
-.. figure::|image11|
-   :width: 100%
-   :alt: image11
+|image11|
 
-.. figure::|image12|
-   :width: 100%
-   :alt: image12
+
+|image12|
+
 
 参考文档
 =======================

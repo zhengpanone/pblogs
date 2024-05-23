@@ -261,9 +261,8 @@ Path.rglob()　　# 递归遍历所有子目录的文件
         def __truedir__(self, key):
             return self._make_chil((key,))
 
-.. figure::|image1|
-   :width: 100%
-   :alt: image1
+|image1|
+
 
 
 https://mp.weixin.qq.com/s/4Lf-t_8WrAPYEvfG8sKEtg
