@@ -38,7 +38,7 @@
 
 >>> pip install sphinx sphinx-autobuild sphinx_rtd_theme
 
-或者安装``sphinx-doc``
+或者安装 \ ``sphinx-doc``\
 
 >>> pip install sphinx-doc
 
@@ -46,8 +46,7 @@
 
 Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
 
->>> sphinx-
-sphinx-apidoc      sphinx-autogen     sphinx-build       sphinx-quickstart
+>>> sphinx-sphinx-apidoc  sphinx-autogen  sphinx-build   sphinx-quickstart
 
 .. code:: shell
 
@@ -290,5 +289,5 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 .. |image6| image:: ./img/0.6.png
 
 
-.. figure:: http://ovzwokrcz.bkt.clouddn.com/18-10-28/9446245.jpg
-   :alt: 关注公众号，获取最新文章
+.. .. figure:: http://ovzwokrcz.bkt.clouddn.com/18-10-28/9446245.jpg
+..    :alt: 关注公众号，获取最新文章

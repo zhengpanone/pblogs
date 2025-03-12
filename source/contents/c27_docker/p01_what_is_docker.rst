@@ -561,6 +561,33 @@ Docker 基础命令
 |image1|
 
 
+Docker 磁盘空间清理报告
+========================
+
+1. **清理 Docker 未使用的资源**
+   -----------------------------
+
+   - 执行了以下命令清理未使用的资源： \ ``docker system prune``\
+   - 停止的容器、未使用的镜像、未挂载的卷和未使用的网络已被删除。
+
+   - 若要删除所有未使用的镜像（包括有标签的镜像），使用： \ ``docker system prune -a``\
+
+2. **清理 Docker Build Cache**
+   -----------------------------
+
+   - 执行了以下命令清理未使用的构建缓存： \ ``docker builder prune``\
+   - 已删除所有未使用的 Build Cache。
+
+   - 为了强制清理 Build Cache，跳过确认，使用： \ ``docker builder prune -f``\
+
+3. **查看 Docker 磁盘使用情况**
+   -----------------------------
+
+   - 使用以下命令查看 Docker 资源的磁盘使用情况： \ ``docker system df``\
+
+
+
+
    
 .. |image1| image:: ./image/640.webp
 

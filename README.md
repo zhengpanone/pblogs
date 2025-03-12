@@ -18,5 +18,7 @@ exit
 
 # 删除虚拟环境。删除虚拟环境不会删除项目目录，只是删除虚拟环境的目录
 pipenv --rm
+
+make clean latexpdf
 ```
 
