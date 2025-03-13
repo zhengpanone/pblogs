@@ -196,14 +196,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 我们点进去 build/html，打开index.html 
 |image01|
 
-
-
-
-
-
-点击 我们刚写的暴富指南。
-|image02| 
-
+点击 我们刚写的文章。
 
 托管项目
 --------
@@ -279,15 +272,14 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 --------------
 
-.. |image0| image:: ./img/1.png
-.. |image01| image:: ./img/2.png
-.. |image02| image:: ./img/3.png
-.. |image1| image:: ./img/0.1.webp
-.. |image2| image:: ./img/0.2.webp
-.. |image3| image:: ./img/0.3.webp
-.. |image4| image:: ./img/0.4.webp
-.. |image6| image:: ./img/0.6.png
-
+.. |image0| image:: ./images/p00/1.png
+.. |image01| image:: ./images/p00/2.png
+.. |image02| image:: ./images/p00/3.png
+.. |image1| image:: ./images/p00/0.1.png
+.. |image2| image:: ./images/p00/0.2.png
+.. |image3| image:: ./images/p00/0.3.png
+.. |image4| image:: ./images/p00/0.4.png
+.. |image6| image:: ./images/p00/0.6.png
 
 .. .. figure:: http://ovzwokrcz.bkt.clouddn.com/18-10-28/9446245.jpg
 ..    :alt: 关注公众号，获取最新文章

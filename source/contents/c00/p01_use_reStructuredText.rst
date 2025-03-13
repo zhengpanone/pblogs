@@ -297,4 +297,4 @@ Sphinx 插件列表
 
 `野火sphinx规范 <https://ebf-contribute-guide.readthedocs.io/zh_CN/latest/rest-syntax/base-syntax.html>`_
 
-.. |image2| image:: ./img/18112101.png
+.. |image2| image:: ./images/p01/18112101.png
