@@ -24,27 +24,27 @@ Flask使用的是Jinja2模板，Flask中模板里面，执行函数时，需要�
 
 目录结构：
 
-..  image:: ./image/18101703.png
+..  image:: ./images/p06/18101703.png
     :align: center
     :alt: 目录结构
 
 方式一：
 
-..  image:: ./image/18101704.png
+..  image:: ./images/p06/18101704.png
     :align: center
     :alt: 方式一
 
 
 方式二：
 
-..  image:: ./image/18101705.png
+..  image:: ./images/p06/18101705.png
     :align: center
     :alt: 方式二
 
 3. flask中模板语法不提示，解决办法
 ---------------------------------------------------
 
-..  image:: ./image/18101706.png
+..  image:: ./images/p06/18101706.png
     :align: center
     :alt: 语法提示
 
@@ -137,8 +137,8 @@ html
  {% macro xx(name, type='text', value='') %}
     <input type="{{ type }}" name="{{ name }}" value="{{ value }}">
 
-　　<input type="{{ type }}" name="{{ name }}" value="{{ value }}">
-　　<input type="{{ type }}" name="{{ name }}" value="{{ value }}">
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}">
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}">
 
  {% endmacro %}
 

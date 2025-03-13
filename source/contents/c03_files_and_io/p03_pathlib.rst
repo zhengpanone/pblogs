@@ -512,5 +512,5 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
         return count
 
 
-.. |image1| image:: ./image/640.webp
+.. |image1| image:: ./image/p03/640.png
 

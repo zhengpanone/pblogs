@@ -34,17 +34,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 如果代码非常多，要进行归类。不同的功能放在不同的文件，吧相关的视图函数也放进去。蓝图也就是对flask的目录结构进行分配（应用于小，中型的程序）
 
 蓝图用于为应用提供目录划分：
@@ -107,15 +96,15 @@ order.py
 大型
 ---------------------------------------
 
-..  image:: ./image/18101708.png
+..  image:: ./images/p08/18101708.png
     :align: center
     :alt: 大型
 
-..  image:: ./image/18101708_02.png
+..  image:: ./images/p08/18101708_02.png
     :align: center
     :alt: 大型
 
-..  image:: ./image/18101708_03.png
+..  image:: ./images/p08/18101708_03.png
     :align: center
     :alt: 大型
 

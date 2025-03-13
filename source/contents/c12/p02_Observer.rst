@@ -159,7 +159,7 @@ Python 实现代码：
 
 
 
-.. |image0| image:: ./img/2.jpg
+.. |image0| image:: ./images/p02/2.jpg
 
 
 

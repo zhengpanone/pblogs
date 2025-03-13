@@ -32,4 +32,4 @@ WSGI接口中有一个非常明确的标准，每个Python Web应用必须是可
 
 
 
-.. |image1| image:: ./image/181104.webp
+.. |image1| image:: ./images/p00/181104.png

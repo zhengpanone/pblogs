@@ -139,7 +139,7 @@
 
 注意：视图类中的方法就是支持的请求类型
 
-..  image:: ./image/18101701.png
+..  image:: ./images/p05/18101701.png
     :align: center
     :alt: 请求类型
 
@@ -205,7 +205,7 @@
  method03 = TestMethodView.as_view('testMethodView03')
  app.add_url_rule('/test03/', view_func=method03, methods=['POST'])
 
-..  image:: ./image/18101702.png
+..  image:: ./images/p05/18101702.png
     :align: center
     :alt: POST请求
 

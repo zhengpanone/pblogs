@@ -589,7 +589,7 @@ Docker 磁盘空间清理报告
 
 
    
-.. |image1| image:: ./image/640.webp
+.. |image1| image:: ./image/p01/640.png
 
 
 https://www.cnblogs.com/521football/p/10483980.html

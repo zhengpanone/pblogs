@@ -35,7 +35,7 @@
 
 
 
-.. |image1| image:: ./image/20181213173338.png
+.. |image1| image:: ./images/20181213173338.png
 
 
 

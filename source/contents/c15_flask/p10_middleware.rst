@@ -57,7 +57,7 @@
 
 运行结果：
 
-..  image:: ./image/18101710_01.png
+..  image:: ./images/p10/18101710_01.png
     :align: center
     :alt: 运行结果
 

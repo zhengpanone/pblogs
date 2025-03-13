@@ -306,16 +306,16 @@ TCP（Transmission Control Protocol）
 =======================
  慕课猿圈圈：https://mp.weixin.qq.com/s/gr1p4Z1DrNXR3Z5ieaOc9w
 
-.. |image1| image:: ./image/19022501.webp
-.. |image2| image:: ./image/19022502.webp
-.. |image3| image:: ./image/19022503.webp
-.. |image4| image:: ./image/19022504.webp
-.. |image5| image:: ./image/19022505.webp
-.. |image6| image:: ./image/19022506.webp
-.. |image7| image:: ./image/19022507.webp
-.. |image8| image:: ./image/19022508.webp
-.. |image9| image:: ./image/19022509.webp
-.. |image10| image:: ./image/19022510.webp
-.. |image11| image:: ./image/19022511.webp
-.. |image12| image:: ./image/19022512.webp
+.. |image1| image:: ./images/p03/19022501.png
+.. |image2| image:: ./images/p03/19022502.png
+.. |image3| image:: ./images/p03/19022503.png
+.. |image4| image:: ./images/p03/19022504.png
+.. |image5| image:: ./images/p03/19022505.png
+.. |image6| image:: ./images/p03/19022506.png
+.. |image7| image:: ./images/p03/19022507.png
+.. |image8| image:: ./images/p03/19022508.png
+.. |image9| image:: ./images/p03/19022509.png
+.. |image10| image:: ./images/p03/19022510.png
+.. |image11| image:: ./images/p03/19022511.png
+.. |image12| image:: ./images/p03/19022512.png
 

@@ -132,6 +132,6 @@ Python中的属性其实是普通方法的变种，对于属性有两个知识�
 Python那些事：https://mp.weixin.qq.com/s/xw0qQRzG8qqdfMbQgj62pg
 
 
-.. |image1| image:: ./image/2019021501.webp
-.. |image2| image:: ./image/2019021502.webp
-.. |image3| image:: ./image/2019021503.webp
+.. |image1| image:: ./images/p01/2019021501.png
+.. |image2| image:: ./images/p01/2019021502.png
+.. |image3| image:: ./images/p01/2019021503.png
