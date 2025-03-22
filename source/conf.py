@@ -67,6 +67,7 @@ latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
     'pointsize': '16pt',
     'preamble': '',
     'figure_align': 'htbp',
+    'preamble': r'\usepackage{bookmark}'
     } 
 # Additional stuff for the LaTeX preamble.
 # 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""

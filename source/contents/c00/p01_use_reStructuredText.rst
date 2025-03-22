@@ -211,8 +211,6 @@ A) 枚举列表1
         所以这个块虽然缩进了，但并不是“丢失”的。
 
 
-
-
 Sphinx 插件列表
 ================
 
@@ -281,8 +279,6 @@ Sphinx 插件列表
     - `sphinx.ext.coverage`: 报告代码覆盖率信息。
     - `sphinxcontrib-bibtex`: 用于处理 BibTeX 引用。
       安装: `pip install sphinxcontrib-bibtex`
-
-
 
 
 
