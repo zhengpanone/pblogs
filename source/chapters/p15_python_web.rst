@@ -1,12 +1,12 @@
 =============================
-第二十章：自动化
+第十五章：Python Web
 =============================
 
-自动化Web
+Python Web知识
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :numbered:
    :glob:
 
-   ../contents/c20_automation/*
+   ../contents/c15_python_web/**

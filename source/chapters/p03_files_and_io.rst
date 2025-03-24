@@ -7,6 +7,7 @@
 
 .. toctree::
    :maxdepth: 1
+   :numbered:
    :glob:
 
    ../contents/c03_files_and_io/*

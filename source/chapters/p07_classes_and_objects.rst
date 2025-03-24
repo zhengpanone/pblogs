@@ -8,6 +8,7 @@ Python特性、特殊方法的使用、 类封装技术、继承、内存管理�
 
 .. toctree::
     :maxdepth: 1
+    :numbered:
     :glob:
 
     ../contents/c07_class/*

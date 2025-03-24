@@ -1,0 +1,28 @@
+=================================
+Django使用
+=================================
+
+查看Django版本
+==========================
+
+>>> python -m django --version
+
+创建项目
+==========================
+
+>>> django-admin startproject mysite
+
+mysite\/
+
+    manage.py
+    
+    mysite\/
+    
+        __init__.py
+
+        settings.py
+
+        urls.py
+
+        wsgi.py
+
