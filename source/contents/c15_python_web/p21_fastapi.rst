@@ -19,8 +19,6 @@
 - :ref:`进阶部分`
 
 
-
-
 .. _FastAPI 简介:
 
 1. FastAPI 简介
@@ -29,13 +27,13 @@
 
 FastAPI 是一个现代、快速（高性能）的 Web 框架，基于 Python 3.6+ 标准类型提示构建，主要用于构建 API 服务。其主要特点包括：
 
-高性能：基于 Starlette 和 Pydantic，性能媲美 NodeJS 和 Go。
+- **高性能**: 基于 Starlette 和 Pydantic，性能媲美 NodeJS 和 Go。
 
-简洁易用：借助 Python 类型提示实现代码自动校验和文档生成。
+- **简洁易用**: 借助 Python 类型提示实现代码自动校验和文档生成。
 
-自动生成文档：内置 OpenAPI（Swagger）和 ReDoc 接口文档，开箱即用。
+- **自动生成文档**: 内置 OpenAPI（Swagger）和 ReDoc 接口文档，开箱即用。
 
-异步支持：内置 async/await 支持，方便构建异步高并发应用。
+- **异步支持**: 内置 async/await 支持，方便构建异步高并发应用。
 
 .. _环境准备与安装:
 

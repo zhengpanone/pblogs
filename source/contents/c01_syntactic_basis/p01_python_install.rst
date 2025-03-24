@@ -165,6 +165,7 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
  openssl-devel-1.0.1e-16.el6_5.7.x86_64
  openssl-1.0.1e-16.el6_5.7.x86_64
 
+.. _python_install:
 
 参考
 ----------------
@@ -208,6 +209,7 @@ pip临时设置可以通过 -i 选项：
 
 附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 $HOME/.config/pip/pip.conf，Windows 则放到 %APPDATA%\\pip\\pip.ini。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
 
+
 Pipenv
 -----------------
 
@@ -216,7 +218,7 @@ Pipenv
 
 .. code-block:: shell
     
-    pipenv install --pypi-mirror https://pypi.doubanio.com/simple flask
+    pipenv install flask --pypi-mirror https://pypi.doubanio.com/simple 
 
 
 如果想对项目全局（per-project）设置，可以修改 Pipfile 中 [[source]] 小节：

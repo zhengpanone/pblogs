@@ -27,6 +27,7 @@ extensions = [
     'sphinx_markdown_tables',
     # 'sphinxcontrib.inkscapeconverter',
     'sphinx_copybutton',
+    'sphinx.ext.todo',
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
@@ -62,8 +63,10 @@ formats = ["htmlzip", "pdf", "epub"]
 
 latex_engine = 'xelatex'
 
-latex_elements = {  # The paper size ('letterpaper' or 'a4paper').
-    'papersize': 'a4paper',  # The font size ('10pt', '11pt' or '12pt').
+latex_elements = {  
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper',  
+    # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '16pt',
     'preamble': '',
     'figure_align': 'htbp',

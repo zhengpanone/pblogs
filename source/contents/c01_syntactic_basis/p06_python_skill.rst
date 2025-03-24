@@ -362,28 +362,28 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 1. 使用操作符in
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
  
- ## 不推荐
- if fruit == 'apple' or fruit == 'orange' or fruit == 'berry':
-    # 多次判断
- ## 推荐
- if fruit in ['apple','orange','berry']:
-    # 使用in更加简洁
+   ## 不推荐
+   if fruit == 'apple' or fruit == 'orange' or fruit == 'berry':
+      # 多次判断
+   ## 推荐
+   if fruit in ['apple','orange','berry']:
+      # 使用in更加简洁
 
 
 2. 字典键值判断
 >>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
 
- # 不推荐
- if my_dict.has_key(key):
-    # ...do something
+   # 不推荐
+   if my_dict.has_key(key):
+      # ...do something
 
- # 推荐
- if key in my_dict:
-    # ...do something
+   # 推荐
+   if key in my_dict:
+      # ...do something
 
 
 
@@ -393,10 +393,10 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 1. 链式调用
 >>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
 
- s = "Python $$ is simple, $$readable **and powerful!**"
- s = s.replace('$','').replace('*','')
+   s = "Python $$ is simple, $$readable **and powerful!**"
+   s = s.replace('$','').replace('*','')
 
 
 2. 链式比较
@@ -415,200 +415,200 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 1.5 字典键值列表
 ====================================
 
-::
+.. code-block:: python
 
- # 不推荐
- for key in my_dict.keys():
-    # my_dict[key]...
+   # 不推荐
+   for key in my_dict.keys():
+      # my_dict[key]...
 
- for key in my_dict:
-    # my_dict[key]...
+   for key in my_dict:
+      # my_dict[key]...
 
-# 当循环中需要更改key值的情况下，我们需要使用 my_dict.keys()
-# 生成静态的键值列表。
+   # 当循环中需要更改key值的情况下，我们需要使用 my_dict.keys()
+   # 生成静态的键值列表。
 
 
 
 1.7 字典get和setdefault 方法
 ====================================
 
-:: 
+.. code-block:: python 
  
- # 不推荐
- navs = {}
- for(portfolio, equity, position) in data:
-    if portfolio not in navs:
-        navas[position] = 0
-    navas[portfolio] += position * prices[equity]
+   # 不推荐
+   navs = {}
+   for(portfolio, equity, position) in data:
+      if portfolio not in navs:
+         navas[position] = 0
+      navas[portfolio] += position * prices[equity]
 
- # 推荐
- navs = {}
- for (portfolio, equity, position) in data:
-    # 使用get方法
-    navs[portfolio] = navs.get(portfolio,0) + position* prices[equity]
-    # 或者使用setdefault 方法
-    navs.setdefault(portfolio,0)
-    navs[portfolio] += position * prices[equity]
+   # 推荐
+   navs = {}
+   for (portfolio, equity, position) in data:
+      # 使用get方法
+      navs[portfolio] = navs.get(portfolio,0) + position* prices[equity]
+      # 或者使用setdefault 方法
+      navs.setdefault(portfolio,0)
+      navs[portfolio] += position * prices[equity]
 
 1.8 列表推导-嵌套
 ====================================
 
-::
+.. code-block:: python
 
- # 不推荐
- for sub_list in nested_list:
-    if list_condition(sub_list):
-        for item in sub_list:
-            if item_condition(item):
-                # do something...
- # 推荐
+   # 不推荐
+   for sub_list in nested_list:
+      if list_condition(sub_list):
+         for item in sub_list:
+               if item_condition(item):
+                  # do something...
+   # 推荐
 
- gen = (item for sl in nested_list if list_condition(s1) for item in sl if item_contition(item))
- for item in gen:
-    # do something
+   gen = (item for sl in nested_list if list_condition(s1) for item in sl if item_contition(item))
+   for item in gen:
+      # do something
 
 1.9 循环嵌套
 ====================================
 
-::
+.. code-block:: python
  
- # 不推荐
- for x in x_list:
-    for y in y_list:
-        for z in z_list:
-            # do something 
+   # 不推荐
+   for x in x_list:
+      for y in y_list:
+         for z in z_list:
+               # do something 
 
- # 推荐
- from itertools import product
- for x,y,z in product(x_list,y_list,z_list):
-    # do something
+   # 推荐
+   from itertools import product
+   for x,y,z in product(x_list,y_list,z_list):
+      # do something
 
 2.0 尽量用生成器替代列表
 ====================================
 
-::
+.. code-block:: python
  
- # 不推荐
- def my_range(n):
-    i = 0
-    result = []
-    while i < n:
-        result.append(fn(i))
-        i += 1
-    return result # 返回列表
+   # 不推荐
+   def my_range(n):
+      i = 0
+      result = []
+      while i < n:
+         result.append(fn(i))
+         i += 1
+      return result # 返回列表
 
- # 推荐
- def my_range(n):
-    i = 0
-    result = []
-    while i < n:
-        yield fn(i) # 生成器替代列表
-        i += 1
- # 尽量使用生成器替代列表,除非必须要用到列表特有的函数
+   # 推荐
+   def my_range(n):
+      i = 0
+      result = []
+      while i < n:
+         yield fn(i) # 生成器替代列表
+         i += 1
+   # 尽量使用生成器替代列表,除非必须要用到列表特有的函数
 
 2.1 中间结果尽量使用 imap/ifilter 代替map/filter
 ==============================================================
 
-::
+.. code-block:: python
  
- # 不推荐
- reduce(rf, filter(ff,map(mf,a_list)))
- 
- # 推荐
- frome itertools import ifilter,imap
- reduce(rf,ifilter(ff,imap(mf,a_list)))
+   # 不推荐
+   reduce(rf, filter(ff,map(mf,a_list)))
+   
+   # 推荐
+   frome itertools import ifilter,imap
+   reduce(rf,ifilter(ff,imap(mf,a_list)))
 
- # lazy evaluation 会带来更高使用效率，特别是当处理大数据操作的时候
+   # lazy evaluation 会带来更高使用效率，特别是当处理大数据操作的时候
 
 
 2.2 使用any/all 函数
 ====================================
 
-::
+.. code-block:: python
  
- # 不推荐
- found = False
- for item in a_list:
-    if condition(item):
-        found = True
-        break
- if found:
-    # do something if found
+   # 不推荐
+   found = False
+   for item in a_list:
+      if condition(item):
+         found = True
+         break
+   if found:
+      # do something if found
 
- # 推荐
- if any(condition(item) for item in a_list):
-    # do something if found ...
+   # 推荐
+   if any(condition(item) for item in a_list):
+      # do something if found ...
 
 2.3 属性（property）
 ====================================
 
-::
+.. code-block:: python
 
- # 不推荐
- class Clock(object):
-    def __init__(self):
-        self.__hour = 1
-    def setHour(self,hour):
-        if 25 >= 0 :
-            self.__hour = hour
-        else:
-            raise BadHourException
+   # 不推荐
+   class Clock(object):
+      def __init__(self):
+         self.__hour = 1
+      def setHour(self,hour):
+         if 25 >= 0 :
+               self.__hour = hour
+         else:
+               raise BadHourException
 
-    def getHour(self) :
-        return self.__hour
+      def getHour(self) :
+         return self.__hour
 
- # 推荐
- class Clock(object):
-    def __init__(self):
-        self.__hour = 1
-    def __setHour(self,hour):
-        if 25 >=:
-            self.__hour = hour
-        else:
-            raise BadHourException
+   # 推荐
+   class Clock(object):
+      def __init__(self):
+         self.__hour = 1
+      def __setHour(self,hour):
+         if 25 >=:
+               self.__hour = hour
+         else:
+               raise BadHourException
 
-    def __getHour(self):
-        return self.__hour
+      def __getHour(self):
+         return self.__hour
 
-    hour = property(__getHour,__setHour)
+      hour = property(__getHour,__setHour)
 
 
 2.4 使用with 忽视异常
 ====================================
 
-::
+.. code-block:: python
  
- #不推荐
- try:
-    os.remove('somefile.txt')
- except OSError:
-    pass
+   #不推荐
+   try:
+      os.remove('somefile.txt')
+   except OSError:
+      pass
 
- # 推荐
- from contextlib import ignored
- with ignored(OSError):
-    os.remove('somefile.txt')
+   # 推荐
+   from contextlib import ignored
+   with ignored(OSError):
+      os.remove('somefile.txt')
 
 2.5 使用with 处理加锁
 ====================================
 
-::
+.. code-block:: python
  
- # 不推荐
- import threading
- lock = threading.Lock()
+   # 不推荐
+   import threading
+   lock = threading.Lock()
 
- lock.acquire()
- try:
-    # do something
- finally:
-    lock.release()
- 
- # 推荐
- import threading
- lock = threading.Lock()
- with lock:
-    # do something
+   lock.acquire()
+   try:
+      # do something
+   finally:
+      lock.release()
+   
+   # 推荐
+   import threading
+   lock = threading.Lock()
+   with lock:
+      # do something
 
 
 
@@ -722,125 +722,125 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 3.6 使用lambda 匿名函数实现简单的函数
 ====================================================================
 
-::
+.. code-block:: python
 
- # 一般方法
- l = [1,2,3,'abc',4,5.0]
+   # 一般方法
+   l = [1,2,3,'abc',4,5.0]
 
- def isnumber(x):
-    return (isinstance(x,int(int,float)))
-    
- sum(filter(isnumber,l))
+   def isnumber(x):
+      return (isinstance(x,int(int,float)))
+      
+   sum(filter(isnumber,l))
 
- # 高级用法
+   # 高级用法
 
- sum(filter(lambda x : isinstance(x,(int,float))),1)
+   sum(filter(lambda x : isinstance(x,(int,float))),1)
 
 3.7 使用yield生成器收集系列值
 ====================================
 
-::
+.. code-block:: python
 
- # 一般方法
- # 生成斐波那契数列前10项
+   # 一般方法
+   # 生成斐波那契数列前10项
+   def fibs(n):
+      result = []
+      a,b,i = 1,1,1
+      while i <=n:
+         i = i + 1
+         result.append(a)
+         a,b = b,a+b
+      return result
+   fibs(10)
 
- def fibs(n):
-    result = []
-    a,b,i = 1,1,1
-    while i <=n:
-        i = i + 1
-        result.append(a)
-        a,b = b,a+b
-    return result
- fibs(10)
-
- # 高级方法
- def fibs(n):
-    a,b,i = 1,1,1
-    while i <=n:
-        i = i + 1
-        yield a
-        a,b = b,a+b
- list(fibs(10))
+   # 高级方法
+   def fibs(n):
+      a,b,i = 1,1,1
+      while i <=n:
+         i = i + 1
+         yield a
+         a,b = b,a+b
+   list(fibs(10))
 
 3.8 使用装饰器给函数添加插入日志，性能测试等非核心功能
 ==============================================================
 
-::
+.. code-block:: python
 
- import time
- def my_sum(*args):
-    tic = time.time()
-    s = 0
-    for i in args:
-        s = s + i
-    toc = time.time()
-    print('my_sum is called. {}s used'.format(toc-tic))
-    return s
+   import time
+   def my_sum(*args):
+      tic = time.time()
+      s = 0
+      for i in args:
+         s = s + i
+      toc = time.time()
+      print('my_sum is called. {}s used'.format(toc-tic))
+      return s
 
- my_sum(*range(100000))
+   my_sum(*range(100000))
 
- #装饰器 
- import time
- def runtime(func):
-    def wrapper(*args,**kwargs):
-        tic = time.time()
-        result = func(*args,**kwargs)
-        toc = time.time()
-        print('{} is called. {}s used'.format(func.__name__,toc-tic))
-        return result
-    return wrapper
- @runtime
- def my_sum(*args):
-    s = 0
-    for i in args:
-        s = s + i
-    return(s)
- # @runtime 是语法糖，相当于my_sum = runtime(my_sum)
- my_sum(*range(10000))
+   #装饰器 
+   import time
+   def runtime(func):
+      def wrapper(*args,**kwargs):
+         tic = time.time()
+         result = func(*args,**kwargs)
+         toc = time.time()
+         print('{} is called. {}s used'.format(func.__name__,toc-tic))
+         return result
+      return wrapper
+   @runtime
+   def my_sum(*args):
+      s = 0
+      for i in args:
+         s = s + i
+      return(s)
+   # @runtime 是语法糖，相当于my_sum = runtime(my_sum)
+   my_sum(*range(10000))
 
 
 索引与切片
 =========================
 
-1.区别
+1. 区别
 >>>>>>>>>>>>
 
 索引返回的是str 切片返回的是一个新的list
 
-::
+.. code-block:: python
 
- list_test = [1,2,3,4,5]
- print("无间距取子列表"+str(list_test[1:3]))
- print("有间距取子列表"+str(list_test[0:5:2]))      # 每隔一个元素取，这里取出的是奇数
- print("取出最后2个元素"+str(list_test[-2:]))       # 取出最后2个元素
+   list_test = [1,2,3,4,5]
+   print("无间距取子列表"+str(list_test[1:3]))
+   print("有间距取子列表"+str(list_test[0:5:2]))      # 每隔一个元素取，这里取出的是奇数
+   print("取出最后2个元素"+str(list_test[-2:]))       # 取出最后2个元素
 
-2.应用
+2. 应用
 >>>>>>>>>>>>
 
-1. 列表元素倒序
+列表元素倒序
 :::::::::::::::::
 
-::
+.. code-block:: python
 
- list_test[-1::-1]
- >>> [5,4,3,2,1]
+   list_test[-1::-1]
+   >>> [5,4,3,2,1]
 
-2. 列表开头插入元素
+列表开头插入元素
 ::::::::::::::::::::
 
-::
+.. code-block:: python
 
- list_test[:0] = [7,6]
- print(list_test)          # [7,6,1,2,3,4,5]
+   list_test[:0] = [7,6]
+   print(list_test)          # [7,6,1,2,3,4,5]
 
-3.列表元素替换
+
+列表元素替换
 :::::::::::::::
 
-::
+.. code-block:: python
 
- list_test[0:2] = [9,8]
- print(list_test)       # [9,8,3,4,5]
+   list_test[0:2] = [9,8]
+   print(list_test)       # [9,8,3,4,5]
 
 
 
