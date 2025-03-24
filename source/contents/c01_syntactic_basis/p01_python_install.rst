@@ -1,5 +1,5 @@
 ===============================
-1. 安装Python
+安装Python
 ===============================
 
 linux安装
@@ -15,7 +15,7 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 >>> yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel \
     sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
 
-2. 下载Python3源代码
+下载Python3源代码
 --------------------------------------
 
 下载Python3的源代码有两种方式，一种是在它的官网下载，网址如下：
@@ -30,21 +30,21 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 >>> wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz
 
-3. 创建安装目录
+创建安装目录
 ------------------------------
 
 安装目录可依个人喜好创建，比如在此创建在 /usr/local/python3 ：
 
 >>> mkdir -p /usr/local/python3
 
-4. 解压源码包
+解压源码包
 --------------------------------
 
 将第2步下载到的源码包进行解压，命令为：
  
 >>> tar -zxvf Python-3.6.1.tgz
 
-5. 编译源码
+编译源码
 -------------------------------
 
 先进入解压后源码包的目录，再进行配置：
@@ -56,12 +56,12 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 >>> make && make install
 
-6. 建立Python3的软链接
+建立Python3的软链接
 ------------------------------------------------
  
 >>> ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 
-7.  将/usr/local/python3/bin加入PATH
+将/usr/local/python3/bin加入PATH
 -------------------------------------------------------------------
 
 编辑bash_profile进行修改环境变量：
@@ -88,7 +88,7 @@ Python3在安装的过程中可能会用到各种依赖库，所以在正式安�
 
 改动完毕之后，按Esc，再输入:wq进行保存退出。
 
-8. 检查Python3及Pip3是否正常可用
+检查Python3及Pip3是否正常可用
 ------------------------------------------------------------------
 
 执行如下命令（注意：V是大写的V），如果看到的结果一致的话，说明Python3已经成功安装。

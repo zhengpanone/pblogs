@@ -1,4 +1,4 @@
-# 3 [魔法命令行](http://magic.iswbm.com/zh/latest/c02/c02_12.html)
+# [魔法命令行](http://magic.iswbm.com/zh/latest/c02/c02_12.html)
 
 ## 最快查看包搜索路径的方式
 

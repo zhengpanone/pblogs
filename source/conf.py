@@ -3,6 +3,8 @@ import os
 import sys
 import sphinx_rtd_theme
 
+_exts = "extensions"
+sys.path.insert(0,os.path.join(os.path.abspath(os.path.dirname(__file__)) ,_exts))
 
 # -- Project information -----------------------------------------------------
 
@@ -33,6 +35,21 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.autosectionlabel',
     ]
+
+# If true, `todo` and `todoList` produce output, else they produce nothing.
+todo_include_todos = True
+
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+#html_logo = None
+# html_logo = '_static/figs/logo1.png'
+
+# The name of an image file (relative to this directory) to use as a favicon of
+# the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
+# pixels large.
+#html_favicon = 'None'
+# html_favicon = '_static/figs/favicon1.ico'
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -70,7 +87,13 @@ latex_elements = {
     'pointsize': '16pt',
     'preamble': '',
     'figure_align': 'htbp',
-    'preamble': r'\usepackage{bookmark}'
+    'preamble': r'''
+    \usepackage{bookmark}
+    \usepackage{fancyvrb}
+    \usepackage{ctex}
+    \usepackage{bm}
+    '''
+    
     } 
 # Additional stuff for the LaTeX preamble.
 # 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
@@ -102,5 +125,22 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 
 
 highlight_langeuage = "python,go,javascript,html"
-_exts = "../exts"
-sys.path.append(os.path.abspath(_exts))
+
+
+
+numfig = True
+numfig_secnum_depth = 2
+
+numfig_format = {
+    'figure': 'Fig. %s',
+    'table': 'Table %s',
+    'code-block': 'Listing %s',
+    'section': 'Section %s',
+}
+
+numfig_format = {
+    'figure': '图 %s',
+    'table': '表 %s',
+    'code-block': '代码 %s',
+    'section': '节 %s',
+}
