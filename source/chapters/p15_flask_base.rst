@@ -1,8 +1,8 @@
 =============================
-第十五章：Flask 入门
+第十五章：Python Web
 =============================
 
-Flask 入门知识
+Python Web知识
 
 
 
@@ -12,4 +12,4 @@ Flask 入门知识
    :maxdepth: 1
    :glob:
 
-   ../contents/c15_flask/*
+   ../contents/c15_python_web/*
