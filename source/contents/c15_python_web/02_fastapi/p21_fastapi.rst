@@ -305,3 +305,11 @@ FastAPI 也支持 WebSocket，可以用来实现实时通信功能：
           await websocket.send_text(f"收到消息: {data}")
 
 
+.. _fastapi_references:
+
+参考文档
+==================
+
+- `FastAPI深度揭秘 <https://juejin.cn/column/7379166365972955146>`
+
+

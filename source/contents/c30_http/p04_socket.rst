@@ -185,6 +185,8 @@ getsockname函数
 
 - 返回值：通常是一个元组(ipaddr,port)
 
+.. _socket_reference:
+
 参考文档
 =====================
 

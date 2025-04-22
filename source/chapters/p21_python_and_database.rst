@@ -6,6 +6,7 @@ Python 操作Redis 、mysql、mongoDB
 
 .. toctree::
    :maxdepth: 1
+   :numbered:
    :glob:
 
    ../contents/c21/*

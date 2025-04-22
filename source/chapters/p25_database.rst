@@ -8,6 +8,7 @@ python 操作数据库 https://github.com/zhengpanone/py_db.git
 
 .. toctree::
    :maxdepth: 1
+   :numbered:
    :glob:
 
    ../contents/c25_database/*

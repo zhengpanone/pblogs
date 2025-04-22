@@ -65,8 +65,10 @@ yield 即 "谦让"，也是 Thread 类的方法。它让掉当前线程 CPU 的�
 
 yield 方法可以很好的控制多线程，如执行某项复杂的任务时，如果担心占用资源过多，可以在完成某个重要的工作后使用 yield 方法让掉当前 CPU 的调度权，等下次获取到再继续执行，这样不但能完成自己的重要工作，也能给其他线程一些运行的机会，避免一个线程长时间占有 CPU 资源。
 
+.. _thread_yield_reference:
+
 参考文档
-------------
+==============
 
 Java技术栈：https://mp.weixin.qq.com/s/INwudC6IWFj0mKmqqU_eJg
 
