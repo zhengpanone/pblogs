@@ -1,6 +1,11 @@
 https://mblogs.readthedocs.io/en/latest/
 
-
+```shell
+# 项目初始化
+uv init pblogs && cd pblogs
+# uv 安装依赖
+uv add requests
+```
 
 ```shell
 cd blogs

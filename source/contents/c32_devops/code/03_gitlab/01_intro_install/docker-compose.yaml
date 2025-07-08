@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:17.10.1-ce.0
+    container_name: gitlab
+    restart: unless-stopped  # 异常停止后自动恢复
+    hostname: 'gitlab.yourdomain.com'  # 修改为你的域名/IP
+    cpus: 2
+    mem_limit: 4g
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.yourdomain.com'  # 访问地址
+        gitlab_rails['time_zone'] = 'Asia/Shanghai'   # 时区设置
+        gitlab_rails['gitlab_shell_ssh_port'] = 2222 # SSH端口映射
+        prometheus['listen_address'] = '0.0.0.0:9090' # 开启监控 
+        alertmanager['enable'] = false  # 内网关闭告警
+        nginx['worker_processes'] = 4
+        puma['worker_processes'] = 4
+        sidekiq['concurrency'] = 10
+        postgresql['shared_buffers'] = "256MB"
+        redis['max_memory'] = "1GB"
+        ## 邮件配置（按需启用）
+        # gitlab_rails['smtp_enable'] = true
+        # gitlab_rails['smtp_address'] = "smtp.example.com"
+        # gitlab_rails['smtp_port'] = 587
+        # gitlab_rails['smtp_user_name'] = "user@example.com"
+        # gitlab_rails['smtp_password'] = "password"
+        # gitlab_rails['smtp_domain'] = "example.com"
+        # gitlab_rails['smtp_authentication'] = "login"
+        # gitlab_rails['smtp_enable_starttls_auto'] = true
+        ## https按需启用
+        # external_url 'https://gitlab.yourdomain.com'
+        # nginx['redirect_http_to_https'] = true
+        # nginx['ssl_certificate'] = "/etc/gitlab/ssl/fullchain.pem"
+        # nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/privkey.pem"
+    ports:
+      - "80:80"
+      # - "443:443"
+      - "2222:22"
+      - "9090:9090"
+    volumes:
+      - /data/gitlab/config:/etc/gitlab
+      - /data/gitlab/logs:/var/log/gitlab
+      - /data/gitlab/data:/var/opt/gitlab
+      # - /data/gitlab/ssl:/etc/gitlab/ssl  # SSL 证书目录
+    shm_size: '256m'  # 必须设置共享内存
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+    # 健康检查
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost/-/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - gitlab-net
+
+networks:
+  gitlab-net:
+    driver: bridge
