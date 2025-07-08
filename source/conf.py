@@ -2,6 +2,7 @@
 import os
 import sys
 import sphinx_rtd_theme
+import platform
 
 _exts = "extensions"
 sys.path.insert(0,os.path.join(os.path.abspath(os.path.dirname(__file__)) ,_exts))
@@ -78,23 +79,49 @@ htmlhelp_basename = 'Python BLOG'
 
 formats = ["htmlzip", "pdf", "epub"]
 
-latex_engine = 'xelatex'
+# 根据操作系统选择字体
+if platform.system() == 'Windows':
+    cjk_font = 'SimSun'
+elif platform.system() == 'Darwin':  # macOS
+    cjk_font = 'Songti SC'
+else:  # Linux
+    cjk_font = 'Noto Sans CJK SC'
+
 
 latex_elements = {  
     # The paper size ('letterpaper' or 'a4paper').
     'papersize': 'a4paper',  
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '16pt',
-    'preamble': '',
     'figure_align': 'htbp',
+    'fontpkg': r'''
+   \usepackage{fontspec}
+    \usepackage{xeCJK}
+    \setCJKmainfont{''' + cjk_font + r'''}
+    \setmainfont{Times New Roman}
+    \setsansfont{Arial}
+    \setmonofont{Courier New}
+    ''',
     'preamble': r'''
     \usepackage{bookmark}
     \usepackage{fancyvrb}
     \usepackage{ctex}
     \usepackage{bm}
+    \usepackage{newunicodechar}
+    
+    % 定义emoji字符
+    \newunicodechar{🚀}{\emoji{🚀}}
+    \newunicodechar{✨}{\emoji{✨}}
+    \newunicodechar{📝}{\emoji{📝}}
+    \newunicodechar{🔥}{\emoji{🔥}}
+    \newunicodechar{🤝}{\emoji{🤝}}
     '''
     
     } 
+
+# 使用XeLaTeX引擎
+latex_engine = 'xelatex'
+
 # Additional stuff for the LaTeX preamble.
 # 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
 
