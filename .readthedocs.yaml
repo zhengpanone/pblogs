@@ -21,8 +21,6 @@ build:
     - fonts-dejavu-core
     - fonts-liberation
   commands:
-    - sudo apt-get update
-    - sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji
     - fc-cache -fv
     - fc-cache -fv  # 刷新字体缓存
     - fc-list | grep -i noto  # 验证字体是否安装
