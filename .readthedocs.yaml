@@ -14,6 +14,19 @@ build:
     # rust: "1.70"
     # golang: "1.20"
 
+  # 添加构建前的命令来安装字体
+  apt_packages:
+    - fonts-noto-cjk
+    - fonts-noto-color-emoji
+    - fonts-dejavu-core
+    - fonts-liberation
+  commands:
+    - sudo apt-get update
+    - sudo apt-get install -y fonts-noto-cjk fonts-noto-color-emoji
+    - fc-cache -fv
+    - fc-cache -fv  # 刷新字体缓存
+    - fc-list | grep -i noto  # 验证字体是否安装
+
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
   configuration: source/conf.py

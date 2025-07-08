@@ -115,18 +115,31 @@ latex_elements = {
     \newunicodechar{📝}{\emoji{📝}}
     \newunicodechar{🔥}{\emoji{🔥}}
     \newunicodechar{🤝}{\emoji{🤝}}
+    \newunicodechar{📈}{\emoji{📈}}
+    \newunicodechar{💻}{\emoji{💻}}
+    \newunicodechar{📚}{\emoji{📚}}
+    \newunicodechar{🔍}{\emoji{🔍}}
+    \newunicodechar{💡}{\emoji{💡}}
+    \newunicodechar{⭐}{\emoji{⭐}}
+    \newunicodechar{🎯}{\emoji{🎯}}
+    \newunicodechar{📊}{\emoji{📊}}
+    \newunicodechar{✅}{\emoji{✅}}
+    \newunicodechar{❌}{\emoji{❌}}
+    \newunicodechar{⚠️}{\emoji{⚠️}}
+    \newunicodechar{💬}{\emoji{💬}}
+    \newunicodechar{🔗}{\emoji{🔗}}
+    \newunicodechar{📅}{\emoji{📅}}
+    \newunicodechar{🔧}{\emoji{🔧}}
+    \newunicodechar{🛠️}{\emoji{🛠️}}
+    \newunicodechar{🖥️}{\emoji{🖥️}}
+    \newunicodechar{🌐}{\emoji{🌐}}
+    \newunicodechar{📖}{\emoji{📖}}
     '''
     
     } 
 
 # 使用XeLaTeX引擎
 latex_engine = 'xelatex'
-
-# Additional stuff for the LaTeX preamble.
-# 'preamble': """\usepackage{xeCJK} \setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei} \setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}  \setCJKfamilyfont{song}{WenQuanYi Micro Hei} \setCJKfamilyfont{sf}{WenQuanYi Micro Hei} \XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt"""
-
-
-# 'preamble': r"""\usepackage{xeCJK}\usepackage{indentfirst}\setlength{\parindent}{2em}\setCJKmainfont{WenQuanYi Micro Hei}\setCJKmonofont[Scale=0.9]{WenQuanYi Micro Hei Mono}\setCJKfamilyfont{song}{WenQuanYi Micro Hei}\setCJKfamilyfont{sf}{WenQuanYi Micro Hei}\XeTeXlinebreaklocale "zh"\XeTeXlinebreakskip = 0pt plus 1pt
 
 latex_documents = [
     ('index', 'mkdocs.tex', u'《Python博客》',
@@ -151,19 +164,10 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 
-highlight_langeuage = "python,go,javascript,html"
-
-
+highlight_language = "python,go,javascript,html"
 
 numfig = True
 numfig_secnum_depth = 2
-
-numfig_format = {
-    'figure': 'Fig. %s',
-    'table': 'Table %s',
-    'code-block': 'Listing %s',
-    'section': 'Section %s',
-}
 
 numfig_format = {
     'figure': '图 %s',
