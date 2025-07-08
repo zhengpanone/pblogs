@@ -23,7 +23,6 @@ build:
   commands:
     - fc-cache -fv
     - fc-cache -fv  # 刷新字体缓存
-    - fc-list | grep -i noto  # 验证字体是否安装
 
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
