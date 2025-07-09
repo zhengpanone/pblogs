@@ -13,9 +13,10 @@ LEGB规则
 
 python通过LEGB的顺序来查找一个符合对应的对象
 
-::
 
- locals -> enclosing funcion -> globals -> builtins
+.. code-block:: text
+
+    locals -> enclosing funcion -> globals -> builtins
 
 - locals 当前所在命名空间（函数、模块），函数的参数也属于命名空间内的变量
 - enclosing 外包嵌套的命名空间（闭包中常见）

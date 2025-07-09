@@ -48,16 +48,16 @@ Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
 
 >>> sphinx-sphinx-apidoc  sphinx-autogen  sphinx-build   sphinx-quickstart
 
-.. code:: shell
+.. code-block:: shell
 
     # 先创建一个工程目录:F:\\mkdocs
-    $ cd F:\\mkdocs
-
-    $ sphinx-quickstart
+    cd F:\\mkdocs
+    sphinx-quickstart
 
 执行这个命令\ ``sphinx-quickstart``\ 的时候，会让你输入配置。除了这几个个性化配置，其他的都可以按照默认的来。
 
-::
+.. code-block:: text
+   :linenos: 
 
     > Project name: MING's BLOG
     > Author name(s): MING
@@ -66,7 +66,8 @@ Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
 
 完了后，就可以看见创建的工程文件。
 
-::
+.. code-block:: shell
+   :linenos: 
 
     F:\mkdocs
     (mkdocs) λ ls -l
@@ -110,7 +111,8 @@ exts配置文件，我做了哪些事：
 
 你只要执行这个命令，即可安装。
 
-::
+.. code-block:: shell
+    :linenos: 
 
     pip install -r requirements.txt -i https://pypi.douban.com/simple/
 
@@ -124,7 +126,8 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 文件内容如下
 
-::
+.. code-block:: shell
+   :linenos: 
 
     第一章 如何成为有钱人
     ======================
@@ -154,7 +157,8 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 然后删除这几行
 
-::
+.. code-block:: shell
+   :linenos: 
 
     Indices and tables
     ==================
@@ -194,6 +198,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 执行完了后，你可以发现原先的build，不再是空文件夹了。
 
 我们点进去 build/html，打开index.html 
+
 |image01|
 
 点击 我们刚写的文章。
@@ -209,7 +214,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 在托管之前呢，我们需要准备工作。在mkdocs根目录下，添加文件\ ``.gitignore``\ （聪明的你，肯定知道这是什么），内容如下
 
-::
+.. code-block:: text
 
     build/
     .idea/
@@ -237,7 +242,8 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 |image6|
 
-构建网页后。右下方，你可以看见你的在线地址。   
+构建网页后。右下方，你可以看见你的在线地址。
+
 |image4|
 
 
@@ -247,9 +253,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 这里给出格式转换命令。
 
-::
-
-    pandoc -V mainfont="SimSun" -f markdown -t rst hello.md -o hello.rst
+>>> pandoc -V mainfont="SimSun" -f markdown -t rst hello.md -o hello.rst
 
 或者你也可以在Sphinx上添加支持Markdown渲染的扩展模块。这需要你自己去折腾了。
 

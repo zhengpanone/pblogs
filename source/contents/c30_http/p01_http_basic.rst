@@ -39,9 +39,9 @@ Http报文包括请求报文和响应报文两大部分，其中请求报文由�
 
 用来说明请求类型、要访问的资源以及所使用的HTTP版本。
 
-::
+.. code-block:: text
 
- POST  /chapter17/user.html HTTP/1.1
+    POST  /chapter17/user.html HTTP/1.1
 
 以上代码中 POST 代表请求方法， /chapter17/user.html 表示URI， HTTP/1.1 代表协议和协议的版本。现在比较流行的是Http1.1版本。
 
@@ -68,9 +68,9 @@ Http报文包括请求报文和响应报文两大部分，其中请求报文由�
 
 可以承载多个请求参数的数据。
 
-::
+.. code-block:: text
 
- name=tom&password=1234&realName=tomson
+    name=tom&password=1234&realName=tomson
 
 上面代码，承载着name、password、realName三个请求参数。
 

@@ -43,18 +43,19 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 
 创建对象
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- var student = {
-     name:"test",
-     grade:"5",
-     say:function(){
-         console.log("Hello World")
-     },
-     run:function(speed){
-         console.log("正在以"+speed+"米/秒的速度奔跑！")
-     }
- }
+    var student = {
+        name:"test",
+        grade:"5",
+        say:function(){
+            console.log("Hello World")
+        },
+        run:function(speed){
+            console.log("正在以"+speed+"米/秒的速度奔跑！")
+        }
+    }
 
 对象是键值对的集合：对象是由属性和方法构成；ps：对象皆属性，方法也是属性
 
@@ -104,19 +105,20 @@ person = null;  //表示将person 变量的值赋值为null,从此person不在�
 
 通过构造函数创建对象
 
-::
+.. code-block:: javascript
+   :linenos: 
  
- function Person(name,age){
-     this.name = name
-     this.age = age
- }
+    function Person(name,age){
+        this.name = name
+        this.age = age
+    }
 
- p1 = new Person("张三",18)
+    p1 = new Person("张三",18)
 
- var xiaoming = new Object() ==> var xiaoming = {}
- var now = new Date()
- var rooms = new Array(1,2,3) ==> var rooms = [1,2,3]
- var isMale = /123/; ==> var isMale = new RegExp("123");
+    var xiaoming = new Object() ==> var xiaoming = {}
+    var now = new Date()
+    var rooms = new Array(1,2,3) ==> var rooms = [1,2,3]
+    var isMale = /123/; ==> var isMale = new RegExp("123");
 
 Object、Date、Array 都是内置构造函数
 
@@ -127,9 +129,10 @@ Object、Date、Array 都是内置构造函数
 构造函数的执行过程
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- var p1 = new Person();
+    var p1 = new Person();
 
 1. 创建一个对象(把这个对象称之为Person构造函数的实例_p1)
 #. 创建一个内部对象，this,将this指向该实例(_p1)
@@ -139,16 +142,17 @@ Object、Date、Array 都是内置构造函数
     - 如果函数返回了一个基本数据类型的值,那么本次构造函数的返回值就是该实例(_p1)
     - 如果函数返回了一个复杂数据类型的值,那么本次构造函数的返回值就是该值
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- function fn3(){
-     return [1,3,5];
-     // 数组是一个对象类型的值；
-     // 所以数组是一个复杂数据类型的值,
-     // -> 本次构造函数的真正返回值就是该数组
-     // -> f3不再是fn3构造函数的实例
- } 
- var f3 = new fn3();
+    function fn3(){
+        return [1,3,5];
+        // 数组是一个对象类型的值；
+        // 所以数组是一个复杂数据类型的值,
+        // -> 本次构造函数的真正返回值就是该数组
+        // -> f3不再是fn3构造函数的实例
+    } 
+    var f3 = new fn3();
 
 .. note::
 
@@ -156,11 +160,12 @@ Object、Date、Array 都是内置构造函数
 
 如何判断一个对象是否是某个构造函数的实例？
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- console.log(p1 instanceof Person) // true,就是Person的实例
+    console.log(p1 instanceof Person) // true,就是Person的实例
 
- xx.__proto__属性,也是对象,该对象中一般都会有一个constructor属性,如果指向ppp函数,那么就可以认为:xxx是ppp构造函数的实例;
+    xx.__proto__属性,也是对象,该对象中一般都会有一个constructor属性,如果指向ppp函数,那么就可以认为:xxx是ppp构造函数的实例;
 
 
 .. note::
@@ -186,12 +191,13 @@ str 是基本类型，strObj是对象类型，是sting类型对应的包装类
 |image2|
 
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- var a = "string";
- alert(a.length);//6
- a.t = 3;
- alert(a.t);//undefined
+    var a = "string";
+    alert(a.length);//6
+    a.t = 3;
+    alert(a.t);//undefined
 
 4.类型检测
 -----------------
@@ -225,55 +231,56 @@ obj instanceof Object
 
 当以上全部满足，则返回"判定结果:通过"，否则返回"判定结果:不通过"。
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- function arraySimialr(arr1,arr2){
-    //判断边界
-    if(!(arr1 instanceof Array)) || !(arr2 instanceof Array){
-    return false;
-    }
-    //判断长度
-    if(arr1.length 1== arr2.length) return false;
-
-    var i = 0,
-        n = arr1.length,
-        countMap1 = {},
-        countMap2 = {},
-        t1,t2,
-        TYPES = ['String','boolean','number','undefined','null','function','date','window'];
-
-    for (;i<n;i++){
-        t1 = typeOf(arr1[i]);
-        t2 = typeOf(arr2[i]);
-        if (countMap1[t1]){
-            countMap1[t1]++;
-        }else{
-            countMap1[t1] = 1;
+    function arraySimialr(arr1,arr2){
+        //判断边界
+        if(!(arr1 instanceof Array)) || !(arr2 instanceof Array){
+        return false;
         }
-        if (countMap2[t2]){
-            countMap2[t2]++;
-        }else{
-            countMap2[t2] = 1;
-        }
-    }
+        //判断长度
+        if(arr1.length 1== arr2.length) return false;
 
-    function typeOf(else){
-        var r;
-        if (else ==null) r = 'null';
-        else if (else instanceof Array) r = 'array';
-        else if (else ==window) r = 'window';
-        else if (else instanceof Date) r = 'date';
-        else r = typeof else;
-        return r;
-    }
+        var i = 0,
+            n = arr1.length,
+            countMap1 = {},
+            countMap2 = {},
+            t1,t2,
+            TYPES = ['String','boolean','number','undefined','null','function','date','window'];
 
-    for (i =0,n=TYPES.length;i<n;i++){
-        if (countMap1[TYPES[i]] !== countMap2[TYPES[i]]){
-            return false;
+        for (;i<n;i++){
+            t1 = typeOf(arr1[i]);
+            t2 = typeOf(arr2[i]);
+            if (countMap1[t1]){
+                countMap1[t1]++;
+            }else{
+                countMap1[t1] = 1;
+            }
+            if (countMap2[t2]){
+                countMap2[t2]++;
+            }else{
+                countMap2[t2] = 1;
+            }
         }
+
+        function typeOf(else){
+            var r;
+            if (else ==null) r = 'null';
+            else if (else instanceof Array) r = 'array';
+            else if (else ==window) r = 'window';
+            else if (else instanceof Date) r = 'date';
+            else r = typeof else;
+            return r;
+        }
+
+        for (i =0,n=TYPES.length;i<n;i++){
+            if (countMap1[TYPES[i]] !== countMap2[TYPES[i]]){
+                return false;
+            }
+        }
+        return true;
     }
-    return true;
- }
 
 表达式
 ---------
@@ -312,18 +319,6 @@ this运算符
 ------------------
 
 |image16|
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

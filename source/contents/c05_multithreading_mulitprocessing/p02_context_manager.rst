@@ -22,12 +22,11 @@
 
 with语句的语法如下：
 
-::
+.. code-block:: shell
+   :linenos: 
 
- with context_expr [as var]:
-     with_suite
-
-
+    with context_expr [as var]:
+        with_suite
 
 context_expr是支持上下文管理协议的对象，也就是上下文管理器对象，负责维护上下文环境
 as var是一个可选部分，通过变量方式保存上下文管理器对象
@@ -80,75 +79,78 @@ with_suite就是需要放在上下文环境中执行的语句块
 
 看下面的代码，代码中定义了一个MyTimer类型，这个上下文管理器可以实现代码块的计时功能：
 
-::
+.. code-block:: shell
+   :linenos: 
 
- import time
-  
- class MyTimer(object):
-    def __init__(self, verbose = False):
-        self.verbose = verbose
-              
-    def __enter__(self):
-        self.start = time.time()
-        return self
-                             
-    def __exit__(self, *unused):
-        self.end = time.time()
-        self.secs = self.end - self.start
-        self.msecs = self.secs * 1000
-        if self.verbose:
-            print ("elapsed time: %f ms" %self.msecs)
+    import time
+    
+    class MyTimer(object):
+        def __init__(self, verbose = False):
+            self.verbose = verbose
+                
+        def __enter__(self):
+            self.start = time.time()
+            return self
+                                
+        def __exit__(self, *unused):
+            self.end = time.time()
+            self.secs = self.end - self.start
+            self.msecs = self.secs * 1000
+            if self.verbose:
+                print ("elapsed time: %f ms" %self.msecs)
 
 
 
 下面结合with语句使用这个上下文管理器：
 
-::
+.. code-block:: shell
+   :linenos: 
 
- def fib(n):
-    if n in [1, 2]:
-        return 1
-    else:
-        return fib(n-1) + fib(n-2)
-                          
- with MyTimer(True):
-    print (fib(30))
+    def fib(n):
+        if n in [1, 2]:
+            return 1
+        else:
+            return fib(n-1) + fib(n-2)
+                            
+    with MyTimer(True):
+        print (fib(30))
 
 
 1、上下文管理器常用于一些资源的操作,需要获取资源与释放资源的相关操作 
 
 
-::
+.. code-block:: shell
+   :linenos: 
  
- class Database(object):
-    
-    def __init__(self):
-        self.connected = False
+    class Database(object):
+        
+        def __init__(self):
+            self.connected = False
 
-    def connect(self):
-        self.connected = True
+        def connect(self):
+            self.connected = True
 
-    def close(self):
-        self.connected = False
+        def close(self):
+            self.connected = False
 
-    def query(self):
-        if self.connected:
-            return 'query data'
-        else:
-            raise ValueError('DB not connected')
+        def query(self):
+            if self.connected:
+                return 'query data'
+            else:
+                raise ValueError('DB not connected')
 
 
- def handle_query():
-    db = DataBase()
-    db.connect()
-    print('handle ---', db.query())
-    db.colse()
+    def handle_query():
+        db = DataBase()
+        db.connect()
+        print('handle ---', db.query())
+        db.colse()
 
- def main():
-    handle_query()
+    def main():
+        handle_query()
 
- if __name__ == '__main__':
-    main()
+    if __name__ == '__main__':
+        main()
 
 2、使用装饰器处理
 

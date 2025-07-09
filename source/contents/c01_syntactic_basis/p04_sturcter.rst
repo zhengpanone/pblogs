@@ -133,11 +133,12 @@ Python中的字符串（String）、元组（Tuple）、列表（List）都属�
 
 相当于
 
-::
+.. code-block:: shell
+   :linenos: 
 
- t = (b,a+b) # t是tuple
- a = t[0]
- b = t[1]
+   t = (b,a+b) # t是tuple
+   a = t[0]
+   b = t[1]
 
 Bool
 >>>>>>>>>>
@@ -188,28 +189,30 @@ Bool
 >>> print( getsizeof(lst) )
 >>> print( getsizeof(tup) )
 
-::
+.. code-block:: shell
+   :linenos: 
 
- a = (1,2,3,4)
- b = (5,6,7,8)
- a = a + b
+   a = (1,2,3,4)
+   b = (5,6,7,8)
+   a = a + b
 
 type()和isinstance()来查询变量所指的对象类型
 
  isinstance（）和type()的区别：
 
 
-::
+.. code-block:: shell
+   :linenos: 
 
- class A:
-    pass
- class B:
-    pass
+   class A:
+      pass
+   class B:
+      pass
 
- isinstance(A(),A)
- type(A()) == A
- isinstance(B(),A)
- type(B())== A
+   isinstance(A(),A)
+   type(A()) == A
+   isinstance(B(),A)
+   type(B())== A
 
 操作符
 ===========================================

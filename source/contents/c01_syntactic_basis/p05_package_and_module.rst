@@ -8,12 +8,13 @@
 
 #.  按import进来的对象不同分为4种场景：
 
-::
+.. code-block:: shell
+  :linenos: 
  
- import <package>  # 导入一个包
- import <module> # 导入一个模块
- from <package> import <module or subpackage or object> # 从一个包中导入模块/子包/对象
- from <module> import <object> # 从模块中导入对象
+  import <package>  # 导入一个包
+  import <module> # 导入一个模块
+  from <package> import <module or subpackage or object> # 从一个包中导入模块/子包/对象
+  from <module> import <object> # 从模块中导入对象
 
 #.  解释器会按照sys.path 列表的顺序来查找被引入的包或模块名字
 
@@ -29,21 +30,22 @@
 
 #.  使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
 
-::
+.. code-block:: shell
+   :linenos: 
 
- test.py
- import sys,os
- # 当前目录没hi模块,报错找不到模块
- import hi
- Traceback (most recent call last):
- ImportError: No module named hi
+  test.py
+  import sys,os
+  # 当前目录没hi模块,报错找不到模块
+  import hi
+  Traceback (most recent call last):
+  ImportError: No module named hi
 
- # hi模块所在的位置:/data/hi.py
- # 将hi 所在的模块加入sys.path
- sys.path.append('/data')
+  # hi模块所在的位置:/data/hi.py
+  # 将hi 所在的模块加入sys.path
+  sys.path.append('/data')
 
- # 可以正常工作
- import hi
+  # 可以正常工作
+  import hi
 
 #. 另外一种加载模块的方法: 如果模块不在sys.path下面,可以使用imp 模块中的imp.load_source
 

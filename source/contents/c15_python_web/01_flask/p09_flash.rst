@@ -11,83 +11,87 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 
 基于Session实现的用于保存数据的集合，其特点是：使用一次就删除。
 
-::
+.. code-block:: python
+   :linenos: 
 
- session["操作"] = "msg"   # 设置
- session.get("操作") # 获取
- session.pop("操作") # 删除
+   session["操作"] = "msg"   # 设置
+   session.get("操作") # 获取
+   session.pop("操作") # 删除
 
 2、闪现的用途
 ===========================
 
 某个数据仅需用一次时，可以使用闪现
 
-::
+.. code-block:: python
+   :linenos: 
 
- from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
- app = Flask(__name__)
- app.secret_key ='sdfsdfsdf'
+   from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
+   app = Flask(__name__)
+   app.secret_key ='sdfsdfsdf'
 
- @app.route('/users')
- def users():
-    # 方式一
-    # msg = request.args.get('msg','')
-    # 方式二
-    # msg = session.get('msg')
-    # if msg:
-    #     del session['msg']
-    # 方式三
-    v = get_flashed_messages()　　# 获取flash中的值
-    print(v)
-    msg = ''
-    return render_template('users.html',msg=msg)
+   @app.route('/users')
+   def users():
+      # 方式一
+      # msg = request.args.get('msg','')
+      # 方式二
+      # msg = session.get('msg')
+      # if msg:
+      #     del session['msg']
+      # 方式三
+      v = get_flashed_messages()　　# 获取flash中的值
+      print(v)
+      msg = ''
+      return render_template('users.html',msg=msg)
 
- @app.route('/useradd')
- def user_add():
-    # 在数据库中添加一条数据
-    # 假设添加成功，在跳转到列表页面时，显示添加成功
-    # 方式一
-    # return redirect('/users?msg=添加成功')
-    # 方式二
-    # session['msg'] = '添加成功'
-    # 方式三
-    flash('添加成功')
-    return redirect('/users')
+   @app.route('/useradd')
+   def user_add():
+      # 在数据库中添加一条数据
+      # 假设添加成功，在跳转到列表页面时，显示添加成功
+      # 方式一
+      # return redirect('/users?msg=添加成功')
+      # 方式二
+      # session['msg'] = '添加成功'
+      # 方式三
+      flash('添加成功')
+      return redirect('/users')
 
 
- if __name__ == '__main__':
-    app.run(debug=True)
+   if __name__ == '__main__':
+      app.run(debug=True)
 
 基本使用
 >>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
+   :linenos: 
 
- from flask import flash,get_flashed_messages
+   from flask import flash,get_flashed_messages
 
- def ...:
-   ...
-   flash("消息",'flag')
-   ...
-   return ..
+   def ...:
+      ...
+      flash("消息",'flag')
+      ...
+      return ..
 
- {% for msg in get_flashed_messages()%}
-   <p class="login-box-msg">{{msg}}</p>
- {%endfo%}
+   {% for msg in get_flashed_messages()%}
+      <p class="login-box-msg">{{msg}}</p>
+   {%endfo%}
 
 通过flag 过滤flash消息
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
+   :linenos: 
 
- flash('添加成功','ok')
- {% for msg in get_flashed_messages(category_filter=['ok'])%}
- <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
-        {{ msg }}
- </div>
- {% endfor %}
+   flash('添加成功','ok')
+   {% for msg in get_flashed_messages(category_filter=['ok'])%}
+   <div class="alert alert-success alert-dismissible">
+         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+         <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
+         {{ msg }}
+   </div>
+   {% endfor %}
 
 3.cookie和session
 ===================================

@@ -401,15 +401,13 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 
 2. 链式比较
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-::
  
- >>>False == False == True
- False
+>>>False == False == True
+False
 
- >>> 18 < age < 60
+>>> 18 < age < 60
 
- >>> False == False and False == True
+>>> False == False and False == True
 
 
 1.5 字典键值列表
@@ -647,77 +645,83 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 
 使用any函数
 
-::
+.. code-block:: shell
+   :linenos: 
 
- math, physics,computer = 70,40,80
- 
- if any([math<60,physics<60,computer<60]):
-    print('not pass!')
+   math, physics,computer = 70,40,80
+   
+   if any([math<60,physics<60,computer<60]):
+      print('not pass!')
 
 3.2 判断诸多条件是否全部成立
 ====================================
 
 使用and连接多次判断
 
-::
+.. code-block:: shell
+   :linenos: 
  
- math, physics,computer = 70,40,80
- if all([math>60,physics>60,computer>60]):
-    print('pass!')
+   math, physics,computer = 70,40,80
+   if all([math>60,physics>60,computer>60]):
+      print('pass!')
 
 3.3 推导式
 ====================================
 
  [... for ... in ... if ...]
 
-::
+.. code-block:: shell
+   :linenos: 
 
- #过滤l中的全部数值并求和
- l = [1,2,3,4,'abc',5,6.0]
- sum(i for i in l if type(i) in [int,float])
+   #过滤l中的全部数值并求和
+   l = [1,2,3,4,'abc',5,6.0]
+   sum(i for i in l if type(i) in [int,float])
 
 3.4 同时遍历序列的元素和元素下标
 ====================================
 
 使用enumerate函数生成对应下标和元素对
 
-::
+.. code-block:: shell
+   :linenos: 
 
- seasons = ['spring','summer','autumn','winter']
- for i,s in enumerate(seasons):
-    print(i,':',s)
+   seasons = ['spring','summer','autumn','winter']
+   for i,s in enumerate(seasons):
+      print(i,':',s)
 
 3.5 显示循环进度
 ====================================
 
 print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 
-::
+.. code-block:: shell
+   :linenos: 
 
- import time
- i,n = 0,100
- for i in range(n):
-    time.sleep(0.1)
-    if (i+1)%10 == 0:
-        print(i+1,end='\r')
+   import time
+   i,n = 0,100
+   for i in range(n):
+      time.sleep(0.1)
+      if (i+1)%10 == 0:
+         print(i+1,end='\r')
 
 定义progress_bar函数
 
-::
+.. code-block:: shell
+   :linenos: 
 
- import sys,time
+   import sys,time
 
- def progress_bar(num, total):
-    rate = float(num)/total
-    ratenum = int(100*rate)
-    r = '\r[{}{}]{}%'.format('*'*ratenum,''*(100-ratenum),ratenum)
-    sys.stdout.write(r)
-    sys.stdout.flush()
+   def progress_bar(num, total):
+      rate = float(num)/total
+      ratenum = int(100*rate)
+      r = '\r[{}{}]{}%'.format('*'*ratenum,''*(100-ratenum),ratenum)
+      sys.stdout.write(r)
+      sys.stdout.flush()
 
- i,n = 0,100
- for i in range(n):
-    time.sleep(0.1)
-    progress_bar(i+1,n)
+   i,n = 0,100
+   for i in range(n):
+      time.sleep(0.1)
+      progress_bar(i+1,n)
 
 3.6 使用lambda 匿名函数实现简单的函数
 ====================================================================

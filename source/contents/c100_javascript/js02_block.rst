@@ -15,17 +15,18 @@ block
 var 
 >>>>>>>>>>>
 
-::
+.. code-block:: javascript
+   :linenos: 
 
- var a =1;
- var a = b = 1;
- var a =1,b = 1;
- function foo(){
-    var a = b =1;
- }
- foo();
- console.log(typeof a); //undefined;
- console.log(typeof b); //number
+   var a =1;
+   var a = b = 1;
+   var a =1,b = 1;
+   function foo(){
+      var a = b =1;
+   }
+   foo();
+   console.log(typeof a); //undefined;
+   console.log(typeof b); //number
 
 
 try catch

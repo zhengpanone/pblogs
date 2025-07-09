@@ -108,76 +108,80 @@
 :::::::::::::::::::::::::::::
    实现缓存装饰器
 
-::
+.. code-block:: shell
+   :linenos: 
 
- def cache(func):
-    data = {}
-    def wrapper(*args, **kwargs):
-        key = f'{func.__name__}-{str(args)}-{str(kwargs)}'
-        if key in data:
-            result = data.get(key)
-            print('cached')
-        else:
-            result = func(*args, **kwargs)
-            data[key] = result
-            print('calculated')
-        return result
-    return wrapper
+    def cache(func):
+        data = {}
+        def wrapper(*args, **kwargs):
+            key = f'{func.__name__}-{str(args)}-{str(kwargs)}'
+            if key in data:
+                result = data.get(key)
+                print('cached')
+            else:
+                result = func(*args, **kwargs)
+                data[key] = result
+                print('calculated')
+            return result
+        return wrapper
 
 查看缓存效果
 
-::
+.. code-block:: shell
+   :linenos: 
 
- @cache
- def rectangle_area(length, width):
-    return length*width
+    @cache
+    def rectangle_area(length, width):
+        return length*width
 
- rectangle_area(2, 3)
- # calculated
- # 6
- rectangle_area(2, 3)
- # cached
- # 6
+    rectangle_area(2, 3)
+    # calculated
+    # 6
+    rectangle_area(2, 3)
+    # cached
+    # 6
 
 装饰器的@cache 是语法糖,相当于func = cache(func), 如果这里的cache不是一个函数,而是一个类？
 定义一个类 class Cache, 那么调用func = Cache(func) 会得到一个对象, 这时返回的func 其实是Cache的对象. 定义__call__方法可以将类的实例变成可调用对象, 可以像调用函数一样调用对象. 然后在__call__ 方法里调用原本的func函数就能实现装饰器. 所以Cache类也能当作装饰器使用, 并且能以@Cache 的形式使用.
 
 把cache函数改写为Cache类:
 
-::
+.. code-block:: shell
+   :linenos: 
 
- class Cache:
-    def __init__(self, func):
-        self.func = func
-        self.data = {}
+    class Cache:
+        def __init__(self, func):
+            self.func = func
+            self.data = {}
 
-    def __call__(self, *args, **kwargs):
-        func = self.func
-        data = self.data
-        key = f'{func.__name__}-{str(args)}-{str(kwargs)}'
-        if key in data:
-            result = data.get(key)
-            print('cached')
-        else:
-            result = func(*args, **kwargs)
-            data[key] = result
-            print('calculated')
-        return result
+        def __call__(self, *args, **kwargs):
+            func = self.func
+            data = self.data
+            key = f'{func.__name__}-{str(args)}-{str(kwargs)}'
+            if key in data:
+                result = data.get(key)
+                print('cached')
+            else:
+                result = func(*args, **kwargs)
+                data[key] = result
+                print('calculated')
+            return result
 
 查看缓存效果
 
-::
+.. code-block:: shell
+   :linenos: 
 
- @Cache
- def rectangle_area(length, width):
-    return length * width
+    @Cache
+    def rectangle_area(length, width):
+        return length * width
 
- rectangle_area(2, 3)
- # calculated
- # 6
- rectangle_area(2, 3)
- # calculated
- # 6
+    rectangle_area(2, 3)
+    # calculated
+    # 6
+    rectangle_area(2, 3)
+    # calculated
+    # 6
 
 2. 装饰类的方法
 ::::::::::::::::::::::::::::::::::::::::
@@ -186,12 +190,13 @@
 
 函数写的装饰器如何装饰类的方法
 
-::
+.. code-block:: shell
+   :linenos: 
 
- class Rectangle:
-    def __init__(self, length, width):
-        self.length = length
-        self.width = width
+    class Rectangle:
+        def __init__(self, length, width):
+            self.length = length
+            self.width = width
 
 .. |image1| image:: ./image/20190217201444.png
 .. |image2| image:: ./image/20190217202023.png

@@ -248,6 +248,8 @@ Queue消息队列
    po.join()
    print("%s End"%os.getpid())
 
+.. _queue_and_pool:
+
 参考文档
 ====================
 
