@@ -19,7 +19,9 @@
 
 (https://mblogs.readthedocs.io/en/latest/)为例。
 
-这是首页。显示了你所有的文章索引。 |image0|
+这是首页。显示了你所有的文章索引。
+
+|image0|
 
 这是我的导航栏。是不是结构很清晰，很方便索引。 
 
@@ -203,9 +205,7 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
   The HTML pages are in build\html.
 
-执行完了后，你可以发现原先的build，不再是空文件夹了。
-
-我们点进去 build/html，打开index.html 
+执行完了后，你可以发现原先的build，不再是空文件夹了。我们点进去 build/html，打开index.html 
 
 |image01|
 
@@ -224,9 +224,9 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 .. code-block:: text
 
-    build/
-    .idea/
-    *.pyc
+  build/
+  .idea/
+  *.pyc
 
 接下来，在你的GitHub上新建一个仓库。然后把mkdocs这个目录下的所有文件都提交上去。步骤很简单，这里就不细讲。
 
@@ -241,7 +241,6 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 |image1|
 
-
 |image2|
 
 导入代码库。填好与你对应的信息。 
@@ -254,14 +253,15 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 
 |image4|
 
-
 这里要提醒一下的是，Sphinx的文档格式，默认是 rst
 格式，如果你习惯了使用Markdown来写文章，可以使用 Pandoc
 客就搭这个神器转换一下。
 
 这里给出格式转换命令。
 
->>> pandoc -V mainfont="SimSun" -f markdown -t rst hello.md -o hello.rst
+.. code:: shell
+
+  pandoc -V mainfont="SimSun" -f markdown -t rst hello.md -o hello.rst
 
 或者你也可以在Sphinx上添加支持Markdown渲染的扩展模块。这需要你自己去折腾了。
 
@@ -282,7 +282,6 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 .. _`Sphinx配置MarkDown解析`: http://www.sphinx-doc.org/en/master/usage/markdown.html
 .. _`Sphinx使用手册(部分汉化)`: http://www.pythondoc.com/sphinx/contents.html
 .. _`搭建参考文章`: https://www.xncoding.com/2017/01/22/fullstack/readthedoc.html
-
 
 
 --------------

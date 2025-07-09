@@ -96,21 +96,18 @@ latex_elements = {
     'figure_align': 'htbp',
     'fontpkg': r'''
     \usepackage{fontspec}
-    \usepackage{xeCJK}
-    \setCJKmainfont{''' + cjk_font + r'''}
     \setmainfont{Times New Roman}
     \setsansfont{Arial}
     \setmonofont{Courier New}
     ''',
     'preamble': r'''
-    \usepackage{bookmark}
-    \usepackage{fancyvrb}
-    \usepackage{ctex}
-    \usepackage{bm}
-    \usepackage{newunicodechar}
     \usepackage{xeCJK}
     \setCJKmainfont{''' + cjk_font + r'''}
-    
+    \usepackage{bookmark}
+    \usepackage{fancyvrb}
+    \usepackage{bm}
+    \usepackage{newunicodechar}
+
     % 定义emoji字符
     \newunicodechar{🚀}{\emoji{🚀}}
     \newunicodechar{✨}{\emoji{✨}}
