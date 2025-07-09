@@ -95,7 +95,7 @@ latex_elements = {
     'pointsize': '16pt',
     'figure_align': 'htbp',
     'fontpkg': r'''
-   \usepackage{fontspec}
+    \usepackage{fontspec}
     \usepackage{xeCJK}
     \setCJKmainfont{''' + cjk_font + r'''}
     \setmainfont{Times New Roman}
@@ -108,6 +108,8 @@ latex_elements = {
     \usepackage{ctex}
     \usepackage{bm}
     \usepackage{newunicodechar}
+    \usepackage{xeCJK}
+    \setCJKmainfont{''' + cjk_font + r'''}
     
     % 定义emoji字符
     \newunicodechar{🚀}{\emoji{🚀}}
