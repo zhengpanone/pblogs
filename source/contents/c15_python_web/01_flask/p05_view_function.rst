@@ -6,7 +6,7 @@
 --------------------------------------------
 
 .. code-block:: python
-   :linenos: 
+    
 
     def auth(func):
         def inner(*args,**kwargs):
@@ -66,7 +66,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
 把as_view方法返回的结果赋值给view_funcas_view方法返回的是一个方法(注意：as_view方法传入的参数就是as_view返回的那个方法的名字)，该方法会调用dispatch_request方法一旦路由进来，就会调用 dispatch_request 方法类视图的目的就是实现逻辑分离、方便管理
 
 .. code-block:: python
-   :linenos:
+   
 
     from flask import Flask
     from flask.views import View
@@ -106,7 +106,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
 利用视图函数实现不同的请求执行不同的逻辑时比较复杂，需要在视图函数函数中进行判断；如果利用方法视图实现就比较简单
 
 .. code-block:: python
-   :linenos: 
+    
 
     @app.route('/test/', methods=['GET', 'POST'])
     def test():
@@ -126,7 +126,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
 创建方法视图子类
 
 .. code-block:: python
-   :linenos: 
+    
 
     class TestMethodView(MethodView):
         def get(self):
@@ -152,7 +152,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
     app.add_url_rule('/test02/', view_func=TestMethodView.as_view('testMethodView'))
 
 .. code-block:: python
-   :linenos:  
+     
 
     from flask import Flask
     from flask import request
@@ -195,7 +195,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
 利用方法视图子类获取一个名字为testMethodView02的视图函数，该视图函数只能支持GET请求，而且支持转换器
 
 .. code-block:: python
-   :linenos:  
+     
 
     method02 = TestMethodView.as_view('testMethodView02');
     app.add_url_rule('/test02/<name>/', view_func=method02, methods=['GET'])
@@ -203,7 +203,7 @@ app.add_url_rule('/test/', view_func=MyView.as_view('test')) # MyView.as_view('t
 利用利用方法视图子类获取一个名字为testMethodView03的视图函数，该视图函数只能支持POST请求
 
 .. code-block:: python
-   :linenos:    
+       
 
     method03 = TestMethodView.as_view('testMethodView03')
     app.add_url_rule('/test03/', view_func=method03, methods=['POST'])

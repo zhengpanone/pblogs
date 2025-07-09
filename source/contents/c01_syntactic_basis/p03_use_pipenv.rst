@@ -50,7 +50,7 @@ pip
 >>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
-   :linenos: 
+    
 
    # 下载非二进制的包
    pip download --no-binary=:all: pkg 
@@ -89,7 +89,7 @@ Virtualenv
 ============================
 
 .. code-block:: shell
-   :linenos:
+   
 
    virtualenv -p /usr/bin/python3/bin/python3 venv 
    source /venv/bin/active
@@ -99,7 +99,7 @@ Virtualenvwrapper
 =============================
 
 .. code-block:: shell
-   :linenos:
+   
 
    pip install virtualenvrapper 
    # 配置.barshrc 
@@ -124,7 +124,7 @@ Pyenv
 ==============================
 
 .. code-block:: shell
-   :linenos: 
+    
 
    pip install pyenv 
    pip install pyenv-virtualenv 
@@ -157,7 +157,7 @@ pipenv
 .. literalinclude:: ./code/p03/Pipfile
     :encoding: utf-8
     :language: text
-    :linenos:
+    
 
 - source 用来设置仓库地址，即指定镜像源下载虚拟环境所需要的包
 - packages 用来指定项目依赖的包，可以用于生产环境和生成requirements文件
@@ -197,7 +197,7 @@ pipenv
 >>> pipenv install --dev pytest
 
 .. code-block:: shell
-   :linenos:
+   
 
    pip install pipenv
 
@@ -221,7 +221,7 @@ pipenv install的时候有三种逻辑：
  - 如果后面带诸如django这一类库名，表示为当前虚拟环境安装第三方库。
 
 .. code-block:: shell
-   :linenos:
+   
 
    # 激活虚拟环境
    pipenv shell
@@ -248,7 +248,7 @@ pipenv install的时候有三种逻辑：
 pipenv 具有下列的选项：
 
 .. code-block:: shell
-   :linenos:
+   
 
    pipenv
    Usage: pipenv [OPTIONS] COMMAND [ARGS]...
@@ -273,7 +273,7 @@ pipenv 具有下列的选项：
 pipenv 可使用的命令参数：
 
 .. code-block:: text
-   :linenos:
+   
 
    Commands:
       check      检查安全漏洞

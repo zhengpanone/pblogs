@@ -9,7 +9,7 @@ fork函数只在Unix/Linux/Mac上运行，windows不可以运行，父进程中f
 全局变量在多个进程中不共享
 
 .. code-block:: shell
-  :linenos: 
+   
 
   import os
   import time

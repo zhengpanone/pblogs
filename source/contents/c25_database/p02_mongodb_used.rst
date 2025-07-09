@@ -38,7 +38,7 @@ mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根�
 >>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
-    :linenos:
+    
     
     help 
     de.help() # 查看数据库级别的帮助
@@ -50,7 +50,7 @@ mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根�
 >>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
-   :linenos:
+   
 
    show dbs 
    show collections
@@ -61,7 +61,7 @@ mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根�
 >>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
-   :linenos:
+   
 
    use pm_cms  # 创建数据库
    db.createCollection('user')  # 创建集合
@@ -73,7 +73,7 @@ mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根�
 
 
 .. code-block:: shell
-   :linenos:
+   
 
    use foo
    # 添加
@@ -95,7 +95,7 @@ mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根�
 在mongo shell中，执行以下命令，关闭MongoDB实例
 
 .. code-block:: shell
-   :linenos:
+   
 
    use admin
    db.shutdownServer()

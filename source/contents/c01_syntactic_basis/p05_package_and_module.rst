@@ -9,7 +9,7 @@
 #.  按import进来的对象不同分为4种场景：
 
 .. code-block:: shell
-  :linenos: 
+   
  
   import <package>  # 导入一个包
   import <module> # 导入一个模块
@@ -31,7 +31,7 @@
 #.  使用sys.path,使得其他路径的文件加入到Path中,使解释器可以发现
 
 .. code-block:: shell
-   :linenos: 
+    
 
   test.py
   import sys,os

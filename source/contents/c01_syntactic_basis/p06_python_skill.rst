@@ -11,7 +11,7 @@ format_map()函数
 多个占位符格式化字符串
 
 .. code-block:: python
-   :linenos:
+   
 
    s6 = {'name': '张三', 'age': 18}
    "my name is {name}, my age is {age}".format_map(s6)
@@ -22,7 +22,7 @@ partition()函数
 搜索指定字符串,并将该字符串拆分为包含三个元素的元组
 
 .. code-block:: python 
-   :linenos:
+   
 
    s1 = "'my name is zhang san'"
    s1.partition("is")
@@ -33,7 +33,7 @@ rindex()函数
 查找指定值的最后一次出现的索引
 
 .. code-block:: python
-   :linenos:
+   
 
    s2 = "1_a_b_a_1_a_1_c"
    s2.rindex('1')
@@ -45,7 +45,7 @@ swapcase()函数
 返回一个字符串,其中所有大写字母均为小写字母,反之亦然
 
 .. code-block:: python
-   :linenos:
+   
 
    s3 = "mY name is zhang san"
    s3.swapcase()
@@ -57,7 +57,7 @@ center()函数
 使用指定字符(默认空格)作为填充字符使字符串居中对齐
 
 .. code-block:: python
-   :linenos:
+   
 
    s4 = "ABCD"
    s4.center(10,"*")
@@ -68,7 +68,7 @@ capitalize()函数
 返回一个字符串,其中第一个字符串为大写
 
 .. code-block:: python
-   :linenos:
+   
 
    s3 = "mY name is zhang san"
    s3.capitalize()
@@ -78,7 +78,7 @@ Lambda
 -----------------
 
 .. code-block:: python 
-   :linenos:
+   
 
    square = lambda x : x *x
    square(3)
@@ -87,7 +87,7 @@ Lambda
 lambda x:可以理解为，python 的lambda函数，输入叫x,冒号之后的任何内容是对输入的操作，它会自动返回结果，可以简化为一行代码：
 
 .. code-block:: python 
-   :linenos:
+   
 
    x = [1,2,3,4,5]
    print(list(map(lambda num*num , x)))
@@ -100,7 +100,7 @@ lambda x:可以理解为，python 的lambda函数，输入叫x,冒号之后的�
 高阶函数例子
 
 .. code-block:: python 
-   :linenos:
+   
 
    def summation(nums):
       return sum(nums)
@@ -112,7 +112,7 @@ lambda x:可以理解为，python 的lambda函数，输入叫x,冒号之后的�
 
 
 .. code-block:: python 
-   :linenos:
+   
 
    def rtnBrandon():
       return "brandon"
@@ -143,13 +143,13 @@ Partial application(闭包)
 创建一个函数，它接受2个参数，一个基数和一个指数，并返回指数幂的基数，如下所示：
 
 .. code-block:: python 
-   :linenos:
+   
 
    def power(base,exponent):
       return  base**exponent
 
 .. code-block:: python 
-   :linenos:
+   
 
    from functools import partial
    square = partial(power,exponent=2)
@@ -159,7 +159,7 @@ Partial application(闭包)
 使用一个循环来生成一个幂函数，该函数实现从立方体一直到1000的幂。
 
 .. code-block:: python 
-   :linenos:
+   
 
    from functools import partial
    powers = []
@@ -173,7 +173,7 @@ Partial application(闭包)
 -------------------
 
 .. code-block:: python 
-   :linenos:
+   
 
    [function for item in iterable]
 
@@ -197,7 +197,7 @@ Partial application(闭包)
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
 
    import json
    print(json.dumps(data,indent=2))
@@ -206,7 +206,7 @@ Partial application(闭包)
 ====================================
 
 .. code-block:: python
-   :linenos:
+   
 
    nfc = ["Packers", "49ers"]
    afc = ["Ravens", "Patriots"]
@@ -232,7 +232,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
 
    teams = ["Packers", "49ers", "Ravens", "Patriots"]
    for index,team in enumerate(teams):
@@ -243,7 +243,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
  
    items = [0]*3
    print(items)
@@ -254,7 +254,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
 
    teams = ["Packers", "49ers", "Ravens", "Patriots"]
    print (", ".join(teams))
@@ -263,7 +263,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
 
    data = { user : 1,  name :  Max ,  three : 4}
    try:
@@ -274,7 +274,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 替换为
 
 .. code-block:: python 
-   :linenos:
+   
 
    is_admin = data.get(admin,False)
 
@@ -283,7 +283,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 ====================================
 
 .. code-block:: python 
-   :linenos:
+   
 
    x = [1,2,3,4,5,6]
    #前3个
@@ -311,7 +311,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 >>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python 
-   :linenos:
+   
 
    #不推荐
    temp = a
@@ -335,7 +335,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python 
-   :linenos:
+   
 
    a,b = 1,2
    a,b = a+b,a    # 同时运行，运算时都利原始值（旧值）
@@ -347,7 +347,7 @@ Python3中的zip函数可以把两个或两个以上的迭代器封装成生成�
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python 
-   :linenos:
+   
 
    a+=1 # 自加1
    a-=1 # 自减1
@@ -646,7 +646,7 @@ False
 使用any函数
 
 .. code-block:: shell
-   :linenos: 
+    
 
    math, physics,computer = 70,40,80
    
@@ -659,7 +659,7 @@ False
 使用and连接多次判断
 
 .. code-block:: shell
-   :linenos: 
+    
  
    math, physics,computer = 70,40,80
    if all([math>60,physics>60,computer>60]):
@@ -671,7 +671,7 @@ False
  [... for ... in ... if ...]
 
 .. code-block:: shell
-   :linenos: 
+    
 
    #过滤l中的全部数值并求和
    l = [1,2,3,4,'abc',5,6.0]
@@ -683,7 +683,7 @@ False
 使用enumerate函数生成对应下标和元素对
 
 .. code-block:: shell
-   :linenos: 
+    
 
    seasons = ['spring','summer','autumn','winter']
    for i,s in enumerate(seasons):
@@ -695,7 +695,7 @@ False
 print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 
 .. code-block:: shell
-   :linenos: 
+    
 
    import time
    i,n = 0,100
@@ -707,7 +707,7 @@ print下标设置不换行并使用‘\r’回车到行首避免输出刷屏
 定义progress_bar函数
 
 .. code-block:: shell
-   :linenos: 
+    
 
    import sys,time
 

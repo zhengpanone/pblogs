@@ -6,7 +6,7 @@
 ===================================
 
 .. code-block:: shell
-   :linenos: 
+    
 
    pip install uwsgi
 
@@ -17,7 +17,7 @@
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python
-   :linenos: 
+    
 
    # coding=utf-8
    from flask import Flask
@@ -34,7 +34,7 @@
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: text
-   :linenos: 
+    
 
    [uwsgi]
    socket = 127.0.0.1:5000   # uwsgi 进行socket通信的端口
@@ -50,7 +50,7 @@
 >>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
-   :linenos: 
+    
 
    uwsgi --http :5000 --ini uwsgi_conf.ini -d ./uwsgi.log --pidfile=uwsgi.pid 
 
@@ -65,7 +65,7 @@
 再以socket形式(默认)，启动uwsgi:
 
 .. code-block:: shell
-   :linenos: 
+    
 
    uwsgi --ini uwsgi_conf.ini -d ./uwsgi.log
 

@@ -74,14 +74,14 @@ Node.js 版本示例：
 .. literalinclude:: ./code/p01_playwright/01_playwright.js
     :encoding: utf-8
     :language: javascript
-    :linenos:
+    
 
 Python 版本示例：
 
 .. literalinclude:: ./code/p01_playwright/01_playwright.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 
 使用 Playwright Test 运行测试

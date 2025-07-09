@@ -6,7 +6,7 @@
 ========================
 
 .. code-block:: python
-   :linenos:
+   
  
    @app.route('/user/<username>')     # 常用的   不加参数时默认字符串形式
    @app.route('/post/<int：post_id>')     # 常用的    指定int 说明是整型
@@ -16,7 +16,7 @@
 
 
 .. code-block:: python
-   :linenos:
+   
 
    DEFAULT_CONVERTERS = {
       'default':          UnicodeConverter,
@@ -34,7 +34,7 @@
 endpoint("name")   #别名，相当于django中的name
 
 .. code-block:: python
-   :linenos:
+   
 
    from flask import Flask,url_for
 
@@ -141,7 +141,7 @@ C:\Windows\System32\drivers\etc  找到HOST，修改配置
 .. literalinclude:: ./code/p04_routing_system/regexConverter.py
     :encoding: utf-8
     :language: python
-    :linenos: 
+     
 
 自定义手机号转换器
 >>>>>>>>>>>>>>>>>>>>>>>
@@ -149,4 +149,4 @@ C:\Windows\System32\drivers\etc  找到HOST，修改配置
 .. literalinclude:: ./code/p04_routing_system/telephoneConverter.py
     :encoding: utf-8
     :language: python
-    :linenos: 
+     

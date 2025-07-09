@@ -5,7 +5,7 @@ Reportlib学习
  实例化canvas.Canvas,创建pdf对象 
 
 .. code-block:: python
-   :linenos:
+   
 
    from reportlab.pdfgen import canvas
 

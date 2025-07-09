@@ -15,7 +15,7 @@
 **fputs()**就是我们将要包装的 C 库函数。下面是 fputs() 函数的声明。
 
 .. code-block:: c
-    :linenos:
+    
 
     int fputs(const char *str, FILE *stream)
 
@@ -28,7 +28,7 @@
 下面的实例演示了 fputs() 函数的用法。
 
 .. code-block:: c
-    :linenos:
+    
 
     #include <stdio.h>
     #include <stdlib.h>
@@ -55,7 +55,7 @@
 首先我们看最终完善之后的代码
 
 .. code-block:: text
-    :linenos:
+    
 
     #include <Python.h>
 
@@ -80,7 +80,7 @@
 接下来，我们来一点点分析上面的代码。我们这里面的代码是按照Python API来写的，第一行
 
 .. code-block:: c
-    :linenos:
+    
 
     #include <Python.h>
 
@@ -105,7 +105,7 @@ PyArg_ParseTuple
 PyArg_ParseTuple() 将从 Python 程序接收的参数解析为局部变量，返回一个整型。相关代码片段
 
 .. code-block:: c
-    :linenos:
+    
 
     if(!PyArg_ParseTuple(args, "ss", &str, &filename)) {
         return NULL;
@@ -114,7 +114,7 @@ PyArg_ParseTuple() 将从 Python 程序接收的参数解析为局部变量，�
 它的语法是这样的
 
 .. code-block:: c
-    :linenos:
+    
 
     int PyArg_ParseTuple(PyObject* tuple,char* format,...)
 
@@ -130,7 +130,7 @@ fputs()
 如前所述，fputs()有两个参数，其中一个是 FILE * 对象。由于在 C 语言中无法使用 Python API 解析 Python textIOwrapper 对象，因此必须使用一种变通方法
 
 .. code-block:: c
-    :linenos:
+    
 
     FILE *fp = fopen(filename, "w"); 
     bytes_copied = fputs(str, fp); 
@@ -149,7 +149,7 @@ PyLong_FromLong() 返回一个 PyLongObject，它在 Python 中表示一个整�
 我们已经编写了构成 Python C 扩展模块核心功能的代码。但是，仍然需要一些额外的功能来启动和运行模块。需要编写模块及其包含的方法的定义，如下所示：
 
 .. code-block:: c
-    :linenos:
+    
 
     static PyMethodDef FputsMethods[] = {
         {"fputs", method_fputs, METH_VARARGS, "Python interface for fputs C library function"},
@@ -173,7 +173,7 @@ PyMethodDef
 这是一个函数列表，因为我们一般会定义多个函数，使用 {NULL, NULL, 0, NULL} 表示最后一个函数。先看第一部分代码
 
 .. code-block:: c
-    :linenos:
+    
 
     static PyMethodDef FputsMethods[] = {
         {"fputs", method_fputs, METH_VARARGS, "Python interface for fputs C library function"},
@@ -188,7 +188,7 @@ PyModuleDef
 正如 PyMethodDef 保留有关 Python C 扩展模块中方法的信息一样，PyModuleDef 结构也保留有关模块本身的信息。但是它不是结构的数组，而是用于模块定义的单个结构。
 
 .. code-block:: c
-    :linenos:
+    
 
     static struct PyModuleDef fputsmodule = {
         PyModuleDef_HEAD_INIT,
@@ -205,7 +205,7 @@ PyMODINIT_FUNC
 既然已经定义了 Python C 扩展模块和方法结构，现在就该使用它们了。当 Python 程序第一次导入模块时，它将调用 PyInit_fputs()
 
 .. code-block:: c
-    :linenos:
+    
 
     PyMODINIT_FUNC PyInit_fputs(void) {
         return PyModule_Create(&fputsmodule);
@@ -233,7 +233,7 @@ PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的�
 最后是完整代码
 
 .. code-block:: c
-    :linenos:
+    
 
     #include <Python.h>
 
@@ -278,7 +278,7 @@ PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的�
 在导入新模块之前，首先需要构建它。可以通过使用 Python 的 distutils 模块实现这一点。下面先上代码，文件名setup.py
 
 .. code-block:: c
-    :linenos:
+    
 
     from distutils.core import setup, Extension
 
@@ -300,7 +300,7 @@ PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的�
 现在你已经有了 setup.py 文件，可以使用它来构建 Python C 扩展模块了。构建非常简单一句话就可以了
 
 .. code-block:: shell
-    :linenos:
+    
 
     python3 setup.py install
 
@@ -309,7 +309,7 @@ PyModule_Create() 返回的模块对象有一个对模块结构 PyModuleDef 的�
 现在一切都就绪了，是时候看看你的模块是如何工作的了!
 
 .. code-block:: shell
-    :linenos:
+    
 
     >>> import fputs
     >>> fputs.__doc__
@@ -339,7 +339,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 虽然在C语言中不能引发异常，但Python API允许你从Python C扩展模块中引发异常。我们通过向代码中添加PyErr_SetString()来测试这个功能。
 
 .. code-block:: c
-    :linenos:
+    
 
     static PyObject *method_fputs(PyObject *self, PyObject *args) {
         char *str, *filename = NULL;
@@ -370,7 +370,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 你还可以在 Python C 扩展模块中引发自定义异常。但是，使用方法和上面有所不同。在前面的PyMODINIT_FUNC 中，你只需返回由 PyModule_Create 返回的实例即可。但是如果让使用模块的用户能够访问自定义异常，就需要在返回之前将自定义异常添加到模块实例。
 
 .. code-block:: c
-    :linenos:
+    
 
     static PyObject *StringTooShortError = NULL;
 
@@ -391,7 +391,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 既然已经定义了新的异常方法，那么我们就可以将核心代码改为下面这样:
 
 .. code-block:: c
-    :linenos:
+    
 
     static PyObject *method_fputs(PyObject *self, PyObject *args) {
         char *str, *filename = NULL;
@@ -417,7 +417,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 之后打包，构建生成新的模块。通过下面的代码进行测试
 
 .. code-block:: shell
-    :linenos:
+    
 
     >>> import fputs
     >>> # Custom exception
@@ -433,7 +433,7 @@ PyErr_SetObject(PyObject *type, PyObject *value)	接受两个参数，都是Py
 在某些情况下，需要在 Python C 扩展模块中使用或定义常量。这与您在前一节中定义自定义异常的方式非常相似。可以使用 PyModule_AddIntConstant() 定义一个新常量并将其添加到模块实例中。
 
 .. code-block:: c
-    :linenos:
+    
 
     PyMODINIT_FUNC PyInit_fputs(void) {
         /* Assign module value */

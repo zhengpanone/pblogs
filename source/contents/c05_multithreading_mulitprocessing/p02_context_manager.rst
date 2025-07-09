@@ -23,7 +23,7 @@
 with语句的语法如下：
 
 .. code-block:: shell
-   :linenos: 
+    
 
     with context_expr [as var]:
         with_suite
@@ -80,7 +80,7 @@ with_suite就是需要放在上下文环境中执行的语句块
 看下面的代码，代码中定义了一个MyTimer类型，这个上下文管理器可以实现代码块的计时功能：
 
 .. code-block:: shell
-   :linenos: 
+    
 
     import time
     
@@ -104,7 +104,7 @@ with_suite就是需要放在上下文环境中执行的语句块
 下面结合with语句使用这个上下文管理器：
 
 .. code-block:: shell
-   :linenos: 
+    
 
     def fib(n):
         if n in [1, 2]:
@@ -120,7 +120,7 @@ with_suite就是需要放在上下文环境中执行的语句块
 
 
 .. code-block:: shell
-   :linenos: 
+    
  
     class Database(object):
         

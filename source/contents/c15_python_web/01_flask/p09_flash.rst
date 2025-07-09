@@ -12,7 +12,7 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 基于Session实现的用于保存数据的集合，其特点是：使用一次就删除。
 
 .. code-block:: python
-   :linenos: 
+    
 
    session["操作"] = "msg"   # 设置
    session.get("操作") # 获取
@@ -24,7 +24,7 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 某个数据仅需用一次时，可以使用闪现
 
 .. code-block:: python
-   :linenos: 
+    
 
    from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
    app = Flask(__name__)
@@ -64,7 +64,7 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 >>>>>>>>>>>>>>>
 
 .. code-block:: python
-   :linenos: 
+    
 
    from flask import flash,get_flashed_messages
 
@@ -82,7 +82,7 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python
-   :linenos: 
+    
 
    flash('添加成功','ok')
    {% for msg in get_flashed_messages(category_filter=['ok'])%}

@@ -10,7 +10,7 @@
 
 
 .. code-block:: python
-   :linenos:
+   
 
    from flask import Flask,session,Session,flash,get_flashed_messages,redirect,render_template,request
    app = Flask(__name__)

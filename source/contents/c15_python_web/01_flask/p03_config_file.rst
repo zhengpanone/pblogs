@@ -32,7 +32,7 @@ app.config.from_mapping
 字典格式~
 
 .. code-block:: python
-    :linenos:
+    
  
     # 方式一
     app.config['DEBUG'] = True

@@ -22,7 +22,7 @@ env_file：用来给容器启动指定环境变量文件，相当于docker run -
 *格式*
 
 .. code-block:: text
-   :linenos:
+   
 
    # 单个变量文件
    env_file: 变量文件路径
@@ -42,7 +42,7 @@ env_file示例：在当前目录的.env文件中设置内容如下：
 docker-compose.yml文件内容如下：
 
 .. code-block:: yaml
-  :linenos:
+  
 
   jworpdress-web:
   image: registry.cn-qingdao.aliyuncs.com/shanbei/jworpdress-web:1.0.3.RELEASE

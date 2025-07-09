@@ -18,7 +18,7 @@
 ================================
 
 .. code-block:: python
-   :linenos:
+   
 
    @app.errorhandler(404)  # 404页面钩子
    def page_404(er):  # 参数是原始的404页面提示信息
@@ -30,4 +30,4 @@
    :encoding: utf-8
    :language: python
    :emphasize-lines: 5
-   :linenos:
+   

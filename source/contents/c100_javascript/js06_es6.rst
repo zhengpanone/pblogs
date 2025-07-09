@@ -8,7 +8,7 @@ let
 声明的变量只在let命令所在的代码块内有效，用于定义变量
 
 .. code-block:: javascript
-    :linenos:
+    
 
     {
      let a = 10;
@@ -23,7 +23,7 @@ let
 for循环的计数器，就很合适使用let命令。
 
 .. code-block:: javascript
-    :linenos:
+    
 
     for (let i =0; i < 10; i++){
         // ...
@@ -36,7 +36,7 @@ for循环的计数器，就很合适使用let命令。
 下面的代码如果使用var，最后输出的是10。
 
 .. code-block:: javascript
-    :linenos:
+    
 
     var a = [];
     for(var i = 0; i < 10; i++){
@@ -51,7 +51,7 @@ for循环的计数器，就很合适使用let命令。
 如果使用let，声明的变量仅在块级作用域内有效，最后输出的是 6。
 
 .. code-block:: javascript
-    :linenos:
+    
 
     var a = [];
     for(let i = 0; i < 10; i++){
@@ -76,7 +76,7 @@ const
 ======================
 
 .. code-block:: javascript
-    :linenos:
+    
 
     var a = 3;
     var c = 10;

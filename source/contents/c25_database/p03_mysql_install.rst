@@ -18,7 +18,7 @@ mysql安装
 直接创建一个文本文件，命名为my.ini。打开它，输入如下内容：
 
 .. code-block:: text
-   :linenos:
+   
 
    [mysqld]
 

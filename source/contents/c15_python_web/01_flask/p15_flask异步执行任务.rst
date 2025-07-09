@@ -12,7 +12,7 @@ Flask 是 Python 中有名的轻量级同步 web 框架，遇到需要长时间�
     :language: python
     :emphasize-lines: 10-11
     :lines: 1-
-    :linenos:  
+      
 
 当要执行一些比较简单的耗时任务时就可以使用这种方式，如发邮件、发短信验证码等。
 但这种方式有个问题，就是前端无法得知任务执行状态。
@@ -40,7 +40,7 @@ Celery 是实时任务处理与调度的分布式任务队列，它常用于 web
     :language: python
     :emphasize-lines: 7
     :lines: 1-
-    :linenos:  
+      
 
 启动 Celery worker:
 
@@ -83,7 +83,7 @@ Celery 是实时任务处理与调度的分布式任务队列，它常用于 web
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos: 
+     
 
 BaseConfig 是整个项目用到的配置的基类，实际上还会派生出 DevelopmentConfig, StagingConfig 和 ProductionConfig 等类
 
@@ -94,7 +94,7 @@ BaseConfig 是整个项目用到的配置的基类，实际上还会派生出 De
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos: 
+     
 
 - app/tasks/email.py 
 
@@ -103,7 +103,7 @@ BaseConfig 是整个项目用到的配置的基类，实际上还会派生出 De
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos: 
+     
 
 - app/views/account.py
 
@@ -112,7 +112,7 @@ BaseConfig 是整个项目用到的配置的基类，实际上还会派生出 De
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos: 
+     
 
 - ceelry_worker.py
 
@@ -121,7 +121,7 @@ BaseConfig 是整个项目用到的配置的基类，实际上还会派生出 De
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos:
+    
 
 这个 celery_worker.py 文件有两个操作：
 

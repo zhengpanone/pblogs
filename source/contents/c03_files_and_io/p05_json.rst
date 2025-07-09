@@ -12,7 +12,7 @@ JMESPath，读作“James path”，能更容易地在 Python 中使用 JSON。�
 .. literalinclude:: ./code/05_json/jmespath_demo.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 .. _Jmespath: https://jmespath.org
 

@@ -9,7 +9,7 @@ echo输出颜色
     :encoding: utf-8
     :language: shell
     :emphasize-lines: 0,8
-    :linenos:
+    
 
 位置参数变量
 
@@ -31,7 +31,7 @@ echo输出颜色
     :encoding: utf-8
     :language: shell
     :emphasize-lines: 0,16
-    :linenos:
+    
 
 
 

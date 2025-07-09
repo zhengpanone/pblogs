@@ -18,7 +18,7 @@ mysql基本使用
 **连接与断开服务**
 
 .. code-block:: shell
-   :linenos:
+   
 
    mysql -h ip -P port -u user -p password
    SHOW PROCESSLIST -- 显示那些线程正在运行
@@ -29,7 +29,7 @@ mysql基本使用
 
 
 .. code-block:: shell
-   :linenos:
+   
 
    # 某个数据库所有的权限 ALL 后面+ PRIVILEGES
    GRANT ALL PRIVILEGES ON 库名.* TO '用户'@'%' IDENTIFIED BY '密码';   # *代表所有表， %代表所有IP
@@ -74,7 +74,7 @@ mysql基本使用
 .. literalinclude:: ./code/04_mysql_used/cmd_operate.sh
     :encoding: utf-8
     :language: shell
-    :linenos:
+    
 
 **数据库外键约束**
 

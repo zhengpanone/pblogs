@@ -9,7 +9,7 @@
 .. literalinclude:: ./code/p07_cookie_session/set_session.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 关于session的配置
 --------------------------------
@@ -35,7 +35,7 @@
 基本使用
 
 .. code-block:: python
-   :linenos: 
+    
 
     from flask import Flask, session, redirect, url_for, escape, request
     
@@ -71,12 +71,12 @@
 自定义session
 
 .. code-block:: shell
-   :linenos: 
+    
 
     pip3 install Flask-Session
 
 .. code-block:: python
-   :linenos:    
+       
    :caption: hello.py    
         
     from flask import Flask
@@ -100,7 +100,7 @@
         app.run()
 
 .. code-block:: python
-   :linenos:    
+       
    :caption: session.py
         
     #!/usr/bin/env python
@@ -209,7 +209,7 @@
 ::
 
 .. code-block:: python
-   :linenos:    
+       
 
     """
     pip3 install redis

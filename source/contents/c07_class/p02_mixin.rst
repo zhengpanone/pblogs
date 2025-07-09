@@ -15,14 +15,14 @@ Mixin即 Mix-in，常被译为“混入”，是一种编程模式，在 Python 
 .. literalinclude:: ./code/02_mixin/person.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 然后我们定义一个 Mixin 类：
 
 .. literalinclude:: ./code/02_mixin/mixin.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 这个类可以让子类拥有像 dict 一样调用属性的功能
 
@@ -31,7 +31,7 @@ Mixin即 Mix-in，常被译为“混入”，是一种编程模式，在 Python 
 .. literalinclude:: ./code/02_mixin/mix_person.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 
 再定义一个 Mixin 类，这个类实现了 __repr__ 方法，能自动将属性与值拼接成字符串：
@@ -39,14 +39,14 @@ Mixin即 Mix-in，常被译为“混入”，是一种编程模式，在 Python 
 .. literalinclude:: ./code/02_mixin/repr_mixin.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 利用 Python 的特性，一个类可以继承多个父类：
 
 .. literalinclude:: ./code/02_mixin/repr_person.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 定义和使用 Mixin 类应该遵循几个原则：
 

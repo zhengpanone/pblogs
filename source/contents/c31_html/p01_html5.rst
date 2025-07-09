@@ -34,7 +34,7 @@ contenteditable是HTML5中新增加的属性，，其用途是让用户能够修
     :language: html
     :emphasize-lines: 2
     :lines: 12,13
-    :linenos:  
+      
 
 3. dir属性
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -46,7 +46,7 @@ dir属性用来规定元素中文字的方向。有效值有两个：ltr(从左�
     :language: html
     :emphasize-lines: 2
     :lines: 14-16
-    :linenos:  
+      
 
 4. draggable属性
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -69,7 +69,7 @@ auto    使用浏览器的默认行为。
     :language: html
     :emphasize-lines: 27
     :lines: 9-
-    :linenos:  
+      
 
 5 dropzone属性
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -86,7 +86,7 @@ hidden是个布尔属性，表示相关元素当前不需要关注，浏览器�
     :language: html
     :emphasize-lines: 2
     :lines: 21,22
-    :linenos:  
+      
 
 7 lang属性
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -94,7 +94,7 @@ hidden是个布尔属性，表示相关元素当前不需要关注，浏览器�
 lang属性用于说明元素内容使用的语言。lang属性必须使用有效的ISO语音代码，使用这个属性的目的在于，让浏览器调整其表达元素内容的方式，比如在使用了文字朗读器的情况下正确发音。
 
 .. code-block:: html
-    :linenos:
+    
 
     <!-- lang属性应用 -->
     <p lang="en">Hello - how are you?</p>
@@ -106,7 +106,7 @@ lang属性用于说明元素内容使用的语言。lang属性必须使用有效
 spellcheck属性用来表明浏览器是否应该对元素的内容进行拼写检查，这个属性只有用在用户可以编辑的元素上时才有意义。 spellcheck属性可以接受的值有两个：true和false。至于拼写检查的实现方式则因浏览器而异。
 
 .. code-block:: html
-    :linenos:
+    
 
     <!-- spellcheck属性应用 -->
     <textarea name="" id="" cols="30" rows="10" spellcheck="true">

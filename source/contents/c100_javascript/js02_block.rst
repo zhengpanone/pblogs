@@ -16,7 +16,7 @@ var
 >>>>>>>>>>>
 
 .. code-block:: javascript
-   :linenos: 
+    
 
    var a =1;
    var a = b = 1;

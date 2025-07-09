@@ -8,7 +8,7 @@ flask_source.py源码：
     :encoding: utf-8
     :language: python
     :emphasize-lines: 5
-    :linenos:
+    
 
 
 WSGI
@@ -22,7 +22,7 @@ WSGI接口中有一个非常明确的标准，每个Python Web应用必须是可
     :encoding: utf-8
     :language: python
     :emphasize-lines: 5
-    :linenos:
+    
 
 |image1|
 

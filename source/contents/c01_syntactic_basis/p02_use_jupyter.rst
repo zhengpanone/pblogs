@@ -27,7 +27,7 @@ jupyter 安装和使用
 ~/.jupyter/jupyter_notebook_config.py
 
 .. code-block:: text
-  :linenos:
+  
 
   c.NotebookApp.ip='0.0.0.0'  / "*"  #允许任何客户端ip访问
 

@@ -201,7 +201,7 @@ JavaScript 闭包
     :language: html
     :lines: 10-20
     :emphasize-lines: 9,10
-    :linenos:
+    
 
 .. [2]
 
@@ -213,7 +213,7 @@ JavaScript 闭包
     :language: html
     :lines: 10-19
     :emphasize-lines: 9
-    :linenos:
+    
 
 .. [3]
 
@@ -225,7 +225,7 @@ JavaScript 闭包
     :language: html
     :lines: 10-19
     :emphasize-lines: 9
-    :linenos:
+    
 
 .. [4]
 
@@ -237,7 +237,7 @@ JavaScript 闭包
     :language: html
     :lines: 10-20
     :emphasize-lines: 9
-    :linenos:
+    
 
 
 this的指向
@@ -254,7 +254,7 @@ window对象中的属性都是全局变量
     :language: html
     :lines: 10-40
     :emphasize-lines: 9
-    :linenos:
+    
 
 2. 方法调用:函数内部的this指向调用该方法的对象
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -264,7 +264,7 @@ window对象中的属性都是全局变量
     :language: html
     :lines: 10-36
     :emphasize-lines: 9
-    :linenos:
+    
 
 3. 构造函数调用:
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -274,14 +274,14 @@ window对象中的属性都是全局变量
     :language: html
     :lines: 10-36
     :emphasize-lines: 9
-    :linenos:
+    
 
 .. literalinclude:: ./code/js05/05.构造函数调用-this的指向_2.html
     :encoding: utf-8
     :language: html
     :lines: 15-49
     :emphasize-lines: 9
-    :linenos:
+    
 
 4. 上下文调用:
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -291,7 +291,7 @@ window对象中的属性都是全局变量
     :language: html
     :lines: 10-22
     :emphasize-lines: 9
-    :linenos:
+    
 
 call 方法的第一个参数：
 
@@ -316,7 +316,7 @@ call和apply都可以改变函数内部的this的值
     :language: html
     :lines: 10-17
     :emphasize-lines: 3
-    :linenos:
+    
 
 bind基本用法
 
@@ -325,14 +325,14 @@ bind基本用法
     :language: html
     :lines: 10-41
     :emphasize-lines: 9
-    :linenos:
+    
 
 .. literalinclude:: ./code/js05/05.上下文调用bind.html
     :encoding: utf-8
     :language: html
     :lines: 10-41
     :emphasize-lines: 9
-    :linenos:
+    
 
 call、apply是立刻执行函数,并且在执行过程中绑定了this的值
 bind 并没有立刻执行这个函数,而是创建一个新函数,新函数绑定了this的值

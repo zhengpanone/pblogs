@@ -29,7 +29,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 .. literalinclude:: ./code/04_multiprocessing/process_demo01.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 
 1.2 创建函数并将其作为多个进程
@@ -38,7 +38,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 .. literalinclude:: ./code/04_multiprocessing/process_demo02.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 1.3 将进程定义为类
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -48,7 +48,7 @@ python 中的多线程并不是真正的多线程，如果想要重分利用多�
 .. literalinclude:: ./code/04_multiprocessing/process_demo03.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 
 

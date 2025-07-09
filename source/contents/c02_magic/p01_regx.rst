@@ -6,7 +6,7 @@ re模块操作
 =========================
 
 .. code-block:: python
-    :linenos:
+    
 
     import re      # 导入re模块
     result = re.match('正则表达式','要匹配的字符')
@@ -19,7 +19,7 @@ re模块操作
 示例：
 
 .. code-block:: python
-    :linenos:
+    
 
     import re
     result = re.match('itcast','itcast.com')
@@ -39,4 +39,4 @@ re模块操作
     :encoding: utf-8
     :language: python
     :emphasize-lines: 5
-    :linenos:
+    

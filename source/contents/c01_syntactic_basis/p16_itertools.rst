@@ -20,7 +20,7 @@ iterables是可迭代对象,repeat指定iterable重复几次,即:
 从 3 个数字列表中，寻找是否存在和为 12 的 3 个数
 
 .. code-block:: python
-    :linenos:
+    
 
     def find_twelve(num_list1, num_list2, num_list3):
     """
@@ -35,7 +35,7 @@ iterables是可迭代对象,repeat指定iterable重复几次,即:
 对于这种需要嵌套遍历多个对象的多层循环代码，我们可以使用 product() 函数来优化它。product() 可以接收多个可迭代对象，然后根据它们的笛卡尔积不断生成结果。
 
 .. code-block:: python
-    :linenos:
+    
 
     from itertools import product
 
@@ -49,7 +49,7 @@ combinations
 ======================
 
 .. code-block:: python
-    :linenos:
+    
 
     from itertools import combinations
     teams = ["Packers", "49ers", "Ravens", "Patriots"]
@@ -72,7 +72,7 @@ islice(seq,start,end,step) 函数和数组切片操作（ list[start:stop:step] 
 有一份包含 Reddit 帖子标题的外部数据文件，里面的内容格式是这样的：
 
 .. code-block:: text
-    :linenos:
+    
 
     python-guide: Python best practices guidebook, written for humans.
     ---
@@ -85,7 +85,7 @@ islice(seq,start,end,step) 函数和数组切片操作（ list[start:stop:step] 
 我们需要获取文件里所有的标题列表，所以在遍历文件内容的过程中，必须跳过这些无意义的分隔符。
 
 .. code-block:: python
-    :linenos:
+    
 
     def parse_titles(filename):
         """
@@ -99,7 +99,7 @@ islice(seq,start,end,step) 函数和数组切片操作（ list[start:stop:step] 
 使用islice()修改
 
 .. code-block:: python
-    :linenos:
+    
 
     from itertools import islice
 
@@ -115,7 +115,7 @@ takewhile(predicate,iterable)会在迭代 iterable 的过程中不断使用当�
 
 
 .. code-block:: python
-    :linenos:
+    
 
     from itertools import takewhile
 

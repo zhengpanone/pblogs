@@ -22,7 +22,7 @@ Python 基础
     :encoding: utf-8
     :language: python
     :emphasize-lines: 11
-    :linenos:
+    
 
 and 和or 
 ===========
@@ -108,14 +108,14 @@ Python中的字符串（String）、元组（Tuple）、列表（List）都属�
 - 前缀 **0x** ，创建一个十六进制的整数
 
 .. code-block:: python
-   :linenos:
+   
 
    0xa5 # 等于十进制的165
 
 - 使用 **e** 创建科学计数法表示浮点数
 
 .. code-block:: python
-   :linenos:
+   
 
    1.05e3   # 1050.0
 
@@ -134,7 +134,7 @@ Python中的字符串（String）、元组（Tuple）、列表（List）都属�
 相当于
 
 .. code-block:: shell
-   :linenos: 
+    
 
    t = (b,a+b) # t是tuple
    a = t[0]
@@ -190,7 +190,7 @@ Bool
 >>> print( getsizeof(tup) )
 
 .. code-block:: shell
-   :linenos: 
+    
 
    a = (1,2,3,4)
    b = (5,6,7,8)
@@ -202,7 +202,7 @@ type()和isinstance()来查询变量所指的对象类型
 
 
 .. code-block:: shell
-   :linenos: 
+    
 
    class A:
       pass
@@ -233,7 +233,7 @@ format
 ===========================
 
 .. code-block:: python
-   :linenos:
+   
 
    print("test{:03d}.txt".format(2))
 

@@ -10,7 +10,7 @@ reStructured使用
 可以表示标题的符号有 
 
 .. code-block:: shell
-   :linenos: 
+    
 
     ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ ] ^ _ ` { | } ~
 
@@ -21,7 +21,7 @@ reStructured使用
 全加上上标或者是全不加上标，使用不同的 6 个符号的标题依次排列，则会依次生成的标题为H1-H6。
 
 .. code-block:: shell
-  :linenos: 
+   
 
   ================
   一级标题（Title）
@@ -62,7 +62,7 @@ reStructured使用
 不同的符号结尾需要加上空行，下级列表需要有空格缩进。
 
 .. code-block:: shell
-    :linenos: 
+     
 
     - 符号列表1
     - 符号列表2
@@ -134,7 +134,7 @@ reStructured使用
 枚举列表可以结合 # 自动生成枚举序号。
 
 .. code-block:: shell
-   :linenos: 
+    
 
     1. 枚举列表1
     #. 枚举列表2

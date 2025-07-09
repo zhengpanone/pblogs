@@ -9,7 +9,7 @@ https://www.jianshu.com/p/3e58f977b908
 
 .. code-block:: python
     :emphasize-lines: 1,2
-    :linenos:
+    
     
 
     import tornado.ioloop

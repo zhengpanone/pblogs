@@ -36,7 +36,7 @@ fabric 实现自动化部署
     :language: python
     :emphasize-lines: 3
     :lines: 1-
-    :linenos:
+    
 
 http://liyangliang.me/posts/2015/06/deploy-applications-using-fabric/
 
@@ -74,7 +74,7 @@ DBM（DataBase Manager）是一种文件系统，专门用于键值对的存储�
 .. literalinclude:: ./code/p10/01_dbm.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 非常简单，当你需要存储的数据量不适合放在内存中，但又没必要引入数据库，那么不妨试试使用 dbm 模块吧。
 
@@ -88,7 +88,7 @@ shelve 的使用方式和 dbm 几乎是一致的，区别就是 shelve 的序列
 .. literalinclude:: ./code/p10/02_shelve.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 读取出来的就是原始的对象，我们可以直接操作它。
 
@@ -101,7 +101,7 @@ shelve 模块，非常强大，当然它底层也是基于 pickle 实现的。�
 .. literalinclude:: ./code/p10/03_shelve.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 第一次打开文件创建两个键值对，第二次打开文件将键值对修改，第三次打开文件查看键值对。但是我们发现 sh["name"] 变了，而 sh["score"] 却没变，这是什么原因？
 
@@ -116,7 +116,7 @@ shelve 模块，非常强大，当然它底层也是基于 pickle 实现的。�
 .. literalinclude:: ./code/p10/04_shelve.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 可以看到都发生改变了，但这个参数会导致额外的内存消耗。当指定 writeback=True 的时候，shelve 会将读取的对象都放到一个内存缓存当中。比如我们操作了 20 个持久化的对象，但只修改了一个，剩余的 19 个只是查看并没有做修改，但当 sh.close() 的时候，会将这 20 个对象都写回去。
 

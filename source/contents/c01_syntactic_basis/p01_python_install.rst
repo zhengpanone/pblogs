@@ -66,7 +66,7 @@ https://www.python.org/downloads/source/
 在PATH变量下将Python3的启动目录添加进去：
 
 .. code-block:: text
-  :linenos:
+  
 
     # .bash_profile
 
@@ -124,7 +124,7 @@ https://www.python.org/downloads/source/
 这个问题是因为在./configure过程中，如果没有加上–with-ssl参数时，默认安装的软件涉及到ssl的功能不可用，刚好pip3过程需要ssl模块，而由于没有指定，所以该功能不可用。解决办法如下：
 
 .. code-block:: text
-  :linenos:
+  
 
     cd Python-3.6.2
     ./configure --with-ssl
@@ -138,7 +138,7 @@ https://www.python.org/downloads/source/
 首先查询已有的版本（以openssl为例，冲突哪个查哪个）
 
 .. code-block:: shell
-   :linenos:
+   
 
     # rpm -qa | grep openssl
     openssl-devel-1.0.0-27.el6_4.2.x86_64
@@ -196,7 +196,7 @@ pip临时设置可以通过 -i 选项：
 
 
 .. code-block:: text
-    :linenos:
+    
 
     [global]
     index-url = https://pypi.doubanio.com/simple
@@ -220,7 +220,7 @@ Pipenv
 如果想对项目全局（per-project）设置，可以修改 Pipfile 中 [[source]] 小节：
 
 .. code-block:: text
-    :linenos:
+    
 
     [[source]]
 
@@ -238,7 +238,7 @@ Pipenv
 -------------------------------------
 
 .. code-block:: text
-    :linenos:
+    
 
     豆瓣 https://pypi.doubanio.com/simple/
     网易 https://mirrors.163.com/pypi/simple/

@@ -26,7 +26,7 @@ Python任意对象,只要它定义了可以返回一个迭代器的__iter__方�
 .. literalinclude:: ./code/p02_generator/descend.py
     :encoding: utf-8
     :language: python
-    :linenos:
+    
 
 
 迭代(Iteration)

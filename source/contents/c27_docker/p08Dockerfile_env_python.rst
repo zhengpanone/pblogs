@@ -8,7 +8,7 @@ Dockerfile
 .. literalinclude:: ./command/08.Dockerfile
     :encoding: utf-8
     :language: shell
-    :linenos:
+    
 
 构建python环境下的Docker镜像
 ==================================

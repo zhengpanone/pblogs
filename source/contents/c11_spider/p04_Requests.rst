@@ -8,7 +8,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 ========================
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests 
    response = requests.get('https://www.baidu.com')
@@ -22,7 +22,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 ==============================
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    requests.post('http://www.baidu.com/post')
@@ -41,7 +41,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 :::::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
 
@@ -52,7 +52,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
 
@@ -60,7 +60,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
    print(response.text)
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    data = {
@@ -74,7 +74,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 :::::::::::::::::::::::
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    response = requests.get('http://httpbin.org/get')
@@ -86,7 +86,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    response = requests.get('https:github.com/favicon.ico')
@@ -96,7 +96,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
 
@@ -109,14 +109,14 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 :::::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    response = requests.get('https://www.zhihu.com/explore')
    print(response.text)
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    headers = {
@@ -129,7 +129,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
 ==============
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    data = {'name':'germey','age':'22'}
@@ -137,7 +137,7 @@ Requests 是使用Python 语言编写，基于urllib,采用Apache2 Licensed 开�
    print(response.text)
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    datat = {'name':'germey','age':'22'}
@@ -154,7 +154,7 @@ response属性
 >>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    response = requests.get('http://www.jianshu.com')
@@ -168,7 +168,7 @@ response属性
 >>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python
-   :linenos:
+   
 
    import requests
    response = requests.get('http://wwww.jianshu.com')

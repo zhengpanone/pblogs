@@ -9,7 +9,7 @@ start() 方法是启动线程，让线程变成就绪状态等待 CPU 调度后�
 yield 即 "谦让"，也是 Thread 类的方法。它让掉当前线程 CPU 的时间片，使正在运行中的线程重新变成就绪状态，并重新竞争 CPU 的调度权。它可能会获取到，也有可能被其他线程获取到。
 
 .. code-block:: java
-    :linenos:
+    
 
     package com.zp;
 
@@ -48,7 +48,7 @@ yield 即 "谦让"，也是 Thread 类的方法。它让掉当前线程 CPU 的�
 如果我们把两个线程加上线程优先级，那输出的结果又不一样。
 
 .. code-block:: java
-    :linenos:
+    
 
     thread1.setPriority(Thread.MIN_PRIORITY);
     thread2.setPriority(Thread.MAX_PRIORITY);

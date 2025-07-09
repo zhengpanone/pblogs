@@ -13,7 +13,7 @@ Thread创建多线程
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 Thread子类完成创建多线程
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -23,7 +23,7 @@ Thread子类完成创建多线程
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 线程间通信
 ====================================
@@ -38,7 +38,7 @@ Thread子类完成创建多线程
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 共享全局变量遇到的问题
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -48,7 +48,7 @@ Thread子类完成创建多线程
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 避免全局变量修改bug
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -60,7 +60,7 @@ Thread子类完成创建多线程
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 
 多线程使用非全局变量
@@ -103,14 +103,14 @@ Lock
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 .. literalinclude:: ./code/03.多线程编程/05通过类实现互斥锁.py
     :encoding: utf-8
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 - 影响
 
@@ -129,7 +129,7 @@ Lock
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 
 避免死锁
@@ -149,7 +149,7 @@ Lock
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 条件变量(Condition)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -75,7 +75,7 @@ Promise的使用
     :encoding: utf-8
     :language: javascript
     :emphasize-lines: 15,24
-    :linenos:
+    
 
 Prmise解决回调地狱
 
@@ -83,7 +83,7 @@ Prmise解决回调地狱
     :encoding: utf-8
     :language: javascript
     :emphasize-lines: 21-23
-    :linenos:
+    
 
 
 如果前面的任何promise执行失败，则立即终止所有promise的执行
@@ -92,7 +92,7 @@ Prmise解决回调地狱
     :encoding: utf-8
     :language: javascript
     :emphasize-lines: 27,28
-    :linenos:
+    
 
 .. note::
 
@@ -104,7 +104,7 @@ Promise中Ajaxs使用Promise指定成功的回调函数
     :encoding: utf-8
     :language: html
     :emphasize-lines: 27,28
-    :linenos:
+    
 
 - vs code 中 *shift* + *ctrl* + *p*  选择 Express: Host Current Workspace
 

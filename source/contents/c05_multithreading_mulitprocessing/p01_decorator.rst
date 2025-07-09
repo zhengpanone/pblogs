@@ -6,7 +6,7 @@
     :encoding: utf-8
     :language: python
     :emphasize-lines: 11
-    :linenos:
+    
 
 1.装饰器执行顺序
 =========================
@@ -15,7 +15,7 @@
     :encoding: utf-8
     :language: python
     :emphasize-lines: 11
-    :linenos:
+    
 
 
 
@@ -32,7 +32,7 @@
     :encoding: utf-8
     :language: python
     :emphasize-lines: 11
-    :linenos:
+    
 
 从上面可以看出当python解释器运行到装饰器哪一行，就已经开始装饰，不用等到调用的时候才装饰，即装饰器在f1调用之前就已经进行装饰了
 
@@ -43,7 +43,7 @@
     :encoding: utf-8
     :language: python
     :emphasize-lines: 11
-    :linenos:
+    
 
 >>> --------正在进行装饰2-------------
 >>> ------正在进行装饰1-------
@@ -109,7 +109,7 @@
    实现缓存装饰器
 
 .. code-block:: shell
-   :linenos: 
+    
 
     def cache(func):
         data = {}
@@ -128,7 +128,7 @@
 查看缓存效果
 
 .. code-block:: shell
-   :linenos: 
+    
 
     @cache
     def rectangle_area(length, width):
@@ -147,7 +147,7 @@
 把cache函数改写为Cache类:
 
 .. code-block:: shell
-   :linenos: 
+    
 
     class Cache:
         def __init__(self, func):
@@ -170,7 +170,7 @@
 查看缓存效果
 
 .. code-block:: shell
-   :linenos: 
+    
 
     @Cache
     def rectangle_area(length, width):
@@ -191,7 +191,7 @@
 函数写的装饰器如何装饰类的方法
 
 .. code-block:: shell
-   :linenos: 
+    
 
     class Rectangle:
         def __init__(self, length, width):

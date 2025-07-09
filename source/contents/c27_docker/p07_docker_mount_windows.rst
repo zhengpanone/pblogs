@@ -3,7 +3,7 @@
 ===========================================================
 
 .. code-block:: shell
-    :linenos:
+    
 
     docker run -v f:/docker_test:/data  --privileged -itd 
     -p 8888:22 --name centos-ssh centos:latest /usr/sbin/init

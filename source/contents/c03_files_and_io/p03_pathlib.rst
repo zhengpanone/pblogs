@@ -8,7 +8,7 @@ pathlib 是Python内置库，Python 文档给它的定义是 Object-oriented fil
 ============================
 
 .. code-block:: python
-    :linenos:
+    
 
     import pathlib
     value1 = pathlib.Path.cwd()
@@ -22,7 +22,7 @@ pathlib 是Python内置库，Python 文档给它的定义是 Object-oriented fil
 源码：
 
 .. code-block:: python
-    :linenos:
+    
 
     @classmethod
     def cwd(cls):
@@ -39,7 +39,7 @@ pathlib 是Python内置库，Python 文档给它的定义是 Object-oriented fil
 pathlib 封装了很多的 os path ，文档中有写明，如：
 
 .. code-block:: python
-    :linenos:
+    
 
     # 关系说明
     os.path.expanduser() --> pathlib.Path.home()
@@ -55,7 +55,7 @@ pathlib 封装了很多的 os path ，文档中有写明，如：
 os 模块的写法
 
 .. code-block:: python
-    :linenos:
+    
 
     import os
     print(os.path.dirname(os.path.dirname(os.getcwd())))
@@ -63,7 +63,7 @@ os 模块的写法
 pathlib的写法
 
 .. code-block:: python
-    :linenos:
+    
 
     import pathlib
     print(pathlib.Path.cwd().parent.parent)
@@ -74,7 +74,7 @@ pathlib的写法
 os 模块的写法
 
 .. code-block:: python
-    :linenos:
+    
 
     import os
     print(os.path.join(os.path.dirname(os.path.dirname(os.getcwd())),"path1","path2","path3"))
@@ -82,7 +82,7 @@ os 模块的写法
 pathlib的写法
 
 .. code-block:: python
-    :linenos:
+    
 
     import pathlib
     parts=["path1","path2","path3"]
@@ -92,7 +92,7 @@ pathlib的写法
 >>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: python
-    :linenos:
+    
 
     import pathlib
     print(path.Path('./').resolve())
@@ -108,7 +108,7 @@ PurePath.match
 判断，当前文件路径是否有符合 \*.py 规则的文件
 
 .. code-block:: python
-    :linenos: 
+     
 
     import pathlib
     print(pathlib.PurePath(__file__).match("*.py"))
@@ -116,7 +116,7 @@ PurePath.match
 pathlib.PurePath 后面能够跟着 match，那说明它应该是个对象，而不是一个路径字符串。
 
 .. code-block:: python
-    :linenos:
+    
 
     import pathlib
     import os
@@ -254,7 +254,7 @@ Path.rglob()　　# 递归遍历所有子目录的文件
 /运算符由\.__ truediv __()方法定义。 事实上，如果你看看pathlib的源代码，你会看到类似于：
 
 .. code-block:: python
-    :linenos:
+    
 
     class PurePath(object):
 
@@ -278,7 +278,7 @@ pathlib用列
 有一个目录里装了很多数据文件，但是它们的后缀名并不统一，既有 .txt，又有 .csv。我们需要把其中以 .txt 结尾的文件都修改为 .csv 后缀名。
 
 .. code-block:: python
-    :linenos:
+    
 
     from pathlib import Path
 
@@ -294,7 +294,7 @@ pathlib用列
 ::::::::::::::::::::::::::
 
 .. code-block:: python
-    :linenos:
+    
 
     def count_nine(fnames):
         """
@@ -312,7 +312,7 @@ pathlib用列
 :::::::::::::::::::::::::::::::::::
 
 .. code-block:: python 
-    :linenos:
+    
 
     def count_nine_v2(fname):
         """
@@ -337,7 +337,7 @@ pathlib用列
 我们可以定义一个新的 chunked_file_reader 生成器函数，由它来负责所有与“数据生成”相关的逻辑。这样 count_nine_v3 里面的主循环就只需要负责计数即可。
 
 .. code-block:: python
-    :linenos:
+    
 
     def chunked_file_reader(fp, block_size=1024*8):
         """
@@ -364,7 +364,7 @@ pathlib用列
 iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一个更少人知道的用法。当我们使用 iter(callable,sentinel) 的方式调用它时，会返回一个特殊的对象，迭代它将不断产生可调用对象 callable 的调用结果，直到结果为 setinel 时，迭代终止。
 
 .. code-block:: python
-    :linenos:
+    
 
     from functools import partial
 
@@ -384,7 +384,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 统计完文件里的 “9” 之后，让我们换一个需求。现在，我想要统计每个文件里出现了多少个英文元音字母（aeiou）。只要对之前的代码稍作调整，很快就可以写出新函数 count_vowels。
 
 .. code-block:: python 
-    :linenos:
+    
 
     def count_vowels(filename):
         """
@@ -411,7 +411,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 修改后的函数代码如下：
 
 .. code-block:: python
-    :linenos:
+    
 
     def count_vowels_v2(fp):
         """
@@ -437,7 +437,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 
 
 .. code-block:: python
-    :linenos:
+    
 
     import pytest
     from io import StringIO
@@ -459,7 +459,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 而让编写单元测试变得更简单，并非修改函数依赖后的唯一好处。除了 StringIO 外，subprocess 模块调用系统命令时用来存储标准输出的 PIPE 对象，也是一种“类文件对象”。这意味着我们可以直接把某个命令的输出传递给 count_vowels_v2 函数来计算元音字母数：
 
 .. code-block:: python 
-    :linenos:
+    
 
     import subprocess
     # 统计 /tmp 下面所有一级子文件名（目录名）有多少元音字母
@@ -477,7 +477,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 打开标准库里的 xml.etree.ElementTree 模块，翻开里面的 ElementTree.parse 方法。你会发现这个方法即可以使用文件对象调用，也接受字符串的文件路径。而它实现这一点的手法也非常简单易懂：
 
 .. code-block:: python
-    :linenos:
+    
 
     def parse(self, source, parser=None):
         """
@@ -493,7 +493,7 @@ iter(iterable) 是一个用来构造迭代器的内建函数，但它还有一�
 修改可以接受文件对象有可以接受文件路径
 
 .. code-block:: python
-    :linenos:
+    
 
     def count_vowels_v3(fp):
         VOWELS_LETTERS = {'a', 'e', 'i', 'o', 'u'}

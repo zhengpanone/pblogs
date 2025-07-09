@@ -18,7 +18,7 @@
 - ``any``: 可以指定多种路径
 
 .. code-block:: python
-    :linenos:
+    
 
     @app.route('<any(article,blog):url_path>/<id>')
     def item(url_path,id):
@@ -28,7 +28,7 @@
 1. 实例化Flask对象时，可选参数
 
 .. code-block:: python
-   :linenos:
+   
 
     app = Flask(__name__)  # 这是实例化一个Flask对象，最基本的写法
     # 但是Flask中还有其他参数，以下是可填的参数，及其默认值
@@ -45,7 +45,7 @@ static_folder：静态文件所在文件的名字，默认是static，可以不�
 static_url_path：静态文件的地址前缀，写成什么，访问静态文件时，就要在前面加上这个
 
 .. code-block:: python
-   :linenos:
+   
 
     app = Flask(__name__,template_folder='templates',static_url_path='/xxxxxxxx')
 
@@ -59,7 +59,7 @@ instsnce_path：指定from_pyfile查询文件的路径，不设置时，默认�
 2. 绑定路由关系的两种方式
 
 .. code-block:: python
-   :linenos:
+   
     
     #方式一
     @app.route('/index.html',methods=['GET','POST'],endpoint='index')
@@ -84,4 +84,4 @@ instsnce_path：指定from_pyfile查询文件的路径，不设置时，默认�
     :encoding: utf-8
     :language: python
     :emphasize-lines: 5
-    :linenos:
+    

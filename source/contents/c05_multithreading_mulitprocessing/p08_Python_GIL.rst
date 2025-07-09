@@ -20,7 +20,7 @@ Python是动态解释性语言，即解释运行。运行Python代码时都会�
     :language: python
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 
 .. literalinclude:: ./code/08GIL/01.threading.py
@@ -28,7 +28,7 @@ Python是动态解释性语言，即解释运行。运行Python代码时都会�
     :language: python
     :lines: 1-
     :emphasize-lines: 2
-    :linenos:
+    
 
 >>> 11.5187261105
 >>> 18.4223148823

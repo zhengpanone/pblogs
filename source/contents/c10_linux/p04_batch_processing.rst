@@ -3,7 +3,7 @@
 ====================================
 
 .. code-block:: shell
-   :linenos:
+   
 
    for tar in *.tar.gz; 
       do 
@@ -18,14 +18,14 @@
 用tar命令批量解压某个文件夹下所有的tar.gz文件
 
 .. code-block:: shell
-   :linenos:
+   
 
    ls *.tar.gz | xargs -n1 tar xzvf
 
 解压当前目录下的所有bz2文件，maxdepth表示搜索深度，1代表只搜索当前目录
 
 .. code-block:: shell
-   :linenos:
+   
 
    find -maxdepth 1 -name “*.bz2″|xargs -i tar xvjf {}
  
@@ -47,7 +47,7 @@
 在当前目录下的.c文件中把字符串"password"替换成"pwd"并以.bak扩展名备份
 
 .. code-block:: shell
-   :linenos:
+   
 
    perl -pi.bak -e 's/password/pwd/g' *.c
 
@@ -68,7 +68,7 @@
  -p    自动循环+自动输出，相当于 while(<>) { 脚本; print; }
 
 .. code-block:: shell
-   :linenos:
+   
 
    for i in ls *.sh;
    do

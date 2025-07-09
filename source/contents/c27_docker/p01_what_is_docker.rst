@@ -119,7 +119,7 @@ Docker镜像都是只读的，当容器启动时，一个新的可写层加载�
 5) 安装后查看docker版本
    
 .. code-block:: shell
-   :linenos:
+   
 
    docker -v
    docker version # 查看Docker版本
@@ -139,7 +139,7 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 在该文件中输入如下内容：
 
 .. code-block:: json
-   :linenos:
+   
 
    {
    "registry-mirrors": ["https://docker.mirrors.ustc.edu.cn"]
@@ -194,7 +194,7 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 ======================
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker search centos -f STARS=2000 #搜索过滤STARS大于2000的镜像
    docker search redis --limit 5 # 默认25个
@@ -224,7 +224,7 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker ps  # 查看docker容器中运行的容器 ps表示process status的意思
    docker ps -a # 查看所有容器
@@ -241,7 +241,7 @@ ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本
 docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker run -itd --name=容器名称 镜像名称:标签 /bin/bash
 
@@ -257,7 +257,7 @@ docker run [参数] 镜像 [容器执行命令] [执行命令提供的参数]
 推荐使用 docker run -dti 来启动所需容器。
 
 .. code-block:: shell
-   :linenos:
+   
    
    docker run -d -v /Users/zhengpanone/Desktop/express-demo:/app -p 3000:3000 \
    --name express-demo-container express-demo-image
@@ -277,7 +277,7 @@ docker-compose启动容器
 编写docker-compose.yml文件
 
 .. code-block:: yaml
-   :linenos:
+   
 
    version: "3.8" # 指定compose版本
    services:
@@ -315,7 +315,7 @@ docker-compose清除容器
 ::::::::::::::::::::
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker stop 容器名称/容器ID   # 停止容器
    docker start 容器名称/容器ID  # 启动容器
@@ -324,7 +324,7 @@ docker-compose清除容器
 ::::::::::::::
 
 .. code-block:: shell 
-   :linenos:
+   
 
    docker cp 需要拷贝的文件或目录  容器名称:容器目录   # 将文件拷贝到容器
    docker cp 容器名称:容器目录   需要拷贝的文件或目录  # 将文件从容器拷贝出来
@@ -335,7 +335,7 @@ docker-compose清除容器
 创建容器 -v **宿主目录:容器目录**
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker run -id -v /usr/local/myhtml:/usr/local/myhtml --name=mycentos7 centos:7
 
@@ -347,7 +347,7 @@ docker-compose清除容器
 ::::::::::::::::::::
 
 .. code-block:: shell
-   :linenos:
+   
 
    docker inspect 容器名称/容器ID
 
@@ -424,7 +424,7 @@ docker-compose清除容器
 ------------------
 
 .. code-block:: shell
-   :linenos:
+   
 
    # 容器保存为镜像
    docker commit mynginx mynginx_i 
@@ -438,7 +438,7 @@ docker-compose清除容器
 
 
 .. code-block::shell
-   :linenos:
+   
 
    docker run -it centos:latest  #运行docker容器
 
@@ -460,7 +460,7 @@ Dockerfile可以理解为一种配置文件,用来告诉docker build命令应该
 一个简易的Dockerfile文件如下所示
 
 .. code-block::shell
-   :linenos:
+   
 
    # 说明该镜像以那个镜像为基础
    FROM centos:latest 
@@ -475,7 +475,7 @@ Dockerfile可以理解为一种配置文件,用来告诉docker build命令应该
 有了Dockerfile 利用build命令构建镜像
 
 .. code-block:: shell
-   :linenos: 
+    
  
    docker build -f ./Dockerfile  -t "zhengpanone/centos-git:gitdir" .
 
@@ -483,7 +483,7 @@ Dockerfile可以理解为一种配置文件,用来告诉docker build命令应该
 ------------------------------------
 
 .. code-block:: text
-   :linenos: 
+    
 
    Usage:
    docker [OPTIONS] COMMAND [arg...]

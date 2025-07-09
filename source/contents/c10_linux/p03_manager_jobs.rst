@@ -26,7 +26,7 @@
     :language: shell
     :lines: 1-
     :emphasize-lines: 1
-    :linenos:
+    
 
 
 运行上面的脚本,通过jobs -l 查看运行的脚本
@@ -139,7 +139,7 @@ nohup和&使用
 ============================
 
 .. code-block:: shell
-    :linenos:
+    
 
     # 自定义输出文件(标准输出和错误输出合并到main.log)
     nohup python main.py >> main.log 2>&1 &

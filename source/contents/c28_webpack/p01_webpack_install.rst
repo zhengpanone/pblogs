@@ -32,7 +32,7 @@ webpack安装
 * 配置webpack，在项目根目录创建webpack.config.js文件 
 
 .. code-block:: javascript
-    :linenos:
+    
 
     const path = require('path')
 
@@ -116,5 +116,5 @@ webpack 完整配置
     :language: javascript
     :emphasize-lines: 2
     :lines: 1-
-    :linenos:  
+      
 

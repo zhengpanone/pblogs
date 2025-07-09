@@ -44,7 +44,7 @@ object ==number | string 尝试对象转为基本类型 new String('hi') == 'hi'
 创建对象
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     var student = {
         name:"test",
@@ -106,7 +106,7 @@ person = null;  //表示将person 变量的值赋值为null,从此person不在�
 通过构造函数创建对象
 
 .. code-block:: javascript
-   :linenos: 
+    
  
     function Person(name,age){
         this.name = name
@@ -130,7 +130,7 @@ Object、Date、Array 都是内置构造函数
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     var p1 = new Person();
 
@@ -143,7 +143,7 @@ Object、Date、Array 都是内置构造函数
     - 如果函数返回了一个复杂数据类型的值,那么本次构造函数的返回值就是该值
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     function fn3(){
         return [1,3,5];
@@ -161,7 +161,7 @@ Object、Date、Array 都是内置构造函数
 如何判断一个对象是否是某个构造函数的实例？
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     console.log(p1 instanceof Person) // true,就是Person的实例
 
@@ -192,7 +192,7 @@ str 是基本类型，strObj是对象类型，是sting类型对应的包装类
 
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     var a = "string";
     alert(a.length);//6
@@ -232,7 +232,7 @@ obj instanceof Object
 当以上全部满足，则返回"判定结果:通过"，否则返回"判定结果:不通过"。
 
 .. code-block:: javascript
-   :linenos: 
+    
 
     function arraySimialr(arr1,arr2){
         //判断边界

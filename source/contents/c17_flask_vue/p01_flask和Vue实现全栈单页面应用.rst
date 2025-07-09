@@ -28,7 +28,7 @@ github源代码_.
 :::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: shell
-    :linenos:
+    
 
     npm install -g vue-cli
 
@@ -36,7 +36,7 @@ github源代码_.
 :::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: shell
-    :linenos:
+    
 
     mkdir flaskvue
     cd flaskvue
@@ -61,7 +61,7 @@ github源代码_.
 :::::::::::::::::::::::::::::::::::::::::::
 
 .. code-block:: shell
-    :linenos:
+    
 
     cd frontend
     npm install
@@ -80,13 +80,13 @@ github源代码_.
     :encoding: utf-8
     :language: html
     :emphasize-lines: 1,5
-    :linenos:
+    
 
 .. literalinclude:: ./code/About.vue
     :encoding: utf-8
     :language: html
     :emphasize-lines: 1,5
-    :linenos:
+    
 
 ----
 
@@ -97,7 +97,7 @@ github源代码_.
     :language: javascript
     :emphasize-lines: 13
     :lines: 1-6,8-23
-    :linenos:  
+      
 
 6. 校验组件是否挂载成功
 :::::::::::::::::::::::::::::::::::::::::::
@@ -110,7 +110,7 @@ github源代码_.
 在frontend/config/index.js 找到下面的两行
 
 ..code-block::
-    :linenos:
+    
 
     index: path.resolve(__dirname, '../dist/index.html'),
 
@@ -119,7 +119,7 @@ github源代码_.
 然后成改如下内容
 
 .. code-block::
-    :linenos:
+    
 
     index: path.resolve(__dirname, '../../dist/index.html'),
 
@@ -147,7 +147,7 @@ github源代码_.
     :language: python
     :emphasize-lines: 1
     :lines: 11-17,21-27,36-39,42-43
-    :linenos:
+    
 
 3. 运行flask项目页面会跳转到index.html页面,你试图访问 /about 页面将会出现一个错误
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -159,7 +159,7 @@ Flask 会抛出一个找不到请求地址的错误。实际上是因为在 vue-
     :language: python
     :emphasize-lines: 1
     :lines: 11-17,21-33,42-43
-    :linenos:
+    
 
 4. 添加404页面
 ::::::::::::::::::::::::::::::::::::::
@@ -171,7 +171,7 @@ Flask 会抛出一个找不到请求地址的错误。实际上是因为在 vue-
     :language: python
     :emphasize-lines: 4
     :lines: 4-9
-    :linenos:
+    
 
 通配符 **\*** 在 vue-router 里的含义是以上路由定义之外的情况。现在我们需要在 /components 文件夹新建 NotFound.vue 文件。我简单地创建它：
 
@@ -180,7 +180,7 @@ Flask 会抛出一个找不到请求地址的错误。实际上是因为在 vue-
     :language: python
     :emphasize-lines: 1
     :lines: 1-15
-    :linenos:
+    
 
 通过 npm run dev 重新启动前台服务然后随意输入网址像 localhost:8080/gljhewrgoh。可以看到 “Not Found” 两个单词。
 
@@ -195,7 +195,7 @@ Flask 会抛出一个找不到请求地址的错误。实际上是因为在 vue-
     :language: python
     :emphasize-lines: 12
     :lines: 1-15
-    :linenos:
+    
 
 5.2 前端通过axios库连接后端
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -203,7 +203,7 @@ Flask 会抛出一个找不到请求地址的错误。实际上是因为在 vue-
 axios将允许我们创建能返回 Promise 对象的 HTTP 请求
 
 .. code-block:: shell
-    :linenos:
+    
 
     cd frontend
 
@@ -217,7 +217,7 @@ axios将允许我们创建能返回 Promise 对象的 HTTP 请求
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
 .. code-block:: shell
-    :linenos:
+    
 
     pip install flask-cors
 
@@ -228,7 +228,7 @@ axios将允许我们创建能返回 Promise 对象的 HTTP 请求
     :language: python
     :emphasize-lines: 13
     :lines: 1-15
-    :linenos:
+    
 
 此时可以从前端的开发环境调用 Flask API 接口了
 
