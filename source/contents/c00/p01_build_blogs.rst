@@ -35,23 +35,32 @@
 
 安装Python工具包
 
+.. code-block:: bash
 
->>> pip install sphinx sphinx-autobuild sphinx_rtd_theme
+  pip install sphinx sphinx-autobuild sphinx_rtd_theme
 
 或者安装 \ ``sphinx-doc``\
 
->>> pip install sphinx-doc
+.. code-block:: bash
+
+  pip install sphinx-doc
 
 初始化
 
 Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
 
->>> sphinx-sphinx-apidoc  sphinx-autogen  sphinx-build   sphinx-quickstart
+.. code-block:: bash
+
+  sphinx-sphinx-apidoc  sphinx-autogen  sphinx-build   sphinx-quickstart
 
 先创建一个工程目录:F:\\mkdocs
 
->>> cd F:\\mkdocs
->>> sphinx-quickstart
+.. code-block:: bash
+  :linenos: 
+
+  mkdir F:\\mkdocs
+  cd F:\\mkdocs
+  sphinx-quickstart
 
 执行这个命令\ ``sphinx-quickstart``\ 的时候，会让你输入配置。除了这几个个性化配置，其他的都可以按照默认的来。
 
