@@ -54,63 +54,60 @@ docker pull 镜像名：TAG
 
 .. note::
 
- 进入容器
+    进入容器
+    docker exec -it centos7_ssh /bin/bash
 
- docker exec -it centos7_ssh /bin/bash
+    ----------------------以下都是在容器内部操作--------------------------
+    # 安装openssh
+    yum install -y openssh-server openssh-clients
 
- ----------------------以下都是在容器内部操作--------------------------
+    **修改sshd_config配置**
+    vi /etc/ssh/sshd_config
 
- 安装openssh
+    # 监听端口、监听地址前的 # 号去除
 
- yum install -y openssh-server openssh-clients
+    Port 22
+    
+    #AddressFamily any
 
- **修改sshd_config配置**
- vi /etc/ssh/sshd_config
+    ListenAddress 0.0.0.0
 
- # 监听端口、监听地址前的 # 号去除
+    ListenAddress ::
+    
+    # 开启允许远程登录
 
- Port 22
- 
- #AddressFamily any
+    PermitRootLogin yes
 
- ListenAddress 0.0.0.0
+    # 开启使用用户名密码来作为连接验证
 
- ListenAddress ::
- 
- # 开启允许远程登录
+    PubkeyAuthentication yes
 
- PermitRootLogin yes
+    启动openssh
 
- # 开启使用用户名密码来作为连接验证
+    systemctl start sshd.server
 
- PubkeyAuthentication yes
+    重启 sshd服务命令 
 
- 启动openssh
+    systemctl restart sshd.service
 
- systemctl start sshd.server
+    设置服务开启自启命令 
 
- 重启 sshd服务命令 
+    systemctl enable sshd.service
 
- systemctl restart sshd.service
+    **centos解决bash: service: command not found**
 
- 设置服务开启自启命令 
+    yum list | grep initscripts
 
- systemctl enable sshd.service
+    yum install initscripts -y
 
- **centos解决bash: service: command not found**
-
- yum list | grep initscripts
-
- yum install initscripts -y
-
- 此时 service命令可以使用了
+    此时 service命令可以使用了
 
 
- 设置root密码
- passwd
+    设置root密码
+    passwd
 
- 退出容器
- exit
+    退出容器
+    exit
 
 ssh登录
 ====================================

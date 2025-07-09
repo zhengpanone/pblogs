@@ -21,7 +21,7 @@ env_file：用来给容器启动指定环境变量文件，相当于docker run -
 
 *格式*
 
-.. code-block:: 
+.. code-block:: text
    :linenos:
 
    # 单个变量文件

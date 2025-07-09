@@ -11,9 +11,10 @@ APScheduler 基于Quartz的Python定时任务框架，实现了Quartz的所有�
 2.安装
 ===========
 
-::
 
- pip install APScheduler
+.. code-block:: shell
+
+   pip install APScheduler
 
 3.基本概念
 ==================
@@ -40,17 +41,18 @@ APScheduler 基于Quartz的Python定时任务框架，实现了Quartz的所有�
 
 - QtScheduler：Qt的调度器
 
-::
 
- import time
- from apscheduler.schedulers.blocking import BlockingScheduler
+.. code-block:: python
 
- def my_job():
-    print(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())))
+   import time
+   from apscheduler.schedulers.blocking import BlockingScheduler
 
- schec = BlockingScheduler()
- sched.add_job(my_job,'interval',seconds=5)
- sched.start()
+   def my_job():
+      print(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time())))
+
+   schec = BlockingScheduler()
+   sched.add_job(my_job,'interval',seconds=5)
+   sched.start()
 
 
 参考文档

@@ -8,9 +8,10 @@ mongodb基本使用
 环境变量设置成功后,在D盘中创建一个文件夹data，用于存储MongoDB的数据库文件。然后，打开一个命令行工具，
 输入mongod 启动MongoDB实例，默认监听的TCP端口是 27017 。
 
-::
 
- mongodb 
+.. code-block:: shell
+
+   mongodb 
 
 MongoDB同时启动一个HTTP服务器，监听27017端口，如果MongoDB 实例安装在本地，那么在浏览器中输入：http://localhost:27017/
 
@@ -21,9 +22,10 @@ mongod 是整个MongoDB最核心的进程，负责数据库的创建，删除等
 
 不要关闭MongoDB实例，新打开一个命令行工具，输入mongo ，该命令启动mongo shell，shell 将自动连接本地(localhost)的MongoDB实例，默认的端口是27017：
 
-::
 
- mongo 
+.. code-block:: shell
+
+   mongo 
 
 mongo进程是构造一个Javascript Shell，用于跟mongod进程交互，根据mongod提供的接口对MongoDB数据库进行管理，相当于SSMS(SQL Server Management Studio)，是一个管理MongoDB的工具。
 

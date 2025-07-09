@@ -133,7 +133,8 @@ github源代码_.
 1. 在 **frontend** 的同级目录创建后端项目 **backend**
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::
+
+.. code-block:: shell
 
     mkdir backend
     cd backend

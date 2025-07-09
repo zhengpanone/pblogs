@@ -26,10 +26,11 @@ Celery 是实时任务处理与调度的分布式任务队列，它常用于 web
 
 现在我想让前端可以通过一个进度条来判断后端任务的执行情况。使用 Celery 就很容易实现，首先通过 pip 安装 Celery 与 redis，之所以要安装 redis，是因为让 Celery 选择 redis 作为「消息代理 / 消息中间件」。
 
-::
 
- pip install Celery
- pip install redis
+.. code-block:: shell
+
+    pip install Celery
+    pip install redis
 
 最简单的例子 example.py
 
@@ -52,7 +53,8 @@ Celery 是实时任务处理与调度的分布式任务队列，它常用于 web
 多模块，更复杂的配置，更多的 task 等
 ================================================
 
-::
+
+.. code-block:: text
 
     .
     ├── README.md
