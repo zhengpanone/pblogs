@@ -62,7 +62,6 @@ master_doc = 'index'
 
 language = 'zh_CN'
 
-
 exclude_patterns = []
 
 pygments_style = 'sphinx'
@@ -100,15 +99,21 @@ latex_elements = {
     \setsansfont{Arial}
     \setmonofont{Courier New}
     ''',
+    
     'preamble': r'''
-    \usepackage{xeCJK}
-    \setCJKmainfont{''' + cjk_font + r'''}
     \usepackage{bookmark}
     \usepackage{fancyvrb}
+    \usepackage{ctex}
     \usepackage{bm}
-    \usepackage{newunicodechar}
 
-    % 定义emoji字符
+    # \usepackage{xeCJK}
+    # \setCJKmainfont{''' + cjk_font + r'''}
+    # \usepackage{bookmark}
+    # \usepackage{fancyvrb}
+    # \usepackage{bm}
+    # \usepackage{newunicodechar}
+
+    # 定义emoji字符
     \newunicodechar{🚀}{\emoji{🚀}}
     \newunicodechar{✨}{\emoji{✨}}
     \newunicodechar{📝}{\emoji{📝}}
