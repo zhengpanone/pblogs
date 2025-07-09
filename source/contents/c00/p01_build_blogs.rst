@@ -48,21 +48,20 @@ Sphinx 推荐使用 sphinx-quickstart，这是一个设置向导
 
 >>> sphinx-sphinx-apidoc  sphinx-autogen  sphinx-build   sphinx-quickstart
 
-.. code-block:: shell
+先创建一个工程目录:F:\\mkdocs
 
-    # 先创建一个工程目录:F:\\mkdocs
-    cd F:\\mkdocs
-    sphinx-quickstart
+>>> cd F:\\mkdocs
+>>> sphinx-quickstart
 
 执行这个命令\ ``sphinx-quickstart``\ 的时候，会让你输入配置。除了这几个个性化配置，其他的都可以按照默认的来。
 
 .. code-block:: text
-   :linenos: 
+  :linenos: 
 
-    > Project name: MING's BLOG
-    > Author name(s): MING
-    > Project release []: 1.0
-    > Project language [en]: zh_CN
+  > Project name: MING's BLOG
+  > Author name(s): MING
+  > Project release []: 1.0
+  > Project language [en]: zh_CN
 
 完了后，就可以看见创建的工程文件。
 
@@ -112,9 +111,9 @@ exts配置文件，我做了哪些事：
 你只要执行这个命令，即可安装。
 
 .. code-block:: shell
-    :linenos: 
+  :linenos: 
 
-    pip install -r requirements.txt -i https://pypi.douban.com/simple/
+  pip install -r requirements.txt -i https://pypi.douban.com/simple/
 
 撰写文章
 ---------------------
@@ -127,73 +126,73 @@ how\_to\_be\_a\_rich\_man.rst（至于什么是rst格式呢，请自行搜索引
 文件内容如下
 
 .. code-block:: shell
-   :linenos: 
+  :linenos: 
 
-    第一章 如何成为有钱人
-    ======================
+  第一章 如何成为有钱人
+  ======================
 
-    1.1 财富继承法
-    ---------------------
+  1.1 财富继承法
+  ---------------------
 
-    有个有钱的老爸。
+  有个有钱的老爸。
 
 
-    1.2 财富共享法
-    ---------------------
+  1.2 财富共享法
+  ---------------------
 
-    有个有钱的老婆。
+  有个有钱的老婆。
 
 写好文档后，千万记得要把这个文档写进，目录排版里面。
 
 排版配置文件是 ``source\index.rst``\ ，千万要注意中间的空行不可忽略。
 
-.. code:: python
+.. code:: text
 
-    .. toctree::
-       :maxdepth: 2
-       :caption: Contents:
+  .. toctree::
+    :maxdepth: 2
+    :caption: Contents:
 
-       how_to_be_a_rich_man
+    how_to_be_a_rich_man
 
 然后删除这几行
 
 .. code-block:: shell
-   :linenos: 
+  :linenos: 
 
-    Indices and tables
-    ==================
+  Indices and tables
+  ==================
 
-    * :ref:`genindex`
-    * :ref:`modindex`
-    * :ref:`search`
+  * :ref:`genindex`
+  * :ref:`modindex`
+  * :ref:`search`
 
 然后执行\ ``make html`` 生成html静态文件。
 
-.. code:: shell
+.. code-block:: text
 
-    F:\mkdocs
-    (mkdocs) λ make html
-    Running Sphinx v1.7.4
-    loading translations [zh_CN]... done
-    loading pickled environment... done
-    building [mo]: targets for 0 po files that are out of date
-    building [html]: targets for 2 source files that are out of date
-    updating environment: [extensions changed] 2 added, 0 changed, 0 removed
-    reading sources... [100%] index
-    looking for now-outdated files... none found
-    pickling environment... done
-    checking consistency... done
-    preparing documents... done
-    writing output... [100%] index
-    generating indices... genindex
-    writing additional pages... search
-    copying static files... done
-    copying extra files... done
-    dumping search index in English (code: en) ... done
-    dumping object inventory... done
-    build succeeded.
+  F:\mkdocs
+  (mkdocs) λ make html
+  Running Sphinx v1.7.4
+  loading translations [zh_CN]... done
+  loading pickled environment... done
+  building [mo]: targets for 0 po files that are out of date
+  building [html]: targets for 2 source files that are out of date
+  updating environment: [extensions changed] 2 added, 0 changed, 0 removed
+  reading sources... [100%] index
+  looking for now-outdated files... none found
+  pickling environment... done
+  checking consistency... done
+  preparing documents... done
+  writing output... [100%] index
+  generating indices... genindex
+  writing additional pages... search
+  copying static files... done
+  copying extra files... done
+  dumping search index in English (code: en) ... done
+  dumping object inventory... done
+  build succeeded.
 
-    The HTML pages are in build\html.
+  The HTML pages are in build\html.
 
 执行完了后，你可以发现原先的build，不再是空文件夹了。
 
