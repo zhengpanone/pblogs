@@ -37,6 +37,7 @@ extensions = [
     'sphinx.ext.autosectionlabel',
     ]
 
+autosectionlabel_prefix_document = True
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 

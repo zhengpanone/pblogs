@@ -20,133 +20,132 @@ JavaScript 闭包
 
 .. code-block:: javascript
 
-    function fn(callback){
-        var age = 18;
-        callback()
-    }
+  function fn(callback){
+      var age = 18;
+      callback()
+  }
 
-    fn(function(){
-        console.log(age);
-        //var age = 15;
-        // 看上一级作用域，不是看函数在哪里调用，而是看函数在哪里编写，
-        //因为这种特别，通常会把作用域说成是：此法作用域
+  fn(function(){
+      console.log(age);
+      //var age = 15;
+      // 看上一级作用域，不是看函数在哪里调用，而是看函数在哪里编写，
+      //因为这种特别，通常会把作用域说成是：此法作用域
 
-    })
+  })
 
 .. code-block:: html
 
-    <body>
-        <div>1</div>
-        <div>22</div>
-        <div>333</div>
-        <div>4444</div>
-        <div>55555</div>
-    </body>
-    <script>
-        var divs = document.getElementByTagName("div")
-        for(var i=0; i<divs.length;i++){
-            const element = divs[i];
-            element.onclick=function(){
-                alert(i)
-                // 弹出的是5
-                // i 是来自全局作用域，执行完for循环后，i的值已经变成了5
+  <body>
+      <div>1</div>
+      <div>22</div>
+      <div>333</div>
+      <div>4444</div>
+      <div>55555</div>
+  </body>
+  <script>
+    var divs = document.getElementByTagName("div")
+    for(var i=0; i<divs.length;i++){
+        const element = divs[i];
+        element.onclick=function(){
+            alert(i)
+            // 弹出的是5
+            // i 是来自全局作用域，执行完for循环后，i的值已经变成了5
+        }
+    }
+    // 如何打印对应的i，闭包的解决方案
+    for(var i=0;i<divs.length;i++){
+        const element = divs[i];
+        element.onclick=(function(j){
+            return function(){
+                alert(j)
             }
-        }
-        // 如何打印对应的i，闭包的解决方案
-        for(var i=0;i<divs.length;i++){
-            const element = divs[i];
-            element.onclick=(function(j){
-                return function(){
-                    alert(j)
-                }
-            })(i);
-        }
-    </script>
+        })(i);
+    }
+  </script>
 
 
 闭包
 ==================================
 
-.. code-block:: javascript
+.. code-block:: html
 
-    <script>
-      function fn(){
-          var a=5;
-          return function(){
-              a++;
-              console.log(a);
-          }
-      }
-      var f1=fn();    //f1指向匿名函数
-      f1();           //6
-      f1();           //7
-      f1();           //8
-      //代码执行到fn函数完毕，返回匿名函数
-      // 一般认为函数执行完毕，变量就会释放，但是此时由于js引擎发现匿名函数要使用a变量，
-      //所有a变量并不能得到释放，而是把a变量放在匿名函数可以访问到的地方
-      // a变量存在于f1函数可以访问到的地方，当然此时a变量只能被f1函数访问
+  <script>
+    function fn(){
+        var a=5;
+        return function(){
+            a++;
+            console.log(a);
+        }
+    }
+    var f1=fn();    //f1指向匿名函数
+    f1();           //6
+    f1();           //7
+    f1();           //8
+    //代码执行到fn函数完毕，返回匿名函数
+    // 一般认为函数执行完毕，变量就会释放，但是此时由于js引擎发现匿名函数要使用a变量，
+    //所有a变量并不能得到释放，而是把a变量放在匿名函数可以访问到的地方
+    // a变量存在于f1函数可以访问到的地方，当然此时a变量只能被f1函数访问
 
-    </script>
+  </script>
 
+.. code-block:: html
 
-.. code-block:: javascript
+  <script>
+    function fn(){
+        var a=5;
+        return function(){
+            a++;
+            console.log(a);
+        }
+    }
+    var f1=fn();    //f1指向匿名函数
+    f1();           //6
+    var f2=fn();
+    f2();           //6
+    var f3=fn();
+    f3();           //6
+    //代码执行到fn函数完毕，返回匿名函数
+    // 一般认为函数执行完毕，变量就会释放，但是此时由于js引擎发现匿名函数要使用a变量，
+    //所有a变量并不能得到释放，而是把a变量放在匿名函数可以访问到的地方
+    // a变量存在于f1函数可以访问到的地方，当然此时a变量只能被f1函数访问
 
-    <script>
-      function fn(){
-          var a=5;
-          return function(){
-              a++;
-              console.log(a);
-          }
-      }
-      var f1=fn();    //f1指向匿名函数
-      f1();           //6
-      var f2=fn();
-      f2();           //6
-      var f3=fn();
-      f3();           //6
-      //代码执行到fn函数完毕，返回匿名函数
-      // 一般认为函数执行完毕，变量就会释放，但是此时由于js引擎发现匿名函数要使用a变量，
-      //所有a变量并不能得到释放，而是把a变量放在匿名函数可以访问到的地方
-      // a变量存在于f1函数可以访问到的地方，当然此时a变量只能被f1函数访问
-
-    </script>
+  </script>
 
 闭包的应用
 >>>>>>>>>>>>>>>>>>>>
 
-.. code-block:: javascript
+.. code-block:: html
 
-    <script>
-    // 模块化开发
-    var ktv=(function KTV(){
-      // 保护leastPrice变量，将他放在函数内部
-      var leastPrice=1000;
+  <script>
+  // 模块化开发
+  var ktv=(function KTV(){
+    // 保护leastPrice变量，将他放在函数内部
+    var leastPrice=1000;
 
-      var total=0;
-      return{
-        //购物
-        buy:function(price){
-          total+=price;
-        },
-        pay:function(){
-          if(total<leastPrice){
-            console.log("请继续购物")
-          }else{
-            console.log("欢迎下次光临")
-          }
-        },
-        editLeast:function(id,price){
-          if(id===888){
-            leastPrice=price;
-            console.log("现在最低消费"+price);
-          }else{
-            console.log("权限不足");
-          }
+    var total=0;
+    return{
+      //购物
+      buy:function(price){
+        total+=price;
+      },
+      pay:function(){
+        if(total<leastPrice){
+          console.log("请继续购物")
+        }else{
+          console.log("欢迎下次光临")
+        }
+      },
+      editLeast:function(id,price){
+        if(id===888){
+          leastPrice=price;
+          console.log("现在最低消费"+price);
+        }else{
+          console.log("权限不足");
         }
       }
-    })();  
-    </script>
+    }
+  })();  
+  </script>
 
 
 闭包的问题

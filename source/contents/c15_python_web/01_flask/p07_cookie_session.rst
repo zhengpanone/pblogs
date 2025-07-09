@@ -35,7 +35,6 @@
 基本使用
 
 .. code-block:: python
-    
 
     from flask import Flask, session, redirect, url_for, escape, request
     
@@ -70,13 +69,9 @@
 
 自定义session
 
-.. code-block:: shell
-    
-
-    pip3 install Flask-Session
+>>> pip3 install Flask-Session
 
 .. code-block:: python
-       
    :caption: hello.py    
         
     from flask import Flask

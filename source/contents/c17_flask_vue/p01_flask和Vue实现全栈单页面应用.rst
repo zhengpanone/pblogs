@@ -62,7 +62,6 @@ github源代码_.
 
 .. code-block:: shell
     
-
     cd frontend
     npm install
     npm run dev 
@@ -109,21 +108,19 @@ github源代码_.
 
 在frontend/config/index.js 找到下面的两行
 
-..code-block::
+.. code-block:: python
     
+  index: path.resolve(__dirname, '../dist/index.html'),
 
-    index: path.resolve(__dirname, '../dist/index.html'),
-
-    assetsRoot: path.resolve(__dirname, '../dist'),
+  assetsRoot: path.resolve(__dirname, '../dist'),
 
 然后成改如下内容
 
-.. code-block::
-    
+.. code-block:: python
 
-    index: path.resolve(__dirname, '../../dist/index.html'),
+  index: path.resolve(__dirname, '../../dist/index.html'),
 
-    assetsRoot: path.resolve(__dirname, '../../dist'),
+  assetsRoot: path.resolve(__dirname, '../../dist'),
 
 这样包含 html/css/js 静态资源包的 /dist 文件夹和 /frontend 在同一级目录下运行 ``$ npm run build`` 去构建项目了
 

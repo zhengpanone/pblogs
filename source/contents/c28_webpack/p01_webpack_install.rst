@@ -7,9 +7,7 @@ webpack安装
 安装
 =========
 
-.. code:: bash 
-
-    npm i webpack -g # 全局安装webpack
+>>> npm i webpack -g # 全局安装webpack
 
 
 创建项目流程
@@ -33,31 +31,34 @@ webpack安装
 
 .. code-block:: javascript
     
+  const path = require('path')
 
-    const path = require('path')
-
-    module.exports={
-        entry:{ //main是默认入口,也可以是多入口
-        main: path.join(__dirname, './src/main.js')
-        },
-        output:{
-            path:path.join(__dirname, './dist'),
-            filename: 'bundle.js'
-        },
-        mode:'development'
-    }
+  module.exports={
+      entry:{ //main是默认入口,也可以是多入口
+      main: path.join(__dirname, './src/main.js')
+      },
+      output:{
+          path:path.join(__dirname, './dist'),
+          filename: 'bundle.js'
+      },
+      mode:'development'
+  }
 
 * 在项目根目录直接运行 **webpack** 命令
 
 使用webpack-dev-server来实现自动打包编译功能
 ================================================
 
+.. _webpack-dev-server_install:
+
 安装 
 >>>>>>>>>>>>>
 
-.. code:: bash 
+.. code-block:: bash 
 
     npm i webpack-dev-server -D 把这个工具安装到项目本地开发依赖
+
+.. _webpack_usage:
 
 使用
 >>>>>>>>>>>>>
@@ -83,23 +84,23 @@ webpack-dev-server --inline --hot --open --port 8000 --contentBase src
 html-webpack-plugin在内存中生成html的插件
 ==============================================
 
+.. _html-webpack-plugin_install:
+
 安装
 >>>>>>>>>>>>>>>>>>>>
 
-.. code:: bash
-
-    cnpm i html-webpack-plugin -D
+>>> cnpm i html-webpack-plugin -D
 
 
 打包处理css的加载器
 ==================================
 
+.. _css-loader_install:
+
 安装
 >>>>>>>>>>>>>>>
 
-.. code:: bash
-
-    cnpm i style-loader css-loader -D
+>>> cnpm i style-loader css-loader -D
 
 
 babel

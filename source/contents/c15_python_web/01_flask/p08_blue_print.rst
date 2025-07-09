@@ -7,7 +7,6 @@
 
 .. code-block:: python
     
-
     from flask import Blueprint
     admin = Blueprint("admin",__name__)
     import views
@@ -18,7 +17,6 @@
 
 .. code-block:: python
     
-
     from admin import admin as admin_buleprint
     app.register_blueprint(admin_buleprint,url_prefix="admin")
 
@@ -28,10 +26,8 @@
 
 .. code-block:: python
     
-
     from . import admin
     @admin.route("/")
-
 
 
 如果代码非常多，要进行归类。不同的功能放在不同的文件，吧相关的视图函数也放进去。蓝图也就是对flask的目录结构进行分配（应用于小，中型的程序）
@@ -44,53 +40,54 @@
     :align: center
     :alt: 小中型
 
- manage.py
-
-::
+.. code-block:: python
+    :caption:  manage.py
  
- import fcrm
- if __name__ == '__main__':
-    fcrm.app.run()
+    import fcrm
+    if __name__ == '__main__':
+        fcrm.app.run()
 
-__init__.py(只要一导入fcrm就会执行__init__.py文件)
+    __init__.py(只要一导入fcrm就会执行__init__.py文件)
 
-::
+.. code-block:: python
+    :caption: __init__.py
 
- from flask import Flask
- #导入accout 和order
- from fcrm.views import accout
- from fcrm.views import order
- app = Flask(__name__)
- print(app.root_path)  #根目录
+    from flask import Flask
+    #导入account 和order
+    from fcrm.views import account
+    from fcrm.views import order
+    app = Flask(__name__)
+    print(app.root_path)  #根目录
 
- app.register_blueprint(accout.accout)  #把蓝图注册到app里面，accout.accout是创建的蓝图对象
- app.register_blueprint(order.order)
+    app.register_blueprint(account.account)  #把蓝图注册到app里面，account.account是创建的蓝图对象
+    app.register_blueprint(order.order)
 
-accout.py
 
-::
 
- from flask import  Blueprint,render_template
- accout = Blueprint("accout",__name__)
+.. code-block:: python
+    :caption: account.py
 
- @accout.route('/accout')
- def xx():
-    return "accout"
+    from flask import  Blueprint,render_template
+    account = Blueprint("account",__name__)
 
- @accout.route("/login")
- def login():
-    return render_template("login.html")
+    @account.route('/account')
+    def xx():
+        return "account"
 
-order.py
+    @account.route("/login")
+    def login():
+        return render_template("login.html")
 
-::
 
- from flask import Blueprint
- order = Blueprint("order",__name__)
+.. code-block:: python
+    :caption: order.py
+    
+    from flask import Blueprint
+    order = Blueprint("order",__name__)
 
- @order.route('/order')
- def register():   
-    return "order
+    @order.route('/order')
+    def register():   
+        return "order
 
 
 大型

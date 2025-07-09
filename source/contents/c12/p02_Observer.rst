@@ -22,61 +22,63 @@ Java实现代码：
 
 一个Observer接口：
 
-.. code:: java
+.. code-block:: java
 
- public interface Observer{
+  public interface Observer{
 
-    public void update();
- }
+      public void update();
+  }
 
 两个实现类：
 
-::
+.. code-block:: java
 
- public class Observer1 implements Observer{
-    
-    @Override
-    public void update(){
+  public class Observer1 implements Observer{
+      
+      @Override
+      public void update(){
 
-        System.out.println("observer1 has received!");
-    }
+          System.out.println("observer1 has received!");
+      }
 
- }
+  }
 
-::
+.. code-block:: java
 
- public class Observer2 implements Observer{
- 
-    @Override
-    public void update(){
+  public class Observer2 implements Observer{
+  
+      @Override
+      public void update(){
 
-        System.out.println('observer2 has received!')
-    }
- 
- }
+          System.out.println('observer2 has received!')
+      }
+  
+  }
 
 Subject 接口及实现类：
 
-.. code:: java
+.. code-block:: java
 
- public interface Subject{
-    
-    /**增加观察者**/
-    public void add(Observer observer);
+  public interface Subject{
+      
+      /**增加观察者**/
+      public void add(Observer observer);
 
-    /**删除观察者**/
-    public void del(Observer observer);
+      /**删除观察者**/
+      public void del(Observer observer);
 
-    /**通知所有观察者**/
-    public void notifyObservers();
+      /**通知所有观察者**/
+      public void notifyObservers();
 
-    /**自身操作**/
-    public void operation();
+      /**自身操作**/
+      public void operation();
 
-::
+  }
 
- public abstract class AbstractSubject implements Subject{
- 
+.. code-block:: java
+
+  public abstract class AbstractSubject implements Subject{
+  
     private Vector<Observer> vector = new Vector<Observer>();
 
     @Override
@@ -94,35 +96,35 @@ Subject 接口及实现类：
     @Override
     public void notifyObservers(){
 
-        Enumeration<Observer> enumo = vector.elements();
+        Enumeration<Observer> enumObserver = vector.elements();
 
-        while(enumo.hasMoreElements()){
+        while(enumObserver.hasMoreElements()){
 
-            enumo.nextElement().update();
+            enumObserver.nextElement().update();
         }
     }
- 
- }
+  
+  }
 
-::
+.. code-block:: java
 
- public class MySubject extends AbstractSubject{
-    
-    @Override
-    public void operation(){
+  public class MySubject extends AbstractSubject{
+      
+      @Override
+      public void operation(){
 
-        System.out.println("update self!")
+          System.out.println("update self!")
 
-        notifyObservers();
-    }
- }
+          notifyObservers();
+      }
+  }
 
 测试类
 
-.. code:: java
+.. code-block:: java
 
- public class ObserverTest{
-    
+  public class ObserverTest{
+      
     public static void main(String[] args){
 
         Subject sub = new MySubject();
@@ -131,11 +133,9 @@ Subject 接口及实现类：
         sub.add(new Observer2);
         sub.operation();
     }
- }
+  }
 
 输出：
-
- ::
 
  >>> update self!
  >>> observer1 has received

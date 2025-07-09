@@ -25,7 +25,7 @@
 Promise的含义
 ========================
 
-- Promise 是异步编程的一种解决方案，比传统的解决方案–回调函数和事件－－更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise
+- Promise 是异步编程的一种解决方案，比传统的解决方案--回调函数和事件--更合理和更强大。它由社区最早提出和实现，ES6将其写进了语言标准，统一了语法，原生提供了Promise
 
 - 所谓Promise ，简单说就是一个容器，里面保存着某个未来才回结束的事件(通常是一个异步操作）的结果。从语法上说，Promise是一个对象，从它可以获取异步操作的消息。 Promise 对象的状态不受外界影响
 
@@ -51,8 +51,8 @@ Promise原理与讲解
 
 - Promise的状态改变
 
-    - pending------》fulfilled（resolved）
-    - pending------》rejected
+    - pending------> fulfilled（resolved）
+    - pending------> rejected
 
 Promise的状态改变，状态只能由pending转换为rejected或者rejected，一旦状态改变完成后将无法改变（不可逆性）
 

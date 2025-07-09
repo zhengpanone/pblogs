@@ -81,17 +81,16 @@ flash是基于session创建的，flash支持往里边放值，只要你取一下
 通过flag 过滤flash消息
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-.. code-block:: python
+.. code-block:: html
     
-
-   flash('添加成功','ok')
-   {% for msg in get_flashed_messages(category_filter=['ok'])%}
-   <div class="alert alert-success alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-         <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
-         {{ msg }}
-   </div>
-   {% endfor %}
+  flash('添加成功','ok')
+  {% for msg in get_flashed_messages(category_filter=['ok'])%}
+  <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-check"></i> 操作成功!</h4>
+        {{ msg }}
+  </div>
+  {% endfor %}
 
 3.cookie和session
 ===================================

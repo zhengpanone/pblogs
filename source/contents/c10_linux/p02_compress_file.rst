@@ -2,7 +2,6 @@
 2. 压缩和解压文件
 ======================================
 
-
 压缩和解压命令gz、tar、zip、bz2
 ========================================
 
@@ -13,13 +12,13 @@ gzip
 
 - 这种压缩方式不能保存原文件；且不能压缩目录
 
-::
+.. code-block:: bash
 
- # 压缩
- gzip buodo
+  # 压缩
+  gzip buodo
 
- # 解压
- gunzip buodo.gz
+  # 解压
+  gunzip buodo.gz
 
 tar 
 >>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -28,26 +27,26 @@ tar
 
 - 命令选项
 
-::
+.. code-block:: text
 
- -z(gzip)      用gzip来压缩/解压缩文件
- -j(bzip2)     用bzip2来压缩/解压缩文件
- -v(verbose)   详细报告tar处理的文件信息
- -c(create)    新建打包文件
- -C dir        指定压缩/解压缩的目录dir
- -t            查看打包文件的内容含有哪些文件名
- -x(extract)   解压缩文件或目录,可以搭配-C（大写）指定解压的目录,注意-c,-t,-x不能同时出现在同一条命令中
- -f(file)      使用档案文件或设备，这个选项通常是必选的。
+  -z(gzip)      用gzip来压缩/解压缩文件
+  -j(bzip2)     用bzip2来压缩/解压缩文件
+  -v(verbose)   详细报告tar处理的文件信息
+  -c(create)    新建打包文件
+  -C dir        指定压缩/解压缩的目录dir
+  -t            查看打包文件的内容含有哪些文件名
+  -x(extract)   解压缩文件或目录,可以搭配-C（大写）指定解压的目录,注意-c,-t,-x不能同时出现在同一条命令中
+  -f(file)      使用档案文件或设备，这个选项通常是必选的。
 
-::
+.. code-block:: shell
 
- # 压缩
- tar -zcf buodo.tar.gz buodo
- tar -jcf buodo.tar.bz2 buodo 
+  # 压缩
+  tar -zcf buodo.tar.gz buodo
+  tar -jcf buodo.tar.bz2 buodo 
 
- # 解压
- tar -zvxf buodo.tar.gz
- tar -jvxf buodo.bz2
+  # 解压
+  tar -zvxf buodo.tar.gz
+  tar -jvxf buodo.bz2
 
 zip
 >>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -60,14 +59,14 @@ zip
 
 - 命令选项
 
-::
+.. code-block:: text
 
- -r(recursive)    递归压缩目录内的所有文件和目录
+  -r(recursive)    递归压缩目录内的所有文件和目录
 
-::
+.. code-block:: shell
 
- zip -r Demo.zip Demo
- unzip Demo.zip
+  zip -r Demo.zip Demo
+  unzip Demo.zip
 
 bzip2
 >>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -75,18 +74,16 @@ bzip2
 - 压缩后的格式：.bz2
 - 参数
 
-::
+.. code-block:: text
 
- -k 产生压缩文件后保留原文件
+  -k 产生压缩文件后保留原文件
 
-::
+.. code-block:: text
 
- # 压缩
- bzip2 Demo
- bzip2 -k Demo
+  # 压缩
+  bzip2 Demo
+  bzip2 -k Demo
 
- # 解压
- bunzip2 Demo.bz2
-
-
+  # 解压
+  bzip2 Demo.bz2
 

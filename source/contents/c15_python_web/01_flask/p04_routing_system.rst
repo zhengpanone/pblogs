@@ -6,27 +6,25 @@
 ========================
 
 .. code-block:: python
-   
  
-   @app.route('/user/<username>')     # 常用的   不加参数时默认字符串形式
-   @app.route('/post/<int：post_id>')     # 常用的    指定int 说明是整型
-   @app.route('/post/<float:post_id>')
-   @app.route('/post/<path:path>')
-   @app.route('/login', methods=['GET', 'POST'])
+  @app.route('/user/<username>')     # 常用的   不加参数时默认字符串形式
+  @app.route('/post/<int：post_id>')     # 常用的    指定int 说明是整型
+  @app.route('/post/<float:post_id>')
+  @app.route('/post/<path:path>')
+  @app.route('/login', methods=['GET', 'POST'])
 
 
 .. code-block:: python
-   
-
-   DEFAULT_CONVERTERS = {
-      'default':          UnicodeConverter,
-      'string':           UnicodeConverter,
-      'any':              AnyConverter,
-      'path':             PathConverter,
-      'int':              IntegerConverter,
-      'float':            FloatConverter,
-      'uuid':             UUIDConverter,
-   }
+  
+  DEFAULT_CONVERTERS = {
+    'default':          UnicodeConverter,
+    'string':           UnicodeConverter,
+    'any':              AnyConverter,
+    'path':             PathConverter,
+    'int':              IntegerConverter,
+    'float':            FloatConverter,
+    'uuid':             UUIDConverter,
+  }
 
 2. 反向生成URL:url_for
 ============================================
@@ -35,73 +33,90 @@ endpoint("name")   #别名，相当于django中的name
 
 .. code-block:: python
    
+  from flask import Flask,url_for
 
-   from flask import Flask,url_for
+  @app.route('/index', endpoint='xxx')   # endpoint是别名
+  def index():
+    v = url_for('xxx')
+    print(v)
+    return 'index'
 
-   @app.route('/index', endpoint='xxx')   # endpoint是别名
-   def index():
-      v = url_for('xxx')
-      print(v)
-      return 'index'
+  @app.route('zzz/<int:nid>',endpoint='aaa')
+  def zzz(nid):
+    v = url_for('aaa',nid=nid)
+    print(v)
+    return 'index2'
 
-   @app.route('zzz/<int:nid>',endpoint='aaa')
-   def zzz(nid):
-      v = url_for('aaa',nid=nid)
-      print(v)
-      return 'index2'
 
 3. @app.route 和 app.add_url_rule 参数
 ===============================================================
 
-::
+@app.route 和 app.add_url_rule 参数
 
+.. list-table:: Flask add_url_rule 参数说明
+   :header-rows: 1
 
- @app.route 和 app.add_url_rule 参数
-        rule,                                               URL规则
-        view_func,                                      视图函数名称
-        defaults=None,                              默认值，当URL中无参数，函数需要参数是，使用defaults={k:v} 为函数提供参数
-        endpoint=None,                            名称，用于反向生成URL，即： url_for('名称')
-        methods=None,                            允许的请求方式，如：["GET","POST"]
-        strict_slashes=None,                      对URL最后的 / 符号是否严格要求，
+   * - 参数名
+     - 说明
+   * - rule
+     - URL 规则
+   * - view_func
+     - 视图函数名称
+   * - defaults=None
+     - 默认值，当 URL 中无参数而函数需要参数时，使用 defaults={k:v} 提供默认值
+   * - endpoint=None
+     - 用于反向生成 URL，例如 url_for('名称')
+   * - methods=None
+     - 允许的请求方式，例如 ["GET", "POST"]
+   * - strict_slashes=None
+     - 是否严格要求 URL 末尾的 /
+
 
 如：
-@app.route('/index',strict_slashes=False)，　#当为False时，url上加不加斜杠都行访问 http://www.xx.com/index/ 或 http://www.xx.com/index均可
-@app.route('/index',strict_slashes=True)　　#当为True时，url后面必须不加斜杠仅访问 http://www.xx.com/index 
-redirect_to=None,                           # 由原地址直接重定向到指定地址，原url有参数时，跳转到的新url也得传参，注意：新url中不用指定参数类型，直接用旧的参数的类型
+
+>>> @app.route('/index',strict_slashes=False)，#当为False时，url上加不加斜杠都行访问 http://www.xx.com/index/ 或 http://www.xx.com/index均可
+
+>>> @app.route('/index',strict_slashes=True), #当为True时，url后面必须不加斜杠仅访问 http://www.xx.com/index 
+
+>>> redirect_to=None,         # 由原地址直接重定向到指定地址，原url有参数时，跳转到的新url也得传参，注意：新url中不用指定参数类型，直接用旧的参数的类型
+
 如：
-@app.route('/index/<int:nid>', redirect_to='/home/<nid>') # 访问index时，会直接自动跳转到home，执行home的函数，不执行index的
+
+>>> @app.route('/index/<int:nid>', redirect_to='/home/<nid>') # 访问index时，会直接自动跳转到home，执行home的函数，不执行index的
                                             
 或
 
-def func(adapter, nid):
-   return "/home/888"
+.. code-block:: python
 
-@app.route('/index/<int:nid>', redirect_to=func)
+  def func(adapter, nid):
+    return "/home/888"
 
-subdomain=None,                         # 子域名访问
-from flask import Flask, views, url_for
+  @app.route('/index/<int:nid>', redirect_to=func)
 
-app = Flask(import_name=__name__)
-app.config['SERVER_NAME'] = 'haiyan.com:5000'
+  subdomain=None,                         # 子域名访问
+  from flask import Flask, views, url_for
+
+  app = Flask(import_name=__name__)
+  app.config['SERVER_NAME'] = 'haiyan.com:5000'
 
 
-@app.route("/", subdomain="admin")
-def static_index():
-"""Flask supports static subdomains
-This is available at static.your-domain.tld"""
+  @app.route("/", subdomain="admin")
+  def static_index():
+  """Flask supports static subdomains
+  This is available at static.your-domain.tld"""
                                                                 
-return "admin.xxx.com"
+  return "admin.xxx.com"
 
-#动态生成
-@app.route("/dynamic", subdomain="<username>")
-def username_index(username):
-"""Dynamic subdomains are also supported
-Try going to user1.your-domain.tld/dynamic"""
-return username + ".your-domain.tld"
+  #动态生成
+  @app.route("/dynamic", subdomain="<username>")
+  def username_index(username):
+  """Dynamic subdomains are also supported
+  Try going to user1.your-domain.tld/dynamic"""
+  return username + ".your-domain.tld"
 
 
-if __name__ == '__main__':
-   app.run()
+  if __name__ == '__main__':
+    app.run()
   
 所有的域名都得与IP做一个域名解析：
 如果你想通过域名去访问，有两种解决方式：
