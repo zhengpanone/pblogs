@@ -93,12 +93,12 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '16pt',
     'figure_align': 'htbp',
-    'fontpkg': r'''
-    \usepackage{fontspec}
-    \setmainfont{Times New Roman}
-    \setsansfont{Arial}
-    \setmonofont{Courier New}
-    ''',
+    # 'fontpkg': r'''
+    # \usepackage{fontspec}
+    # \setmainfont{Times New Roman}
+    # \setsansfont{Arial}
+    # \setmonofont{Courier New}
+    # ''',
     
     'preamble': r'''
     \usepackage{bookmark}
@@ -114,30 +114,30 @@ latex_elements = {
     # \usepackage{newunicodechar}
 
     # 定义emoji字符
-    \newunicodechar{🚀}{\emoji{🚀}}
-    \newunicodechar{✨}{\emoji{✨}}
-    \newunicodechar{📝}{\emoji{📝}}
-    \newunicodechar{🔥}{\emoji{🔥}}
-    \newunicodechar{🤝}{\emoji{🤝}}
-    \newunicodechar{📈}{\emoji{📈}}
-    \newunicodechar{💻}{\emoji{💻}}
-    \newunicodechar{📚}{\emoji{📚}}
-    \newunicodechar{🔍}{\emoji{🔍}}
-    \newunicodechar{💡}{\emoji{💡}}
-    \newunicodechar{⭐}{\emoji{⭐}}
-    \newunicodechar{🎯}{\emoji{🎯}}
-    \newunicodechar{📊}{\emoji{📊}}
-    \newunicodechar{✅}{\emoji{✅}}
-    \newunicodechar{❌}{\emoji{❌}}
-    \newunicodechar{⚠️}{\emoji{⚠️}}
-    \newunicodechar{💬}{\emoji{💬}}
-    \newunicodechar{🔗}{\emoji{🔗}}
-    \newunicodechar{📅}{\emoji{📅}}
-    \newunicodechar{🔧}{\emoji{🔧}}
-    \newunicodechar{🛠️}{\emoji{🛠️}}
-    \newunicodechar{🖥️}{\emoji{🖥️}}
-    \newunicodechar{🌐}{\emoji{🌐}}
-    \newunicodechar{📖}{\emoji{📖}}
+    # \newunicodechar{🚀}{\emoji{🚀}}
+    # \newunicodechar{✨}{\emoji{✨}}
+    # \newunicodechar{📝}{\emoji{📝}}
+    # \newunicodechar{🔥}{\emoji{🔥}}
+    # \newunicodechar{🤝}{\emoji{🤝}}
+    # \newunicodechar{📈}{\emoji{📈}}
+    # \newunicodechar{💻}{\emoji{💻}}
+    # \newunicodechar{📚}{\emoji{📚}}
+    # \newunicodechar{🔍}{\emoji{🔍}}
+    # \newunicodechar{💡}{\emoji{💡}}
+    # \newunicodechar{⭐}{\emoji{⭐}}
+    # \newunicodechar{🎯}{\emoji{🎯}}
+    # \newunicodechar{📊}{\emoji{📊}}
+    # \newunicodechar{✅}{\emoji{✅}}
+    # \newunicodechar{❌}{\emoji{❌}}
+    # \newunicodechar{⚠️}{\emoji{⚠️}}
+    # \newunicodechar{💬}{\emoji{💬}}
+    # \newunicodechar{🔗}{\emoji{🔗}}
+    # \newunicodechar{📅}{\emoji{📅}}
+    # \newunicodechar{🔧}{\emoji{🔧}}
+    # \newunicodechar{🛠️}{\emoji{🛠️}}
+    # \newunicodechar{🖥️}{\emoji{🖥️}}
+    # \newunicodechar{🌐}{\emoji{🌐}}
+    # \newunicodechar{📖}{\emoji{📖}}
     '''
     
     } 
