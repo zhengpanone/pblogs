@@ -88,12 +88,12 @@ https://www.python.org/downloads/source/
 
 执行如下命令（注意：V是大写的V），如果看到的结果一致的话，说明Python3已经成功安装。
 
-::
+.. code-block:: bash
 
- [alvin@VM_0_16_centos ~]$ python3 -V
- Python 3.6.1
- [alvin@VM_0_16_centos ~]$ pip3 -V
- pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)
+  [alvin@VM_0_16_centos ~]$ python3 -V
+  Python 3.6.1
+  [alvin@VM_0_16_centos ~]$ pip3 -V
+  pip 9.0.1 from /usr/local/lib/python3.6/site-packages (python 3.6)
 
 避坑指南
 -------------------------------
@@ -155,11 +155,11 @@ https://www.python.org/downloads/source/
 
 再查询一下openssl，问题解决！
 
-::
+.. code-block:: shell
 
- # rpm -qa | grep openssl
- openssl-devel-1.0.1e-16.el6_5.7.x86_64
- openssl-1.0.1e-16.el6_5.7.x86_64
+  # rpm -qa | grep openssl
+  openssl-devel-1.0.1e-16.el6_5.7.x86_64
+  openssl-1.0.1e-16.el6_5.7.x86_64
 
 .. _python_install:
 

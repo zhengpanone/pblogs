@@ -35,7 +35,7 @@ add(200, 50)
 
 来看看输出了什么？
 
-```
+```text
 主人，我准备开始执行：add 函数了:
 200 + 50 = 250
 主人，我执行完啦。
@@ -74,7 +74,7 @@ want_sleep(10)
 
 来看看输出，如预期一样，输出10秒。
 
-```
+```text
 花费时间：10.0073800086975098秒
 ```
 
@@ -139,7 +139,7 @@ jack()
 
 看看输出结果。
 
-```
+```bash
 你好!
 ------------
 hello.
@@ -172,7 +172,7 @@ say("hello")
 
 执行一下，看看输出
 
-```
+```bash
 [INFO]: the function say() is running...
 say hello!
 ```
@@ -206,7 +206,7 @@ say("hello")
 
 我们指定`WARNING`级别，运行一下，来看看输出。
 
-```
+```bash
 [WARNING]: the function say() is running...
 say hello!
 ```

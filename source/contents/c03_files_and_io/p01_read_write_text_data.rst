@@ -18,14 +18,14 @@
 
 读文件
 
-::
+.. code-block:: python
 
- f = open('/opt/work/user/zhengpanone/test.txt','r')
+  f = open('/opt/work/user/zhengpanone/test.txt','r')
 
 标识符'r',标识只读;
 如果文件不存在,open()函数会抛出异常IOError的错误
 
-::
+.. code-block:: pycon
 
  >>> f=open('/Users/michael/notfound.txt', 'r')
  Traceback (most recent call last):
@@ -44,22 +44,22 @@
 
 由于文件读写都有可能产生IOError,一旦文件出错,后面的f.close就不会调用。所以,为了保证无论是否出错都能正确的关闭文件,使用try... finally 实现：
 
-::
+.. code-block:: python
 
- try:
+  try:
     f = open('path/file','r')
     print(f.read())
- finally:
+  finally:
     if f:
         f.close()
 
 
 使用with 读写文件
 
-::
+.. code-block:: python
 
- with open('path/file','r') as f, open('path/file2','w') ad f2:
-   for l in a:
+  with open('path/file','r') as f, open('path/file2','w') ad f2:
+    for l in a:
       f2.write(l.readline())
 
 

@@ -52,7 +52,7 @@ python -m timeit -n 1000000 -r 5 -v "{}"
 
 ### why
 
-```
+```bash
 {}
 $
 $ python -m dis demo.py
@@ -62,7 +62,7 @@ $ python -m dis demo.py
               6 RETURN_VALUE
 ```
 
-```
+```bash
 dict()
 $
 $ python -m dis demo.py
@@ -77,7 +77,7 @@ $ python -m dis demo.py
 
 ## return不一定都是函数的终点
 
-```
+```bash
 >>>def func():
 ...     try:
 ...         return 'try'
@@ -92,7 +92,7 @@ $ python -m dis demo.py
 
 ### **如果 try 里的 return 真的是直接被忽视吗？**
 
-```
+```bash
 >>> def func():
 ...     try:
 ...         return 'try'
@@ -112,7 +112,7 @@ finally
 
 ## 去除Counter中的负数
 
-```
+```bash
 >>> from collections import Counter
 >>> ct = Counter('abcdbcaa')
 >>> ct
@@ -133,7 +133,7 @@ Counter({'a': 3, 'b': 2})
 
 因此会有如下两者的差异。
 
-```
+```bash
 # =+
 >>> a = [1, 2, 3, 4]
 >>> b = a
@@ -186,7 +186,7 @@ while True:
 
 从输出的结果来看，当 a = 2 时执行了 break ，此时的并不会直接跳出循环，依然要运行上下文管理器里清理释放资源的代码（示例中，我使用 print 来替代）。
 
-```
+```bash
 start: a = 1
 end: a = 1
 start: a = 2

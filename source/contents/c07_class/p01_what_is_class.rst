@@ -19,9 +19,9 @@
 - 普通字段属于对象
 - 静态字段属于类
 
-::
+.. code-block:: python
 
- class Province:
+  class Province:
     
     country = '中国'    # 静态字段，保存在类中
 
@@ -29,12 +29,12 @@
         
         self.name = name # 普通字段，保存在对象中
 
- # 直接访问普通字段
- obj = Province('河北省')
- print(obj.name)
+  # 直接访问普通字段
+  obj = Province('河北省')
+  print(obj.name)
 
- # 直接访问静态字段
- Province.country
+  # 直接访问静态字段
+  Province.country
 
 普通字段需要通过对象来访问，静态字段通过类访问，可以看出普通字段和静态字段的归属是不同的。存储方式类似下图
 |image2|
@@ -60,9 +60,9 @@
 - 类方法：由**类**调用；至少一个cls参数；执行类方法时，自动将调用该方法的类赋值给cls;
 - 静态方法：由**类**调用；无默认参数；
 
-::
+.. code-block:: python
 
- class Foo:
+  class Foo:
     
     def __init__(self,name):
         self.name = name
@@ -81,15 +81,15 @@
         """定义静态方法，无默认参数"""
         print("静态方法")
 
- # 调用普通方法 
- f = Foo()
- f.ord_func()
+  # 调用普通方法 
+  f = Foo()
+  f.ord_func()
 
- # 调用类方法 
- Foo.class_func()
+  # 调用类方法 
+  Foo.class_func()
 
- # 调用静态方法
- Foo.static_func()
+  # 调用静态方法
+  Foo.static_func()
 
 |image3|
 
@@ -108,9 +108,9 @@ Python中的属性其实是普通方法的变种，对于属性有两个知识�
 1、属性的基本使用
 ----------------------------
 
-::
+.. code-block:: python
 
- class Foo:
+  class Foo:
     def func(self):
         pass
     
@@ -119,11 +119,11 @@ Python中的属性其实是普通方法的变种，对于属性有两个知识�
     def prop(self):
         pass
 
- # 属性调用
- foo_obj = Foo()
+  # 属性调用
+  foo_obj = Foo()
 
- foo_obj.func()
- foo_obj.prop # 调用属性
+  foo_obj.func()
+  foo_obj.prop # 调用属性
 
 .. _async_io:
 

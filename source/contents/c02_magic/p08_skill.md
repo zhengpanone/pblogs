@@ -38,7 +38,7 @@ for item1,item2,item3 in product(list1, list2, list3):
 
 输出如下
 
-```
+```bash
 $ python demo.py
 12
 13
@@ -148,7 +148,7 @@ print(timeit.timeit(lambda :run_sleep(2), number=5))
 
 运行结果如下
 
-```
+```bash
 2
 2
 2

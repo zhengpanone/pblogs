@@ -2,23 +2,23 @@
 
 ## 最快查看包搜索路径的方式
 
-```python
-python -c "print('\n'.join(__import__('sys').path))"
+```bash
+$ python -c "print('\n'.join(__import__('sys').path))"
 ```
 
-```
-python3 -m site
+```bash
+$ python3 -m site
 ```
 
 ## 使用 json.tool 来格式化 JSON
 
-```
-python -m json.tool demo.json
+```bash
+$ python -m json.tool demo.json
 ```
 
 ## 命令行式执行 Python 代码
 
-```
+```bash
 $ python -c "import hashlib;print(hashlib.md5('hello').hexdigest())"
 5d41402abc4b2a76b9719d911017c592
 ```
@@ -29,7 +29,7 @@ $ python -c "import hashlib;print(hashlib.md5('hello').hexdigest())"
 
 除此之外，还有一种方法，就是使用 `-m pdb`
 
-```
+```shell
 $ python -m pdb demo.py
 > /Users/MING/demo.py(1)<module>()
 -> import sys
@@ -40,7 +40,7 @@ $ python -m pdb demo.py
 
 SimpleHTTPServer是Python 2自带的一个模块，是Python的Web服务器。它在Python 3已经合并到http.server模块中。具体例子如下，如不指定端口，则默认是8000端口。
 
-```
+```shell
 # python2
 python -m SimpleHTTPServer 8888
 
@@ -52,14 +52,14 @@ SimpleHTTPServer有一个特性，如果待共享的目录下有index.html，那
 
 ## 快速构建 HTML 帮助文档
 
-```
+```shell
 $ python -m pydoc -p 5200
 pydoc server ready at http://localhost:5200/
 ```
 
 ## 优雅的装包方法
 
-```
+```shell
 # 在 python2 中安装
 $ python -m pip install requests
 
@@ -75,13 +75,13 @@ $ python3.9 -m pip install requests
 
 ## 让脚本报错后立即进入调试模式
 
-```
+```shell
 python -i demo.py
 ```
 
 ## 极简模式执行 Python Shell
 
-```
+```shell
 python -q
 ```
 
@@ -91,7 +91,7 @@ python -q
 
 2. 设置一个环境变量 PYTHONSTARTUP，指向你的脚本路径
 
-   ```
+   ```shell
    export PYTHONSTARTUP=/Users/MING/startup.py
    ```
 
@@ -105,7 +105,7 @@ python -q
 
 1、 快速搭建一个 HTTP 服务
 
-```
+```bash
 # python2
 $ python -m SimpleHTTPServer 8888
 
@@ -115,37 +115,37 @@ $ python3 -m http.server 8888
 
 2、快速构建 HTML 帮助文档
 
-```
+```bash
 $ python -m pydoc -p 5200
 ```
 
 3、快速进入 pdb 调试模式
 
-```
+```bash
 $ python -m pdb demo.py
 ```
 
 4、最优雅且正确的包安装方法
 
-```
+```bash
 $ python3 -m pip install requests
 ```
 
 5、快速美化 JSON 字符串
 
-```
+```bash
 $ echo '{"name": "MING"}' | python -m json.tool
 ```
 
 6、快速打印包的搜索路径
 
-```
+```bash
 $ python -m site
 ```
 
 7、用于快速计算程序执行时长
 
-```
+```bash
 $ python3 -m timeit '"-".join(map(str, range(100)))'
 ```
 
@@ -171,7 +171,7 @@ $ python3 -m timeit '"-".join(map(str, range(100)))'
 
 只有当 `__name__` 为 `__main___` 时，main 函数才会被调用
 
-```
+```bash
 if __name__ == '__main__':
     main()
 ```
@@ -185,7 +185,7 @@ if __name__ == '__main__':
 - 第一种：以 `-m <package>` 的方式执行，只要在 package 下写一个 `__main__.py` 的文件即可。
 - 第二种：以 `-m <package.module>` 的方式执行，只要在 module 的代码中，定义一个 main 函数，然后在最外层写入下面这段固定的代码
 
-```
+```bash
 if __name__ == '__main__':
     main()
 ```

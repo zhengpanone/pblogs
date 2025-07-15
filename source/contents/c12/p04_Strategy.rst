@@ -33,108 +33,108 @@ Promotion 抽象类提供了不同算法的公共接口,FidelityPromo、BulkProm
 传统方法实现策略模式
 --------------------------------
 
-::
+.. code-block:: python
 
- from abc import ABC,abstractmethod
- from collections import namedtuple
+  from abc import ABC,abstractmethod
+  from collections import namedtuple
 
- Customet = namedtuple('Customer','name fidelity')
+  Customet = namedtuple('Customer','name fidelity')
 
- class LineItem:
-    """订单中单个商品的数量和单价"""
-    def __init__(self, product, quantity, price):
-        self.product = product
-        self.quantity = quantity
-        self.price = price
+  class LineItem:
+  """订单中单个商品的数量和单价"""
+  def __init__(self, product, quantity, price):
+      self.product = product
+      self.quantity = quantity
+      self.price = price
 
-    def total(self):
-        return self.price*self.quantity 
+  def total(self):
+      return self.price*self.quantity 
 
- class Order:
-    """"订单"""
+  class Order:
+  """"订单"""
 
-    def __init__(self, customer, cart, promotion=None):
-        self.customer = customer 
-        self.cart = list(cart)
-        self.promotion = promotion 
-    
-    def total(self):
-        if not hasattr(self, '__total'):
+  def __init__(self, customer, cart, promotion=None):
+      self.customer = customer 
+      self.cart = list(cart)
+      self.promotion = promotion 
 
-            self.total = sum(item.total() for item in self.cart)
+  def total(self):
+      if not hasattr(self, '__total'):
 
-        return self.__total
+          self.total = sum(item.total() for item in self.cart)
 
-    def due(self):
-        if self.promotion is None:
-            discount = 0
-        else:
-            discount = self.promotion.discount(self)
+      return self.__total
 
-        return self.total() -discount
+  def due(self):
+      if self.promotion is None:
+          discount = 0
+      else:
+          discount = self.promotion.discount(self)
 
-    def __repr__(self):
-        fmt = '<订单 总价:{:.2f} 实付:{:.2f}>'
-        return fmt.format(self.total(),self.due())
+      return self.total() -discount
 
- class Promotion(ABC): # 策略:抽象基类
-    @abstractmethod
-    def discount(self,order):
+  def __repr__(self):
+      fmt = '<订单 总价:{:.2f} 实付:{:.2f}>'
+      return fmt.format(self.total(),self.due())
 
-        """返回折扣金额(正值)"""
+  class Promotion(ABC): # 策略:抽象基类
+  @abstractmethod
+  def discount(self,order):
 
-        return 
+      """返回折扣金额(正值)"""
 
- class FidelityPromo(Promotion): # 第一个具体策略
-    """为积分1000或以上顾客提供5%折扣"""
-    def discount(self,order):
+      return 
 
-        return order.total()*0.05 if order.customer.fidelity >= 1000 else 0
+  class FidelityPromo(Promotion): # 第一个具体策略
+  """为积分1000或以上顾客提供5%折扣"""
+  def discount(self,order):
 
- class BulkItemPromo(Promotion): # 第二个具体策略
-    """单个商品为20个或以上时提供10%折扣"""
-    def discount(self, order):
+      return order.total()*0.05 if order.customer.fidelity >= 1000 else 0
 
-        discount = 0
-        for item in oredr.cart:
+  class BulkItemPromo(Promotion): # 第二个具体策略
+  """单个商品为20个或以上时提供10%折扣"""
+  def discount(self, order):
 
-            if item.quantity >= 20:
-                discount += item.total()*01
-        return discount
+      discount = 0
+      for item in oredr.cart:
 
- class LargeOrderPromo(Promotion): # 第三个具体策略
-    """订单中不同商品达到10个或以上时提供7%"""
-    def discount(self, order):
+          if item.quantity >= 20:
+              discount += item.total()*01
+      return discount
 
-        distinct_items = {item.product for item in order.cart}
-        if len(distinct_items) >= 10:
+  class LargeOrderPromo(Promotion): # 第三个具体策略
+  """订单中不同商品达到10个或以上时提供7%"""
+  def discount(self, order):
 
-            return order.total()*0.07
+      distinct_items = {item.product for item in order.cart}
+      if len(distinct_items) >= 10:
 
-        return 0
+          return order.total()*0.07
 
- joe = Customer('John Doe', 0)
- ann = Customer('Ann Smith', 1100)
+      return 0
 
- cart = [LineItem('banan', 4, 0.5),
-         LineItem('apple', 10, 1.5),
-         LineItem('watermellon', 5, 5.0)]
+  joe = Customer('John Doe', 0)
+  ann = Customer('Ann Smith', 1100)
 
- print('策略一：为积分为1000或以上的顾客提供5%折扣')
- print(Order(joe, cart, FidelityPromo()))
- print(Order(ann, cart, FidelityPromo()))
+  cart = [LineItem('banan', 4, 0.5),
+          LineItem('apple', 10, 1.5),
+          LineItem('watermellon', 5, 5.0)]
 
- banana_cart = [LineItem('banana', 30, 0.5),
-               LineItem('apple', 10, 1.5)]
+  print('策略一：为积分为1000或以上的顾客提供5%折扣')
+  print(Order(joe, cart, FidelityPromo()))
+  print(Order(ann, cart, FidelityPromo()))
 
- print('策略二：单个商品为20个或以上时提供10%折扣')
- print(Order(joe, banana_cart, BulkItemPromo()))
+  banana_cart = [LineItem('banana', 30, 0.5),
+              LineItem('apple', 10, 1.5)]
 
- long_order = [LineItem(str(item_code), 1, 1.0) for item_code in range(10)]
+  print('策略二：单个商品为20个或以上时提供10%折扣')
+  print(Order(joe, banana_cart, BulkItemPromo()))
 
- print('策略三：订单中的不同商品达到10个或以上时提供7%折扣')
- print(Order(joe, long_order, LargeOrderPromo()))
- print(Order(joe, cart, LargeOrderPromo()))
+  long_order = [LineItem(str(item_code), 1, 1.0) for item_code in range(10)]
+
+  print('策略三：订单中的不同商品达到10个或以上时提供7%折扣')
+  print(Order(joe, long_order, LargeOrderPromo()))
+  print(Order(joe, cart, LargeOrderPromo()))
     
  
 使用函数实现策略模式

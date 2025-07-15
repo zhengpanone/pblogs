@@ -26,7 +26,7 @@ simplepdf_vars = {
 
 extensions = [
     'chinese_search', 
-    'recommonmark', 
+    'myst_parser', 
     'sphinx_markdown_tables',
     # 'sphinxcontrib.inkscapeconverter',
     'sphinx_copybutton',
@@ -114,7 +114,7 @@ latex_elements = {
     # \usepackage{bm}
     # \usepackage{newunicodechar}
 
-    # 定义emoji字符
+
     # \newunicodechar{🚀}{\emoji{🚀}}
     # \newunicodechar{✨}{\emoji{✨}}
     # \newunicodechar{📝}{\emoji{📝}}

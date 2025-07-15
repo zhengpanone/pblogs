@@ -183,15 +183,15 @@ Cookie
 读Cookie
 ::::::::::::::::
 
-::
+.. code-block:: python
 
- improt http.cookiejar,urllib.request
- cookie = http.cookiejar.LWPCookieJar()
- cookie.load('cookie.txt',ignore_discard=True,ignore_expires=True)
- handler = urllib.request.HTTPCookieProcesson(cookie)
- opener = urllib.request.build_opener(handler)
- response = opener.open('http://www.baidu.com')
- print(response.read().decode('utf-8'))
+  import http.cookiejar,urllib.request
+  cookie = http.cookiejar.LWPCookieJar()
+  cookie.load('cookie.txt',ignore_discard=True,ignore_expires=True)
+  handler = urllib.request.HTTPCookieProcesson(cookie)
+  opener = urllib.request.build_opener(handler)
+  response = opener.open('http://www.baidu.com')
+  print(response.read().decode('utf-8'))
 
 异常处理
 ========

@@ -11,7 +11,7 @@ with EXPR as VAR:
 
 先理清几个概念
 
-```
+```text
 1. 上下文表达式：with open('test.txt') as f:
 2. 上下文管理器：open('test.txt')
 3. f 不是上下文管理器，应该是资源对象。
@@ -42,7 +42,7 @@ with Resource() as res:
 
 我们执行一下，通过日志的打印顺序。可以知道其执行过程。
 
-```
+```text
 ===connect to resource===
 ===in operation===
 ===close resource connection===

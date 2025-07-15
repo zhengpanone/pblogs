@@ -357,7 +357,7 @@ class Student:
 
 说了这么多，还是运行一下，更加直观一点。
 
-```
+```bash
 # 运行后，会直接打印这一行，这是在实例化 TestProperty 并赋值给第二个math
 in setter
 >>>
@@ -376,7 +376,7 @@ in __get__
 
 我这里定义了一个类，用了两种方式来实现静态方法。
 
-```
+```python
 class Test:
     @staticmethod
     def myfunc():
@@ -393,7 +393,7 @@ class Test:
 
 这两种写法是等价的，就好像在 `property` 一样，其实以下两种写法也是等价的。
 
-```
+```python
 @TestProperty
 def math(self):
     return self._math
@@ -409,7 +409,7 @@ math = TestProperty(fget=math)
 
 调用这个方法可以知道，每调用一次，它都会经过描述符类的 `__get__` 。
 
-```
+```bash
 >>> Test.myfunc()
 in staticmethod __get__
 hello
@@ -491,7 +491,7 @@ Student 里没有像前面那样写了构造函数，但是关键不在这儿，
 
 然后来看一下会出现什么样的问题呢
 
-```
+```bash
 >>> std1 = Student()
 >>> std1
 <Student math:0, chinese:0, english:0>

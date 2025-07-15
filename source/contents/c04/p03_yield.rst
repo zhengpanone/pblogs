@@ -25,14 +25,14 @@ yield 使用
 
 >>> [(t:=(t[1], sum(t)) if i else (0,1))[1] for i in range(10)]
 
-::
+.. code-block:: pycon
 
- >>> fab(5)
- 1
- 1
- 2
- 3
- 5
+  >>> fab(5)
+  1
+  1
+  2
+  3
+  5
 
 直接在 fab 函数中用 print 打印数字会导致该函数可复用性较差，因为 fab 函数返回 None，其他函数无法获得该函数生成的数列。
 
@@ -50,18 +50,15 @@ yield 使用
           n = n + 1
       return L
 
-::
+.. code-block:: pycon
 
- >>> for n in fab(5):
-         print(n)
-
-   
-
-     1
-     1
-     2
-     3
-     5
+  >>> for n in fab(5):
+  >>>   print(n)
+  1
+  1
+  2
+  3
+  5
 
 函数在运行中占用的内存会随着参数 max 的增大而增大，如果要控制内存占用，最好不要用 List
 
@@ -87,16 +84,16 @@ yield 使用
 
 Fab类通过next()不断返回数列的下一个数,内存占用始终为常数：
 
-::
+.. code-block:: pycon
 
- >>> for n in Fab(5):
-      print(n)
+  >>> for n in Fab(5):
+        print(n)
  
- 1
- 1
- 2
- 3
- 5
+  1
+  1
+  2
+  3
+  5
 
 使用class改写的没有第一版简洁,想要简洁且获得iterable的效果,使用yield:
 
@@ -111,20 +108,15 @@ Fab类通过next()不断返回数列的下一个数,内存占用始终为常数�
       n = n + 1
 
 
+.. code-block:: pycon
 
->>> for n in fab(5):
-
->>>     print(n)
-
->>> 1
-
->>> 1
-
->>> 2
-
->>> 3
-
->>> 5
+  >>> for n in fab(5):
+  >>>   print(n)
+  1
+  1
+  2
+  3
+  5
 
 yield 的作用是把函数变成一个generator,带有yield的函数不再是一个普通函数,Python解释器会将其视为一个generator,调用fab(5) 不会执行fab函数,而是返回一个iterable对象！在for循环执行时,每次循环都会执行fab函数内部代码,执行到yield b时,fab函数就返回一个迭代值,下次迭代时,代码从yield b 的下一条语句继续执行,而函数的本地变量看起来和上次中断执行前时完全一样的,于是函数继续执行,直到再次遇到yield.
 

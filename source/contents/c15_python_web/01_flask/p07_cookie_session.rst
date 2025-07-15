@@ -3,7 +3,7 @@
 =========================
 
 除请求对象之外，还有一个 session 对象。它允许你在不同请求间存储特定用户的信息。它是在 Cookies 的基础上实现的，并且对 Cookies 进行密钥签名要使用会话，你需要设置一个密钥。
-设置：session['username'] ＝ 'xxx'
+设置：session['username'] = 'xxx'
 删除：session.pop('username', None)
 
 .. literalinclude:: ./code/p07_cookie_session/set_session.py
@@ -14,234 +14,232 @@
 关于session的配置
 --------------------------------
 
-.. code:: python
+.. code-block:: python
 
-    app.config['SESSION_COOKIE_NAME'] = 'session_lvning'
+  app.config['SESSION_COOKIE_NAME'] = 'session_lvning'
 
-::
 
- - session超时时间如何设置？      'PERMANENT_SESSION_LIFETIME':           timedelta(days=31)
- 以下是跟session相关的配置文件
- """
-            'SESSION_COOKIE_NAME':                  'session',
-            'SESSION_COOKIE_DOMAIN':                None,
-            'SESSION_COOKIE_PATH':                  None,
-            'SESSION_COOKIE_HTTPONLY':              True,
-            'SESSION_COOKIE_SECURE':                False,
-            'SESSION_REFRESH_EACH_REQUEST':         True,  #是否每次都跟新
-            'PERMANENT_SESSION_LIFETIME':           timedelta(days=31)
- """
+
+session超时时间如何设置？     
+以下是跟session相关的配置文件
+
+'SESSION_COOKIE_NAME':                  'session',
+'SESSION_COOKIE_DOMAIN':                None,
+'SESSION_COOKIE_PATH':                  None,
+'SESSION_COOKIE_HTTPONLY':              True,
+'SESSION_COOKIE_SECURE':                False,
+'SESSION_REFRESH_EACH_REQUEST':         True,  #是否每次都跟新
+'PERMANENT_SESSION_LIFETIME':           timedelta(days=31)
+
 
 基本使用
 
 .. code-block:: python
 
-    from flask import Flask, session, redirect, url_for, escape, request
-    
-    app = Flask(__name__)
-    
-    @app.route('/')
-    def index():
-        if 'username' in session:
-            return 'Logged in as %s' % escape(session['username'])
-        return 'You are not logged in'
-    
-    @app.route('/login', methods=['GET', 'POST'])
-    def login():
-        if request.method == 'POST':
-            session['username'] = request.form['username']
-            return redirect(url_for('index'))
-        return '''
-            <form action="" method="post">
-                <p><input type=text name=username>
-                <p><input type=submit value=Login>
-            </form>
-        '''
-    
-    @app.route('/logout')
-    def logout():
-        # remove the username from the session if it's there
-        session.pop('username', None)
-        return redirect(url_for('index'))
-    
-    # set the secret key.  keep this really secret:
-    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+  from flask import Flask, session, redirect, url_for, escape, request
+  
+  app = Flask(__name__)
+  
+  @app.route('/')
+  def index():
+      if 'username' in session:
+          return 'Logged in as %s' % escape(session['username'])
+      return 'You are not logged in'
+  
+  @app.route('/login', methods=['GET', 'POST'])
+  def login():
+      if request.method == 'POST':
+          session['username'] = request.form['username']
+          return redirect(url_for('index'))
+      return '''
+          <form action="" method="post">
+              <p><input type=text name=username>
+              <p><input type=submit value=Login>
+          </form>
+      '''
+  
+  @app.route('/logout')
+  def logout():
+      # remove the username from the session if it's there
+      session.pop('username', None)
+      return redirect(url_for('index'))
+  
+  # set the secret key.  keep this really secret:
+  app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 自定义session
 
 >>> pip3 install Flask-Session
 
 .. code-block:: python
-   :caption: hello.py    
-        
-    from flask import Flask
-    from flask import session
-    from pro_flask.utils.session import MySessionInterface
-    app = Flask(__name__)
+  :caption: hello.py    
+      
+  from flask import Flask
+  from flask import session
+  from pro_flask.utils.session import MySessionInterface
+  app = Flask(__name__)
 
-    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-    app.session_interface = MySessionInterface()
+  app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+  app.session_interface = MySessionInterface()
 
-    @app.route('/login.html', methods=['GET', "POST"])
-    def login():
-        print(session)
-        session['user1'] = 'alex'
-        session['user2'] = 'alex'
-        del session['user2']
+  @app.route('/login.html', methods=['GET', "POST"])
+  def login():
+      print(session)
+      session['user1'] = 'alex'
+      session['user2'] = 'alex'
+      del session['user2']
 
-        return "内容"
+      return "内容"
 
-    if __name__ == '__main__':
-        app.run()
+  if __name__ == '__main__':
+      app.run()
 
 .. code-block:: python
        
-   :caption: session.py
-        
-    #!/usr/bin/env python
-    # -*- coding:utf-8 -*-
-    import uuid
-    import json
-    from flask.sessions import SessionInterface
-    from flask.sessions import SessionMixin
-    from itsdangerous import Signer, BadSignature, want_bytes
+  :caption: session.py
+      
+  #!/usr/bin/env python
+  # -*- coding:utf-8 -*-
+  import uuid
+  import json
+  from flask.sessions import SessionInterface
+  from flask.sessions import SessionMixin
+  from itsdangerous import Signer, BadSignature, want_bytes
 
 
-    class MySession(dict, SessionMixin):
-        def __init__(self, initial=None, sid=None):
-            self.sid = sid
-            self.initial = initial
-            super(MySession, self).__init__(initial or ())
+  class MySession(dict, SessionMixin):
+      def __init__(self, initial=None, sid=None):
+          self.sid = sid
+          self.initial = initial
+          super(MySession, self).__init__(initial or ())
 
 
-        def __setitem__(self, key, value):
-            super(MySession, self).__setitem__(key, value)
+      def __setitem__(self, key, value):
+          super(MySession, self).__setitem__(key, value)
 
-        def __getitem__(self, item):
-            return super(MySession, self).__getitem__(item)
+      def __getitem__(self, item):
+          return super(MySession, self).__getitem__(item)
 
-        def __delitem__(self, key):
-            super(MySession, self).__delitem__(key)
+      def __delitem__(self, key):
+          super(MySession, self).__delitem__(key)
 
 
 
-    class MySessionInterface(SessionInterface):
-        session_class = MySession
-        container = {}
+  class MySessionInterface(SessionInterface):
+      session_class = MySession
+      container = {}
 
-        def __init__(self):
-            import redis
-            self.redis = redis.Redis()
+      def __init__(self):
+          import redis
+          self.redis = redis.Redis()
 
-        def _generate_sid(self):
-            return str(uuid.uuid4())
+      def _generate_sid(self):
+          return str(uuid.uuid4())
 
-        def _get_signer(self, app):
-            if not app.secret_key:
-                return None
-            return Signer(app.secret_key, salt='flask-session',
-                            key_derivation='hmac')
+      def _get_signer(self, app):
+          if not app.secret_key:
+              return None
+          return Signer(app.secret_key, salt='flask-session',
+                          key_derivation='hmac')
 
-        def open_session(self, app, request):
-            """
-            程序刚启动时执行，需要返回一个session对象
-            """
-            sid = request.cookies.get(app.session_cookie_name)
-            if not sid:
-                sid = self._generate_sid()
-                return self.session_class(sid=sid)
+      def open_session(self, app, request):
+          """
+          程序刚启动时执行，需要返回一个session对象
+          """
+          sid = request.cookies.get(app.session_cookie_name)
+          if not sid:
+              sid = self._generate_sid()
+              return self.session_class(sid=sid)
 
-            signer = self._get_signer(app)
-            try:
-                sid_as_bytes = signer.unsign(sid)
-                sid = sid_as_bytes.decode()
-            except BadSignature:
-                sid = self._generate_sid()
-                return self.session_class(sid=sid)
+          signer = self._get_signer(app)
+          try:
+              sid_as_bytes = signer.unsign(sid)
+              sid = sid_as_bytes.decode()
+          except BadSignature:
+              sid = self._generate_sid()
+              return self.session_class(sid=sid)
 
-            # session保存在redis中
-            # val = self.redis.get(sid)
-            # session保存在内存中
-            val = self.container.get(sid)
+          # session保存在redis中
+          # val = self.redis.get(sid)
+          # session保存在内存中
+          val = self.container.get(sid)
 
-            if val is not None:
-                try:
-                    data = json.loads(val)
-                    return self.session_class(data, sid=sid)
-                except:
-                    return self.session_class(sid=sid)
-            return self.session_class(sid=sid)
+          if val is not None:
+              try:
+                  data = json.loads(val)
+                  return self.session_class(data, sid=sid)
+              except:
+                  return self.session_class(sid=sid)
+          return self.session_class(sid=sid)
 
-        def save_session(self, app, session, response):
-            """
-            程序结束前执行，可以保存session中所有的值
-            如：
-                保存到resit
-                写入到用户cookie
-            """
-            domain = self.get_cookie_domain(app)
-            path = self.get_cookie_path(app)
-            httponly = self.get_cookie_httponly(app)
-            secure = self.get_cookie_secure(app)
-            expires = self.get_expiration_time(app, session)
+      def save_session(self, app, session, response):
+          """
+          程序结束前执行，可以保存session中所有的值
+          如：
+              保存到resit
+              写入到用户cookie
+          """
+          domain = self.get_cookie_domain(app)
+          path = self.get_cookie_path(app)
+          httponly = self.get_cookie_httponly(app)
+          secure = self.get_cookie_secure(app)
+          expires = self.get_expiration_time(app, session)
 
-            val = json.dumps(dict(session))
+          val = json.dumps(dict(session))
 
-            # session保存在redis中
-            # self.redis.setex(name=session.sid, value=val, time=app.permanent_session_lifetime)
-            # session保存在内存中
-            self.container.setdefault(session.sid, val)
+          # session保存在redis中
+          # self.redis.setex(name=session.sid, value=val, time=app.permanent_session_lifetime)
+          # session保存在内存中
+          self.container.setdefault(session.sid, val)
 
-            session_id = self._get_signer(app).sign(want_bytes(session.sid))
+          session_id = self._get_signer(app).sign(want_bytes(session.sid))
 
-            response.set_cookie(app.session_cookie_name, session_id,
-                                expires=expires, httponly=httponly,
-                                domain=domain, path=path, secure=secure)
+          response.set_cookie(app.session_cookie_name, session_id,
+                              expires=expires, httponly=httponly,
+                              domain=domain, path=path, secure=secure)
 
 
 第三方session
 
-::
 
 .. code-block:: python
        
+  """
+  pip3 install redis
+  pip3 install flask-session
+  """
 
-    """
-    pip3 install redis
-    pip3 install flask-session
-    """
-
-    #!/usr/bin/env python
-    # -*- coding:utf-8 -*-
-    from flask import Flask, session, redirect
-    from flask.ext.session import Session
-
-
-    app = Flask(__name__)
-    app.debug = True
-    app.secret_key = 'asdfasdfasd'
+  #!/usr/bin/env python
+  # -*- coding:utf-8 -*-
+  from flask import Flask, session, redirect
+  from flask.ext.session import Session
 
 
-    app.config['SESSION_TYPE'] = 'redis'
-    from redis import Redis
-    app.config['SESSION_REDIS'] = Redis(host='192.168.0.94',port='6379')
-    Session(app)
+  app = Flask(__name__)
+  app.debug = True
+  app.secret_key = 'asdfasdfasd'
 
 
-    @app.route('/login')
-    def login():
-        session['username'] = 'alex'
-        return redirect('/index')
+  app.config['SESSION_TYPE'] = 'redis'
+  from redis import Redis
+  app.config['SESSION_REDIS'] = Redis(host='192.168.0.94',port='6379')
+  Session(app)
 
 
-    @app.route('/index')
-    def index():
-        name = session['username']
-        return name
+  @app.route('/login')
+  def login():
+      session['username'] = 'alex'
+      return redirect('/index')
 
 
-    if __name__ == '__main__':
-        app.run()
+  @app.route('/index')
+  def index():
+      name = session['username']
+      return name
+
+
+  if __name__ == '__main__':
+      app.run()
 
 
 Django和Flask中session的区别

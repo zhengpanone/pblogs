@@ -12,40 +12,40 @@ Python 内置的json模块提供Python对象到JSON格式的转换
 dict、list、float、bool  to json
 =========================================
 
-::
+.. code-block:: python
 
- p_obj1 = {'name':'Tom','age':30}
- j_obj1 = json.dumps(p_obj1)
+  p_obj1 = {'name':'Tom','age':30}
+  j_obj1 = json.dumps(p_obj1)
 
 class to json
 ====================
 
 如果是类对象，不可以直接转换为Json对象，运行是会报错TypeError。错误原因是类对象不是一个可序列化为JSON的对象，查看dumps()方法
 
-::
+.. code-block:: python
 
- help(json.dumps)
+  help(json.dumps)
 
- dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding='utf-8', default=None, sort_keys=False, **kw)
+  dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding='utf-8', default=None, sort_keys=False, **kw)
 
 这些可选参数就是让我们来定制JSON序列化。前面的代码之所以无法把Man类实例序列化为JSON，是因为默认情况下，dumps()方法不知道如何将Man实例变为一个JSON的{}对象。
 
 可选参数default就是把任意一个对象变成一个可序列化为JSON的对象，需要为类专门写一个转换函数，再把函数传入即可
 
 
-::
+.. code-block:: python
 
- import json
- class Man(object):
+  import json
+  class Man(object):
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
- def obj_2_json(obj):
+  def obj_2_json(obj):
     return {"name":obj.name,"age":obj.age}
 
- m = Man('tom',29)
- print(json.dumps(m,default=obj_2_json))
+  m = Man('tom',29)
+  print(json.dumps(m,default=obj_2_json))
     
 
 

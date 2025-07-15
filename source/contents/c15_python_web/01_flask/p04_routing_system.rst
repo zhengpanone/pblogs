@@ -132,17 +132,17 @@ C:\Windows\System32\drivers\etc  找到HOST，修改配置
 加上配置：app.config["SERVER_NAME"] = "haiyan.com:5000"
 
 
-::
+.. code-block:: python
 
- # =============== 子域名访问============
- @app.route("/static_index", subdomain="admin")
- def static_index():
-    return "admin.bjg.com"
+  # =============== 子域名访问============
+  @app.route("/static_index", subdomain="admin")
+  def static_index():
+      return "admin.bjg.com"
 
- # ===========动态生成子域名===========
- @app.route("/index",subdomain='<xxxxx>')
- def index(xxxxx):
-    return "%s.bjg.com" %(xxxxx,)
+  # ===========动态生成子域名===========
+  @app.route("/index",subdomain='<xxxxx>')
+  def index(xxxxx):
+      return "%s.bjg.com" %(xxxxx,)
 
 
 3.自定义URL转换器

@@ -10,13 +10,13 @@
 
 java 实现：
 
-::
+.. code-block:: java
 
- /**
- *  单例模式的实现：饿汉式，线程安全，但效率比较低
- */
- public class SingletonTest{
- 
+  /**
+  * 单例模式的实现：饿汉式，线程安全，但效率比较低
+  */
+  public class SingletonTest{
+
     //定义一个私有的构造方法
     private SingletonTest(){
     }
@@ -28,8 +28,8 @@ java 实现：
     public static SingletonTest getInstance(){
         return instance;
     }
- 
- }
+
+  }
 
 方法一就是传说的中的饿汉模式
 优点是：写起来比较简单，而且不存在多线程同步问题，避免了synchronized所造成的性能问题；

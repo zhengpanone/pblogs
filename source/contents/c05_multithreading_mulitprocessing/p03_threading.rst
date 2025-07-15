@@ -68,19 +68,19 @@ Thread子类完成创建多线程
 
 不共享非全局变量
 
-::
+.. code-block:: python
 
- import threading
- import time
+  import threading
+  import time
 
- def test():
+  def test():
   name = threading.current_thread().name
   print("-----thread name is %s------------"%name)
   num = 100
   if name = "Thread-1":
-    name += 11
+  name += 11
   else:
-    time.sleep(2)
+  time.sleep(2)
   print("------thread is %s-----num=%d----"%(name,num))
 
 

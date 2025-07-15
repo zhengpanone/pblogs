@@ -38,21 +38,21 @@ Python任意对象,只要它定义了可以返回一个迭代器的__iter__方�
 1.将推导式的[] 改成()
 ========================================
 
-::
+.. code-block:: python
 
- L = [x*2 for x in range(10)]
- G = (x*2 for x in range(10)) # 生成器
+  L = [x*2 for x in range(10)]
+  G = (x*2 for x in range(10)) # 生成器
+
+  next(G)
  
- next(G)
- 
-::
+.. code-block:: python
 
- def fun():
-    for i in range(1,50):
-        yield i
+  def fun():
+      for i in range(1,50):
+          yield i
 
- for i in fun():
-    print(i)
+  for i in fun():
+      print(i)
 
   
 1. yield 创建生成器
@@ -61,30 +61,30 @@ Python任意对象,只要它定义了可以返回一个迭代器的__iter__方�
 生成器函数：一个函数中包含yield关键字, 这个函数是一个生成器函数调用生成器函数,不会立马执行该函数里的代码,而返回一个生成器
 
 
-::
+.. code-block:: python
 
- def createNum():
-   print("--------start---------")
-   a,b = 0,1
-   for i in range(10):
+  def createNum():
+    print("--------start---------")
+    a,b = 0,1
+    for i in range(10):
       print("-------1-------")
       yield b 
       print('-------2--------')
       a,b = b,a+b
       print('-------3---------')
-   print('--------stop------------')
+    print('--------stop------------')
 
- a = createNum()
- for i in a:
-   print(i)
+  a = createNum()
+  for i in a:
+    print(i)
 
 >>> import createNum
 >>> n = next(createNum)  # 返回值为b的值
 
-::
+.. code-block:: python
 
- sum(x for x in range(1000000000)) # 占用内存少
- sum([x for x in range(1000000000)]) # 占用内存大
+  sum(x for x in range(1000000000)) # 占用内存少
+  sum([x for x in range(1000000000)]) # 占用内存大
 
 原理: sum 函数是python3内置函数,该函数使用迭代器协议访问对象,而生成器实现了迭代器协议,所以可以直接计算一系列值的和,不用先构造一个列表
 
@@ -92,39 +92,39 @@ Python任意对象,只要它定义了可以返回一个迭代器的__iter__方�
 3.send
 ==========================
 
-::
+.. code-block:: python
 
- def test():
-   i = 0
-   while i < 5:
-      temp = yield i
-      print(temp)
-      i +=1
+  def test():
+    i = 0
+    while i < 5:
+        temp = yield i
+        print(temp)
+        i +=1
 
- t = test()
- t.__next__()
- t.send("haha")
+  t = test()
+  t.__next__()
+  t.send("haha")
 
 4.多任务（协程）
 ==================================
 
-::
+.. code-block:: python
 
- def test1():
-   while True:
+  def test1():
+    while True:
       print('-------1---------')
       yield 
 
- def test2():
-   while True:
+  def test2():
+    while True:
       print('-------2---------')
       yield
 
- t1 = test1()
- t2 = test2()
- while True:
-   t1.__next__()
-   t2.__next__()
+  t1 = test1()
+  t2 = test2()
+  while True:
+    t1.__next__()
+    t2.__next__()
 
 
 在yield掉所有的值后，next()触发了⼀个StopIteration的异常。基本上这个异常告诉我们，所有的值都已经被yield完了。你也许会奇怪，为什么我们在使⽤for循环时没有这个异常呢？啊哈，答案很简单。for循环会⾃动捕捉到这个异常并停⽌调⽤next()。
@@ -134,9 +134,9 @@ Python任意对象,只要它定义了可以返回一个迭代器的__iter__方�
 
 iter。它将根据⼀个可迭代对象返回⼀个迭代器对象。
 
-::
+.. code-block:: python
 
- my_string = "Baidu"
- my_iter = iter(my_string)
- next(my_iter)
+  my_string = "Baidu"
+  my_iter = iter(my_string)
+  next(my_iter)
  

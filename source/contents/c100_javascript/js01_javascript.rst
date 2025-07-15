@@ -301,13 +301,13 @@ obj instanceof Object
 |image12|
 |image13|
 
-::
+.. code-block:: javascript
 
- window.x = 1
- 'x' in window;//treu
+  window.x = 1
+  'x' in window;//true
 
- {} instanceof Object;//true
- typeof 100 === 'number';//true
+  {} instanceof Object;//true
+  typeof 100 === 'number';//true
 
 |image14|
 

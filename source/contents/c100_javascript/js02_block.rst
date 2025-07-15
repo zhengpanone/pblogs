@@ -17,30 +17,29 @@ var
 
 .. code-block:: javascript
     
-
-   var a =1;
-   var a = b = 1;
-   var a =1,b = 1;
-   function foo(){
-      var a = b =1;
-   }
-   foo();
-   console.log(typeof a); //undefined;
-   console.log(typeof b); //number
+  var a =1;
+  var a = b = 1;
+  var a =1,b = 1;
+  function foo(){
+    var a = b =1;
+  }
+  foo();
+  console.log(typeof a); //undefined;
+  console.log(typeof b); //number
 
 
 try catch
 >>>>>>>>>>>>>>>>>>>>>
 
-::
+.. code-block:: python
 
- try{
+  try{
     throw "test"
- }catch(ex){
+  }catch(ex){
     console.log(ex); //test
- }finally{
+  }finally{
     console.log('finally');
- }
+  }
 
 |image5| |image6| |image7| 
 

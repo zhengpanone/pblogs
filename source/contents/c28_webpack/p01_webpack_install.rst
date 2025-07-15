@@ -56,7 +56,7 @@ webpack安装
 
 .. code-block:: bash 
 
-    npm i webpack-dev-server -D 把这个工具安装到项目本地开发依赖
+  npm i webpack-dev-server -D 把这个工具安装到项目本地开发依赖
 
 .. _webpack_usage:
 
@@ -67,9 +67,9 @@ webpack安装
 
 .. code::note
 
- 在使用webpack-dev-server的过程中要注意webpack和webpack-dev-server的版本兼容性
+  在使用webpack-dev-server的过程中要注意webpack和webpack-dev-server的版本兼容性
 
- webpack-dev-server 打包生成的bundle.js文件，并没有存放到实际的物理磁盘上，而是直接托管到电脑内存中，所以在我们的项目的根目录下找不到打包好的bundle.js
+  webpack-dev-server 打包生成的bundle.js文件，并没有存放到实际的物理磁盘上，而是直接托管到电脑内存中，所以在我们的项目的根目录下找不到打包好的bundle.js
 
 常用的命令
 >>>>>>>>>>>>>>>>>>>>>>
@@ -113,9 +113,9 @@ webpack 完整配置
 ==============================
 
 .. literalinclude:: ./code/webpack.config.js
-    :encoding: utf-8
-    :language: javascript
-    :emphasize-lines: 2
-    :lines: 1-
+  :encoding: utf-8
+  :language: javascript
+  :emphasize-lines: 2
+  :lines: 1-
       
 

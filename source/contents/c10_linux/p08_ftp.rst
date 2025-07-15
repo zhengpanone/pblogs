@@ -5,19 +5,20 @@
 1. 不能使用ls、put、mput
 =================================================
 
-::
+.. code-block:: bash
 
- ftp>ls
- 227 Entering Passive Mode (172,18,0,163,163,22).
- ftp>passive 
- Passive mode off.
+  ftp>ls
+  227 Entering Passive Mode (172,18,0,163,163,22).
+  ftp>passive 
+  Passive mode off.
 
 2. 关闭ftp中mput的上传确认提示:prompt
 ====================================================
 
 ftp上传一大批文件，是将一整个目录下的文件都上传到服务器，就用mput命令，默认的情况下，每上传一个文件都输入一下y来确认，没有时间进行这样搞，需要在命令模式，并登录系统后用prompt来关闭它：
 
-::
+.. code-block:: bash
 
  ftp>prompt 
- 切换交谈式指令(使用mput/mget 时不用每个文件皆询问yes/no)
+
+切换交谈式指令(使用mput/mget 时不用每个文件皆询问yes/no)

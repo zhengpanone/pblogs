@@ -8,6 +8,7 @@
 .. note:: <type>(scope):<subject>
 
 - **type**
+
 用于说明commit的类别，只允许使用下面的7个标识：
 
 .. note:: - feat: 新功能（feature）

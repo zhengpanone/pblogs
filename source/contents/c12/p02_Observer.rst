@@ -46,13 +46,10 @@ Java实现代码：
 .. code-block:: java
 
   public class Observer2 implements Observer{
-  
-      @Override
-      public void update(){
-
-          System.out.println('observer2 has received!')
-      }
-  
+    @Override
+    public void update(){
+        System.out.println("observer2 has received!")
+    }
   }
 
 Subject 接口及实现类：
@@ -61,17 +58,17 @@ Subject 接口及实现类：
 
   public interface Subject{
       
-      /**增加观察者**/
-      public void add(Observer observer);
+    /**增加观察者**/
+    public void add(Observer observer);
 
-      /**删除观察者**/
-      public void del(Observer observer);
+    /**删除观察者**/
+    public void del(Observer observer);
 
-      /**通知所有观察者**/
-      public void notifyObservers();
+    /**通知所有观察者**/
+    public void notifyObservers();
 
-      /**自身操作**/
-      public void operation();
+    /**自身操作**/
+    public void operation();
 
   }
 

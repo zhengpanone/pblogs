@@ -73,29 +73,29 @@
 7.带有参数的装饰器
 ===========================================================
 
-::
+.. code-block:: python
 
- from time import ctime,sleep
+  from time import ctime,sleep
 
- def timefunc_arg(pre="hello",*args,**kwargs):
-    def timefunc(func):
-        def wrappedfunc()：
+  def time_func_arg(pre="hello",*args,**kwargs):
+    def time_func(func):
+        def wrapped_func():
             print("%s called at %s %s"%(func.__name__,ctime(),pre))
             return func()
-        return wrappedfunc
-    return timefunc
+        return wrapped_func
+    return time_func
 
- @timefunc_arg("Itcast")    
- def foo():
+  @time_func_arg("ItCast")    
+  def foo():
     print("I am foo")
 
- @timefunc_arg("python")
- def too():
+  @time_func_arg("python")
+  def too():
     print("I am too")
 
- foo()
- sleep(2)
- too()
+  foo()
+  sleep(2)
+  too()
 
 
 

@@ -54,6 +54,8 @@ docker pull 镜像名：TAG
 
 .. note::
 
+  .. code-block:: bash
+
     进入容器
     docker exec -it centos7_ssh /bin/bash
 

@@ -52,8 +52,8 @@ Object.creat
 |image14|
 
 
- get/set 方法
- >>>>>>>>>>>>>>>>>>>>
+get/set 方法
+>>>>>>>>>>>>>>>>>>>>
 
 |image15| |image16| |image17| |image18|
 

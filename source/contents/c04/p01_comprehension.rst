@@ -7,11 +7,11 @@
 列表推导式
 -------------
 
-::
+.. code-block:: pycon
 
- chars = [c for c in 'python']
- >>> chars
- ['p','y','t','h','o','n']
+  chars = [c for c in 'python']
+  >>> chars
+  ['p','y','t','h','o','n']
 
 字典推导式
 --------------
