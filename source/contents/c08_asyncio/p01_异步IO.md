@@ -97,7 +97,7 @@ select、poll、`epoll`都是 IO 多路复用的机制。I/O 多路复用就是�
 
 I/O 多路复用实际上就是用 select, poll, `epoll`监听多个`io`对象，当`io`对象有变化（有数据）的时候就通知用户进程。好处就是单个进程可以处理多个 socket。
 
-#### 通过非阻塞 IO 实现`http`请求
+### 通过非阻塞 IO 实现`http`请求
 
 ```python
 import socket
