@@ -6,13 +6,13 @@ pip
 ===============
 
 升级 pip
->>>>>>>>>>
+---------------------------
 
 >>> pip install --upgrade pip
 >>> pip install -U pip
 
 查询软件包
->>>>>>>>>>>>>>
+---------------------------
 
 查询当前环境安装的所有软件包
 
@@ -31,7 +31,7 @@ pip
 >>> pip show pkg
 
 下载软件包
->>>>>>>>>>>>>>>>>>>>
+---------------------------
 
 不安装软件包的情况下载软件到本地
 
@@ -47,7 +47,7 @@ pip
 >>> pip wheel --wheel-dir=/local/wheels -r requirements.txt
 
 安装软件
->>>>>>>>>>>>>>>>>
+---------------------------
 
 .. code-block:: shell
     
@@ -60,18 +60,18 @@ pip
 
 
 安装用户私有软件包
->>>>>>>>>>>>>>>>>>>>
+---------------------------
 
 >>> pip install --user pkg
 
 
 升级软件包
->>>>>>>>>>>>>
+---------------------------
 
 >>> pip install --upgrade pkg 
 
 更新所有从软件包
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+---------------------------
 
 >>> pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -n1 pip install -U
 
@@ -125,7 +125,6 @@ Pyenv
 
 .. code-block:: shell
     
-
    pip install pyenv 
    pip install pyenv-virtualenv 
    pip install pyenv-virtualenvwrapper 
@@ -148,7 +147,7 @@ pipenv
 ===============================
 
 安装pipenv
--------------------
+--------------------------
 
 使用命令 ``pipenv install``，可在当前目录下创建 ``Pipfile`` 、 ``Pipfile.lock`` 文件，在虚拟环境目录下新增一个虚拟环境
 

@@ -348,7 +348,7 @@ MySQL部署
 
   docker pull mysql
 
-创建容器 
+创建mysql容器 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: shell
@@ -367,7 +367,7 @@ tomcat部署
 
 >>> docker pull tomcat:7-jre7
 
-.. _tomcat_container_create:
+.. _tomcat-container-create:
 
 创建容器 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -387,9 +387,8 @@ Redis部署
 
 >>> docker pull redis
 
-.. _redis_container_create:
 
-创建容器 
+创建redis容器 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 >>> docker run -di --name=myredis -p 6379:6379 redis
@@ -402,9 +401,7 @@ Nginx部署
 
 >>> docker pull nginx
 
-.. _nginx_container_create:
-
-创建容器 
+创建nginx容器 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 >>> docker run -di --name=mynginx -p 80:80 nginx

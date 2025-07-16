@@ -49,19 +49,16 @@ webpack安装
 使用webpack-dev-server来实现自动打包编译功能
 ================================================
 
-.. _webpack-dev-server_install:
-
-安装 
->>>>>>>>>>>>>
+webpack-dev-server 安装 
+>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: bash 
 
   npm i webpack-dev-server -D 把这个工具安装到项目本地开发依赖
 
-.. _webpack_usage:
 
-使用
->>>>>>>>>>>>>
+webpack-dev-server 使用
+>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 打开package.json 编写  scripts 项 ，在test下面添加**"dev": "webpack-dev-server --inline --hot --open --port 8000"**
 
@@ -86,8 +83,8 @@ html-webpack-plugin在内存中生成html的插件
 
 .. _html-webpack-plugin_install:
 
-安装
->>>>>>>>>>>>>>>>>>>>
+html-webpack-plugin 安装
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 >>> cnpm i html-webpack-plugin -D
 
@@ -95,10 +92,8 @@ html-webpack-plugin在内存中生成html的插件
 打包处理css的加载器
 ==================================
 
-.. _css-loader_install:
-
-安装
->>>>>>>>>>>>>>>
+css-loader 安装
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 >>> cnpm i style-loader css-loader -D
 
