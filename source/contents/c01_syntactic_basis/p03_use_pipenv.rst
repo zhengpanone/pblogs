@@ -8,8 +8,10 @@ pip
 升级 pip
 ---------------------------
 
->>> pip install --upgrade pip
->>> pip install -U pip
+.. code-block:: pycon
+
+  >>> pip install --upgrade pip
+  >>> pip install -U pip
 
 查询软件包
 ---------------------------
@@ -43,20 +45,21 @@ pip
 
 从下载的包中,自己构建生成wheel文件
 
->>> pip install wheel
->>> pip wheel --wheel-dir=/local/wheels -r requirements.txt
+.. code-block:: pycon
+
+  >>> pip install wheel
+  >>> pip wheel --wheel-dir=/local/wheels -r requirements.txt
 
 安装软件
 ---------------------------
 
 .. code-block:: shell
     
+  # 下载非二进制的包
+  pip download --no-binary=:all: pkg 
 
-   # 下载非二进制的包
-   pip download --no-binary=:all: pkg 
-
-   # 安装非二进制的包
-   pip install pkg --no-binary
+  # 安装非二进制的包
+  pip install pkg --no-binary
 
 
 安装用户私有软件包
@@ -90,58 +93,56 @@ Virtualenv
 
 .. code-block:: shell
    
-
-   virtualenv -p /usr/bin/python3/bin/python3 venv 
-   source /venv/bin/active
-   deactivate
+  virtualenv -p /usr/bin/python3/bin/python3 venv 
+  source /venv/bin/active
+  deactivate
  
 Virtualenvwrapper 
 =============================
 
 .. code-block:: shell
-   
 
-   pip install virtualenvrapper 
-   # 配置.barshrc 
-   export WORKON_HOME=$HOME/.virtualenvs  # 指定目录
-   export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-   export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages' # 隔离系统site-packages 
-   export PIP_VIRTUALENV_BASE=$WORKON_HOME
-   export PIP_RESPECT_VIRTUALENV=true
-   if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
-      source /usr/local/bin/virtualenvwrapper.sh
-   else
-      echo "WARNING: Can't find virtualenvwrapper.sh"
-   fi 
+  pip install virtualenvrapper 
+  # 配置.barshrc 
+  export WORKON_HOME=$HOME/.virtualenvs  # 指定目录
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages' # 隔离系统site-packages 
+  export PIP_VIRTUALENV_BASE=$WORKON_HOME
+  export PIP_RESPECT_VIRTUALENV=true
+  if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+  else
+    echo "WARNING: Can't find virtualenvwrapper.sh"
+  fi 
 
-   # 创建使用虚拟环境
-   mkvirtualenv your_project #创建
-   rmvitualenv your_project #删除
-   workon  # 列出项目
-   workon your_project # 进去某个项目
+  # 创建使用虚拟环境
+  mkvirtualenv your_project #创建
+  rmvitualenv your_project #删除
+  workon  # 列出项目
+  workon your_project # 进去某个项目
 
 Pyenv 
 ==============================
 
 .. code-block:: shell
     
-   pip install pyenv 
-   pip install pyenv-virtualenv 
-   pip install pyenv-virtualenvwrapper 
+  pip install pyenv 
+  pip install pyenv-virtualenv 
+  pip install pyenv-virtualenvwrapper 
 
-   # 配置.barshrc 
-   # ---pyenv---
-   export PATH="$HOME/.pyenv/bin:$PATH"
-   eval "$(pyenv init -)"
-   eval "$(pyenv virtualenv-init -)"
+  # 配置.barshrc 
+  # ---pyenv---
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 
-   # pyenv 使用方式
-   pyenv install -l # 获取安装列表
-   pyenv install 3.7.1 # 安装python3.7
-   pyenv global 3.7.1 # 设置全局python
-   pyenv virtualenv test-pyenv-venv # 创建虚拟包
-   pyenv activate test-pyenv-venv # 进入虚拟环境
-   pyenv deactivate  # 退出
+  # pyenv 使用方式
+  pyenv install -l # 获取安装列表
+  pyenv install 3.7.1 # 安装python3.7
+  pyenv global 3.7.1 # 设置全局python
+  pyenv virtualenv test-pyenv-venv # 创建虚拟包
+  pyenv activate test-pyenv-venv # 进入虚拟环境
+  pyenv deactivate  # 退出
 
 pipenv 
 ===============================
@@ -154,8 +155,8 @@ pipenv
 **Pipfile** 文件： 用于保存项目的python版本、依赖包等相关信息 。
 
 .. literalinclude:: ./code/p03/Pipfile
-    :encoding: utf-8
-    :language: text
+  :encoding: utf-8
+  :language: text
     
 
 - source 用来设置仓库地址，即指定镜像源下载虚拟环境所需要的包
@@ -197,20 +198,19 @@ pipenv
 
 .. code-block:: shell
    
+  pip install pipenv
 
-   pip install pipenv
+  pip install pipenv --user [username] 
+  # -user 指定将pipenv 安装在该用户主目录下
 
-   pip install pipenv --user [username] 
-   # -user 指定将pipenv 安装在该用户主目录下
+  # 创建虚拟环境
 
-   # 创建虚拟环境
+  cd project1
+  pipenv install
 
-   cd project1
-   pipenv install
-
-   # pipenv install 
-   # 是安装已经提供的包并将它们加入到Pipfile中（Pipfile是python包依赖文件，列出了项目中所有包的依赖，
-   # 这是pipenv相当大的创新，对应的是Pipfile.lock文件）(Pipfile和Pipfile.lock两个文件互相配合，完成虚拟环境的管理工作。)，这里同时创建了项目的虚拟环境。
+  # pipenv install 
+  # 是安装已经提供的包并将它们加入到Pipfile中（Pipfile是python包依赖文件，列出了项目中所有包的依赖，
+  # 这是pipenv相当大的创新，对应的是Pipfile.lock文件）(Pipfile和Pipfile.lock两个文件互相配合，完成虚拟环境的管理工作。)，这里同时创建了项目的虚拟环境。
 
 
 pipenv install的时候有三种逻辑：
@@ -221,69 +221,66 @@ pipenv install的时候有三种逻辑：
 
 .. code-block:: shell
    
+  # 激活虚拟环境
+  pipenv shell
+  # 退出虚拟环境
+  exit
+  # 安装和卸载第三方库
+  pipenv install flask
+  pipenv uninstall flask
+  pipenv uninstall --all # 在项目所在虚拟环境中卸载所有包，并在Pipfile文件移除包名
+  pipenv uninstall --all --dev	# 在项目所在虚拟环境中卸载所有dev环境的包，并在Pipfile文件移除包名
+  pipenv update flask
+  pipenv update  # 在项目所在虚拟环境中更新所有包
+  pipenv update --outdated # 在项目所在虚拟环境中查看已过期的包的信息
+  pipenv lock # 根据项目所在虚拟环境的Pipfile文件生成/更新Pipfile.lock文件中的依赖包信息
+  pipenv --where # 查看项目位置
+  pipenv --venv	 # 查看虚拟环境位置
+  pipenv --py # 查看虚拟环境python解释器位置
+  pipenv graph	 #查看依赖包信息
+  pipenv --rm # 删除虚拟环境
 
-   # 激活虚拟环境
-   pipenv shell
-   # 退出虚拟环境
-   exit
-   # 安装和卸载第三方库
-   pipenv install flask
-   pipenv uninstall flask
-   pipenv uninstall --all # 在项目所在虚拟环境中卸载所有包，并在Pipfile文件移除包名
-   pipenv uninstall --all --dev	# 在项目所在虚拟环境中卸载所有dev环境的包，并在Pipfile文件移除包名
-   pipenv update flask
-   pipenv update  # 在项目所在虚拟环境中更新所有包
-   pipenv update --outdated # 在项目所在虚拟环境中查看已过期的包的信息
-   pipenv lock # 根据项目所在虚拟环境的Pipfile文件生成/更新Pipfile.lock文件中的依赖包信息
-   pipenv --where # 查看项目位置
-   pipenv --venv	 # 查看虚拟环境位置
-   pipenv --py # 查看虚拟环境python解释器位置
-   pipenv graph	 #查看依赖包信息
-   pipenv --rm # 删除虚拟环境
-
-   pipenv run python your_script.py #pipenv虚拟环境运行python命令
+  pipenv run python your_script.py #pipenv虚拟环境运行python命令
 
 
 pipenv 具有下列的选项：
 
-.. code-block:: shell
+.. code-block:: bash
    
+  pipenv
+  Usage: pipenv [OPTIONS] COMMAND [ARGS]...
 
-   pipenv
-   Usage: pipenv [OPTIONS] COMMAND [ARGS]...
-
-   Options:
-   --update         更新Pipenv & pip
-   --where          显示项目文件所在路径
-   --venv           显示虚拟环境实际文件所在路径
-   --py             显示虚拟环境Python解释器所在路径
-   --envs           显示虚拟环境的选项变量
-   --rm             删除虚拟环境
-   --bare           最小化输出
-   --completion     完整输出
-   --man            显示帮助页面
-   --three / --two  使用Python 3/2创建虚拟环境（注意本机已安装的Python版本）
-   --python TEXT    指定某个Python版本作为虚拟环境的安装源
-   --site-packages  附带安装原Python解释器中的第三方库
-   --jumbotron      不知道啥玩意....
-   --version        版本信息
-   -h, --help       帮助信息
+  Options:
+  --update         更新Pipenv & pip
+  --where          显示项目文件所在路径
+  --venv           显示虚拟环境实际文件所在路径
+  --py             显示虚拟环境Python解释器所在路径
+  --envs           显示虚拟环境的选项变量
+  --rm             删除虚拟环境
+  --bare           最小化输出
+  --completion     完整输出
+  --man            显示帮助页面
+  --three / --two  使用Python 3/2创建虚拟环境（注意本机已安装的Python版本）
+  --python TEXT    指定某个Python版本作为虚拟环境的安装源
+  --site-packages  附带安装原Python解释器中的第三方库
+  --jumbotron      不知道啥玩意....
+  --version        版本信息
+  -h, --help       帮助信息
 
 pipenv 可使用的命令参数：
 
-.. code-block:: text
+.. code-block:: bash
    
-
-   Commands:
-      check      检查安全漏洞
-      graph      显示当前依赖关系图信息
-      install    安装虚拟环境或者第三方库
-      lock       锁定并生成Pipfile.lock文件
-      open       在编辑器中查看一个库
-      run        在虚拟环境中运行命令
-      shell      进入虚拟环境
-      uninstall  卸载一个库
-      update     卸载当前所有的包，并安装它们的最新版本
+  Commands:
+    check      检查安全漏洞
+    graph      显示当前依赖关系图信息
+    install    安装虚拟环境或者第三方库
+    lock       锁定并生成Pipfile.lock文件
+    open       在编辑器中查看一个库
+    run        在虚拟环境中运行命令
+    shell      进入虚拟环境
+    uninstall  卸载一个库
+    update     卸载当前所有的包，并安装它们的最新版本
 
 
 

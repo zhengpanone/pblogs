@@ -94,54 +94,48 @@ latex_elements = {
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '16pt',
     'figure_align': 'htbp',
-    # 'fontpkg': r'''
-    # \usepackage{fontspec}
-    # \setmainfont{Times New Roman}
-    # \setsansfont{Arial}
-    # \setmonofont{Courier New}
-    # ''',
-    
     'preamble': r'''
-    \usepackage{bookmark}
-    \usepackage{fancyvrb}
-    \usepackage{ctex}
-    \usepackage{bm}
-
-    # \usepackage{xeCJK}
-    # \setCJKmainfont{''' + cjk_font + r'''}
-    # \usepackage{bookmark}
-    # \usepackage{fancyvrb}
-    # \usepackage{bm}
-    # \usepackage{newunicodechar}
-
-
-    # \newunicodechar{🚀}{\emoji{🚀}}
-    # \newunicodechar{✨}{\emoji{✨}}
-    # \newunicodechar{📝}{\emoji{📝}}
-    # \newunicodechar{🔥}{\emoji{🔥}}
-    # \newunicodechar{🤝}{\emoji{🤝}}
-    # \newunicodechar{📈}{\emoji{📈}}
-    # \newunicodechar{💻}{\emoji{💻}}
-    # \newunicodechar{📚}{\emoji{📚}}
-    # \newunicodechar{🔍}{\emoji{🔍}}
-    # \newunicodechar{💡}{\emoji{💡}}
-    # \newunicodechar{⭐}{\emoji{⭐}}
-    # \newunicodechar{🎯}{\emoji{🎯}}
-    # \newunicodechar{📊}{\emoji{📊}}
-    # \newunicodechar{✅}{\emoji{✅}}
-    # \newunicodechar{❌}{\emoji{❌}}
-    # \newunicodechar{⚠️}{\emoji{⚠️}}
-    # \newunicodechar{💬}{\emoji{💬}}
-    # \newunicodechar{🔗}{\emoji{🔗}}
-    # \newunicodechar{📅}{\emoji{📅}}
-    # \newunicodechar{🔧}{\emoji{🔧}}
-    # \newunicodechar{🛠️}{\emoji{🛠️}}
-    # \newunicodechar{🖥️}{\emoji{🖥️}}
-    # \newunicodechar{🌐}{\emoji{🌐}}
-    # \newunicodechar{📖}{\emoji{📖}}
+    \usepackage{xeCJK}
+    \setCJKmainfont{''' + cjk_font + r'''}
     '''
-    
     } 
+
+# 'fontpkg': r'''
+# \usepackage{fontspec}
+# \setmainfont{Times New Roman}
+# \setsansfont{Arial}
+# \setmonofont{Courier New}
+# ''',
+
+# \usepackage{bookmark}
+# \usepackage{fancyvrb}
+#\usepackage{ctex}
+# \usepackage{bm}
+# \usepackage{newunicodechar}
+# \newunicodechar{🚀}{\emoji{🚀}}
+# \newunicodechar{✨}{\emoji{✨}}
+# \newunicodechar{📝}{\emoji{📝}}
+# \newunicodechar{🔥}{\emoji{🔥}}
+# \newunicodechar{🤝}{\emoji{🤝}}
+# \newunicodechar{📈}{\emoji{📈}}
+# \newunicodechar{💻}{\emoji{💻}}
+# \newunicodechar{📚}{\emoji{📚}}
+# \newunicodechar{🔍}{\emoji{🔍}}
+# \newunicodechar{💡}{\emoji{💡}}
+# \newunicodechar{⭐}{\emoji{⭐}}
+# \newunicodechar{🎯}{\emoji{🎯}}
+# \newunicodechar{📊}{\emoji{📊}}
+# \newunicodechar{✅}{\emoji{✅}}
+# \newunicodechar{❌}{\emoji{❌}}
+# \newunicodechar{⚠️}{\emoji{⚠️}}
+# \newunicodechar{💬}{\emoji{💬}}
+# \newunicodechar{🔗}{\emoji{🔗}}
+# \newunicodechar{📅}{\emoji{📅}}
+# \newunicodechar{🔧}{\emoji{🔧}}
+# \newunicodechar{🛠️}{\emoji{🛠️}}
+# \newunicodechar{🖥️}{\emoji{🖥️}}
+# \newunicodechar{🌐}{\emoji{🌐}}
+# \newunicodechar{📖}{\emoji{📖}}
 
 # 使用XeLaTeX引擎
 latex_engine = 'xelatex'
