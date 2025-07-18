@@ -10,4 +10,4 @@
    :numbered:
    :glob:
 
-   ../contents/c00/*
+   ../contents/c00_build_blog/*
