@@ -1,8 +1,8 @@
 ========================
-50.1 Thread.yield
+Thread.yield
 ========================
 
-1. 概念
+概念
 ---------
 
 start() 方法是启动线程，让线程变成就绪状态等待 CPU 调度后执行。
@@ -55,14 +55,14 @@ yield 即 "谦让"，也是 Thread 类的方法。它让掉当前线程 CPU 的�
 
 因为给小蜜加了最高优先权，栈长加了最低优先权，即使栈长先启动，那小蜜还是有很大的概率比栈长先会输出完的
 
-2. yield 和sleep的异同
+yield 和sleep的异同
 -----------------------------
 
 1. yield, sleep 都能暂停当前线程，sleep 可以指定具体休眠的时间，而 yield 则依赖 CPU 的时间片划分。
 #. yield, sleep 两个在暂停过程中，如已经持有锁，则都不会释放锁资源。
 #. yield 不能被中断，而 sleep 则可以接受中断。
 
-3. 结论
+结论
 ---------
 
 yield 方法可以很好的控制多线程，如执行某项复杂的任务时，如果担心占用资源过多，可以在完成某个重要的工作后使用 yield 方法让掉当前 CPU 的调度权，等下次获取到再继续执行，这样不但能完成自己的重要工作，也能给其他线程一些运行的机会，避免一个线程长时间占有 CPU 资源。
@@ -72,9 +72,12 @@ yield 方法可以很好的控制多线程，如执行某项复杂的任务时�
 参考文档
 ==============
 
-Java技术栈：https://mp.weixin.qq.com/s/INwudC6IWFj0mKmqqU_eJg
+- `Java技术栈`_
 
-github: https://github.com/zhengpanone/SpringBootLearn/blob/master/MyBlogs/src/test/java/com/zp/ThreadYieldTest.java
+- `github地址`_
+
+.. _`Java技术栈`: https://mp.weixin.qq.com/s/INwudC6IWFj0mKmqqU_eJg
+.. _`github地址`: https://github.com/zhengpanone/SpringBootLearn/blob/master/MyBlogs/src/test/java/com/zp/ThreadYieldTest.java
 
 
 

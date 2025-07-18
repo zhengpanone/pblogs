@@ -96,6 +96,11 @@ Virtualenv
   virtualenv -p /usr/bin/python3/bin/python3 venv 
   source /venv/bin/active
   deactivate
+
+  python -m venv .venv
+
+  pip freeze > requirements.txt # 导出当前环境的包列表
+  pip install -r requirements.txt # 安装requirements.txt中的包
  
 Virtualenvwrapper 
 =============================
@@ -287,4 +292,89 @@ pipenv 可使用的命令参数：
 
 
 .. |image1| image:: ./image/p03/设置虚拟环境目录.png
+
+uv使用 
+===============================
+
+安装uv
+--------------------------
+
+.. code-block:: shell
+
+  # 脚本安装
+  # macOS 和 Linux
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+
+  # Windows PowerShell
+  powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+  # 包管理器安装
+  # macOS (Homebrew)
+  brew install uv
+
+  # Windows (Scoop)
+  scoop install uv
+
+  # 通过 pip 安装
+  pip install uv
+
+项目初始化
+--------------------------
+
+.. code-block:: shell
+
+  # 初始化一个新项目
+  uv init my_uv_test
+  cd my_uv_test
+  # 查看项目结构
+  tree .
+
+  .
+  ├── main.py
+  ├── pyproject.toml
+  └── README.md
+
+  1 directory, 3 files
+
+pyproject.toml 管理依赖
+-------------------------------
+
+.. code-block:: toml
+
+  [build-system]
+  requires = ["uv"]
+  build-backend = "uv"
+
+  [project]
+  name = "my_uv_test"
+  version = "0.1.0"
+  description = "Add your description here"
+  readme = "README.md"
+  requires-python = ">=3.12"
+  dependencies = []
+
+依赖管理安装依赖
+-------------------------------
+
+.. code-block:: shell
+  
+  # 安装项目依赖（从 pyproject.toml）
+  uv pip install -e .
+
+  # 安装开发依赖
+  uv pip install -e ".[dev]"
+
+  # 安装所有可选依赖
+  uv pip install -e ".[dev,docs,web]"
+
+  # 生成锁定文件
+  uv pip freeze > requirements.lock
+
+  # 同步依赖（确保环境与 requirements.txt 完全一致）
+  uv pip sync requirements.txt
+
+
+
+
+
 

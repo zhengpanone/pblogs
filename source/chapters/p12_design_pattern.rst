@@ -12,4 +12,4 @@ Python Java 设计模式实现
    :maxdepth: 1
    :glob:
 
-   ../contents/c12/*
+   ../contents/c12_design_pattern/*
