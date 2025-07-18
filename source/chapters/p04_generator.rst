@@ -16,4 +16,4 @@
    :numbered:
    :glob:
 
-   ../contents/c04/*
+   ../contents/c04_generator/*

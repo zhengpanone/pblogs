@@ -9,4 +9,4 @@ DevOps 是一种软件开发和运维的文化和实践，旨在通过自动化�
    :numbered:
    :glob:
 
-   ../contents/c32_devops/*
+   ../contents/c32_devops/**

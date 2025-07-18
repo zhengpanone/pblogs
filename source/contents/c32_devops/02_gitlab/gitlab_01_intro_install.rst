@@ -12,23 +12,23 @@ GitLab 是一个 开源的 DevOps 全生命周期管理平台，覆盖从代码�
 -----------------------
 
 .. list-table::
-   :header-rows: 1
-   :widths: 20 80
+  :header-rows: 1
+  :widths: 20 80
 
-   * - 模块
-     - 功能
-   * - 代码托管
-     - Git 仓库管理、分支保护、代码审查（MR）、Wiki 文档
-   * - CI/CD
-     - 自动化构建、测试、部署（.gitlab-ci.yml 配置流水线）
-   * - 项目管理
-     - Issue 跟踪、看板（Kanban）、里程碑（Milestone）、甘特图
-   * - 安全与合规
-     - 依赖扫描、SAST/DAST 安全测试、License 合规检查
-   * - 监控与运维
-     - 集成 Prometheus、日志管理、性能监控（APM）
-   * - 协作工具
-     - 代码片段共享、内联评论、Slack/Mattermost 集成
+  * - 模块
+    - 功能
+  * - 代码托管
+    - Git 仓库管理、分支保护、代码审查（MR）、Wiki 文档
+  * - CI/CD
+    - 自动化构建、测试、部署（.gitlab-ci.yml 配置流水线）
+  * - 项目管理
+    - Issue 跟踪、看板（Kanban）、里程碑（Milestone）、甘特图
+  * - 安全与合规
+    - 依赖扫描、SAST/DAST 安全测试、License 合规检查
+  * - 监控与运维
+    - 集成 Prometheus、日志管理、性能监控（APM）
+  * - 协作工具
+    - 代码片段共享、内联评论、Slack/Mattermost 集成
 
 关键概念补充 📚
 ---------------------
@@ -70,24 +70,24 @@ GitLab 是一个 开源的 DevOps 全生命周期管理平台，覆盖从代码�
 -----------------------------
 
 .. list-table::
-   :header-rows: 1
-   :widths: 20 40 40
+  :header-rows: 1
+  :widths: 20 40 40
 
-   * - 特性
-     - GitLab
-     - GitHub
-   * - CI/CD
-     - 原生集成（GitLab CI/CD）
-     - 依赖 GitHub Actions
-   * - 部署模式
-     - 支持自托管 + SaaS
-     - 仅 SaaS（GitHub Enterprise 可自托管）
-   * - 开源协议
-     - 社区版完全开源
-     - 代码不开放
-   * - 安全扫描
-     - 内置（社区版基础功能）
-     - 依赖第三方插件（如 Dependabot）
+  * - 特性
+    - GitLab
+    - GitHub
+  * - CI/CD
+    - 原生集成（GitLab CI/CD）
+    - 依赖 GitHub Actions
+  * - 部署模式
+    - 支持自托管 + SaaS
+    - 仅 SaaS（GitHub Enterprise 可自托管）
+  * - 开源协议
+    - 社区版完全开源
+    - 代码不开放
+  * - 安全扫描
+    - 内置（社区版基础功能）
+    - 依赖第三方插件（如 Dependabot）
 
 总结 🚀
 ---------------
@@ -108,24 +108,24 @@ GitLab 是 一站式 DevOps 解决方案，适合追求 代码安全 和 自动�
 --------------------------
 
 .. list-table::
-   :header-rows: 1
-   :widths: 20 20 40
+  :header-rows: 1
+  :widths: 20 20 40
 
-   * - 组件
-     - 最低配置
-     - 推荐配置
-   * - CPU
-     - 2核
-     - 4核
-   * - 内存
-     - 4GB
-     - 8GB
-   * - 存储
-     - 50GB
-     - 200GB+
-   * - 操作系统
-     - CentOS 7.6+
-     - Ubuntu 22.04 LTS
+  * - 组件
+    - 最低配置
+    - 推荐配置
+  * - CPU
+    - 2核
+    - 4核
+  * - 内存
+    - 4GB
+    - 8GB
+  * - 存储
+    - 50GB
+    - 200GB+
+  * - 操作系统
+    - CentOS 7.6+
+    - Ubuntu 22.04 LTS
 
 软件版本
 ---------------
@@ -139,49 +139,49 @@ GitLab 是 一站式 DevOps 解决方案，适合追求 代码安全 和 自动�
 
 1. 调整limits.conf
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      vim /etc/security/limits.conf
-      * soft nproc 65536
-      * hard nproc 65536
-      * soft nofile 65536
-      * hard nofile 65536
+  vim /etc/security/limits.conf
+  * soft nproc 65536
+  * hard nproc 65536
+  * soft nofile 65536
+  * hard nofile 65536
 
 2. 创建专用目录
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      mkdir -p /data/gitlab/{config,logs,data}
+  mkdir -p /data/gitlab/{config,logs,data}
 
 3. 编写docker-compose.yaml
 
-  .. literalinclude:: ./code/03_gitlab/01_intro_install/docker-compose.yaml
-      :encoding: utf-8
-      :language: yaml
-      :caption: docker-compose.yaml  
+.. literalinclude:: ./code/01_intro_install/docker-compose.yaml
+  :encoding: utf-8
+  :language: yaml
+  :caption: docker-compose.yaml  
 
 4. 启动服务
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      # 检查yaml文件是否准确
-      docker compose config
-      # 测试启动
-      docker compose up --dry-run
-      # 实际部署
-      docker compose up -d && docker compose logs -f
+  # 检查yaml文件是否准确
+  docker compose config
+  # 测试启动
+  docker compose up --dry-run
+  # 实际部署
+  docker compose up -d && docker compose logs -f
 
 ⏳ 初始化需要3-5分钟，可通过以下命令查看进度：
 
 .. code-block:: shell
 
-   docker logs -f gitlab | grep "gitlab Reconfigured"
+  docker logs -f gitlab | grep "gitlab Reconfigured"
 
 🔑 获取初始root密码
 
 .. code-block:: shell
 
-   docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
+  docker exec -it gitlab grep 'Password:' /etc/gitlab/initial_root_password
 
 🌍 访问控制台浏览器打开 http://your-server-ip 即可登录（用户：root）
 
@@ -208,39 +208,39 @@ GitLab 是 一站式 DevOps 解决方案，适合追求 代码安全 和 自动�
 
 1. 监控三板斧
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      # 实时资源
-      watch -n 2 "docker stats --no-stream prod-gitlab"
+  # 实时资源
+  watch -n 2 "docker stats --no-stream prod-gitlab"
 
-      # 日志追踪
-      journalctl -u docker.service -f | grep gitlab
+  # 日志追踪
+  journalctl -u docker.service -f | grep gitlab
 
-      # 健康状态
-      docker inspect --format='{{json .State.Health}}' prod-gitlab
+  # 健康状态
+  docker inspect --format='{{json .State.Health}}' prod-gitlab
 
 2. 备份策略
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      # 全量备份（每日2:00执行）
-      docker exec -t prod-gitlab gitlab-backup create CRON=1
+  # 全量备份（每日2:00执行）
+  docker exec -t prod-gitlab gitlab-backup create CRON=1
 
-      # 配置文件备份（与数据分离存储）
-      rsync -avz /mnt/nas/gitlab/config/ backup-server:/gitlab-config/
+  # 配置文件备份（与数据分离存储）
+  rsync -avz /mnt/nas/gitlab/config/ backup-server:/gitlab-config/
 
 3. 灾备恢复
 
-   .. code-block:: shell
+.. code-block:: shell
 
-      # 停止服务
-      docker compose stop
+  # 停止服务
+  docker compose stop
 
-      # 恢复数据
-      docker exec -it prod-gitlab gitlab-backup restore BACKUP=xxxxxxx
+  # 恢复数据
+  docker exec -it prod-gitlab gitlab-backup restore BACKUP=xxxxxxx
 
-      # 重启验证
-      docker compose up -d
+  # 重启验证
+  docker compose up -d
 
 🚦 部署验证清单
 ---------------------

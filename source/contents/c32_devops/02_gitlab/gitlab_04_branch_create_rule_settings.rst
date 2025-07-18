@@ -23,21 +23,21 @@ GitLab 分支保护规则配置
 -------------------------------
 
 .. list-table:: 分支保护核心规则
-   :header-rows: 1
-   :widths: 25 40 35
+  :header-rows: 1
+  :widths: 25 40 35
 
-   * - 规则类型
-     - 作用
-     - 推荐配置
-   * - 推送权限
-     - 控制谁能直接提交代码
-     - No one（禁止直接推送）
-   * - 合并权限
-     - 控制谁能批准合并请求
-     - Maintainers / Owners
-   * - 代码所有者审查
-     - 指定模块负责人必须批准
-     - 根据 CODEOWNERS 文件自动匹配
+  * - 规则类型
+    - 作用
+    - 推荐配置
+  * - 推送权限
+    - 控制谁能直接提交代码
+    - No one（禁止直接推送）
+  * - 合并权限
+    - 控制谁能批准合并请求
+    - Maintainers / Owners
+  * - 代码所有者审查
+    - 指定模块负责人必须批准
+    - 根据 CODEOWNERS 文件自动匹配
 
 步配置分支保护规则
 =============================
@@ -89,10 +89,10 @@ Allowed to force push: **关闭**
 
 .. code-block:: text
 
-   # 文件路径模式 → 负责人
-   *.js              @frontend-lead
-   /src/api/*.java   @backend-team
-   /docs/**/*.md     @tech-writer
+  # 文件路径模式 → 负责人
+  *.js              @frontend-lead
+  /src/api/*.java   @backend-team
+  /docs/**/*.md     @tech-writer
 
 合并请求自动指派对应负责人
 
@@ -103,10 +103,10 @@ Allowed to force push: **关闭**
 
 .. code-block:: bash
 
-   curl --request POST \
-     --header "PRIVATE-TOKEN: <your_access_token>" \
-     --data "name=master&push_access_level=0&merge_access_level=40&code_owner_approval_required=true" \
-     "http://gitlab.yourdomain.com/api/v4/projects/123/protected_branches"
+  curl --request POST \
+    --header "PRIVATE-TOKEN: <your_access_token>" \
+    --data "name=master&push_access_level=0&merge_access_level=40&code_owner_approval_required=true" \
+    "http://gitlab.yourdomain.com/api/v4/projects/123/protected_branches"
 
 参数说明
 
