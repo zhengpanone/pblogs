@@ -1,5 +1,5 @@
 ====================================
-9. docker-compose
+docker-compose
 ====================================
 
 .. _docker_compose_install:
