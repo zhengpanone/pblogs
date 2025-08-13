@@ -5,8 +5,8 @@ reStructuredText PDF
 使用 Sphinx+reStructuredText 生成PDF时，默认经过的是 reStructuredText 文件 > tex 文件 > PDF 文件的过程，即使用的是 latex engine进行PDF的输出。因此，在自定义输出的PDF样式时，很多的调整都是基于 latex 语法。在此，推荐一本latex的入门书籍，刘海洋的《Latex入门》。
 
 .. figure:: ./images/p04/刘海洋《Latex入门》.png
-   :alt: 刘海洋《Latex入门》
-   :align: center
+  :alt: 刘海洋《Latex入门》
+  :align: center
 
 
 如何修改文档页面尺寸为 A4？
@@ -22,31 +22,30 @@ reStructuredText PDF
 
 .. code-block:: python
 
-   latex_elements:{
-      # The paper size ('letterpaper' or 'a4paper').
-      'papersize': 'a4paper'
-   }
+  latex_elements:{
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'a4paper'
+  }
 
 3. 此外，还可以进一步设置页面版心的尺寸，即页面内容显示区域离上下左右边距的大小。
 以上下左右边距设置为 2cm 为例，在 ``latex_elements`` 添加以下命令：
 
 .. code-block:: python
 
-   latex_elements{
-      'geometry': r' \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}',
+  latex_elements{
+    'geometry': r' \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}',
 
-   }
+  }
 
 
 如何调整PDF字体？
 ---------------------------------------------
 
-
 默认情况下，Sphinx使用 latex engine 输出PDF，默认使用 Times，Helvetica，和 Courier 字体组合。因此，如果需要调整字体，可以使用 latex 中 font 包的用法，引入心仪的目标字体。
 
 .. note::
 
-   需要注意的是，font 宏包的使用仅适用于latex 发布引擎为 xelatex 和 lualatex 的情况。而Sphinx默认的latex engine为 pdflatex.
+  需要注意的是，font 宏包的使用仅适用于latex 发布引擎为 xelatex 和 lualatex 的情况。而Sphinx默认的latex engine为 pdflatex.
 
 如需自定义发布出来的PDF的字体，可以参考下面的操作：
 
@@ -58,22 +57,21 @@ reStructuredText PDF
 
 .. code-block:: python
 
-   # 使用 xelatex 发布引擎
-   latex_engine = 'xelatex'
+  # 使用 xelatex 发布引擎
+  latex_engine = 'xelatex'
 
 4. 在 latex_elements 使用 fontpkg 行。如下示例：
    
 .. code-block:: python
 
-   latex_elements:{
-      # 引入 fontpkg 包
-      'fontpkg': r'''
-      \setmainfont{DejaVu Sans}
-      \setsansfont{DejaVu Sans}
-      \setmonofont{DejaVu Sans Mono}
-      '''
-   }
-
+  latex_elements:{
+    # 引入 fontpkg 包
+    'fontpkg': r'''
+    \setmainfont{DejaVu Sans}
+    \setsansfont{DejaVu Sans}
+    \setmonofont{DejaVu Sans Mono}
+    '''
+  }
 
 
 如何自定义页眉页脚
@@ -87,7 +85,7 @@ reStructuredText PDF
    
 .. note::
 
-   ``fancyhdr`` 宏包的详细命令和参数，可参考刘海洋《Latex入门》一书中 P145-149。
+  ``fancyhdr`` 宏包的详细命令和参数，可参考刘海洋《Latex入门》一书中 P145-149。
 
 
 调整目录样式
@@ -100,26 +98,26 @@ reStructuredText PDF
 
 .. code-block:: python
 
-   latex_elements:{
-      'premable': r'''
-      usepackage{tocloft}
-      \renewcommand\cftfignumwidth{4em} 
-      \renewcommand\cfttabnumwidth{4em} 
-      \renewcommand\cftsecnumwidth{4em} 
-      \renewcommand\cftsubsecnumwidth{6em} 
-      \renewcommand\cftparanumwidth{6em} 
-   '''
-   }
+  latex_elements:{
+    'premable': r'''
+    usepackage{tocloft}
+    \renewcommand\cftfignumwidth{4em} 
+    \renewcommand\cfttabnumwidth{4em} 
+    \renewcommand\cftsecnumwidth{4em} 
+    \renewcommand\cftsubsecnumwidth{6em} 
+    \renewcommand\cftparanumwidth{6em} 
+  '''
+  }
 
 Latex ``tocloft`` 宏包中，对应的命令和参数如下：
 
 .. figure:: ./images/p04/tocloft\ 宏包命令和参数.png
-   :alt: tocloft 宏包命令和参数
-   :align: center
+  :alt: tocloft 宏包命令和参数
+  :align: center
 
 .. note::
 
-   详细设置，可参考刘海洋《Latex入门》一书的 P162-165。
+  详细设置，可参考刘海洋《Latex入门》一书的 P162-165。
 
 
 
@@ -131,11 +129,11 @@ Latex ``tocloft`` 宏包中，对应的命令和参数如下：
 
 .. code-block:: python
 
-   latex_elements:{
-      'premable': r'''
-      newcommand{\sectionbreak}{\clearpage}
-      '''
-   }
+  latex_elements:{
+    'premable': r'''
+    newcommand{\sectionbreak}{\clearpage}
+    '''
+  }
 
 如何修改全文文本对齐方式为左对齐？
 ---------------------------------------------
@@ -146,11 +144,11 @@ Latex ``tocloft`` 宏包中，对应的命令和参数如下：
 
 .. code-block:: python
 
-   latex_elements:{
-      'premable': r'''
-      \usepackage[document]{ragged2e}
-   '''
-   }
+  latex_elements:{
+    'premable': r'''
+    \usepackage[document]{ragged2e}
+  '''
+  }
 
 
 如何修改PDF中标题级的颜色？
@@ -161,27 +159,27 @@ Latex ``tocloft`` 宏包中，对应的命令和参数如下：
 
 .. code-block:: python
 
-   latex_elements = {
-    'preamble': r"""
-      \usepackage{sphinx}
-      \sphinxsetup{TitleColor={rgb}{0,0.3,0.6}}  % 设置标题颜色
-      \sphinxsetup{noteBorderColor={rgb}{0.7,0.7,0.7}}  % 设置提示框颜色
-      \sphinxsetup{verbatimwithframe=false}  % 禁用代码框架
-      \sphinxsetup{InnerLinkColor={rgb}{0,0.4,0.8}}  % 设置内链颜色
-      \sphinxsetup{footerLinkColor={rgb}{0,0.4,0.8}}  % 设置页脚链接颜色
-      \sphinxsetup{warningBorderColor={rgb}{1,0,0}}  % 设置警告框颜色
-      \sphinxsetup{cautionBorderColor={rgb}{1,0,0}}  % 设置小心框颜色
-      """
-   }
+  latex_elements = {
+  'preamble': r"""
+    \usepackage{sphinx}
+    \sphinxsetup{TitleColor={rgb}{0,0.3,0.6}}  % 设置标题颜色
+    \sphinxsetup{noteBorderColor={rgb}{0.7,0.7,0.7}}  % 设置提示框颜色
+    \sphinxsetup{verbatimwithframe=false}  % 禁用代码框架
+    \sphinxsetup{InnerLinkColor={rgb}{0,0.4,0.8}}  % 设置内链颜色
+    \sphinxsetup{footerLinkColor={rgb}{0,0.4,0.8}}  % 设置页脚链接颜色
+    \sphinxsetup{warningBorderColor={rgb}{1,0,0}}  % 设置警告框颜色
+    \sphinxsetup{cautionBorderColor={rgb}{1,0,0}}  % 设置小心框颜色
+    """
+  }
 
 使用sphinxsetup修改其他样式
 
 .. code-block:: python
 
-   latex_elements['sphinxsetup'] = r"""
-   verbatimwithframe=false,  % 禁用代码框架
-   listingvisibility=visible  % 设置代码高亮可见
-   """
+  latex_elements['sphinxsetup'] = r"""
+  verbatimwithframe=false,  % 禁用代码框架
+  listingvisibility=visible  % 设置代码高亮可见
+  """
 
 
 为什么在发布的PDF中有些图片会错位（和文本不在同一页面）？
@@ -195,7 +193,7 @@ Latex 中图片和表格的排版使用浮动体（float）设置在页面的位
 
 .. code-block:: python
 
-   figure_align= 'H',
+  figure_align= 'H',
 
 figure_align 设置
 
@@ -213,11 +211,11 @@ Sphinx 默认已经使用了 float 包，因此 'H' 可以正常工作。但如�
 
 .. code-block:: python
 
-   latex_elements = {
-      'preamble': r"""
-      \usepackage{float}
-      """
-   }
+  latex_elements = {
+    'preamble': r"""
+    \usepackage{float}
+    """
+  }
 
 跨页表格，如何让表头在每页开头重复显示？
 ------------------------------------------------------------------------------
@@ -227,8 +225,8 @@ Sphinx 默认已经使用了 float 包，因此 'H' 可以正常工作。但如�
 
 .. code-block:: restructuredtext
 
-   .. csv-table:: Table Title
-      :class: longtable
+  .. csv-table:: Table Title
+    :class: longtable
 
 如何让图片和表格自动编号？
 -------------------------------------------------------
@@ -236,14 +234,14 @@ Sphinx 默认已经使用了 float 包，因此 'H' 可以正常工作。但如�
 
 .. code-block:: python
 
-   numfig = True
+  numfig = True
 
 RST文件中，使用 ``numref`` 引用图片和表格。 “%” 为占位符，代表自动编号。
 
 .. code-block:: restructuredtext
 
-   图片引用：:numref:`Fig. %s <figure-label>`
-   表格引用：:numref:`Table %s <table-label>`
+  图片引用：:numref:`Fig. %s <figure-label>`
+  表格引用：:numref:`Table %s <table-label>`
 
 另外，
 

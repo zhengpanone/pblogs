@@ -12,6 +12,9 @@ pip
 
   >>> pip install --upgrade pip
   >>> pip install -U pip
+  >>> python -m ensurepip --upgrade # 没有pip,安装pip
+  >>> python -m ensurepip --default-pip # 没有pip,安装pip
+
 
 查询软件包
 ---------------------------

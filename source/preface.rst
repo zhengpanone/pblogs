@@ -6,7 +6,7 @@
 `项目主页`__
 ==============================
 
-.. _project: https://github.com/zhengpanone/blogs
+.. _project: https://github.com/zhengpanone/pblogs
 __ project_
 
 
@@ -28,3 +28,9 @@ __ Java_
 
 .. _golang: https://gblogs.readthedocs.io/zh/latest/
 __ golang_
+
+`Rust基础知识`__
+=================================
+
+.. _rust: https://rust-blogs.readthedocs.io/
+__ rust_
