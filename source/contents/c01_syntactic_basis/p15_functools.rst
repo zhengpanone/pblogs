@@ -1,67 +1,87 @@
-=========================
-functools模块
-=========================
+functools
+====================================
 
-偏函数partial用法
-==========================
+``functools`` 是Python标准库中专门用于高阶函数的工具包，主要提供函数式编程支持，能让你：操作或扩展其他函数缓存计算结果实现函数装饰器减少重复代码
 
-.. code-block:: python
-    
+partial：冻结参数
+---------------------------
 
-    functools.partial(func[,*args][, **kwargs])
+作用：固定函数的部分参数，生成新函数,partial冻结的参数不可变，灵活度低于闭包
 
-如何使用
->>>>>>>>>>>>>>>>>>
+.. literalinclude:: ./code/p15_functools/partial_demo.py
+    :encoding: utf-8
+    :language: python
 
-假设有如下函数：
+lru_cache：智能缓存
+---------------------------
 
-.. code-block:: python
-    
+作用：自动缓存函数结果，避免重复计算,lru_cache适用于纯函数（输入相同则输出相同）
 
-    def multiply(x, y):
-        return x * y
+.. literalinclude:: ./code/p15_functools/lru_cache_demo.py
+    :encoding: utf-8
+    :language: python
 
-现在，我们想返回某个数的双倍，即
+wraps：保留元数据
+---------------------------
 
-.. code-block:: python
-    
+作用：解决装饰器导致的原函数信息丢失问题
 
-    multiply(3, y=2)
-    multiply(4, y=2)
-    multiply(5, y=2)
+.. literalinclude:: ./code/p15_functools/wraps_demo.py
+    :encoding: utf-8
+    :language: python
 
-上面的调用有点繁琐，每次都要传入 y=2，我们想到可以定义一个新的函数，把 y=2 作为默认值，即：
+reduce：累积计算
+---------------------------
 
-.. code-block:: python
-    
-
-    def double(x, y=2):
-        return multiply(x,y)
-
-现在，我们可以这样调用了：
+作用：对可迭代对象进行累积操作, Reduce 是将迭代变成一个东西的函数。通常可以在列表上使用reduce函数执行计算以将其减少到一个数字
 
 .. code-block:: python
     
+  reduce(function, list)
 
-    double(3)
-    double(4)
-    double(5)
+经常使用lambda表达式作为函数
 
-事实上，我们可以不用自己定义 double，利用 partial，我们可以这样：
+.. literalinclude:: ./code/p15_functools/reduce_demo.py
+    :encoding: utf-8
+    :language: python
+
+total_ordering：简化比较操作
+----------------------------------
+
+作用：只需定义__eq__和一个比较方法，自动生成全部比较运算符
+
+.. literalinclude:: ./code/p15_functools/total_ordering.py
+    :encoding: utf-8
+    :language: python
+
+
+Map,Filter
+===============================
+
+Map
+-------------
+
+map将函数应用于可迭代对象内每一个元素之上 。Map需要2个输入，分别是应用函数和可迭代对象
 
 .. code-block:: python
     
+  map(function_to_apply,iterable)
 
-    from functools import partial 
+.. literalinclude:: ./code/p15_functools/map_demo.py
+    :encoding: utf-8
+    :language: python
+    
 
-    double = partial(multiply, y=2)
+Filter
+-------------
 
-partial 接收函数 multiply 作为参数，固定 multiply 的参数 y=2，并返回一个新的函数给 double，这跟我们自己定义 double 函数的效果是一样的。所以，简单而言，partial 函数的功能就是：把一个函数的某些参数给固定住，返回一个新的函数。需要注意的是，我们上面是固定了 multiply 的关键字参数 y=2，如果直接使用：
+filter函数采用可迭代的方式，并过滤掉可迭代中不需要的内容
 
 .. code-block:: python
     
+  filter(function,list)
 
-    double = partial(multiply, 2)
-
-则 2 是赋给了 multiply 最左边的参数 x
-
+.. code-block:: python
+    
+  x = range(-5,5)
+  all_less_than_zero = list(filter(lambda num:num<0),x)
