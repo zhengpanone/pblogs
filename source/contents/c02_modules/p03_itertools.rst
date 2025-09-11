@@ -2,6 +2,37 @@
 itertools模块
 =========================
 
+``itertools`` 是 Python 标准库中一个专门用于操作迭代器的模块，提供了高效的迭代器生成函数。
+
+模块核心功能分类
+=========================
+
+``itertools`` 的能力可以分为三大类：
+
+.. list-table::
+  :header-rows: 1
+  :widths: 20,80,30
+
+  * - 功能类别
+    - 代表方法
+    - 主要作用
+  * - 无限迭代器
+    - count(), cycle(), repeat()
+    - 生成无限流
+  * - 组合迭代器
+    - product(), permutations(), combinations(), combinations_with_replacement()
+    - 排列组合
+  * - 过滤与切片
+    - islice(), compress(), dropwhile(), takewhile(), filterfalse()
+    - 按条件取数据
+  * - 聚合与分组
+    - accumulate(), groupby(), tee(), chain(), zip_longest()
+    - 数据聚合与拆分
+
+// TODO: 未完
+https://mp.weixin.qq.com/s/7Rq7MLfga9RIth7IMjKCaQ
+
+
 product函数
 ===================
 
@@ -125,3 +156,5 @@ takewhile(predicate,iterable)会在迭代 iterable 的过程中不断使用当�
 
 
 https://mp.weixin.qq.com/s?__biz=Mzg2NjExNDI0MQ==&mid=2247483669&idx=1&sn=f1fde152bfc7a8a606967b18824f42dc&chksm=ce4e8ebbf93907adabff31678bbf92d3a47c4708cd6b1a232dc74064005a6118b775867fc008&scene=21#wechat_redirect
+
+
