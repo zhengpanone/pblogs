@@ -77,7 +77,7 @@ operator
 
 作用：简化对象属性访问
 
-.. literalinclude:: ./code/ p02_operator/operator_attr.py
+.. literalinclude:: ./code/p02_operator/operator_attr.py
     :encoding: utf-8
     :language: python
 
@@ -86,7 +86,7 @@ operator
 
 作用：动态调用对象方法
 
-.. literalinclude:: ./code/ p02_operator/operator_methodcall.py
+.. literalinclude:: ./code/p02_operator/operator_methodcall.py
     :encoding: utf-8
     :language: python
 
@@ -95,7 +95,7 @@ operator
 
 作用：执行就地修改操作
 
-.. literalinclude:: ./code/ p02_operator/operator_opsfunc.py
+.. literalinclude:: ./code/p02_operator/operator_opsfunc.py
     :encoding: utf-8
     :language: python
 
@@ -108,7 +108,7 @@ operator
 - 数学计算：构建可配置的运算管道
 - 对象处理：批量提取对象属性
 
-.. literalinclude:: ./code/ p02_operator/operator_usage.py
+.. literalinclude:: ./code/p02_operator/operator_usage.py
     :encoding: utf-8
     :language: python
 
