@@ -7,8 +7,6 @@ jupyter 安装和使用
 
 >>> python -m pip install jupyter # or pip install jupyter
 
-
-
 生成配置文件
 ------------------
 
@@ -26,9 +24,8 @@ jupyter 安装和使用
 
 ~/.jupyter/jupyter_notebook_config.py
 
-.. code-block:: text
+.. code-block:: python
   
-
   c.NotebookApp.ip='0.0.0.0'  / "*"  #允许任何客户端ip访问
 
   c.NotebookApp.password = u'sha1:f9030dd55bce:75fd7bbaba41be6ff5ac2e811b62354ab55b1f63' 

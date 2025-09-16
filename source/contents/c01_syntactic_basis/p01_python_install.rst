@@ -5,7 +5,7 @@
 linux安装
 =========================
 
-1.安装依赖环境
+安装依赖环境
 --------------------------
 
 Python3在安装的过程中可能会用到各种依赖库，所以在正式安装Python3之前，需要将这些依赖库先行安装好。
@@ -96,7 +96,7 @@ https://www.python.org/downloads/source/
 
 其实，对于Python3的安装，网络上有太多的帖子了，步骤其实都大同小异。但是，在真正动手安装之后，或多或少都会遇到一些麻烦，特别是对新手而言。下面良许就列举一些常见的坑：
 
-坑1：configure: error: no acceptable C compiler found in $PATH
+configure: error: no acceptable C compiler found in $PATH
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 这个问题就比较简单，就是缺少gcc编译环境。将gcc安装上即可：
@@ -105,7 +105,7 @@ https://www.python.org/downloads/source/
 
 当然除此之外，采用源码安装的方式也可以。
 
-坑2：zipimport.ZipImportError: can’t decompress data
+zipimport.ZipImportError: can’t decompress data
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 这种问题就是因为缺少zlib 的相关工具包导致的，将相关依赖包装上即可：
@@ -114,7 +114,7 @@ https://www.python.org/downloads/source/
 
 安装之后再重新编译源码，即可解决。
 
-坑3：pip3: Can't connect to HTTPS URL because the SSL module is not available
+pip3: Can't connect to HTTPS URL because the SSL module is not available
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 这个问题是因为在./configure过程中，如果没有加上–with-ssl参数时，默认安装的软件涉及到ssl的功能不可用，刚好pip3过程需要ssl模块，而由于没有指定，所以该功能不可用。解决办法如下：
@@ -126,7 +126,7 @@ https://www.python.org/downloads/source/
   make
   sudo make install
 
-坑4：Multilib version problems
+Multilib version problems
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 这个很明显了，就是同一个库有多个版本。把多余的版本删除了就好。
@@ -155,14 +155,37 @@ https://www.python.org/downloads/source/
   openssl-devel-1.0.1e-16.el6_5.7.x86_64
   openssl-1.0.1e-16.el6_5.7.x86_64
 
+
+
+ImportError: No module named _sqlite3如何解决方法
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+有root权限
+:::::::::::::::
+
+.. code-block:: shell
+
+  yum install sqlite-devel
+
+重新编译python
+
+没有root权限
+:::::::::::::::
+
+从另一个已安装好的python中复制动态库
+
+.. code-block:: shell
+
+ find ./ -name _sqlite3.so
+
+ ./lib/python3.6/sqlite3
+
+ ./lib/python3.6/lib-dynload/_sqlite3.cpython-36m-x86_64-linux-gnu.so
+
+ # 将lib-dynload下的文件复制到缺少动态库的python中就不会报错
+
+
 .. _python_install:
-
-参考
-----------------
-
-`良许Linux`_
-
-.. _`良许Linux`: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485198&amp;idx=1&amp;sn=0792d4da7ca2346ec3282c73bb608198&source=41#wechat_redirect
 
 
 更改PyPI 镜像（源）
@@ -187,7 +210,6 @@ pip临时设置可以通过 -i 选项：
 全局设置有不同的层级和文件位置，以用户全局（per-user）为例，在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 或者 **~/.config/pip/pip.conf**文件中；Windows 中，配置文件位置为 **%HOMEPATH%\pip\pip.ini**，%HOMEPATH% 即你的用户文件夹，一般为“**\Users\<你的用户名>**”，具体值可以使用 **echo %HOMEPATH%** 命令查看。
 
 通常你需要手动创建对应的目录和文件，然后写入下面的内容：
-
 
 .. code-block:: text
     
@@ -236,3 +258,12 @@ Pipenv
   网易 https://mirrors.163.com/pypi/simple/
   阿里云 https://mirrors.aliyun.com/pypi/simple/
   清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+
+
+参考
+============================
+
+`良许Linux`_
+
+.. _`良许Linux`: https://mp.weixin.qq.com/s?__biz=MzU3NTgyODQ1Nw==&mid=2247485198&amp;idx=1&amp;sn=0792d4da7ca2346ec3282c73bb608198&source=41#wechat_redirect
+
