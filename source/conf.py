@@ -141,7 +141,7 @@ latex_elements = {
 latex_engine = 'xelatex'
 
 latex_documents = [
-    ('index', 'mkdocs.tex', u'《Python博客》',
+    ('index', 'pblogs.tex', u'《Python博客》',
      u'郑攀', 'howto'),
 ]
 
