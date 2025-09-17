@@ -20,7 +20,7 @@ __ bioInfo_
 `Java基础知识`__
 =================================
 
-.. _Java: https://jblogs.readthedocs.io/zh/latest/index.html
+.. _Java: https://jblogs.readthedocs.io/zh-cn/latest/
 __ Java_
 
 `Golang基础知识`__
