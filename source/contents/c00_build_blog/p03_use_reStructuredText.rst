@@ -114,6 +114,26 @@ reStructured使用
       "body", "body-content"
 
 
+  .. list-table::
+    :header-rows: 1
+    :widths: 20 80
+
+    * - 模块
+      - 功能
+    * - 代码托管
+      - Git 仓库管理、分支保护、代码审查（MR）、Wiki 文档
+    * - CI/CD
+      - 自动化构建、测试、部署（.gitlab-ci.yml 配置流水线）
+    * - 项目管理
+      - Issue 跟踪、看板（Kanban）、里程碑（Milestone）、甘特图
+    * - 安全与合规
+      - 依赖扫描、SAST/DAST 安全测试、License 合规检查
+    * - 监控与运维
+      - 集成 Prometheus、日志管理、性能监控（APM）
+    * - 协作工具
+      - 代码片段共享、内联评论、Slack/Mattermost 集成
+
+
 枚举(顺序)列表(Enumerated Lists)
 ----------------------------------------
 
