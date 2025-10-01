@@ -1,7 +1,11 @@
 {
   "words": [
+    "delitem",
+    "getitem",
     "noinstall",
     "rustwasm",
-    "toctree"
+    "setitem",
+    "toctree",
+    "weakref"
   ]
 }

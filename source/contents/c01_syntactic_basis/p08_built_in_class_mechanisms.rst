@@ -32,19 +32,19 @@ Python 内建的类机制
      - obj.__class__
   
 __slots__
----------
+-----------------
 
 - **作用**: 限制类实例可以拥有的属性集合，从而节省内存、加快属性访问速度。
-- **使用方法**::
+- **使用方法**
 
 .. code-block:: python
 
   class Person:
-      __slots__ = ('name', 'age')  # 限定实例只能有这两个属性
+    __slots__ = ('name', 'age')  # 限定实例只能有这两个属性
 
-      def __init__(self, name, age):
-          self.name = name
-          self.age = age
+    def __init__(self, name, age):
+      self.name = name
+      self.age = age
 
   p = Person("Alice", 20)
   p.name  # ✅ 有效
@@ -67,18 +67,18 @@ __weakref__
 -----------
 
 - **作用**: 允许对象被弱引用，用于缓存和避免循环引用。
-- **使用场景**: 当类定义了 ``__slots__`` 时，如果想要支持弱引用，需要显式加入::
+- **使用场景**: 当类定义了 ``__slots__`` 时，如果想要支持弱引用，需要显式加入
 
 .. code-block:: python
 
     class Node:
-        __slots__ = ('value', '__weakref__')
+      __slots__ = ('value', '__weakref__')
 
 __mro__
--------
+------------
 
 - **作用**: 方法解析顺序 (Method Resolution Order)，用于确定多继承情况下方法查找的顺序。
-- **示例**::
+- **示例**
 
 .. code-block:: python
 
@@ -88,8 +88,6 @@ __mro__
   class D(B, C): pass
 
   print(D.__mro__)  # (<class '__main__.D'>, <class '__main__.B'>, <class '__main__.C'>, <class '__main__.A'>, <class 'object'>)
-
-
 
 
 对象创建与生命周期
@@ -182,7 +180,7 @@ __new__ 与 __init__
      - with 块结束时调用
 
 描述符协议（属性代理机制）
-=========================
+================================
 
 .. list-table:: 描述符协议（属性代理机制）
    :header-rows: 1
@@ -263,7 +261,7 @@ __classcell__
 
   class A:
     def method(self):
-        return super()  # 这里会用到 __classcell__
+      return super()  # 这里会用到 __classcell__
 
   print(A.__dict__.get('__classcell__'))
   # <cell at 0x101901040: class '__main__.A'>
