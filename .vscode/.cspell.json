@@ -1,11 +1,12 @@
 {
   "words": [
     "delitem",
+    "functools",
     "getitem",
     "noinstall",
     "rustwasm",
     "setitem",
     "toctree",
-    "weakref"
+    "weakref","literalinclude"
   ]
 }
