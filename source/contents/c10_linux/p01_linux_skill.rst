@@ -2,6 +2,50 @@
 1. linux技巧
 ======================================
 
+添加系统应用图标
+==================================
+
+安装的软件需要在 GNOME/KDE 中显示图标：
+
+创建文件：
+
+.. code-block:: shell
+
+   # 用户级应用菜单目录
+   nano ~/.local/share/applications/android-studio.desktop
+   # 系统级应用菜单目录
+   sudo nano /usr/share/applications/android-studio.desktop
+
+
+示例：
+
+.. code-block:: text
+
+   [Desktop Entry]
+   Type=Application
+   Name=Android Studio
+   GenericName=Android IDE
+   Icon=~/Applications/android-studio/bin/studio.svg
+   Exec=~/Applications/android-studio/bin/studio %f
+   Comment=Develop Android applications
+   Categories=Development;IDE;
+   Terminal=false
+   StartupWMClass=jetbrains-android-studio
+
+刷新桌面数据库
+
+   GNOME/KDE 通常自动刷新，但可以手动更新：
+
+.. code-block:: shell
+
+   # 更新用户的应用程序数据库
+   update-desktop-database ~/.local/share/applications/
+   # 刷新图标主题缓存
+   sudo update-icon-caches /usr/share/icons/*
+   # 更新桌面应用列表
+   update-desktop-database
+
+
 命令行日常系快捷键
 ===============================
 

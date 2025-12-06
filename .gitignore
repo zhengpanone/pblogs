@@ -1,5 +1,5 @@
 /build/
-*__pycache_/
+**__pycache_/
 /exts/__pycache__/
 .venv
 *.gitignore
@@ -8,3 +8,4 @@ settings.json
 node_modules/
 package-lock.json
 get_om.js
+**/__pycache_/
