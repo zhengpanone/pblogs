@@ -4,8 +4,6 @@
 .venv
 *.gitignore
 .vscode/sftp.json
-settings.json
 node_modules/
 package-lock.json
 get_om.js
-**/__pycache_/
