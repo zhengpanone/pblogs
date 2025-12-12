@@ -30,7 +30,7 @@
    Comment=Develop Android applications
    Categories=Development;IDE;
    Terminal=false
-   StartupWMClass=jetbrains-android-studio
+   StartupWMClass=jetbrains-studio
 
 刷新桌面数据库
 
@@ -44,6 +44,98 @@
    sudo update-icon-caches /usr/share/icons/*
    # 更新桌面应用列表
    update-desktop-database
+
+
+Ubuntu 快捷键
+===============================
+
+工作区
+>>>>>>>>>>>>>>>>>>>>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - 快捷键
+     - 功能
+   * - **Ctrl + Alt + ↑**
+     - 切换到上一个工作区
+   * - **Ctrl + Alt + ↓**
+     - 切换到下一个工作区
+   * - **Shift + Ctrl + Alt + ↑**
+     - 将窗口移动到上一个工作区
+   * - **Shift + Ctrl + Alt + ↓**
+     - 将窗口移动到下一个工作区
+
+
+窗口管理
+>>>>>>>>>>>>>>>>>>>>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - 快捷键
+     - 功能
+   * - **Alt + `**
+     - 在同一应用多个窗口间切换
+   * - **Super + ↑**
+     - 最大化窗口
+   * - **Super + H**
+     - 最小化窗口
+   * - **Super + ↓**
+     - 还原窗口
+   * - **Super + A**
+     - 打开应用搜索（App Launcher）
+   * - **Alt + F2**
+     - 打开运行对话框
+
+
+终端（Terminal）
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - 快捷键
+     - 功能
+   * - **Ctrl + Alt + T**
+     - 打开终端
+   * - **Ctrl + Shift + T**
+     - 新建标签页
+   * - **Ctrl + Shift + W**
+     - 关闭标签页
+   * - **Ctrl + PageUp/PageDown**
+     - 多标签切换
+   * - **Ctrl + Shift + F**
+     - 搜索终端内容
+   * - **F11**
+     - 全屏终端
+
+文件管理器（Nautilus）
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. list-table::
+   :header-rows: 1
+   :widths: 40 60
+
+   * - 快捷键
+     - 功能
+   * - **Super + E**
+     - 打开文件管理器（Ubuntu 有时需要自定义）
+   * - **Ctrl + N**
+     - 新建窗口
+   * - **Ctrl + T**
+     - 新建标签页
+   * - **Ctrl + Tab / Ctrl + Shift + Tab**
+     - 标签页切换
+   * - **Alt + ← / Alt + →**
+     - 返回/前进
+   * - **Ctrl + H**
+     - 显示隐藏文件
+
+
 
 
 命令行日常系快捷键
