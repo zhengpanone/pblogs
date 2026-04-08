@@ -238,8 +238,10 @@ takewhile(predicate,iterable)会在迭代 iterable 的过程中不断使用当�
     for user in takewhile(is_qualified ,users):
         pass
 
+参考文档
+=============
 
+`循环优雅用法`_
 
-https://mp.weixin.qq.com/s?__biz=Mzg2NjExNDI0MQ==&mid=2247483669&idx=1&sn=f1fde152bfc7a8a606967b18824f42dc&chksm=ce4e8ebbf93907adabff31678bbf92d3a47c4708cd6b1a232dc74064005a6118b775867fc008&scene=21#wechat_redirect
-
+.. _`循环优雅用法`: https://mp.weixin.qq.com/s?__biz=Mzg2NjExNDI0MQ==&mid=2247483669&idx=1&sn=f1fde152bfc7a8a606967b18824f42dc&chksm=ce4e8ebbf93907adabff31678bbf92d3a47c4708cd6b1a232dc74064005a6118b775867fc008&scene=21#wechat_redirect
 

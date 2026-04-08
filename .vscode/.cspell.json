@@ -1,16 +1,34 @@
 {
   "words": [
+    "apidoc",
+    "asyncio",
+    "autobuild",
+    "autosectionlabel",
+    "copybutton",
+    "deepcopy",
     "delitem",
+    "fastapi",
     "functools",
-    "functools",
+    "getcwd",
     "getitem",
+    "groupby",
+    "heapq",
+    "htmlhelp",
+    "itertools",
     "literalinclude",
+    "mkdocs",
     "noinstall",
+    "Pandoc",
     "pycon",
+    "Pydantic",
     "pypi",
+    "Pythonnic",
     "rustwasm",
     "setitem",
+    "takewhile",
     "toctree",
-    "weakref","literalinclude"
+    "venv",
+    "viewcode",
+    "weakref"
   ]
 }

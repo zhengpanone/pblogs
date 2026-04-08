@@ -1,5 +1,5 @@
 /build/
-**/__pycache_/
+**/__pycache__/
 /exts/__pycache__/
 .venv
 *.gitignore

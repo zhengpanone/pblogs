@@ -296,7 +296,7 @@ pipenv 可使用的命令参数：
 
 .. |image1| image:: ./image/p03/设置虚拟环境目录.png
 
-uv使用 
+uv
 ===============================
 
 安装uv
@@ -362,16 +362,57 @@ uv使用
 项目级别配置
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-在项目根目录创建： ``.uv/config.toml``
+方式1 在项目根目录创建： ``.uv/config.toml``
 
 内容同样可以写：
 
 .. code-block:: toml
+  :name: .uv/config.toml
 
   [python]
-  index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+  index-url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
 
 这样不会影响其他项目。
+
+方式2 在pyproject.toml 中添加：
+
+.. code-block:: toml
+  :name: pyproject.toml
+
+  [[tool.uv.index]]
+  url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+  default = true
+
+方式3 在uv.toml 中添加：
+
+.. code-block:: toml
+  :name: uv.toml
+
+  [[index]]
+  url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+  default = true
+
+uv.toml是什么
+::::::::::::::::::
+
+uv.toml是用于 工作区（workspace）​ 配置的，不是单个项目的配置
+
+.. code-block:: bash
+
+  # 创建工作区（包含多个项目）
+  mkdir my-workspace && cd my-workspace
+  touch uv.toml
+
+示例 uv.toml（工作区配置）：
+
+.. code-block:: toml
+
+  [tool.uv.workspace]
+  members = ["project-a", "project-b"]
+
+
+
+
 
 项目初始化
 --------------------------
