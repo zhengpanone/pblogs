@@ -2,8 +2,12 @@
   "words": [
     "delitem",
     "functools",
+    "functools",
     "getitem",
+    "literalinclude",
     "noinstall",
+    "pycon",
+    "pypi",
     "rustwasm",
     "setitem",
     "toctree",
