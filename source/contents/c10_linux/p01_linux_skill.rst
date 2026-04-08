@@ -87,6 +87,10 @@ Ubuntu 快捷键
      - 还原窗口
    * - **Super + A**
      - 打开应用搜索（App Launcher）
+   * - **Super + Tab**
+     - 切换应用
+   * - **Super + D**
+     - 显示桌面
    * - **Alt + F2**
      - 打开运行对话框
 
@@ -134,8 +138,65 @@ Ubuntu 快捷键
      - 返回/前进
    * - **Ctrl + H**
      - 显示隐藏文件
+   * - **Ctrl + Shift + H**
+     - 隐藏当前文件夹
+   * - **Ctrl + Shift + N**
+     - 新建文件夹
+   * - **命令行执行 nautilus ~**
+     - 打开当前用户的主目录
+
+终端启动器
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.. code-block:: bash
+  
+  gtk-launch jd-gui # 终端启动jd-gui
 
 
+linux 使用光盘
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+在Ubuntu中将DVD+RW格式化为类似U盘的“数据包写入”（Packet Writing）模式，使Linux和Windows通用，需将其格式化为UDF文件系统。关键步骤是使用 dvd+rw-tools 工具进行空白化和挂载。
+核心步骤
+安装工具：打开终端，运行 sudo apt install dvd+rw-tools。
+空白化光盘：使用命令 dvd+rw-format -force /dev/sr0（假设光驱是 /dev/sr0）清空DVD+RW。
+格式化为UDF：使用 mkudffs 命令将光盘格式化为UDF文件系统，使其具备可读写特性。
+挂载使用：挂载后，该光盘即可像U盘一样拖拽文件。 
+
+详细操作指南
+1. 准备工作
+确保您有空白的DVD+RW光盘和安装有 dvd+rw-tools 的Ubuntu环境。
+2. 彻底抹除（空白化）DVD+RW
+为了确保在Windows和Linux下均能正常识别为“可写”状态，建议进行全盘格式化。
+bash
+# 检查设备名称，通常是 /dev/sr0
+
+.. code-block:: bash
+
+  dvd+rw-format -force /dev/sr0
+
+3. 使用UDF格式化
+UDF (Universal Disk Format) 是Windows和Linux通用的文件系统，适合光盘作为“虚拟U盘”使用。
+.. code-block:: bash
+
+  # 创建UDF文件系统
+  sudo mkudffs --utf8 --vid=DVD_UDF /dev/sr0 
+
+1. 挂载并写入数据
+创建挂载点并挂载，然后即可像操作U盘一样将文件复制到该目录中。 
+
+.. code-block:: bash
+
+  mkdir -p /mnt/dvd
+  sudo mount -t udf /dev/sr0 /mnt/dvd
+  # 此时您可以将文件复制到 /mnt/dvd
+  sudo umount /mnt/dvd
+  sudo umount /dev/sr0 # 卸载光盘
+
+兼容性说明
+Linux：直接挂载UDF。
+Windows：Windows XP及更高版本原生支持UDF格式，可直接读写。
+注意事项：DVD+RW的写入速度较慢，且文件写入后如果需要再次修改，建议使用专门的封包写入软件（如Linux下的 udftools 或Windows下的Roxio/Nero）来获得更好的U盘体验。频繁读写可能会缩短光盘寿命。
 
 
 命令行日常系快捷键
