@@ -198,10 +198,9 @@ groupby
       print(k, list(g))
   
 
-// TODO 未完
-https://mp.weixin.qq.com/s/7Rq7MLfga9RIth7IMjKCaQ
-
-
+.. todo:: 
+  
+  https://mp.weixin.qq.com/s/7Rq7MLfga9RIth7IMjKCaQ
 
 combinations
 ======================
