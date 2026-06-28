@@ -164,6 +164,12 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 
 highlight_language = "python,go,javascript,html"
 
+copybutton_prompt_text = "$ "
+copybutton_prompt_is_regexp = False
+# 给每个 label 加文件路径前缀，避免重复
+autosectionlabel_prefix_document = True
+autosectionlabel_maxdepth = 1
+
 numfig = True
 numfig_secnum_depth = 2
 
@@ -173,3 +179,6 @@ numfig_format = {
     'code-block': '代码 %s',
     'section': '节 %s',
 }
+
+
+

@@ -5,4 +5,7 @@
   },
   "liveServer.settings.port": 5501,
   "esbonio.preview.synchronizeScroll": "bothWays",
+  "cSpell.words": [
+    "backlinks"
+  ],
 }
