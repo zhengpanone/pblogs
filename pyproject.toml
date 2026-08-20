@@ -7,6 +7,7 @@ requires-python = ">=3.12"
 dependencies = [
     "isort>=8.0.1",
     "myst-parser>=4.0.1",
+    "sphinx-autobuild>=2025.8.25",
     "sphinx-copybutton>=0.5.2",
     "sphinx-markdown-tables>=0.0.17",
     "sphinx-rtd-theme>=3.0.2",

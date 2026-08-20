@@ -608,12 +608,1103 @@ cherry-pick 代码冲突
 
 不回到操作前的样子。即保留已经cherry-pick成功的 commit，并退出cherry-pick流程。
 
-=========================
+Sparse Checkout
+================
+
+概述
+>>>>>>>>>>>>>>>>>>>
+
+Git Sparse Checkout（稀疏检出）用于在 Git 仓库中只将指定目录或文件检出到工作区，而不是将整个仓库的内容都放到本地工作目录。
+
+例如一个大型项目：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   │   ├── user-service/
+   │   ├── order-service/
+   │   └── payment-service/
+   ├── frontend/
+   ├── docs/
+   ├── deploy/
+   └── tools/
+
+
+如果开发人员只负责：
+
+.. code-block:: text
+
+   backend/order-service
+
+可以使用 Sparse Checkout：
+
+.. code-block:: bash
+
+   git clone --no-checkout https://github.com/xxxx/project.git
+   cd project
+   git sparse-checkout init --cone
+   git sparse-checkout set backend/order-service
+   git checkout
+
+
+最终工作区只保留需要开发的目录。
+
+.. note:: **注意：Sparse Checkout 解决的是“检出哪些文件”的问题，并不是 Git 分支、Commit 历史或代码合并问题。**
+
+
+适用场景
+>>>>>>>>>>>>>>>>>>>
+
+Sparse Checkout 适合以下场景：
+
+- 超大型 Git Monorepo
+- 一个仓库包含多个微服务
+- 一个仓库包含前端、后端、脚本、文档等大量代码
+- 开发人员只需要维护其中一个模块
+- 减少本地工作区文件数量
+- 减少 IDE 索引内容
+- 减少磁盘空间占用
+- 降低大型项目打开和搜索的成本
+
+例如：
+
+.. code-block:: text
+
+   company-project/
+   ├── java/
+   │   ├── user/
+   │   ├── order/
+   │   └── payment/
+   ├── rust/
+   │   ├── gateway/
+   │   └── auth/
+   ├── frontend/
+   ├── docs/
+   └── devops/
+
+开发 `rust/gateway` 时，可以只检出：
+
+.. code-block:: text
+
+   rust/gateway
+
+Sparse Checkout 工作原理
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+普通 Git Checkout：
+
+.. code-block:: text
+
+   Git Repository
+         │
+         ├── backend
+         ├── frontend
+         ├── docs
+         ├── deploy
+         └── tools
+               │
+               ▼
+         全部工作区文件
+
+
+Sparse Checkout：
+
+.. code-block:: text
+
+   Git Repository
+         │
+         ├── backend
+         ├── frontend
+         ├── docs
+         ├── deploy
+         └── tools
+               │
+               ▼
+         Sparse Checkout
+               │
+               ▼
+         指定目录
+
+
+例如：
+
+.. code-block:: text
+
+   Git Repository
+         │
+         ├── backend
+         ├── frontend
+         ├── docs
+         └── deploy
+               │
+               ▼
+         只检出 backend
+
+
+需要注意：
+
+.. note:: Sparse Checkout 默认并不等于“只下载指定目录”。
+
+
+它主要控制的是工作区中哪些文件被检出。
+
+如果目标是进一步减少 Git 对象下载量，可以结合 Partial Clone：
+
+.. code-block:: bash
+
+   git clone --filter=blob:none ...
+
+初始化 Sparse Checkout
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+进入 Git 仓库：
+
+.. code-block:: bash
+
+   cd project
+
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout init --cone
+
+
+其中：
+
+.. code-block:: text
+
+   git sparse-checkout
+
+
+表示使用 Git Sparse Checkout 功能。
+
+.. code-block:: text
+
+   init
+
+
+表示初始化 Sparse Checkout。
+
+.. code-block:: text
+
+   --cone
+
+
+表示使用 Cone 模式。
+
+设置需要检出的目录
+>>>>>>>>>>>>>>>>>>>
+
+
+初始化以后：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+例如：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   ├── frontend/
+   ├── docs/
+   └── deploy/
+
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+工作区主要保留：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   └── README.md
+
+检出多个目录
+>>>>>>>>>>>>>>>>>>>
+
+
+可以一次指定多个目录：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend frontend
+
+
+例如：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   ├── frontend/
+   └── README.md
+
+
+也可以：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend docs
+
+
+得到：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   ├── docs/
+   └── README.md
+
+检出子目录
+>>>>>>>>>>>>>>>>>>>
+
+
+例如项目：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   │   ├── user-service/
+   │   ├── order-service/
+   │   └── payment-service/
+   ├── frontend/
+   └── docs/
+
+
+只需要：
+
+.. code-block:: text
+
+   backend/order-service
+
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend/order-service
+
+
+工作区：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   │   └── order-service/
+   └── README.md
+
+
+这是 Monorepo 中非常常见的使用方式。
+
+查看当前 Sparse Checkout 配置
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout list
+
+
+例如：
+
+.. code-block:: text
+
+   backend/order-service
+
+
+如果配置了多个目录：
+
+.. code-block:: text
+
+   backend
+   frontend
+   docs
+
+
+会全部显示出来。
+
+
+修改 Sparse Checkout 范围
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+例如当前：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+后来需要增加：
+
+.. code-block:: text
+
+   docs
+
+
+可以重新设置：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend docs
+
+
+最终：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   ├── docs/
+   └── README.md
+
+增加目录
+>>>>>>>>>>>>>>>>>>>
+
+
+如果希望保留当前目录，同时增加新的目录，可以使用：
+
+.. code-block:: bash
+
+   git sparse-checkout add docs
+
+例如当前：
+
+.. code-block:: text
+
+   backend
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout add docs
+
+变成：
+
+.. code-block:: text
+
+   backend
+   docs
+
+也可以：
+
+.. code-block:: bash
+
+   git sparse-checkout add frontend deploy
+
+删除某个目录
+>>>>>>>>>>>>>>>>>>>
+
+
+可以重新使用 `set` 指定最终需要的目录：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+例如之前：
+
+.. code-block:: text
+
+   backend
+   frontend
+   docs
+
+
+执行：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+则：
+
+.. code-block:: text
+
+   backend
+
+
+会继续保留，而：
+
+.. code-block:: text
+
+   frontend
+   docs
+
+
+会从工作区移除。
+
+恢复完整工作区
+>>>>>>>>>>>>>>>>>>>
+
+
+如果不再需要 Sparse Checkout：
+
+.. code-block:: bash
+
+   git sparse-checkout disable
+
+
+执行后：
+
+.. code-block:: text
+
+   project/
+   ├── backend/
+   ├── frontend/
+   ├── docs/
+   ├── deploy/
+   └── tools/
+
+
+所有文件重新恢复到工作区。
+
+
+1.  切换分支
+>>>>>>>>>>>>>>>>>>>
+
+
+Sparse Checkout 可以和 Git Branch 一起使用。
+
+例如：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+然后：
+
+.. code-block:: bash
+
+   git switch feature/order
+
+
+Sparse Checkout 的目录选择通常会继续作用于新的分支。
+
+因此可以实现：
+
+.. code-block:: text
+
+   feature/order
+         │
+         └── backend/order-service
+
+
+只关注订单服务。
+
+Sparse Checkout + Git Clone
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+对于大型仓库，可以在 Clone 后使用 Sparse Checkout。
+
+普通 Clone：
+
+.. code-block:: bash
+
+   git clone https://example.com/project.git
+   cd project
+
+   git sparse-checkout init --cone
+   git sparse-checkout set backend/order-service
+
+Sparse Checkout + Partial Clone
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+如果仓库非常大，可以进一步结合：
+
+.. code-block:: bash
+
+   git clone --filter=blob:none --no-checkout https://example.com/project.git
+   cd project
+
+   git sparse-checkout init --cone
+   git sparse-checkout set backend/order-service
+
+
+这种方式可以同时达到：
+
+.. code-block:: text
+
+   Partial Clone
+      ↓
+   减少 Git 对象下载
+
+   Sparse Checkout
+      ↓
+   减少工作区文件
+
+
+适合大型 Monorepo。
+
+Cone 模式
+>>>>>>>>>>>>>>>>>>>
+
+
+推荐使用：
+
+.. code-block:: bash
+
+   git sparse-checkout init --cone
+
+
+Cone 模式主要针对目录结构进行选择。
+
+例如：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+
+或者：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend/order-service
+
+
+或者：
+
+.. code-block:: bash
+
+   git sparse-checkout set backend/order-service docs
+
+
+这是最简单、最推荐的方式。
+
+非 Cone 模式
+>>>>>>>>>>>>>>>>>>>
+
+
+如果需要更加复杂的匹配规则，可以不使用 `--cone`。
+
+例如：
+
+.. code-block:: bash
+
+   git sparse-checkout init
+
+
+然后使用：
+
+.. code-block:: bash
+
+   git sparse-checkout set ...
+
+
+非 Cone 模式可以使用 Git 的 `.gitignore` 风格 Pattern。
+
+例如：
+
+.. code-block:: text
+
+   /backend/
+   /docs/
+   /*.md
+
+
+可以实现更加复杂的文件匹配。
+
+不过：
+
+.. note:: **普通项目优先使用 --cone 模式。**
+
+
+只有需要复杂文件匹配时，再考虑非 Cone 模式。
+
+查看 Sparse Checkout 配置文件
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Sparse Checkout 的配置通常位于：
+
+.. code-block:: text
+
+   .git/info/sparse-checkout
+
+
+可以查看：
+
+.. code-block:: bash
+
+   cat .git/info/sparse-checkout
+
+
+Windows PowerShell：
+
+.. code-block:: powershell
+
+   Get-Content .git/info/sparse-checkout
+
+
+例如可能看到：
+
+.. code-block:: text
+
+   /*
+   !/*/
+   /backend/
+
+
+Cone 模式下不建议直接手工修改这个文件，而应该使用：
+
+.. code-block:: bash
+
+   git sparse-checkout set
+
+
+或：
+
+.. code-block:: bash
+
+   git sparse-checkout add
+
+
+进行管理。
+
+Sparse Checkout 与 `.gitignore` 的区别
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+两者非常容易混淆。
+
+`.gitignore`
+
+解决：
+
+.. note:: 哪些文件不应该被 Git 跟踪。
+
+
+例如：
+
+.. code-block:: text
+
+   target/
+   node_modules/
+   .idea/
+   *.log
+
+
+Sparse Checkout
+
+解决：
+
+.. note:: Git 已经管理的文件中，哪些文件需要出现在当前工作区。
+
+
+例如：
+
+.. code-block:: text
+
+   backend/
+   frontend/
+   docs/
+
+
+只检出：
+
+.. code-block:: text
+
+   backend/
+
+所以：
+
+.. code-block:: text
+
+   .gitignore
+      ↓
+   控制 Git 是否跟踪文件
+
+   sparse-checkout
+      ↓
+   控制 Git 是否将文件检出到工作区
+
+Sparse Checkout 与 Git Branch 的区别
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Branch：
+
+.. code-block:: text
+
+   main
+   feature
+   release
+
+
+解决的是：
+
+.. note:: **代码版本线**
+
+
+Sparse Checkout：
+
+.. code-block:: text
+
+   backend
+   frontend
+   docs
+
+
+解决的是：
+
+.. note:: **工作区文件范围**
+
+
+两者可以组合：
+
+.. code-block:: text
+
+   feature 分支
+         +
+   backend/order-service Sparse Checkout
+
+
+Sparse Checkout 与 Git Rebase 的区别
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+这也是一个非常重要的区别。
+
+Sparse Checkout
+::::::::::::::::::::::
+
+.. code-block:: bash
+
+   git sparse-checkout set backend
+
+解决：
+
+.. note:: 只检出 backend。
+
+
+Rebase
+:::::::::::
+
+.. code-block:: bash
+
+   git rebase main
+
+解决：
+
+.. note:: 调整 Commit 历史。
+
+Cherry-Pick
+:::::::::::::::
+
+.. code-block:: bash
+
+   git cherry-pick abc123
+
+
+解决：
+
+.. note:: 把指定 Commit 的修改应用到当前分支。
+
+
+因此：
+
+.. code-block:: text
+
+   Sparse Checkout = 文件范围
+
+   Rebase = Commit 历史
+
+   Cherry-Pick = Commit 修改
+
+   Merge = 分支合并
+
+和你的 feature / merge 场景结合
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+你之前的场景是：
+
+.. code-block:: text
+
+   main
+   │
+   ├───────────────┐
+   │               │
+   merge             │
+   │               │
+   ├── 其他业务     │
+   │               │
+   ▼               │
+   feature ──────────┘
+
+
+如果你的目标是：
+
+.. note:: **从 feature 中提取自己的业务改动，剥离 merge 带进来的其他业务。**
+
+
+那么：
+
+.. code-block:: bash
+
+   git sparse-checkout init --cone
+
+
+不能解决这个问题。
+
+因为 Sparse Checkout 只控制：
+
+.. code-block:: text
+
+   哪些目录出现在工作区
+
+
+而你真正需要的是：
+
+.. code-block:: text
+
+   哪些 Commit 属于 feature
+   哪些 Commit 来自 merge
+
+
+这种情况下应该使用：
+
+.. code-block:: text
+
+   git log
+   git log --first-parent
+   git cherry
+   git cherry-pick
+   git rebase
+
+等 Git 历史分析工具。
+
+一个完整实战案例
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+假设 Monorepo：
+
+.. code-block:: text
+
+   company/
+   ├── user-service/
+   ├── order-service/
+   ├── payment-service/
+   ├── admin-service/
+   ├── frontend/
+   └── docs/
+
+
+开发人员只负责：
+
+.. code-block:: text
+
+   order-service
+
+
+首先：
+
+.. code-block:: bash
+
+   git clone https://example.com/company.git
+   cd company
+
+
+切换开发分支：
+
+.. code-block:: bash
+
+   git switch feature/order
+
+
+初始化：
+
+.. code-block:: bash
+
+   git sparse-checkout init --cone
+
+
+设置目录：
+
+.. code-block:: bash
+
+   git sparse-checkout set order-service
+
+
+查看：
+
+.. code-block:: bash
+
+   git sparse-checkout list
+
+
+输出：
+
+.. code-block:: text
+
+   order-service
+
+
+此时工作区：
+
+.. code-block:: text
+
+   company/
+   ├── order-service/
+   └── README.md
+
+
+增加公共文档：
+
+.. code-block:: bash
+
+   git sparse-checkout add docs
+
+
+变成：
+
+.. code-block:: text
+
+   company/
+   ├── order-service/
+   ├── docs/
+   └── README.md
+
+
+开发完成后正常：
+
+.. code-block:: bash
+
+   git add .
+   git commit -m "feat: order service xxx"
+   git push
+
+
+Sparse Checkout 不影响正常的 Git Commit、Push、Pull、Merge、Rebase 等操作。
+
+
+常用命令速查
+:::::::::::::
+
+.. list-table:: 常用命令速查
+   :header-rows: 1
+   :widths: 20 80
+
+   * - 操作命令
+     - 命令
+   * - 初始化
+     - ``git sparse-checkout init --cone``
+   * - 设置目录
+     - ``git sparse-checkout set backend``
+   * - 设置多个目录
+     - ``git sparse-checkout set backend frontend``
+   * - 设置子目录
+     - ``git sparse-checkout set backend/order-service``
+   * - 增加目录
+     - ``git sparse-checkout add docs``
+   * - 查看目录
+     - ``git sparse-checkout list``
+   * - 关闭
+     - ``git sparse-checkout disable``
+   * - 查看配置
+     - ``cat .git/info/sparse-checkout``
+
+推荐使用规范
+:::::::::::::
+
+对于企业级 Monorepo，推荐：
+
+.. code-block:: bash
+
+   git clone --filter=blob:none --no-checkout <repository>
+
+   cd <repository>
+
+   git sparse-checkout init --cone
+
+   git sparse-checkout set <业务目录>
+
+
+例如：
+
+.. code-block:: bash
+
+   git clone --filter=blob:none --no-checkout https://git.example.com/company.git
+
+   cd company
+
+   git sparse-checkout init --cone
+
+   git sparse-checkout set backend/order-service
+
+
+如果需要增加公共目录：
+
+.. code-block:: bash
+
+   git sparse-checkout add common
+   git sparse-checkout add docs
+
+
+不再需要时：
+
+.. code-block:: bash
+
+   git sparse-checkout disable
+
+最终理解
+:::::::::::::
+
+可以把 Git 的几个功能记成下面这样：
+
+.. code-block:: text
+
+                 Git Repository
+                       │
+        ┌──────────────┼──────────────┐
+        ↓              ↓              ↓
+      Branch         Commit        文件范围
+        │              │              │
+        ↓              ↓              ↓
+      分支版本        历史记录      Sparse Checkout
+        │              │              │
+        ↓              ↓              ↓
+      merge          rebase        set/add
+                     cherry-pick
+
+
+最关键的一句话：
+
+.. note:: 
+   
+   `git sparse-checkout init --cone` 是“初始化稀疏检出并采用目录模式”，它控制的是 **工作区需要检出哪些目录** ，不会自动帮你剥离某个分支从 `merge` 带过来的代码。
+
+
 git 常用命令
 =========================
 
 修改上一个commit log
-=================================
+>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: bash
 
@@ -621,7 +1712,7 @@ git 常用命令
   # 修改编辑器中的log
 
 该新建分支,不小心commit到master分支
-=========================================
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: bash
 
@@ -632,7 +1723,7 @@ git 常用命令
   git checkout new-branch-name
 
 不小心commit到错误的分支(没有push)
-==========================================
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 .. code-block:: bash
 
@@ -656,7 +1747,7 @@ git 常用命令
   git reset HEAD~ --hard
 
 git diff 没有反应
-================================
+>>>>>>>>>>>>>>>>>>>>>>
 
 git的diff 命令不会检查已放入staging区域的文件
 
@@ -672,7 +1763,7 @@ git的diff 命令不会检查已放入staging区域的文件
   git reset HEAD@{index}
 
 revert
-==============
+>>>>>>>>>>>>>>>>>>>
 
 https://mp.weixin.qq.com/s/4IpF72UxPun02HcpTJl2lw
 
