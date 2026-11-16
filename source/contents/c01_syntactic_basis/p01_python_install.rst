@@ -202,23 +202,26 @@ pip临时设置可以通过 -i 选项：
 
 .. code-block:: shell
 
-  pip install -i https://pypi.doubanio.com/simple/ flask
+  pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple flask
 
 全局设置
 >>>>>>>>>>>>>>>>>>>>>
 
-全局设置有不同的层级和文件位置，以用户全局（per-user）为例，在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 或者 **~/.config/pip/pip.conf**文件中；Windows 中，配置文件位置为 **%HOMEPATH%\pip\pip.ini**，%HOMEPATH% 即你的用户文件夹，一般为“**\Users\<你的用户名>**”，具体值可以使用 **echo %HOMEPATH%** 命令查看。
+全局设置有不同的层级和文件位置，以用户全局（per-user）为例，
+
+- 在 Linux & macOS 中，配置需要写到 **~/.pip/pip.conf** 或者 **~/.config/pip/pip.conf** 文件中；
+- Windows 中，配置文件位置为 **%HOMEPATH%\\pip\\pip.ini**， **%HOMEPATH%** 即你的用户文件夹，一般为 **\\Users\\<你的用户名>** ，具体值可以使用 **echo %HOMEPATH%** 命令查看。
 
 通常你需要手动创建对应的目录和文件，然后写入下面的内容：
 
 .. code-block:: text
     
   [global]
-  index-url = https://pypi.doubanio.com/simple
+  index-url = https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
   [install]
-  trusted-host = pypi.doubanio.com
+  trusted-host = mirrors.tuna.tsinghua.edu.cn
 
-附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 $HOME/.config/pip/pip.conf，Windows 则放到 %APPDATA%\\pip\\pip.ini。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
+附注：按照 pip 文档，上面的配置文件位置是旧（legacy）的配置方式，但是因为比较方便设置，这里沿用了。新的建议是 Linux & macOS 放到 **$HOME/.config/pip/pip.conf** ，Windows 则放到 **%APPDATA%\\pip\\pip.ini** 。具体可以访问 `pip文档配置 <https://pip.pypa.io/en/stable/user_guide/#config-file>`_ 部分查看。
 
 
 Pipenv
@@ -257,7 +260,7 @@ Pipenv
   豆瓣 https://pypi.doubanio.com/simple/
   网易 https://mirrors.163.com/pypi/simple/
   阿里云 https://mirrors.aliyun.com/pypi/simple/
-  清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+  清华大学 https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/
 
 
 参考

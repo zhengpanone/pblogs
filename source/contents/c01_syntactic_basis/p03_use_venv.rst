@@ -410,10 +410,6 @@ uv.toml是用于 工作区（workspace）​ 配置的，不是单个项目的�
   [tool.uv.workspace]
   members = ["project-a", "project-b"]
 
-
-
-
-
 项目初始化
 --------------------------
 
@@ -455,6 +451,23 @@ pyproject.toml 管理依赖
   requires-python = ">=3.12"
   dependencies = []
 
+速查表
+--------------
+
+.. code-block:: shell
+
+    uv init                # 建项目
+    uv add pkg             # 加依赖
+    uv add --dev pkg       # 加开发依赖
+    uv remove pkg          # 删依赖
+    uv sync                # 装环境
+    uv run python x.py     # 跑脚本
+    uv run pytest          # 跑测试
+    uv python install 3.12 # 装解释器
+    uv venv                # 建 venv
+    uv tree                # 依赖树
+    uvx ruff check .       # 临时跑工具
+
 依赖管理安装依赖
 -------------------------------
 
@@ -477,6 +490,18 @@ pyproject.toml 管理依赖
 
   # 安装依赖
   uv add request
+
+  uv sync                   # 按 pyproject.toml + uv.lock 装环境
+  uv sync --frozen          # CI 用：严格按 lock，不偷偷改 lock
+  uv sync --locked          # lock 不一致就报错，不自动改
+  uv sync --upgrade         # 升级全部依赖
+  uv sync --upgrade-package fastapi
+
+  uv tree                   # 看依赖树
+  uv remove requests        # 删依赖
+  uv lock                   # 只更新锁文件不装包
+
+
 
 
 
